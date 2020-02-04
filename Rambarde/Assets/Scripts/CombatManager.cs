@@ -32,7 +32,7 @@ public class CombatManager : MonoBehaviour {
         foreach (var team in teams) {
             Debug.Log(team);
             foreach (var character in team) {
-                character.ExecuteAbility();
+                character.ExecuteSkill();
             } 
         }
     }

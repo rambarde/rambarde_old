@@ -15,7 +15,6 @@ public struct Stats {
     [SerializeField] private int _end;
     public int End => _end;
 
-
     // Attack 
     [SerializeField] private float _atq;
     public float Atq => _atq;

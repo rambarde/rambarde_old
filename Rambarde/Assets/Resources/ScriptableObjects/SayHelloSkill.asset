@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682185c0f26b46cdaa3a5ce1d054f7a1, type: 3}
   m_Name: SayHelloSkill
   m_EditorClassIdentifier: 
-  _shouldCastOnAllies: 0
-  msg: Helo
+  shouldCastOnAllies: 0
+  msg: 311

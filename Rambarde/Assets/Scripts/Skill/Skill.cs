@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public abstract class Skill : ScriptableObject {
     [SerializeField] private bool shouldCastOnAllies;

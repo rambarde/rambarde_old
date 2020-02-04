@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2725692513922679363}
   - component: {fileID: 2725692513922679372}
   - component: {fileID: 2725692513922679361}
+  - component: {fileID: 1713685293}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -67,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -105,8 +108,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c59e895b405504d9e91c5e6a5372c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
   stats:
     _end: 100
     _atq: 10
     _prot: 50
     _crit: 2
+  skillWheel:
+  - {fileID: 11400000, guid: 61f28219e850c9e46834111c59113191, type: 2}
+  combatManager: {fileID: 0}
+--- !u!95 &1713685293
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725692513922679374}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
