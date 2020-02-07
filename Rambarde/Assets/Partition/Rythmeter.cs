@@ -7,7 +7,7 @@ namespace Partition {
         public float distance;
         public float duration;
 
-        private void Start() {
+        public void StartRythm() {
             StartCoroutine(nameof(MoveRythm));
         }
 
@@ -15,7 +15,7 @@ namespace Partition {
             float speed = distance / duration;
             float walked = 0;
             while (walked < distance) {
-                var tf = transform;
+                Transform tf = transform;
                 tf.position += new Vector3(Time.deltaTime * speed, 0, 0);
                 walked += Time.deltaTime * speed;
                 yield return null;

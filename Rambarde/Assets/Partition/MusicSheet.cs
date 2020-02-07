@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Partition {
     public class MusicSheet : MonoBehaviour {
@@ -14,7 +15,12 @@ namespace Partition {
         public GameObject sheet;
         public GameObject stave; // empty objects with lines as children
         public GameObject rythmeter;
-        
+
+        private void Start() {
+            Generate();
+            rythmeter.GetComponent<Rythmeter>().StartRythm();
+        }
+
         public void Generate() {
             float xSize = beatSize * nbrBeat * nbrMeasure;
 
@@ -60,6 +66,13 @@ namespace Partition {
             rythmeter.transform.position = new Vector3(-xSize / 2, 0, 0);
             rythmeter.GetComponent<Rythmeter>().distance = xSize;
             rythmeter.GetComponent<Rythmeter>().duration = 60 * (nbrBeat*beatSize * nbrMeasure + 1) / tempo;
+        }
+
+        private void Update() {
+            int input = MusicInput.GetInput();
+            if (input > 0) {
+                Debug.Log(input);
+            }
         }
     }
 }
