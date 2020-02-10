@@ -1,4 +1,5 @@
-﻿using Structs;
+﻿using Characters;
+using Structs;
 using UnityEngine;
 
 namespace Skills {
@@ -7,10 +8,12 @@ namespace Skills {
 
         public bool ShouldCastOnAllies => shouldCastOnAllies;
 
-        public abstract void Execute(Stats stats, Character target);
+        public abstract void Execute(Stats source, Character target);
 
-        public string Name;
+        public string skillName;
 
         public Sprite sprite;
+
+        public AnimationClip animation;
     }
 }

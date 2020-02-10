@@ -1,4 +1,5 @@
-﻿using Structs;
+﻿using Characters;
+using Structs;
 using UnityEngine;
 
 namespace Skills {
@@ -6,8 +7,8 @@ namespace Skills {
     public class SayHelloSkill : Skill {
         public string msg;
 
-        public override void Execute(Stats stats, Character target) {
-            Debug.Log(msg + ": " + stats + " " + target);
+        public override void Execute(Stats source, Character target) {
+            Debug.Log(msg + ": " + source + " " + target);
         }
     }
 }

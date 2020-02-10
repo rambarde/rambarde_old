@@ -405,6 +405,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845920081}
   m_CullTransparentMesh: 0
+--- !u!1 &866670459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2725692513922679374, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1350779189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &866670460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866670459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be327af71a324425ab1a33d5643f0492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
+  stats:
+    end: 100
+    atq: 60
+    prot: 20
+    crit: 2
+    prec: 6
+  skillWheel:
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
+  - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
+  - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
+  - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
+  - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
+  combatManager: {fileID: 1760199090}
 --- !u!1 &1146481747
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
       propertyPath: skillWheel.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
@@ -528,7 +561,31 @@ PrefabInstance:
         type: 3}
       propertyPath: skillWheel.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 3d73e521f2d4b9c4aab29e1dae6a01c3,
+      objectReference: {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea,
+        type: 2}
+    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: skillWheel.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a,
+        type: 2}
+    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: skillWheel.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a,
+        type: 2}
+    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: skillWheel.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a,
+        type: 2}
+    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: skillWheel.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a,
         type: 2}
     - target: {fileID: 2725692513922679363, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
@@ -595,7 +652,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8505100706271664299, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79fe207f599ccf048aff26a6ee7a92bc, type: 3}
 --- !u!4 &1350779190 stripped
 Transform:
@@ -603,6 +666,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1350779189}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1507915141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2725692513922679374, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2725692512159265147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507915142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507915141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccd20099e5a4b59b7f80954e10e9c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  stats:
+    end: 100
+    atq: 65
+    prot: 22
+    crit: 3
+    prec: 5
+  skillWheel:
+  - {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a, type: 2}
+  - {fileID: 11400000, guid: 3d73e521f2d4b9c4aab29e1dae6a01c3, type: 2}
+  combatManager: {fileID: 1760199090}
 --- !u!1 &1760199089
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,9 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTeam:
-  - {fileID: 1769763642}
+  - {fileID: 1507915142}
   enemyTeam:
-  - {fileID: 2032447492}
+  - {fileID: 866670460}
 --- !u!4 &1760199091
 Transform:
   m_ObjectHideFlags: 0
@@ -656,18 +748,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2725692512159265147}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1769763642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 2725692512159265147}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c59e895b405504d9e91c5e6a5372c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1952060040
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +831,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1760199090}
-        m_MethodName: ExecTurn
+        m_MethodName: ExecuteTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -891,18 +971,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2032447492 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1350779189}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c59e895b405504d9e91c5e6a5372c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2122557742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,51 +1079,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
-      propertyPath: skillWheel.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
       propertyPath: combatManager
       value: 
       objectReference: {fileID: 1760199090}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: skillWheel.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a,
-        type: 2}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: skillWheel.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 3d73e521f2d4b9c4aab29e1dae6a01c3,
-        type: 2}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: stats.end
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: stats.atq
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: stats.prot
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: stats.crit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc,
-        type: 3}
-      propertyPath: stats.prec
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 2725692513922679373, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1064,7 +1090,7 @@ PrefabInstance:
     - target: {fileID: 2725692513922679373, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0.746
       objectReference: {fileID: 0}
     - target: {fileID: 2725692513922679373, guid: 79fe207f599ccf048aff26a6ee7a92bc,
         type: 3}
@@ -1131,5 +1157,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Warrior1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8505100706271664299, guid: 79fe207f599ccf048aff26a6ee7a92bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2725692513922679361, guid: 79fe207f599ccf048aff26a6ee7a92bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79fe207f599ccf048aff26a6ee7a92bc, type: 3}
