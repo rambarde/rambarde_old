@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682185c0f26b46cdaa3a5ce1d054f7a1, type: 3}
   m_Name: SayHelloSkill
   m_EditorClassIdentifier: 
-  shouldCastOnAllies: 0
-  Name: UpDown
+  shouldCastOnAllies: 1
+  skillName: 
+  sprite: {fileID: 0}
+  animation: {fileID: 0}
   msg: qwe

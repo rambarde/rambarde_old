@@ -25,8 +25,6 @@ namespace Characters {
         private Character _target;
         private static readonly int Skill = Animator.StringToHash("Skill");
 
-        private bool _animationEnded;
-
         public void ExecuteSkill() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
@@ -42,10 +40,6 @@ namespace Characters {
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
             animator.SetTrigger(Skill);
-        }
-
-        public void AnimationDone(string message) {
-            _animationEnded = true;
         }
 
         public void TakeDamage(float dmg) {

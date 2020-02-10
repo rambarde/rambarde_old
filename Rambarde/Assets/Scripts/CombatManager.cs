@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
+using UnityEditorInternal;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour {
     public Character[] playerTeam, enemyTeam;
@@ -12,7 +15,7 @@ public class CombatManager : MonoBehaviour {
     public void Remove(Character character) {
         var charTeam = (int) character.team;
         teams[charTeam].Remove(character);
-        if(teams[charTeam].Count == 0) Debug.Break();
+        if (teams[charTeam].Count == 0) Debug.Break();
         Destroy(character.gameObject);
     }
 
@@ -43,7 +46,7 @@ public class CombatManager : MonoBehaviour {
                 var l = character.transform.Find("HighLight").gameObject;
                 l.SetActive(true);
                 foreach (var effect in character.StatusEffects) {
-                    Debug.Log(effect);
+                    // Debug.Log(effect);
                     effect.TurnStart();
                 }
 
@@ -56,7 +59,7 @@ public class CombatManager : MonoBehaviour {
         foreach (var team in teams) {
             foreach (var character in team) {
                 var l = character.transform.Find("HighLight").gameObject;
-                Debug.Log(character.name);
+                // Debug.Log(character.name);
                 l.SetActive(true);
                 character.ExecuteSkill();
                 yield return new WaitForSeconds(0.7f);
@@ -66,6 +69,13 @@ public class CombatManager : MonoBehaviour {
     }
 
     #region Unity
+
+    private static CombatManager _instance;
+    public static CombatManager Instance => _instance;
+
+    public void Awake() {
+        _instance = this;
+    }
 
     void Start() {
         teams.Add(playerTeam.ToList());

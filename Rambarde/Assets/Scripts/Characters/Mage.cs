@@ -6,7 +6,7 @@ namespace Characters {
             animator = GetComponent<Animator>();
             AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>("Mage");
             animator.runtimeAnimatorController = myOverrideController;
-            Debug.Log(animator);
+            // Debug.Log(animator);
         }
     }
 }
