@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Characters;
 using UnityEngine;
 
 namespace Status {
     public class PoisonEffect : StatusEffect {
-        private readonly Character _character;
+        private Character _character;
         private float _dmg;
 
-        public PoisonEffect(Character character, float dmg) {
+        public PoisonEffect(float dmg) {
             TurnsLeft = 2;
-            _character = character;
             _dmg = dmg;
-            Effect = Effect.PoisonEffect;
+            // Effect = Effect.PoisonEffect;
         }
 
-        public override void ApplyEffect(List<StatusEffect> effects) {
+        public override void ApplyEffect(Character character) {
+            var effects = character.StatusEffects;
+            _character = character;
+            
             StatusEffect effect = null;
             foreach (var seffect in effects) {
-                if (seffect.Effect == Effect.PoisonEffect) {
+                if (seffect.GetType() == typeof(PoisonEffect)) {
                     effect = seffect;
                 }
             }
@@ -29,16 +29,21 @@ namespace Status {
             else {
                 effect.AddTurns(TurnsLeft);
             }
+
+            Debug.Log(character.name + " has been poisoned!");
         }
 
         public override void RemoveEffect() {
-            Debug.Log(_character.name + " is no longer poisoned!");
+            _character.StatusEffects.Remove(this);
+            Debug.Log("Poison effect removed from " + _character.name);
         }
 
         public override void TurnStart() {
             _character.TakeDamage(_dmg);
         }
 
-        public override void TurnEnd() { }
+        public override void TurnEnd() {
+            base.TurnEnd();
+        }
     }
 }

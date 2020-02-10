@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: SayHelloSkill 1
   m_EditorClassIdentifier: 
   shouldCastOnAllies: 0
-  Name: Rot
+  skillName: 
+  sprite: {fileID: 0}
+  animation: {fileID: 7400000, guid: e52de39990996c945b4d40efe4e690a7, type: 2}
   msg: qwe
