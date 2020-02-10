@@ -8,7 +8,7 @@ namespace Skills {
         public string msg;
 
         public override void Execute(Stats source, Character target) {
-            Debug.Log(msg + ": " + source + " " + target);
+            // Debug.Log(msg + ": " + source + " " + target);
         }
     }
 }

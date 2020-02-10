@@ -30,12 +30,12 @@ namespace Status {
                 effect.AddTurns(TurnsLeft);
             }
 
-            Debug.Log(character.name + " has been poisoned!");
+            // Debug.Log(character.name + " has been poisoned!");
         }
 
         public override void RemoveEffect() {
             _character.StatusEffects.Remove(this);
-            Debug.Log("Poison effect removed from " + _character.name);
+            // Debug.Log("Poison effect removed from " + _character.name);
         }
 
         public override void TurnStart() {
