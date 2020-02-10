@@ -21,14 +21,11 @@ namespace Partition {
         private Rythmeter _rythmeter;
         
         private void Start() {
-            Generate();
+            
+            rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
-            _rythmeter.OnRyhthmEnd(() => {
-                string msg = "";
-                foreach (var key in melody.) {
-                    
-                }
-            });
+            Generate();
+
             _rythmeter.StartRythm();
             melody = new MelodyData();
         }
@@ -77,13 +74,14 @@ namespace Partition {
             rythmeterObj.transform.localScale = new Vector3(beatSize / 3, 1.1f * height, 1.2f);
             rythmeterObj.transform.position = new Vector3(-xSize / 2, 0, 0);
             _rythmeter.distance = xSize;
-            _rythmeter.duration = 60 * (nbrBeat*beatSize * nbrMeasure + 1) / tempo;
+            _rythmeter.duration = 60 * (nbrBeat * nbrMeasure + 1) / tempo;
         }
 
         private void Update() {
             int inputNote = MusicInput.GetInput();
 
             int beat = Mathf.RoundToInt(4 * tempo * (Time.time - _rythmeter.startTime) / 60.0f);
+            Debug.Log(beat);
         }
     }
 }
