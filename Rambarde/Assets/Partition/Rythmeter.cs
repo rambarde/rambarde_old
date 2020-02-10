@@ -10,7 +10,7 @@ namespace Partition {
 
         public float startTime;
 
-        private Action _rythmEnd;
+        private Action _rythmEnd = () => { };
 
         public void StartRythm() {
             StartCoroutine(nameof(MoveRythm));
