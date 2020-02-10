@@ -24,6 +24,7 @@ namespace Partition {
             
             rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
+            _rythmeter.OnRyhthmEnd((() => { Debug.Log(melody);}));
             Generate();
 
             _rythmeter.StartRythm();
@@ -81,7 +82,15 @@ namespace Partition {
             int inputNote = MusicInput.GetInput();
 
             int beat = Mathf.RoundToInt(4 * tempo * (Time.time - _rythmeter.startTime) / 60.0f);
-            Debug.Log(beat);
+            if (melody.Length < beat-1) {
+                melody.PushNote('-');
+            }
+            if (melody.Length < beat) {
+                if (inputNote > 0) {
+                    melody.PushNote(inputNote.ToString()[0]);
+                }
+            }
+            
         }
     }
 }
