@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Partition {
@@ -7,8 +8,13 @@ namespace Partition {
         public float distance;
         public float duration;
 
+        public float startTime;
+
+        private Action _rythmEnd;
+
         public void StartRythm() {
             StartCoroutine(nameof(MoveRythm));
+            startTime = Time.time;
         }
 
         private IEnumerator MoveRythm() {
@@ -20,6 +26,12 @@ namespace Partition {
                 walked += Time.deltaTime * speed;
                 yield return null;
             }
+
+            _rythmEnd.Invoke();
+        }
+
+        public void OnRyhthmEnd(Action toCall) {
+            _rythmEnd = toCall;
         }
     }
 }
