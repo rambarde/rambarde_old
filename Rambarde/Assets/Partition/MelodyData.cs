@@ -25,6 +25,9 @@ namespace Partition {
         public int Length {
             get => _length;
         }
-        
+
+        public override string ToString() {
+            return _data;
+        }
     }
 }
