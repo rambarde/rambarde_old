@@ -15,21 +15,21 @@ namespace Characters {
         public Team team;
         public Stats stats;
         public Skill[] skillWheel;
-        public CombatManager combatManager;
 
         public List<StatusEffect> StatusEffects { get; private set; }
-        protected Animator animator;
+        protected Animator Animator;
 
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Character _target;
+        private CombatManager _combatManager;
         private static readonly int Skill = Animator.StringToHash("Skill");
 
         public void ExecuteSkill() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
-            _target = skill.ShouldCastOnAllies ? combatManager.GetRandomAlly((int) team) : combatManager.GetRandomEnemy((int) team);
+            _target = skill.ShouldCastOnAllies ? _combatManager.GetRandomAlly((int) team) : _combatManager.GetRandomEnemy((int) team);
             skill.Execute(stats, _target);
 
             for (int i = StatusEffects.Count - 1; i >= 0; --i) {
@@ -39,13 +39,13 @@ namespace Characters {
             if (!_skillIndexChanged)
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
-            animator.SetTrigger(Skill);
+            Animator.SetTrigger(Skill);
         }
 
         public void TakeDamage(float dmg) {
             stats.end -= dmg;
             if (stats.end <= 0) {
-                combatManager.Remove(this);
+                _combatManager.Remove(this);
             }
         }
 
@@ -66,6 +66,8 @@ namespace Characters {
         }
 
         void Start() {
+            _combatManager = CombatManager.Instance;
+            
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {
                     Resources.Load<SayHelloSkill>("ScriptableObjects/SayHelloSkill 1")

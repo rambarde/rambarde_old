@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="screen" style="left: 0; top: 0; right: 0; bottom: 0; flex-direction: row; flex-grow: 1; justify-content: space-between;">
+        <Style src="TestUI.uss" />
+        <ui:VisualElement name="left" style="justify-content: center;">
+            <ui:VisualElement name="toolbar" style="justify-content: flex-start; align-items: auto;">
+                <ui:Button text="Button" style="justify-content: flex-start; align-items: auto; height: 383px; width: 861.6667px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="right" />
+    </ui:VisualElement>
+</ui:UXML>

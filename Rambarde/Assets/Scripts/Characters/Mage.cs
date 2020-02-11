@@ -3,9 +3,9 @@
 namespace Characters {
     public class Mage : Character {
         private void Start() {
-            animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
             AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>("Mage");
-            animator.runtimeAnimatorController = myOverrideController;
+            Animator.runtimeAnimatorController = myOverrideController;
             // Debug.Log(animator);
         }
     }
