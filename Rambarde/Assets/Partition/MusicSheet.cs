@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace Partition {
@@ -19,16 +21,29 @@ namespace Partition {
         public MelodyData melody;
 
         private Rythmeter _rythmeter;
+
+        private const int NbrNoteInBeat = 4; // croche :(
+
+        private float _startTime;
         
         private void Start() {
+            melody = new MelodyData();
             
             rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
-            _rythmeter.OnRyhthmEnd((() => { Debug.Log(melody);}));
+            _rythmeter.OnRyhthmEnd(() => {
+                Debug.Log(melody);
+                Debug.Log(melody.Length);
+                //StopCoroutine(nameof(HandleInput));
+            });
             Generate();
-
+            _rythmeter.distance = beatSize * nbrBeat * nbrMeasure;
+            _rythmeter.duration = 60 * nbrBeat * nbrMeasure / tempo;
+            
             _rythmeter.StartRythm();
-            melody = new MelodyData();
+            StartCoroutine(nameof(HandleInput));
+            _startTime = Time.time;
+
         }
 
         public void Generate() {
@@ -36,23 +51,15 @@ namespace Partition {
 
             Transform sheetTransform = sheetObj.transform;
             sheetTransform.localScale = new Vector3(xSize, this.height, 1);
-            float beatInterval = xSize / (nbrBeat * nbrMeasure + 1);
-            float x = (nbrBeat * nbrMeasure / 2.0f -0.5f) * -beatInterval;
+            float beatInterval = xSize / (nbrBeat * nbrMeasure);
+            float x = (nbrBeat * nbrMeasure / 2.0f) * -beatInterval;
 
             int iChild = 0;
             foreach (Transform child in sheetTransform) {
-                if (iChild > nbrBeat * nbrMeasure) {
-                    DestroyImmediate(child.gameObject);
-                    continue;
-                }
-                
-                child.position = new Vector3(x, 0, 0);
-                x += beatInterval;
-                child.localScale = new Vector3(beatSize / 8 / sheetTransform.localScale.x, 1.05f, 1.07f);
-                ++iChild;
+                DestroyImmediate(child.gameObject);
             }
 
-            for (int i = iChild; i <= nbrBeat * nbrMeasure; ++i) {
+            for (int i = iChild; i < nbrBeat * nbrMeasure; ++i) {
                 GameObject childObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Transform child = childObject.transform;
                 child.parent = sheetTransform;
@@ -72,25 +79,34 @@ namespace Partition {
                 child.localScale = new Vector3(1, 0.03f, 1.1f);
             }
             
-            rythmeterObj.transform.localScale = new Vector3(beatSize / 3, 1.1f * height, 1.2f);
+            rythmeterObj.transform.localScale = new Vector3(beatSize / 8, 1.1f * height, 1.2f);
             rythmeterObj.transform.position = new Vector3(-xSize / 2, 0, 0);
-            _rythmeter.distance = xSize;
-            _rythmeter.duration = 60 * (nbrBeat * nbrMeasure + 1) / tempo;
         }
 
         private void Update() {
-            int inputNote = MusicInput.GetInput();
+            int input = MusicInput.GetInput();
+            if (input > 0) {
+                _inputNote = input.ToString()[0];
+            }
+        }
 
-            int beat = Mathf.RoundToInt(4 * tempo * (Time.time - _rythmeter.startTime) / 60.0f);
-            if (melody.Length < beat-1) {
-                melody.PushNote('-');
-            }
-            if (melody.Length < beat) {
-                if (inputNote > 0) {
-                    melody.PushNote(inputNote.ToString()[0]);
+        private char _inputNote = '-';
+        private IEnumerator HandleInput() {
+            for (int i = 0; i < NbrNoteInBeat * nbrBeat * nbrMeasure; ++i) {
+                if (i % NbrNoteInBeat == 0) {
+                    GetComponent<AudioSource>().Play();
                 }
+                melody.PushNote(_inputNote);
+                _inputNote = '-';
+                
+                // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                // sphere.transform.position = rythmeterObj.transform.position + new Vector3(0, 1.5f, -0.5f);
+                // sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                
+                //yield return new WaitForSeconds();
+                int i1 = i;
+                yield return new WaitUntil(() => Time.time - _startTime >= (i1+1) * (60.0f / (NbrNoteInBeat * tempo)) - 0.5f * 60.0f / (NbrNoteInBeat * tempo));
             }
-            
         }
     }
 }
