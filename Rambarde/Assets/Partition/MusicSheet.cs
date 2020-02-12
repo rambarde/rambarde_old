@@ -22,7 +22,7 @@ namespace Partition {
 
         private Rythmeter _rythmeter;
 
-        private const int NbrNoteInBeat = 4; // croche :(
+        private const int NbrNoteInBeat = 2; // croche :(
 
         private float _startTime;
         
@@ -86,24 +86,32 @@ namespace Partition {
         private void Update() {
             int input = MusicInput.GetInput();
             if (input > 0) {
-                _inputNote = input.ToString()[0];
+                _inputNote = input;
             }
         }
 
-        private char _inputNote = '-';
+        private int _inputNote = 0;
         private IEnumerator HandleInput() {
             for (int i = 0; i < NbrNoteInBeat * nbrBeat * nbrMeasure; ++i) {
                 if (i % NbrNoteInBeat == 0) {
                     GetComponent<AudioSource>().Play();
                 }
-                melody.PushNote(_inputNote);
-                _inputNote = '-';
+                melody.PushNote(_inputNote.ToString()[0]);
+                if (_inputNote > 0) {
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    var localScale = staveObj.transform.localScale;
+                    cube.transform.position = rythmeterObj.transform.position + new Vector3(0,
+                                                  (_inputNote - 1) * (height / 4.0f) + height / 10.0f -
+                                                  localScale.y / 2.0f, -localScale.z / 2.0f);
+                    cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                }
+                
+                _inputNote = 0;
                 
                 // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 // sphere.transform.position = rythmeterObj.transform.position + new Vector3(0, 1.5f, -0.5f);
                 // sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 
-                //yield return new WaitForSeconds();
                 int i1 = i;
                 yield return new WaitUntil(() => Time.time - _startTime >= (i1+1) * (60.0f / (NbrNoteInBeat * tempo)) - 0.5f * 60.0f / (NbrNoteInBeat * tempo));
             }
