@@ -105,7 +105,6 @@ namespace Music {
             }
         }
 
-
         private IEnumerator HandleInput() {
 
             for (int i = 0; i <= NbrNoteInBeat * nbrBeat * (nbrMeasure + 1); ++i) {
