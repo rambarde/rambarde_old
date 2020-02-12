@@ -31,11 +31,23 @@ namespace Music {
             rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
             Generate();
-            
 
             _rythmeter.StartRythm();
             StartCoroutine(nameof(HandleInput));
             _startTime = Time.time;
+            
+            Destroy(_notesHolder);
+            _notesHolder = new GameObject();
+        }
+
+        public void PlaceNote(int beat, int note) {
+            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Transform cubeTransform = cube.transform;
+            Transform sheetTransform = sheetObj.transform;
+            Vector3 sheetScale = sheetTransform.localScale;
+            cubeTransform.position = sheetTransform.position - sheetScale / 2 + new Vector3(0, sheetScale.y / 8.0f, 0) +
+                                     new Vector3(beat * beatSize / NbrNoteInBeat, sheetScale.y / 4.0f * (note - 1), 0);
+            cubeTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         }
 
         public void Generate() {
@@ -95,8 +107,7 @@ namespace Music {
 
 
         private IEnumerator HandleInput() {
-            _notesHolder = new GameObject();
-            
+
             for (int i = 0; i <= NbrNoteInBeat * nbrBeat * (nbrMeasure + 1); ++i) {
                 if (i % NbrNoteInBeat == 0) {
                     GetComponent<AudioSource>().Play();

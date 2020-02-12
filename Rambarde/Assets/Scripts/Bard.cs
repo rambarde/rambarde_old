@@ -21,6 +21,12 @@ public class Bard : MonoBehaviour {
             return;
         }
 
+        for (int i = 0; i < s.Length; ++i) {
+            if (s[i] != '-') {
+                musicSheet.PlaceNote(i + _partitionToPlay.Length, s[i] - '0');
+            }
+        }
+        
         SetPartition(_partitionToPlay + s);
         _usedEnergy = newEnergy;
         Debug.Log(_partitionToPlay);
