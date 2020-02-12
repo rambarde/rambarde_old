@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
-namespace Partition {
+namespace Music {
     public class MusicSheet2 : MonoBehaviour {
 
         public bool autoUpdate = true;
@@ -35,8 +35,6 @@ namespace Partition {
             
             
             _rythmeter.StartRythm();
-            
-
         }
 
         public void Generate() {

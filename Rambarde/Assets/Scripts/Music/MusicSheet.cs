@@ -32,15 +32,8 @@ namespace Music {
             _melody = new MelodyData();
             rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
-            _rythmeter.OnRyhthmEnd(() => {
-                Debug.Log(_melody);
-                Debug.Log(_melody.Length);
-                gameObject.SetActive(false);
-                Destroy(_notesHolder);
-            });
             Generate();
-            _rythmeter.distance = beatSize * nbrBeat * nbrMeasure;
-            _rythmeter.duration = 60 * nbrBeat * nbrMeasure / tempo;
+            
 
             _rythmeter.StartRythm();
             StartCoroutine(nameof(HandleInput));
@@ -82,7 +75,17 @@ namespace Music {
             }
 
             rythmeterObj.transform.localScale = new Vector3(beatSize / 8, 1.1f * height, 1.2f);
-            rythmeterObj.transform.localPosition = new Vector3(-xSize / 2, 0, 0);
+            rythmeterObj.transform.localPosition = new Vector3(-xSize / 2 - (beatSize * nbrBeat), 0, 0);
+            _rythmeter.distance = beatSize * nbrBeat * nbrMeasure;
+            _rythmeter.preDistance = beatSize * nbrBeat;
+            _rythmeter.duration = 60 * nbrBeat * nbrMeasure / tempo;
+            
+            _rythmeter.OnRyhthmEnd(() => {
+                Debug.Log(_melody);
+                Debug.Log(_melody.Length);
+                gameObject.SetActive(false);
+                Destroy(_notesHolder);
+            });
         }
 
         private void Update() {
@@ -95,27 +98,26 @@ namespace Music {
 
         private IEnumerator HandleInput() {
             _notesHolder = new GameObject();
-            for (int i = 0; i < NbrNoteInBeat * nbrBeat * nbrMeasure; ++i) {
+            
+            for (int i = 0; i < NbrNoteInBeat * nbrBeat * (nbrMeasure + 1); ++i) {
                 if (i % NbrNoteInBeat == 0) {
                     GetComponent<AudioSource>().Play();
                 }
 
-                _melody.PushNote(_inputNote == 0 ? '-' : _inputNote.ToString()[0]);
-                if (_inputNote > 0) {
-                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    var localScale = staveObj.transform.localScale;
-                    cube.transform.position = rythmeterObj.transform.position + new Vector3(0,
-                                                  (_inputNote - 1) * (height / 4.0f) + height / 10.0f -
-                                                  localScale.y / 2.0f, -localScale.z / 2.0f);
-                    cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    cube.transform.parent = _notesHolder.transform;
+                if (i >= NbrNoteInBeat * nbrBeat) {
+                    _melody.PushNote(_inputNote == 0 ? '-' : _inputNote.ToString()[0]);
+                    if (_inputNote > 0) {
+                        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        var localScale = staveObj.transform.localScale;
+                        cube.transform.position = rythmeterObj.transform.position + new Vector3(0,
+                                                      (_inputNote - 1) * (height / 4.0f) + height / 10.0f -
+                                                      localScale.y / 2.0f, -localScale.z / 2.0f);
+                        cube.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        cube.transform.parent = _notesHolder.transform;
+                    }
+
+                    _inputNote = 0;
                 }
-
-                _inputNote = 0;
-
-                // GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                // sphere.transform.position = rythmeterObj.transform.position + new Vector3(0, 1.5f, -0.5f);
-                // sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
 
                 int i1 = i;
                 yield return new WaitUntil(
