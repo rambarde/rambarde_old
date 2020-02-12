@@ -13,11 +13,10 @@ public class Bard : MonoBehaviour {
     private int _energy;
     private int _usedEnergy;
     private string _partitionToPlay;
-    private const int TimeSig = 4;
 
     public void PlaceMelody(int index) {
         var s = melodies[index];
-        var newEnergy = s.Length / TimeSig + _usedEnergy;
+        var newEnergy = s.Length / musicSheet.nbrBeat + _usedEnergy;
         if (newEnergy > _energy) {
             return;
         }

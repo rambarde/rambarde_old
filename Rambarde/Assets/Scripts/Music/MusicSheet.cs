@@ -5,11 +5,11 @@ namespace Music {
     public class MusicSheet : MonoBehaviour {
         public bool autoUpdate = true;
         
-        [SerializeField] private int nbrMeasure = 4;
-        [SerializeField] private int nbrBeat = 4;
+        public int nbrMeasure = 4;
+        public int nbrBeat = 4;
         [SerializeField] [Range(0, 5)] private float beatSize = 2.0f;
         [SerializeField] private float height = 3.0f;
-        [SerializeField] private float tempo = 128;
+        public float tempo = 128;
 
         [SerializeField] private GameObject sheetObj;
         [SerializeField] private GameObject staveObj; // empty objects with lines as children
@@ -26,9 +26,7 @@ namespace Music {
         public void StartPlaying(MelodyData melodyData) {
             _plannedMelody = melodyData;
             gameObject.SetActive(true);
-        }
-
-        private void OnEnable() {
+            
             _melody = new MelodyData();
             rythmeterObj.AddComponent<Rythmeter>();
             _rythmeter = rythmeterObj.GetComponent<Rythmeter>();
@@ -83,7 +81,7 @@ namespace Music {
             _rythmeter.OnRyhthmEnd(() => {
                 Debug.Log(_melody);
                 Debug.Log(_melody.Length);
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
                 Destroy(_notesHolder);
             });
         }
@@ -99,12 +97,12 @@ namespace Music {
         private IEnumerator HandleInput() {
             _notesHolder = new GameObject();
             
-            for (int i = 0; i < NbrNoteInBeat * nbrBeat * (nbrMeasure + 1); ++i) {
+            for (int i = 0; i <= NbrNoteInBeat * nbrBeat * (nbrMeasure + 1); ++i) {
                 if (i % NbrNoteInBeat == 0) {
                     GetComponent<AudioSource>().Play();
                 }
 
-                if (i >= NbrNoteInBeat * nbrBeat) {
+                if (i > NbrNoteInBeat * nbrBeat) {
                     _melody.PushNote(_inputNote == 0 ? '-' : _inputNote.ToString()[0]);
                     if (_inputNote > 0) {
                         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
