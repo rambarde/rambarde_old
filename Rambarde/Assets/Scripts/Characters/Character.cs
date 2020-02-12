@@ -22,7 +22,7 @@ namespace Characters {
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Character _target;
-        private CombatManager _combatManager;
+        protected CombatManager _combatManager;
         private static readonly int Skill = Animator.StringToHash("Skill");
 
         public void ExecuteSkill() {
@@ -67,6 +67,8 @@ namespace Characters {
 
         void Start() {
             _combatManager = CombatManager.Instance;
+            Debug.Log("VAR");
+            Debug.Log(_combatManager);
             
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {
