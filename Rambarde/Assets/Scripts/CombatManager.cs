@@ -61,8 +61,7 @@ public class CombatManager : MonoBehaviour {
                 var l = character.transform.Find("HighLight").gameObject;
                 // Debug.Log(character.name);
                 l.SetActive(true);
-                character.ExecuteSkill();
-                yield return new WaitForSeconds(0.7f);
+                yield return StartCoroutine(character.ExecuteSkill());
                 l.SetActive(false);
             }
         }

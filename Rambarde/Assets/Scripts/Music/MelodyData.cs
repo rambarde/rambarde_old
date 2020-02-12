@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.Specialized;
-
-namespace Partition {
+﻿namespace Music {
     public class MelodyData {
 
         private string _data;
@@ -10,6 +7,11 @@ namespace Partition {
         public MelodyData() {
             _length = 0;
             _data = "";
+        }
+
+        public MelodyData(string data) {
+            _data = data;
+            _length = data.Length;
         }
 
         public void PushNote(char note) {

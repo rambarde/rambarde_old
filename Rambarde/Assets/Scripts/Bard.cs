@@ -1,10 +1,13 @@
-﻿using Unity.UIElements.Runtime;
+﻿using Music;
+using Status;
+using Unity.UIElements.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Bard : MonoBehaviour {
     [SerializeField] private string[] melodies;
     [SerializeField] private int maxEnergy;
+    [SerializeField] private MusicSheet musicSheet;
     // [SerializeField] private Text partition;
 
     private int _energy;
@@ -18,16 +21,19 @@ public class Bard : MonoBehaviour {
         if (newEnergy > _energy) {
             return;
         }
+
         SetPartition(_partitionToPlay + s);
         _usedEnergy = newEnergy;
+        Debug.Log(_partitionToPlay);
     }
 
     public void Done() {
-        CombatManager.Instance.ExecuteTurn();
         _energy = maxEnergy + maxEnergy - _usedEnergy;
+        musicSheet.StartPlaying(new MelodyData(_partitionToPlay));
+        CombatManager.Instance.ExecuteTurn();
+        Debug.Log(CombatManager.Instance.name);
+        
         Reset();
-        Debug.Log(_partitionToPlay);
-        Debug.Log(_energy);
     }
 
     public void Reset() {

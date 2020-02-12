@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7da10f32281fa63418f4d72c3184aa80
+guid: 1787960385531b14abbe8e5c20a0c7b5
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Fireball
+    second: GoblinFireball
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Fireball
+      name: GoblinFireball
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0

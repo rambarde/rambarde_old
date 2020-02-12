@@ -6,12 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Warrior
+  m_Name: Goblin
   m_Controller: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 97317e454078ae94dabd6d23de6261db, type: 2}
-    m_OverrideClip: {fileID: -203655887218126122, guid: f7b96206f134f244da66520df6a9ae1f,
-      type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: e52de39990996c945b4d40efe4e690a7, type: 2}
-    m_OverrideClip: {fileID: -203655887218126122, guid: f7b96206f134f244da66520df6a9ae1f,
+    m_OverrideClip: {fileID: -203655887218126122, guid: 1787960385531b14abbe8e5c20a0c7b5,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 97317e454078ae94dabd6d23de6261db, type: 2}
+    m_OverrideClip: {fileID: -203655887218126122, guid: 1787960385531b14abbe8e5c20a0c7b5,
       type: 3}

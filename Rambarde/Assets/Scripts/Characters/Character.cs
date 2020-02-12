@@ -15,21 +15,20 @@ namespace Characters {
         public Team team;
         public Stats stats;
         public Skill[] skillWheel;
-
         public List<StatusEffect> StatusEffects { get; private set; }
+
         protected Animator Animator;
+        protected CombatManager CombatManager;
 
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Character _target;
-        protected CombatManager _combatManager;
-        private static readonly int Skill = Animator.StringToHash("Skill");
 
-        public void ExecuteSkill() {
+        public IEnumerator ExecuteSkill() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
-            _target = skill.ShouldCastOnAllies ? _combatManager.GetRandomAlly((int) team) : _combatManager.GetRandomEnemy((int) team);
+            _target = skill.ShouldCastOnAllies ? CombatManager.GetRandomAlly((int) team) : CombatManager.GetRandomEnemy((int) team);
             skill.Execute(stats, _target);
 
             for (int i = StatusEffects.Count - 1; i >= 0; --i) {
@@ -39,13 +38,18 @@ namespace Characters {
             if (!_skillIndexChanged)
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
-            Animator.SetTrigger(Skill);
+            Animator.SetTrigger(skill.skillName);
+            yield return new WaitUntil(() => {
+                var time = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                Debug.Log(time - (int) time);
+                return time - (int) time >= 0.8f;
+            });
         }
 
         public void TakeDamage(float dmg) {
             stats.end -= dmg;
             if (stats.end <= 0) {
-                _combatManager.Remove(this);
+                CombatManager.Remove(this);
             }
         }
 
@@ -66,9 +70,9 @@ namespace Characters {
         }
 
         void Start() {
-            _combatManager = CombatManager.Instance;
+            CombatManager = CombatManager.Instance;
             Debug.Log("VAR");
-            Debug.Log(_combatManager);
+            Debug.Log(CombatManager);
             
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {

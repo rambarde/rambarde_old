@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Partition {
+namespace Music {
     public class MusicInput {
 
         public static int GetInput() {

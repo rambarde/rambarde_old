@@ -1,21 +1,23 @@
-using Partition;
-using UnityEngine;
+using Music;
 using UnityEditor;
+using UnityEngine;
 
-[CustomEditor (typeof (MusicSheet))]
-public class MusicSheetEditor : Editor {
+namespace Editor {
+    [CustomEditor (typeof (MusicSheet))]
+    public class MusicSheetEditor : UnityEditor.Editor {
 
-    public override void OnInspectorGUI() {
-        MusicSheet sheet = (MusicSheet)target;
+        public override void OnInspectorGUI() {
+            MusicSheet sheet = (MusicSheet)target;
 
-        if (DrawDefaultInspector ()) {
-            if (sheet.autoUpdate) {
+            if (DrawDefaultInspector ()) {
+                if (sheet.autoUpdate) {
+                    sheet.Generate();
+                }
+            }
+
+            if (GUILayout.Button ("Apply Changes")) {
                 sheet.Generate();
             }
-        }
-
-        if (GUILayout.Button ("Apply Changes")) {
-            sheet.Generate();
         }
     }
 }

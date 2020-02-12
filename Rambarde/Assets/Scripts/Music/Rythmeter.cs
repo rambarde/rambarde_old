@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Partition {
+namespace Music {
     public class Rythmeter : MonoBehaviour {
 
         public float distance;
