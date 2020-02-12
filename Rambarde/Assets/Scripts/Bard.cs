@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Bard : MonoBehaviour {
     [SerializeField] private string[] melodies;
     [SerializeField] private int maxEnergy;
-    [SerializeField] private Text partition;
+    // [SerializeField] private Text partition;
 
     private int _energy;
     private int _usedEnergy;
@@ -37,7 +37,7 @@ public class Bard : MonoBehaviour {
 
     private void SetPartition(string p) {
         _partitionToPlay = p;
-        partition.text = p;
+        // partition.text = p;
     }
 
     void Start() {
