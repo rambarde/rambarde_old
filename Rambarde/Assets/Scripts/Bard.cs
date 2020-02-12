@@ -38,7 +38,7 @@ public class Bard : MonoBehaviour {
     private void SetPartition(string p) {
         _partitionToPlay = p;
         // partition.text = p;
-        GetComponent<PanelRenderer>().visualTree.hierarchy.
+        //GetComponent<PanelRenderer>().visualTree.hierarchy.
     }
 
     void Start() {
