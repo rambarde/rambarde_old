@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 1080972351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 3, z: 1}
   m_Children:
   - {fileID: 586442600}
   - {fileID: 2079587007}
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155520823}
   m_LocalRotation: {x: 0.007925954, y: -0.00000000689286, z: 0.0036542157, w: 0.9999619}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0, z: 0}
   m_LocalScale: {x: 0.125, y: 3.3000002, z: 1.2}
   m_Children: []
   m_Father: {fileID: 1742326409}
@@ -521,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 1488741171}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 16, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1742326409}
   m_RootOrder: 1
@@ -572,10 +572,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4b63cf8b77fa0dd469b7d5dafc2b07b0, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoUpdate: 1
-  nbrMeasure: 4
+  nbrMeasure: 1
   nbrBeat: 4
   beatSize: 1
   height: 3
