@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Status {
     public class PoisonEffect : StatusEffect {
-        private Character _character;
         private float _dmg;
 
         public PoisonEffect(float dmg) {
@@ -14,7 +13,7 @@ namespace Status {
 
         public override void ApplyEffect(Character character) {
             var effects = character.StatusEffects;
-            _character = character;
+            Character = character;
             
             StatusEffect effect = null;
             foreach (var seffect in effects) {
@@ -34,12 +33,12 @@ namespace Status {
         }
 
         public override void RemoveEffect() {
-            _character.StatusEffects.Remove(this);
+            Character.StatusEffects.Remove(this);
             // Debug.Log("Poison effect removed from " + _character.name);
         }
 
         public override void TurnStart() {
-            _character.TakeDamage(_dmg);
+            Character.TakeDamage(_dmg);
         }
 
         public override void TurnEnd() {

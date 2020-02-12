@@ -8,6 +8,7 @@ namespace Status {
     public abstract class StatusEffect {
         // public Effect Effect { get; protected set; }
         
+        protected Character Character;
         protected int TurnsLeft;
 
         public abstract void ApplyEffect(Character character);

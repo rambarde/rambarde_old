@@ -900,7 +900,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
   - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
   - {fileID: 11400000, guid: c990b642bbfd3c548b6b7f6b728a359a, type: 2}
-  combatManager: {fileID: 1760199090}
 --- !u!1 &885652458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1568,6 @@ MonoBehaviour:
   skillWheel:
   - {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a, type: 2}
   - {fileID: 11400000, guid: 3d73e521f2d4b9c4aab29e1dae6a01c3, type: 2}
-  combatManager: {fileID: 1760199090}
 --- !u!1 &1571310901
 GameObject:
   m_ObjectHideFlags: 0
