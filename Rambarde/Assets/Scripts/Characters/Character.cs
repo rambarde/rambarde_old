@@ -39,11 +39,13 @@ namespace Characters {
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
             Animator.SetTrigger(skill.skillName);
-            yield return new WaitUntil(() => {
-                var time = Animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-                Debug.Log(time - (int) time);
-                return time - (int) time >= 0.8f;
-            });
+            var stateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+            yield return new WaitUntil(
+                () => {
+                    var time = stateInfo.normalizedTime;
+                    return Animator.GetCurrentAnimatorStateInfo(0).IsName(skill.skillName) && time - (int) time >= 0.8f;
+                }
+            );
         }
 
         public void TakeDamage(float dmg) {
@@ -73,7 +75,7 @@ namespace Characters {
             CombatManager = CombatManager.Instance;
             Debug.Log("VAR");
             Debug.Log(CombatManager);
-            
+
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {
                     Resources.Load<SayHelloSkill>("ScriptableObjects/SayHelloSkill 1")
