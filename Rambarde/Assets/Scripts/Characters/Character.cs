@@ -15,7 +15,7 @@ namespace Characters {
         public Team team;
         public Stats stats;
         public Skill[] skillWheel;
-        public List<StatusEffect> StatusEffects { get; private set; }
+        public List<IStatusEffect> StatusEffects { get; private set; }
 
         protected Animator Animator;
         protected CombatManager CombatManager;
@@ -68,7 +68,7 @@ namespace Characters {
         #region Unity
 
         private void Awake() {
-            StatusEffects = new List<StatusEffect>();
+            StatusEffects = new List<IStatusEffect>();
         }
 
         void Start() {

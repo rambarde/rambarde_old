@@ -6,24 +6,13 @@ namespace Status {
     public class PoisonEffect : StatusEffect {
         private readonly float _dmg;
 
-        public PoisonEffect(float dmg) {
-            TurnsLeft = 2;
+        public PoisonEffect(Character character, float dmg, int turns) {
+            Character = character;
+            TurnsLeft = turns;
             _dmg = dmg;
         }
 
-        public override void ApplyEffect(Character character) {
-            var effects = character.StatusEffects;
-            Character = character;
-            
-            var effect = effects.FirstOrDefault(x => x.GetType() == typeof(PoisonEffect));
-
-            if (effect is null) {
-               effects.Add(this); 
-            }
-            else {
-                effect.AddTurns(TurnsLeft);
-            }
-        }
+        public override void ApplyEffect() { }
 
         public override void RemoveEffect() {
             Character.StatusEffects.Remove(this);
