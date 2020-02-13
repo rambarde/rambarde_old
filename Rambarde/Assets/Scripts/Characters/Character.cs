@@ -38,14 +38,14 @@ namespace Characters {
             if (!_skillIndexChanged)
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
-            Animator.SetTrigger(skill.skillName);
-            var stateInfo = Animator.GetCurrentAnimatorStateInfo(0);
-            yield return new WaitUntil(
-                () => {
-                    var time = stateInfo.normalizedTime;
-                    return Animator.GetCurrentAnimatorStateInfo(0).IsName(skill.skillName) && time - (int) time >= 0.8f;
-                }
-            );
+            yield return StartCoroutine(SkillAnimation(skill.skillName));
+        }
+
+        private IEnumerator SkillAnimation(string skillName) {
+            Animator.SetTrigger(skillName);
+            var stateHash = Animator.StringToHash(skillName);
+            yield return new WaitUntil(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash));
+            yield return new WaitWhile(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash));
         }
 
         public void TakeDamage(float dmg) {

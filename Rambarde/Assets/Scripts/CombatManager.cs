@@ -59,7 +59,6 @@ public class CombatManager : MonoBehaviour {
         foreach (var team in teams) {
             foreach (var character in team) {
                 var l = character.transform.Find("HighLight").gameObject;
-                // Debug.Log(character.name);
                 l.SetActive(true);
                 yield return StartCoroutine(character.ExecuteSkill());
                 l.SetActive(false);

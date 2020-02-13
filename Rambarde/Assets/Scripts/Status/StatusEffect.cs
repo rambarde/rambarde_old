@@ -1,4 +1,5 @@
-﻿using Characters;
+﻿using System.Collections;
+using Characters;
 
 namespace Status {
     // public enum Effect {
@@ -10,6 +11,7 @@ namespace Status {
         
         protected Character Character;
         protected int TurnsLeft;
+        private bool _justApplied = true;
 
         public abstract void ApplyEffect(Character character);
 
@@ -17,7 +19,18 @@ namespace Status {
 
         public abstract void TurnStart();
 
-        public virtual void TurnEnd() {
+        public void TurnEnd() {
+            if (_justApplied) {
+                _justApplied = false;
+                return;
+            }
+            PreTurnEnd();
+            PostTurnEnd();
+        }
+
+        protected abstract void PreTurnEnd();
+
+        private void PostTurnEnd() {
             if (--TurnsLeft == 0) {
                 RemoveEffect();
             }

@@ -13,7 +13,5 @@ namespace Skills {
         public string skillName;
 
         public Sprite sprite;
-
-        public AnimationClip animation;
     }
 }
