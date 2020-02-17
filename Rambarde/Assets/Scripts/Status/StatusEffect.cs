@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using Characters;
-using Skills;
+﻿using Characters;
+using UnityEngine;
 
 namespace Status {
     public abstract class StatusEffect : IStatusEffect {

@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Characters;
+﻿using Characters;
 using UnityEngine;
 
 namespace Status {

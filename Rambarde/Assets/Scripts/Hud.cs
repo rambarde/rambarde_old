@@ -8,9 +8,11 @@ public class Hud : MonoBehaviour {
     [SerializeField] private Bard _bard;
 
     private PanelRenderer _panelRenderer;
+    private UIElementsEventSystem _eventSystem;
 
     private void Awake() {
         _panelRenderer = GetComponent<PanelRenderer>();
+        _eventSystem = GetComponent<UIElementsEventSystem>();
     }
 
     private void OnEnable() {
@@ -37,6 +39,9 @@ public class Hud : MonoBehaviour {
             done.clickable.clicked += _bard.Done;
         }
 
+        // done.
+        // _eventSystem.
+        
         return null;
     }
 }
