@@ -1,12 +1,14 @@
-﻿using Characters;
+﻿using System.Collections;
+using Characters;
 using UnityEngine;
 
 namespace Status {
     public class PoisonEffect : StatusEffect {
         private readonly float _dmg;
+        private string _animationName = "PoisonEffect";
 
-        public PoisonEffect(Character character, float dmg, int turns) {
-            Character = character;
+        public PoisonEffect(Character target, float dmg, int turns) {
+            Target = target;
             TurnsLeft = turns;
             _dmg = dmg;
         }
@@ -14,15 +16,18 @@ namespace Status {
         public override void ApplyEffect() { }
 
         public override void RemoveEffect() {
-            Character.StatusEffects.Remove(this);
+            Target.StatusEffects.Remove(this);
         }
 
-        public override void TurnStart() {
-            Character.TakeDamage(_dmg);
+        public override IEnumerator TurnStart() {
+            Debug.Log(Target.name);
+            Target.TakeDamage(_dmg);
+            yield return new WaitForSeconds(2);
+            Debug.Log("DONE");
         }
 
         protected override void PreTurnEnd() {
-            Debug.Log(Character);
+            Debug.Log(Target);
         }
     }
 }

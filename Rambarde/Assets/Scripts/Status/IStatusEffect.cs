@@ -1,9 +1,11 @@
-﻿namespace Status {
+﻿using System.Collections;
+
+namespace Status {
     public interface IStatusEffect {
         void ApplyEffect();
         void RemoveEffect();
         void TurnEnd();
-        void TurnStart();
+        IEnumerator TurnStart();
         void AddTurns(int n);
     }
 }

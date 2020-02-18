@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using UniRx;
 using Unity.UIElements.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Object = UnityEngine.Object;
 
 public class Hud : MonoBehaviour {
     [SerializeField] private Bard _bard;
@@ -39,8 +42,10 @@ public class Hud : MonoBehaviour {
             done.clickable.clicked += _bard.Done;
         }
 
-        // done.
-        // _eventSystem.
+        var energyText = root.Q<Label>("label");
+        if (energyText != null) {
+            _bard.usedEnergy.AsObservable().Subscribe(x => energyText.text = x.ToString());
+        }
         
         return null;
     }

@@ -1,9 +1,9 @@
-﻿using Characters;
-using UnityEngine;
+﻿using System.Collections;
+using Characters;
 
 namespace Status {
     public abstract class StatusEffect : IStatusEffect {
-        protected Character Character;
+        protected Character Target;
         protected int TurnsLeft;
         private bool _justApplied = true;
 
@@ -12,7 +12,7 @@ namespace Status {
 
         public abstract void RemoveEffect();
 
-        public abstract void TurnStart();
+        public abstract IEnumerator TurnStart();
 
         protected abstract void PreTurnEnd();
 

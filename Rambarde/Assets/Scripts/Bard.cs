@@ -1,5 +1,6 @@
 ﻿using Music;
 using Status;
+using UniRx;
 using Unity.UIElements.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,16 +8,21 @@ using UnityEngine.UI;
 public class Bard : MonoBehaviour {
     [SerializeField] private string[] melodies;
     [SerializeField] private int maxEnergy;
+
     [SerializeField] private MusicSheet musicSheet;
     // [SerializeField] private Text partition;
 
     private int _energy;
-    private int _usedEnergy;
+    public ReactiveProperty<int> usedEnergy;
     private string _partitionToPlay;
+
+    public Bard(int energy) {
+        _energy = energy;
+    }
 
     public void PlaceMelody(int index) {
         var s = melodies[index];
-        var newEnergy = s.Length / musicSheet.nbrBeat + _usedEnergy;
+        var newEnergy = s.Length / musicSheet.nbrBeat + usedEnergy.Value;
         if (newEnergy > _energy) {
             return;
         }
@@ -26,24 +32,24 @@ public class Bard : MonoBehaviour {
                 musicSheet.PlaceNote(i + _partitionToPlay.Length, s[i] - '0');
             }
         }
-        
+
         SetPartition(_partitionToPlay + s);
-        _usedEnergy = newEnergy;
+        usedEnergy.Value = newEnergy;
         Debug.Log(_partitionToPlay);
     }
 
     public void Done() {
-        _energy = maxEnergy + maxEnergy - _usedEnergy;
+        _energy = maxEnergy + maxEnergy - usedEnergy.Value;
         musicSheet.StartPlaying(new MelodyData(_partitionToPlay));
         CombatManager.Instance.ExecuteTurn();
         Debug.Log(CombatManager.Instance.name);
-        
+
         Reset();
     }
 
     public void Reset() {
         SetPartition("");
-        _usedEnergy = 0;
+        usedEnergy.Value = 0;
     }
 
     private void SetPartition(string p) {
@@ -54,5 +60,6 @@ public class Bard : MonoBehaviour {
     void Start() {
         SetPartition("");
         _energy = maxEnergy;
+        usedEnergy = new ReactiveProperty<int>(0);
     }
 }

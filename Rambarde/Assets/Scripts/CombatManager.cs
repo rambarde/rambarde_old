@@ -44,7 +44,7 @@ public class CombatManager : MonoBehaviour {
                 l.SetActive(true);
                 foreach (var effect in character.StatusEffects) {
                     // Debug.Log(effect);
-                    effect.TurnStart();
+                    yield return StartCoroutine(effect.TurnStart());
                 }
 
                 yield return new WaitForSeconds(0.5f);
