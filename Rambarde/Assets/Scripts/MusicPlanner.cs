@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-public class Bard : MonoBehaviour {
+public class MusicPlanner : MonoBehaviour {
     [SerializeField] private string[] melodies;
     [SerializeField] private int maxEnergy;
 
