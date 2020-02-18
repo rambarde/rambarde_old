@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using Characters;
 
 namespace Status {
@@ -12,7 +13,7 @@ namespace Status {
 
         public abstract void RemoveEffect();
 
-        public abstract IEnumerator TurnStart();
+        public abstract Task TurnStart();
 
         protected abstract void PreTurnEnd();
 

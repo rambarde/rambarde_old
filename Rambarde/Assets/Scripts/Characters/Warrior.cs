@@ -2,7 +2,8 @@
 
 namespace Characters {
     public class Warrior : Character {
-        private void Start() {
+        protected new void Start() {
+            base.Start();
             CombatManager = CombatManager.Instance;
             Animator = GetComponent<Animator>();
             AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>("Warrior");

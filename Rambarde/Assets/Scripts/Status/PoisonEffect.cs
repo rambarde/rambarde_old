@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Threading.Tasks;
 using Characters;
+using UniRx;
 using UnityEngine;
 
 namespace Status {
@@ -19,11 +21,10 @@ namespace Status {
             Target.StatusEffects.Remove(this);
         }
 
-        public override IEnumerator TurnStart() {
-            Debug.Log(Target.name);
+        public override async Task TurnStart() {
             Target.TakeDamage(_dmg);
-            yield return new WaitForSeconds(2);
-            Debug.Log("DONE");
+            
+            await Utils.AwaitObservable(Observable.Timer(new TimeSpan(0, 0, 2)));
         }
 
         protected override void PreTurnEnd() {

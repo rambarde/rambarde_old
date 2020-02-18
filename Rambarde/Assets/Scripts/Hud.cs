@@ -46,7 +46,7 @@ public class Hud : MonoBehaviour {
         if (energyText != null) {
             _bard.usedEnergy.AsObservable().Subscribe(x => energyText.text = x.ToString());
         }
-        
+      
         return null;
     }
 }

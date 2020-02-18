@@ -36,18 +36,20 @@ public class CombatManager : MonoBehaviour {
         StartCoroutine(nameof(ExecTurn));
     }
 
-    private IEnumerator ExecTurn() {
+    private async void ExecTurn() {
         // Apply status effects to all characters
         foreach (var team in teams) {
             foreach (var character in team) {
                 var l = character.transform.Find("HighLight").gameObject;
                 l.SetActive(true);
+                Debug.Log(l);
                 foreach (var effect in character.StatusEffects) {
                     // Debug.Log(effect);
-                    yield return StartCoroutine(effect.TurnStart());
+                    // yield return StartCoroutine(effect.TurnStart());
+                    await effect.TurnStart();
                 }
 
-                yield return new WaitForSeconds(0.5f);
+                Debug.Log("VARasd");
                 l.SetActive(false);
             }
         }
@@ -57,7 +59,7 @@ public class CombatManager : MonoBehaviour {
             foreach (var character in team) {
                 var l = character.transform.Find("HighLight").gameObject;
                 l.SetActive(true);
-                yield return StartCoroutine(character.ExecuteSkill());
+                await character.ExecuteSkill();
                 l.SetActive(false);
             }
         }

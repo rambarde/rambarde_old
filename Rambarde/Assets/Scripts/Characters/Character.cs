@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Skills;
 using Status;
 using Structs;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 
 namespace Characters {
@@ -23,8 +28,9 @@ namespace Characters {
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Character _target;
+        private IObservable<int> _animationSkillStateObservable;
 
-        public IEnumerator ExecuteSkill() {
+        public async Task ExecuteSkill() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
@@ -38,14 +44,18 @@ namespace Characters {
             if (!_skillIndexChanged)
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
 
-            yield return StartCoroutine(SkillAnimation(skill.skillName));
+            await SkillAnimation(skill.skillName);
         }
 
-        private IEnumerator SkillAnimation(string skillName) {
+        private async Task SkillAnimation(string skillName) {
             Animator.SetTrigger(skillName);
             var stateHash = Animator.StringToHash(skillName);
-            yield return new WaitUntil(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash));
-            yield return new WaitWhile(() => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash));
+            
+            await Utils.AwaitObservable(
+                this.UpdateAsObservable()
+                    .SkipWhile(_ => !Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash))
+                    .TakeWhile(_ => Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash))
+            );
         }
 
         public void TakeDamage(float dmg) {
@@ -71,14 +81,13 @@ namespace Characters {
             StatusEffects = new List<IStatusEffect>();
         }
 
-        void Start() {
+        protected void Start() {
             CombatManager = CombatManager.Instance;
-            Debug.Log("VAR");
             Debug.Log(CombatManager);
 
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {
-                    Resources.Load<SayHelloSkill>("ScriptableObjects/SayHelloSkill 1")
+                    ScriptableObject.CreateInstance<EmptySkill>()
                 };
             }
         }
