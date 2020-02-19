@@ -7,7 +7,7 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour {
     public Character[] playerTeam, enemyTeam;
 
-    private List<List<Character>> teams = new List<List<Character>>(2);
+    public List<List<Character>> teams = new List<List<Character>>(2);
 
     public void Remove(Character character) {
         var charTeam = (int) character.team;
@@ -42,14 +42,9 @@ public class CombatManager : MonoBehaviour {
             foreach (var character in team) {
                 var l = character.transform.Find("HighLight").gameObject;
                 l.SetActive(true);
-                Debug.Log(l);
                 foreach (var effect in character.StatusEffects) {
-                    // Debug.Log(effect);
-                    // yield return StartCoroutine(effect.TurnStart());
                     await effect.TurnStart();
                 }
-
-                Debug.Log("VARasd");
                 l.SetActive(false);
             }
         }

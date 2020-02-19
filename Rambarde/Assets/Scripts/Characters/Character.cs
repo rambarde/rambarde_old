@@ -30,11 +30,16 @@ namespace Characters {
         private Character _target;
         private IObservable<int> _animationSkillStateObservable;
 
+        public List<Character> GetTeam() {
+            return CombatManager.teams[(int) team];
+        }
+
         public async Task ExecuteSkill() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
             _target = skill.ShouldCastOnAllies ? CombatManager.GetRandomAlly((int) team) : CombatManager.GetRandomEnemy((int) team);
+            Debug.Log(name + " is attacking " + _target.name + " with " + skill.skillName);
             skill.Execute(stats, _target);
 
             for (int i = StatusEffects.Count - 1; i >= 0; --i) {
@@ -50,7 +55,7 @@ namespace Characters {
         private async Task SkillAnimation(string skillName) {
             Animator.SetTrigger(skillName);
             var stateHash = Animator.StringToHash(skillName);
-            
+
             await Utils.AwaitObservable(
                 this.UpdateAsObservable()
                     .SkipWhile(_ => !Animator.GetCurrentAnimatorStateInfo(0).shortNameHash.Equals(stateHash))
@@ -83,7 +88,6 @@ namespace Characters {
 
         protected void Start() {
             CombatManager = CombatManager.Instance;
-            Debug.Log(CombatManager);
 
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {

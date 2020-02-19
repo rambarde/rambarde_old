@@ -22,6 +22,7 @@ namespace Status {
         }
 
         public override async Task TurnStart() {
+            Debug.Log("Damage inflicted: " + _dmg);
             Target.TakeDamage(_dmg);
             
             await Utils.AwaitObservable(Observable.Timer(new TimeSpan(0, 0, 2)));

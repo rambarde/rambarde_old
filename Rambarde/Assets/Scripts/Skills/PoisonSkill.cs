@@ -8,14 +8,17 @@ namespace Skills {
     [CreateAssetMenu(fileName = "PoisonSkill", menuName = "Skills/PoisonSkill")]
     public class PoisonSkill : Skill {
         public override void Execute(Stats source, Character target) {
-            var effects = target.StatusEffects;
-            var effect = effects.FirstOrDefault(x => x.GetType() == typeof(PoisonEffect));
+            var team = target.GetTeam();
+            foreach (var t in team) {
+                var effects = target.StatusEffects;
+                var effect = effects.FirstOrDefault(x => x.GetType() == typeof(PoisonEffect));
 
-            if (effect is null) {
-                effects.Add(new PoisonEffect(target, source.atq / 2f, 2));
-            }
-            else {
-                effect.AddTurns(2);
+                if (effect is null) {
+                    effects.Add(new PoisonEffect(target, source.atq / 4f, 2));
+                }
+                else {
+                    effect.AddTurns(2);
+                }
             }
         }
     }

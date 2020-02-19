@@ -91,8 +91,8 @@ namespace Music {
             _rythmeter.duration = 60 * nbrBeat * nbrMeasure / tempo;
             
             _rythmeter.OnRyhthmEnd(() => {
-                Debug.Log(_melody);
-                Debug.Log(_melody.Length);
+                // Debug.Log(_melody);
+                // Debug.Log(_melody.Length);
                 //gameObject.SetActive(false);
                 Destroy(_notesHolder);
             });

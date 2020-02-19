@@ -1236,11 +1236,12 @@ MonoBehaviour:
   team: 1
   stats:
     end: 100
-    atq: 0
+    atq: 20
     prot: 0
-    crit: 0
-    prec: 0
+    crit: 20
+    prec: 100
   skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
   - {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a, type: 2}
 --- !u!1 &566939085
 GameObject:
@@ -2406,12 +2407,13 @@ MonoBehaviour:
   team: 1
   stats:
     end: 100
-    atq: 0
+    atq: 20
     prot: 0
-    crit: 0
-    prec: 0
+    crit: 20
+    prec: 100
   skillWheel:
   - {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a, type: 2}
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
 --- !u!95 &900214320
 Animator:
   serializedVersion: 3
@@ -3438,12 +3440,13 @@ MonoBehaviour:
   team: 0
   stats:
     end: 100
-    atq: 0
+    atq: 60
     prot: 0
-    crit: 0
-    prec: 0
+    crit: 85
+    prec: 75
   skillWheel:
   - {fileID: 11400000, guid: b8cbfe29ac808134b972e79a5cc0d68a, type: 2}
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
 --- !u!95 &1151473044
 Animator:
   serializedVersion: 3
@@ -4687,11 +4690,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   stats:
-    end: 100
-    atq: 0
+    end: 60
+    atq: 80
     prot: 0
-    crit: 0
-    prec: 0
+    crit: 80
+    prec: 60
   skillWheel:
   - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
   - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
