@@ -22,13 +22,13 @@ namespace Status {
         }
 
         public override async Task TurnStart() {
+            await Utils.AwaitObservable(Observable.Timer(new TimeSpan(0, 0, 2)));
+            
             Debug.Log("Damage inflicted: " + _dmg);
             Target.TakeDamage(_dmg);
-            
-            await Utils.AwaitObservable(Observable.Timer(new TimeSpan(0, 0, 2)));
         }
 
-        protected override void PreTurnEnd() {
+        protected override async Task PreTurnEnd() {
             Debug.Log(Target);
         }
     }

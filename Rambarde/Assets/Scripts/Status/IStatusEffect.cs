@@ -5,7 +5,7 @@ namespace Status {
     public interface IStatusEffect {
         void ApplyEffect();
         void RemoveEffect();
-        void TurnEnd();
+        Task TurnEnd();
         Task TurnStart();
         void AddTurns(int n);
     }

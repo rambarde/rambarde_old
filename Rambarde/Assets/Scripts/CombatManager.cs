@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Characters;
 using UnityEngine;
@@ -9,55 +8,52 @@ public class CombatManager : MonoBehaviour {
 
     public List<List<Character>> teams = new List<List<Character>>(2);
 
+    public Character GetRandomChar(int srcTeam, bool ally) {
+        Character c;
+        if (ally) {
+            c = teams[srcTeam][(int) Random.value % teams[srcTeam].Count];
+            return c;
+        }
+
+        var team = (srcTeam + 1) % teams.Count;
+        c = teams[team][(int) Random.value % teams[team].Count];
+        return c;
+    }
+
+    public async void ExecTurn() {
+        // Apply status effects to all characters
+        foreach (var team in teams) {
+            for (var index = team.Count - 1; index >= 0; --index) {
+                var character = team[index];
+
+                var l = character.transform.Find("HighLight").gameObject;
+                l.SetActive(true);
+
+                await character.EffectsTurnStart();
+
+                l.SetActive(false);
+            }
+        }
+
+        // Execute all character skills
+        foreach (var team in teams) {
+            for (var i = team.Count - 1; i >= 0; --i) {
+                var character = team[i];
+                var l = character.transform.Find("HighLight").gameObject;
+                l.SetActive(true);
+
+                await character.ExecTurn();
+
+                l.SetActive(false);
+            }
+        }
+    }
+
     public void Remove(Character character) {
         var charTeam = (int) character.team;
         teams[charTeam].Remove(character);
         if (teams[charTeam].Count == 0) Debug.Break();
         Destroy(character.gameObject);
-    }
-
-    #region GetRandomChar
-
-    private Character GetRandomChar(int teamNumber) {
-        return teams[teamNumber][(int) Random.value % teams[teamNumber].Count];
-    }
-
-    public Character GetRandomAlly(int teamNumber) {
-        return GetRandomChar(teamNumber);
-    }
-
-    public Character GetRandomEnemy(int teamNumber) {
-        return GetRandomChar((teamNumber + 1) % teams.Count);
-    }
-
-    #endregion
-
-    public void ExecuteTurn() {
-        StartCoroutine(nameof(ExecTurn));
-    }
-
-    private async void ExecTurn() {
-        // Apply status effects to all characters
-        foreach (var team in teams) {
-            foreach (var character in team) {
-                var l = character.transform.Find("HighLight").gameObject;
-                l.SetActive(true);
-                foreach (var effect in character.StatusEffects) {
-                    await effect.TurnStart();
-                }
-                l.SetActive(false);
-            }
-        }
-        
-        // Execute all character skills
-        foreach (var team in teams) {
-            foreach (var character in team) {
-                var l = character.transform.Find("HighLight").gameObject;
-                l.SetActive(true);
-                await character.ExecuteSkill();
-                l.SetActive(false);
-            }
-        }
     }
 
     #region Unity

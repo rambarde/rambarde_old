@@ -1,9 +1,6 @@
 ﻿using Music;
-using Status;
 using UniRx;
-using Unity.UIElements.Runtime;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Bard : MonoBehaviour {
     [SerializeField] private string[] melodies;
@@ -41,8 +38,8 @@ public class Bard : MonoBehaviour {
     public void Done() {
         _energy = maxEnergy + maxEnergy - usedEnergy.Value;
         musicSheet.StartPlaying(new MelodyData(_partitionToPlay));
-        CombatManager.Instance.ExecuteTurn();
-        Debug.Log(CombatManager.Instance.name);
+        CombatManager.Instance.ExecTurn();
+        // Debug.Log(CombatManager.Instance.name);
 
         Reset();
     }

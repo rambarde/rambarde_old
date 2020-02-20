@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Characters;
 
 namespace Status {
+    [Serializable]
     public abstract class StatusEffect : IStatusEffect {
         protected Character Target;
         protected int TurnsLeft;
@@ -15,16 +17,16 @@ namespace Status {
 
         public abstract Task TurnStart();
 
-        protected abstract void PreTurnEnd();
+        protected abstract Task PreTurnEnd();
 
         // Final methods
-        public void TurnEnd() {
+        public async Task TurnEnd() {
             if (_justApplied) {
                 _justApplied = false;
                 return;
             }
 
-            PreTurnEnd();
+            await PreTurnEnd();
             PostTurnEnd();
         }
 

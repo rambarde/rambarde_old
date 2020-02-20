@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Skills;
 using Status;
@@ -21,7 +19,6 @@ namespace Characters {
         public Stats stats;
         public Skill[] skillWheel;
         public List<IStatusEffect> StatusEffects { get; private set; }
-
         protected Animator Animator;
         protected CombatManager CombatManager;
 
@@ -29,27 +26,38 @@ namespace Characters {
         private bool _skillIndexChanged;
         private Character _target;
         private IObservable<int> _animationSkillStateObservable;
+        private CharacterVfx _vfx;
 
         public List<Character> GetTeam() {
             return CombatManager.teams[(int) team];
         }
 
-        public async Task ExecuteSkill() {
+        public async Task EffectsTurnStart() {
+            for (var i = StatusEffects.Count - 1; i >= 0; --i) {
+                var effect = StatusEffects[i];
+                await effect.TurnStart();
+            }
+        }
+
+        public async Task ExecTurn() {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
-            _target = skill.ShouldCastOnAllies ? CombatManager.GetRandomAlly((int) team) : CombatManager.GetRandomEnemy((int) team);
-            Debug.Log(name + " is attacking " + _target.name + " with " + skill.skillName);
-            skill.Execute(stats, _target);
+            var target = CombatManager.GetRandomChar((int) team, skill.ShouldCastOnAllies);
+            
+            // Play and wait for skillAnimation to finish
+            await SkillAnimation(skill.skillName);
+            // Execute the skill
+            skill.Execute(stats, target);
 
-            for (int i = StatusEffects.Count - 1; i >= 0; --i) {
-                StatusEffects[i].TurnEnd();
+            // Apply effects at the end of the turn
+            for (var i = StatusEffects.Count - 1; i >= 0; --i) {
+                await StatusEffects[i].TurnEnd();
             }
 
+            // Increment skillIndex ONLY if effects did not affect the wheel
             if (!_skillIndexChanged)
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
-
-            await SkillAnimation(skill.skillName);
         }
 
         private async Task SkillAnimation(string skillName) {
@@ -64,10 +72,10 @@ namespace Characters {
         }
 
         public void TakeDamage(float dmg) {
-            stats.end -= dmg;
-            if (stats.end <= 0) {
-                CombatManager.Remove(this);
-            }
+            stats.end.Value -= dmg;
+            if (stats.end.Value > 0) return;
+
+            CombatManager.Remove(this);
         }
 
         public void IncrementSkillWheel() {
@@ -88,6 +96,8 @@ namespace Characters {
 
         protected void Start() {
             CombatManager = CombatManager.Instance;
+            _vfx = new CharacterVfx(this);
+            stats.Init();
 
             if (skillWheel.Length == 0) {
                 skillWheel = new Skill[] {
