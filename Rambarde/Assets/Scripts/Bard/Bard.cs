@@ -1,4 +1,5 @@
-﻿using Melody;
+﻿using System.Collections.Generic;
+using Melody;
 using UnityEngine;
 
 namespace Bard {
@@ -7,6 +8,7 @@ namespace Bard {
         public Inspiration inspiration;
         public MusicPlanner musicPlanner;
         //instruments
+        public List<Melody.Melody> selectedMelodies;
 
         void Start() {
             inspiration = GetComponent<Inspiration>();
@@ -16,12 +18,17 @@ namespace Bard {
         public void SelectMelody(Melody.Melody melody) {
             //check if melody is in instruments
             
+            selectedMelodies.Add(melody);
+            
             inspiration.SelectMelody(melody);
             musicPlanner.PlaceMelody(melody);
         }
 
         public void Reset() {
-            inspiration.ResetTurnValues();
+            foreach (var melody in selectedMelodies) {
+                inspiration.UnselectMelody(melody);
+            }
+            selectedMelodies.Clear();
             musicPlanner.Reset();
         }
 
