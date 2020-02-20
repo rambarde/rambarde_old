@@ -3,7 +3,7 @@ using Characters;
 using UnityEngine;
 
 namespace Melody {
-    public abstract class Melody : ScriptableObject {
+    public abstract class Melody : MonoBehaviour {
 
         [SerializeField] private string data;
         public string Data => data;
