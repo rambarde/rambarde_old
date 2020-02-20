@@ -13,7 +13,7 @@ public class MusicPlanner : MonoBehaviour {
     public ReactiveProperty<int> usedEnergy;
     private string _partitionToPlay;
 
-    public Bard(int energy) {
+    public MusicPlanner(int energy) {
         _energy = energy;
     }
 
