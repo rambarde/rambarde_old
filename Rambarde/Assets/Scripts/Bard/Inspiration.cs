@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Melody
+namespace Bard
 {
     public class Inspiration : MonoBehaviour
     {
@@ -12,7 +10,7 @@ namespace Melody
         /**
          * Check if a melody can be played
          * */
-        public bool MelodyCanBePlayed(Melody melody)
+        public bool MelodyCanBePlayed(Melody.Melody melody)
         {
             if (melody.Tier == 2 && inspirationValue < tier2minValue)
                 return false;
@@ -24,7 +22,7 @@ namespace Melody
         /**
          * Select a melody
          * */
-        public void SelectMelody(Melody melody)
+        public void SelectMelody(Melody.Melody melody)
         {
             //melody adding inspiration
             if(melody.InspirationValue > 0)
@@ -41,7 +39,7 @@ namespace Melody
         /**
          * Unselect a melody
          * */
-        public void UnselectMelody(Melody melody)
+        public void UnselectMelody(Melody.Melody melody)
         {
             //melody adding inspiration
             if (melody.InspirationValue > 0)
