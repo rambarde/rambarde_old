@@ -7,7 +7,6 @@ namespace Melody
     public class Inspiration : MonoBehaviour
     {
         public int inspirationValue = 0, tier2minValue, tier3minValue;
-        List<Melody> selectedMelody = new List<Melody>();
         int estimatedValueConsumed = 0, estimatedValueAdded = 0;
 
         /**
@@ -30,13 +29,11 @@ namespace Melody
             //melody adding inspiration
             if(melody.InspirationValue > 0)
             {
-                selectedMelody.Add(melody);
                 estimatedValueAdded += melody.InspirationValue;
             }
             //melody removing inspiration
              else if (MelodyCanBePlayed(melody))
             {
-                selectedMelody.Add(melody);
                 estimatedValueConsumed += melody.InspirationValue;
             }
         }
@@ -47,12 +44,12 @@ namespace Melody
         public void UnselectMelody(Melody melody)
         {
             //melody adding inspiration
-            if (melody.InspirationValue > 0 && selectedMelody.Remove(melody))
+            if (melody.InspirationValue > 0)
             {
                 estimatedValueAdded -= melody.InspirationValue;
             }
             //melody removing inspiration
-            else if (selectedMelody.Remove(melody))
+            else
             {
                 estimatedValueConsumed -= melody.InspirationValue;
             }
@@ -70,7 +67,6 @@ namespace Melody
         public void ResetTurnValues()
         {
             estimatedValueAdded = estimatedValueConsumed = 0;
-            selectedMelody.Clear();
         }
     }
 }
