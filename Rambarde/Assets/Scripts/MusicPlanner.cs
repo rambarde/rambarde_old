@@ -32,7 +32,6 @@ public class MusicPlanner : MonoBehaviour {
 
         SetPartition(_partitionToPlay + s);
         usedEnergy.Value = newEnergy;
-        Debug.Log(_partitionToPlay);
     }
 
     public void Done() {

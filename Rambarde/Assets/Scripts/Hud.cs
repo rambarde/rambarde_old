@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Hud : MonoBehaviour {
-    [SerializeField] private MusicPlanner _musicPlanner;
+    [SerializeField] private MusicPlanner musicPlanner;
 
     private PanelRenderer _panelRenderer;
     private UIElementsEventSystem _eventSystem;
@@ -28,21 +28,21 @@ public class Hud : MonoBehaviour {
         bs.Children().Select(x => x as Button)
             .Where(x => x != null)
             .ToList()
-            .ForEach(x => x.clickable.clicked += () => _musicPlanner.PlaceMelody(int.Parse(x.name.Substring(1))));
+            .ForEach(x => x.clickable.clicked += () => musicPlanner.PlaceMelody(int.Parse(x.name.Substring(1))));
 
         var reset = root.Q<Button>("reset");
         if (reset != null) {
-            reset.clickable.clicked += _musicPlanner.Reset;
+            reset.clickable.clicked += musicPlanner.Reset;
         }
 
         var done = root.Q<Button>("done");
         if (done != null) {
-            done.clickable.clicked += _musicPlanner.Done;
+            done.clickable.clicked += musicPlanner.Done;
         }
 
         var energyText = root.Q<Label>("label");
         if (energyText != null) {
-           _musicPlanner.usedEnergy.AsObservable().Subscribe(x => energyText.text = x.ToString());
+           musicPlanner.usedEnergy.AsObservable().Subscribe(x => energyText.text = x.ToString());
         }
       
         return null;
