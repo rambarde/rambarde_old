@@ -14,13 +14,11 @@ namespace Melody {
         public int Tier;
         public int InspirationValue;
 
-
         /**
          *  execute melody on targets.
          *  targets can have multiple characters
          */
         public abstract void Execute(List<Character> targets);
-
 
     }
 }
