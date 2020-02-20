@@ -6,9 +6,10 @@ namespace Melody
 {
     public class Inspiration : MonoBehaviour
     {
-        public int inspirationValue = 0, estimatedValueConsumed = 0, estimatedValueAdded = 0, tier2minValue, tier3minValue;
+        public int inspirationValue = 0, tier2minValue, tier3minValue;
         List<Melody> selectedMelody = new List<Melody>();
-        
+        int estimatedValueConsumed = 0, estimatedValueAdded = 0;
+
         /**
          * Check if a melody can be played
          * */
