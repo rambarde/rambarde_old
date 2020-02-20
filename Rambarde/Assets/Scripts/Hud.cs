@@ -28,7 +28,7 @@ public class Hud : MonoBehaviour {
         bs.Children().Select(x => x as Button)
             .Where(x => x != null)
             .ToList()
-            .ForEach(x => x.clickable.clicked += () => musicPlanner.PlaceMelody(int.Parse(x.name.Substring(1))));
+            .ForEach(x => x.clickable.clicked += () => Debug.LogWarning("cannot select melody with old HUD") /*musicPlanner.PlaceMelody(int.Parse(x.name.Substring(1)))*/);
 
         var reset = root.Q<Button>("reset");
         if (reset != null) {

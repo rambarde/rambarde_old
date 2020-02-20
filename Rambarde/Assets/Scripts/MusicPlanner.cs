@@ -2,8 +2,10 @@
 using UniRx;
 using UnityEngine;
 
+using Melody;
+
 public class MusicPlanner : MonoBehaviour {
-    [SerializeField] private string[] melodies;
+    
     [SerializeField] private int maxEnergy;
 
     [SerializeField] private MusicSheet musicSheet;
@@ -17,8 +19,8 @@ public class MusicPlanner : MonoBehaviour {
         _energy = energy;
     }
 
-    public void PlaceMelody(int index) {
-        var s = melodies[index];
+    public void PlaceMelody(Melody.Melody melody) {
+        var s = melody.Data;
         var newEnergy = s.Length / musicSheet.nbrBeat + usedEnergy.Value;
         if (newEnergy > _energy) {
             return;
@@ -37,8 +39,6 @@ public class MusicPlanner : MonoBehaviour {
     public void Done() {
         _energy = maxEnergy + maxEnergy - usedEnergy.Value;
         musicSheet.StartPlaying(new MelodyData(_partitionToPlay));
-        CombatManager.Instance.ExecTurn();
-        // Debug.Log(CombatManager.Instance.name);
 
         Reset();
     }

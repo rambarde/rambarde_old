@@ -20,7 +20,10 @@ public class CombatManager : MonoBehaviour {
         return c;
     }
 
+
     public async void ExecTurn() {
+        //apply melodies from bard.inspiration.selectedMelodies
+        
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {

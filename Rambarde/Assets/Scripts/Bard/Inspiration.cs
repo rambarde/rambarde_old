@@ -67,7 +67,7 @@ namespace Melody
             ResetTurnValues();
         }
 
-        void ResetTurnValues()
+        public void ResetTurnValues()
         {
             estimatedValueAdded = estimatedValueConsumed = 0;
             selectedMelody.Clear();
