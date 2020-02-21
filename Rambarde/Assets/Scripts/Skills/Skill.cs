@@ -1,4 +1,5 @@
-﻿using Characters;
+﻿using System.Threading.Tasks;
+using Characters;
 using Structs;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Skills {
 
         public bool ShouldCastOnAllies => shouldCastOnAllies;
 
-        public abstract void Execute(Stats source, Character target);
+        public abstract Task Execute(Stats source, Character target);
 
         public string skillName;
 
