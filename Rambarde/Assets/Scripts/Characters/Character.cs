@@ -71,10 +71,19 @@ namespace Characters {
             );
         }
 
-        public void TakeDamage(float dmg) {
-            stats.end.Value -= dmg;
-            if (stats.end.Value > 0) return;
+        private float CalculateDamage(float dmg) {
+            var curEnd = stats.end.Value;
+            curEnd -= dmg * (1 - stats.prot / 100f);
+            if (curEnd < 0) curEnd = 0;
 
+            return curEnd;
+        }
+
+        public async Task TakeDamage(float dmg) {
+            stats.end.Value = CalculateDamage(dmg);
+            if (stats.end.Value > 0) return;
+            
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(2)));
             CombatManager.Remove(this);
         }
 
@@ -92,18 +101,17 @@ namespace Characters {
 
         private void Awake() {
             StatusEffects = new List<IStatusEffect>();
+            stats.Init();
         }
 
         protected void Start() {
             CombatManager = CombatManager.Instance;
-            _vfx = new CharacterVfx(this);
-            stats.Init();
 
-            if (skillWheel.Length == 0) {
-                skillWheel = new Skill[] {
-                    ScriptableObject.CreateInstance<EmptySkill>()
-                };
-            }
+            // if (skillWheel.Length == 0) {
+            //     skillWheel = new Skill[] {
+            //         ScriptableObject.CreateInstance<EmptySkill>()
+            //     };
+            // }
         }
 
         #endregion

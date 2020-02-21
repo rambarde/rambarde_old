@@ -5,8 +5,8 @@ namespace Structs {
     [Serializable]
     public struct Stats {
         // Endurance
-        public ReactiveProperty<float> end;
         public float baseEnd;
+        public ReactiveProperty<float> end;
 
         // Attack 
         public float atq;
