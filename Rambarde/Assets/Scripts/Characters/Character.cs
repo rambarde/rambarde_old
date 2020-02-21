@@ -48,7 +48,7 @@ namespace Characters {
             // Play and wait for skillAnimation to finish
             await SkillAnimation(skill.skillName);
             // Execute the skill
-            skill.Execute(stats, target);
+            await skill.Execute(stats, target);
 
             // Apply effects at the end of the turn
             for (var i = StatusEffects.Count - 1; i >= 0; --i) {
@@ -74,7 +74,10 @@ namespace Characters {
         private float CalculateDamage(float dmg) {
             var curEnd = stats.end.Value;
             curEnd -= dmg * (1 - stats.prot / 100f);
-            if (curEnd < 0) curEnd = 0;
+            if (curEnd <= 0) {
+                // DeathFlag = true;
+                curEnd = 0;
+            }
 
             return curEnd;
         }
@@ -83,7 +86,7 @@ namespace Characters {
             stats.end.Value = CalculateDamage(dmg);
             if (stats.end.Value > 0) return;
             
-            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(2)));
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
             CombatManager.Remove(this);
         }
 

@@ -51,7 +51,6 @@ namespace Characters {
                     currentLerpTime += 2 * Time.deltaTime;
                     t = currentLerpTime / LerpTime;
                     t = Mathf.Sin(t * Mathf.PI * 0.5f);
-                    Debug.Log(t);
                 });
         }
 

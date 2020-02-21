@@ -22,6 +22,7 @@ namespace Status {
         }
 
         public override async Task TurnStart() {
+            await Observable.Timer(TimeSpan.FromSeconds(1));
             await Target.TakeDamage(_dmg);
             Debug.Log("Damage inflicted: " + _dmg);
         }
