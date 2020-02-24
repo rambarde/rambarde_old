@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Threading.Tasks;
 using Characters;
+using UniRx;
+using UnityEngine;
 
 namespace Status {
     [Serializable]
     public abstract class StatusEffect : IStatusEffect {
         protected Character Target;
-        protected int TurnsLeft;
+        public ReactiveProperty<int> TurnsLeft;
         private bool _justApplied = true;
+        public string spriteName;
 
         // Abstract methods
         public abstract void ApplyEffect();
@@ -31,13 +34,13 @@ namespace Status {
         }
 
         private void PostTurnEnd() {
-            if (--TurnsLeft == 0) {
+            if (--TurnsLeft.Value == 0) {
                 RemoveEffect();
             }
         }
 
         public void AddTurns(int n) {
-            TurnsLeft += n;
+            TurnsLeft.Value += n;
         }
     }
 }

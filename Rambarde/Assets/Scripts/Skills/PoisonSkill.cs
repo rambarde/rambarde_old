@@ -11,7 +11,7 @@ namespace Skills {
         public override async Task Execute(Stats source, Character target) {
             var team = target.GetTeam();
             foreach (var t in team) {
-                var effects = t.StatusEffects;
+                var effects = t.statusEffects;
                 var effect = effects.FirstOrDefault(x => x.GetType() == typeof(PoisonEffect));
 
                 if (effect is null) {

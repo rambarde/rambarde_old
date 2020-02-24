@@ -1,7 +1,5 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +8,12 @@ namespace Characters {
         [SerializeField] private Character character;
         [SerializeField] private GameObject greenBar;
         [SerializeField] private GameObject yellowBar;
-        [SerializeField] private GameObject redBar;
+        [SerializeField] private GameObject statusEffects;
 
-        private TextMeshProUGUI _characterHealth;
         private const float LerpTime = 1f;
+        private const string ResourcesDir = "CharacterVfx";
+        
+        private TextMeshProUGUI _characterHealth;
 
         private void Start() {
             Debug.Log(character.name);
@@ -25,13 +25,29 @@ namespace Characters {
             if (greenBar && yellowBar) {
                 character.stats.end.AsObservable().Pairwise().Subscribe(x =>
                     Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
-                        pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { })
-                    )
-                );
+                        pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
+                    ).AddTo(this)
+                ).AddTo(this);
             }
+
+            if (statusEffects)
+                character.statusEffects.ObserveAdd().Subscribe(x => {
+                    // TODO: Add animation for added effect
+                    var added = x.Value;
+
+                    var go = Instantiate(Utils.LoadResourceFromDir<GameObject>(ResourcesDir, "StatusEffectIcon"), statusEffects.transform);
+                    var image = go.transform.Find("Image").gameObject.GetComponent<Image>();
+                    var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
+
+                    image.sprite = Utils.LoadResourceFromDir<Sprite>(ResourcesDir, added.spriteName);
+                    added.TurnsLeft.AsObservable().Subscribe(turns => {
+                        // TODO: Add animation for text change 
+                        text.text = turns.ToString();
+                    }).AddTo(this);
+                }).AddTo(this);
         }
 
-        private void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {
+        private static void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {
             float f = Mathf.Lerp(pair.Previous, pair.Current, t / LerpTime);
             go.GetComponent<Image>().fillAmount = f / 100f;
             curLerpTime += speed * Time.deltaTime;

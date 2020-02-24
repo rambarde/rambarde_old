@@ -18,7 +18,8 @@ namespace Characters {
         public Team team;
         public Stats stats;
         public Skill[] skillWheel;
-        public List<IStatusEffect> StatusEffects { get; private set; }
+        public ReactiveCollection<StatusEffect> statusEffects;
+        
         protected Animator Animator;
         protected CombatManager CombatManager;
 
@@ -26,15 +27,14 @@ namespace Characters {
         private bool _skillIndexChanged;
         private Character _target;
         private IObservable<int> _animationSkillStateObservable;
-        private CharacterVfx _vfx;
 
         public List<Character> GetTeam() {
             return CombatManager.teams[(int) team];
         }
 
         public async Task EffectsTurnStart() {
-            for (var i = StatusEffects.Count - 1; i >= 0; --i) {
-                var effect = StatusEffects[i];
+            for (var i = statusEffects.Count - 1; i >= 0; --i) {
+                var effect = statusEffects[i];
                 await effect.TurnStart();
             }
         }
@@ -46,13 +46,13 @@ namespace Characters {
             var target = CombatManager.GetRandomChar((int) team, skill.ShouldCastOnAllies);
             
             // Play and wait for skillAnimation to finish
-            await SkillAnimation(skill.skillName);
+            await SkillPreHitAnimation(skill.skillName);
             // Execute the skill
             await skill.Execute(stats, target);
 
             // Apply effects at the end of the turn
-            for (var i = StatusEffects.Count - 1; i >= 0; --i) {
-                await StatusEffects[i].TurnEnd();
+            for (var i = statusEffects.Count - 1; i >= 0; --i) {
+                await statusEffects[i].TurnEnd();
             }
 
             // Increment skillIndex ONLY if effects did not affect the wheel
@@ -60,7 +60,7 @@ namespace Characters {
                 _skillIndex = (_skillIndex + 1) % skillWheel.Length;
         }
 
-        private async Task SkillAnimation(string skillName) {
+        private async Task SkillPreHitAnimation(string skillName) {
             Animator.SetTrigger(skillName);
             var stateHash = Animator.StringToHash(skillName);
 
@@ -74,8 +74,7 @@ namespace Characters {
         private float CalculateDamage(float dmg) {
             var curEnd = stats.end.Value;
             curEnd -= dmg * (1 - stats.prot / 100f);
-            if (curEnd <= 0) {
-                // DeathFlag = true;
+            if (curEnd < 0) {
                 curEnd = 0;
             }
 
@@ -86,6 +85,8 @@ namespace Characters {
             stats.end.Value = CalculateDamage(dmg);
             if (stats.end.Value > 0) return;
             
+            // TODO: spawn floating text for damage taken
+            // TODO: Change this to wait for animation take damage finish
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
             CombatManager.Remove(this);
         }
@@ -103,7 +104,7 @@ namespace Characters {
         #region Unity
 
         private void Awake() {
-            StatusEffects = new List<IStatusEffect>();
+            statusEffects = new ReactiveCollection<StatusEffect>();
             stats.Init();
         }
 

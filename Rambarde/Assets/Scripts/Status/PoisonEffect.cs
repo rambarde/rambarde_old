@@ -10,15 +10,17 @@ namespace Status {
         private string _animationName = "PoisonEffect";
 
         public PoisonEffect(Character target, float dmg, int turns) {
-            Target = target;
-            TurnsLeft = turns;
             _dmg = dmg;
+            Target = target;
+            spriteName = "vfx-poison";
+            TurnsLeft = new ReactiveProperty<int>(turns);
         }
 
         public override void ApplyEffect() { }
 
         public override void RemoveEffect() {
-            Target.StatusEffects.Remove(this);
+            Target.statusEffects.Remove(this);
+            Target.statusEffects.Remove(this);
         }
 
         public override async Task TurnStart() {
