@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Skills;
 using Status;
-using Structs;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -28,7 +27,7 @@ namespace Characters {
         private Character _target;
         private IObservable<int> _animationSkillStateObservable;
 
-        public List<Character> GetTeam() {
+        public IEnumerable<Character> GetTeam() {
             return CombatManager.teams[(int) team];
         }
 

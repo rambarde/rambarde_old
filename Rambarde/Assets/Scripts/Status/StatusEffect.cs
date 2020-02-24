@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace Status {
     [Serializable]
-    public abstract class StatusEffect : IStatusEffect {
+    public abstract class StatusEffect {
         protected Character Target;
-        public ReactiveProperty<int> TurnsLeft;
+        public ReactiveProperty<int> turnsLeft;
         private bool _justApplied = true;
         public string spriteName;
 
@@ -34,13 +34,13 @@ namespace Status {
         }
 
         private void PostTurnEnd() {
-            if (--TurnsLeft.Value == 0) {
+            if (--turnsLeft.Value == 0) {
                 RemoveEffect();
             }
         }
 
         public void AddTurns(int n) {
-            TurnsLeft.Value += n;
+            turnsLeft.Value += n;
         }
     }
 }

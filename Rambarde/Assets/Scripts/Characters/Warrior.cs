@@ -1,5 +1,4 @@
-﻿using Structs;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Characters {
     public class Warrior : Character {

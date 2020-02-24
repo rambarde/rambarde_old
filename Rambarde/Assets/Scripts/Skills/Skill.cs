@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Characters;
-using Structs;
 using UnityEngine;
 
 namespace Skills {

@@ -13,7 +13,7 @@ namespace Status {
             _dmg = dmg;
             Target = target;
             spriteName = "vfx-poison";
-            TurnsLeft = new ReactiveProperty<int>(turns);
+            turnsLeft = new ReactiveProperty<int>(turns);
         }
 
         public override void ApplyEffect() { }

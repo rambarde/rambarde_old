@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Structs {
+namespace Characters {
     [Serializable]
     public struct Stats {
         // Endurance
