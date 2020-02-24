@@ -281,7 +281,6 @@ MonoBehaviour:
   character: {fileID: 1151473043}
   greenBar: {fileID: 621966305}
   yellowBar: {fileID: 3110859}
-  redBar: {fileID: 459713125}
   statusEffects: {fileID: 1680712924}
 --- !u!114 &46535984
 MonoBehaviour:
@@ -2144,7 +2143,6 @@ MonoBehaviour:
   character: {fileID: 1709960067}
   greenBar: {fileID: 469754702}
   yellowBar: {fileID: 370605433}
-  redBar: {fileID: 1828601240}
   statusEffects: {fileID: 1074231817}
 --- !u!114 &587654977
 MonoBehaviour:
@@ -4370,7 +4368,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4274502919fd90942b0d49c9eecb283a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.63
+      value: -1.62
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4274502919fd90942b0d49c9eecb283a,
         type: 3}
@@ -4380,7 +4378,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 4274502919fd90942b0d49c9eecb283a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.39
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4274502919fd90942b0d49c9eecb283a,
         type: 3}
@@ -6973,7 +6971,6 @@ MonoBehaviour:
   character: {fileID: 900214319}
   greenBar: {fileID: 1202364809}
   yellowBar: {fileID: 1944851841}
-  redBar: {fileID: 276183283}
   statusEffects: {fileID: 728019197}
 --- !u!114 &1834290052
 MonoBehaviour:
@@ -7946,7 +7943,6 @@ MonoBehaviour:
   character: {fileID: 556507707}
   greenBar: {fileID: 555233792}
   yellowBar: {fileID: 1164380152}
-  redBar: {fileID: 1288695907}
   statusEffects: {fileID: 964169699}
 --- !u!114 &2051764002
 MonoBehaviour:
@@ -14016,7 +14012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172668804591788}
   m_LocalRotation: {x: -0, y: -0.7092256, z: -0, w: -0.7049816}
-  m_LocalPosition: {x: -2.7, y: -2.1319745, z: -0.57}
+  m_LocalPosition: {x: -3.363, y: -2.1319745, z: -0.566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4341065988276542943}

@@ -40,7 +40,7 @@ namespace Characters {
                     var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
 
                     image.sprite = Utils.LoadResourceFromDir<Sprite>(ResourcesDir, added.spriteName);
-                    added.TurnsLeft.AsObservable().Subscribe(turns => {
+                    added.turnsLeft.AsObservable().Subscribe(turns => {
                         // TODO: Add animation for text change 
                         text.text = turns.ToString();
                     }).AddTo(this);

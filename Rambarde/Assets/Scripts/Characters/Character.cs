@@ -28,7 +28,7 @@ namespace Characters {
         private Character _target;
         private IObservable<int> _animationSkillStateObservable;
 
-        public List<Character> GetTeam() {
+        public IEnumerable<Character> GetTeam() {
             return CombatManager.teams[(int) team];
         }
 
