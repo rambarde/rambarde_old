@@ -3,13 +3,10 @@ using Characters;
 using UnityEngine;
 
 namespace Melody {
-    public abstract class Melody : MonoBehaviour {
+    public abstract class Melody : ScriptableObject { 
 
         [SerializeField] private string data;
         public string Data => data;
-       
-        [SerializeField] private string melodyName;
-        public string Name => melodyName;
 
         public int Tier;
         public int InspirationValue;

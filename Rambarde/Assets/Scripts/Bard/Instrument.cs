@@ -2,8 +2,8 @@
 
 namespace Bard
 {
-    public class Instrument : ScriptableObject
-    {
+    [CreateAssetMenu(fileName = "Instrument", menuName = "Instrument")]
+    public class Instrument : ScriptableObject {
         public Melody.Melody[] melodies;
     }
 }

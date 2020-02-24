@@ -1757,14 +1757,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   stats:
-    baseEnd: 90
+    baseEnd: 0
     atq: 20
     prot: 0
     crit: 20
     prec: 100
   skillWheel:
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &556545630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,10 +1820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 900214319}
-  greenBar: {fileID: 655922075}
-  yellowBar: {fileID: 491474164}
-  redBar: {fileID: 794425938}
+  character: {fileID: 0}
+  greenBar: {fileID: 0}
+  yellowBar: {fileID: 0}
+  redBar: {fileID: 0}
 --- !u!114 &556545633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,10 +2032,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1709960067}
-  greenBar: {fileID: 469754702}
-  yellowBar: {fileID: 370605433}
-  redBar: {fileID: 1828601240}
+  character: {fileID: 0}
+  greenBar: {fileID: 0}
+  yellowBar: {fileID: 0}
+  redBar: {fileID: 0}
 --- !u!114 &587654977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,11 +2202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1eb6cc57fd79b14ea735592ef59ea26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melodies:
-  - 1-1-231-
-  - 44332211
-  - 21213-3-
-  - 1-23432-
   maxEnergy: 16
   musicSheet: {fileID: 920538577}
 --- !u!1 &620266939
@@ -2741,7 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3c32db5ce6ffb469bdaed104d80c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bard: {fileID: 603390534}
+  musicPlanner: {fileID: 0}
 --- !u!1 &747605050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,13 +3380,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   stats:
-    baseEnd: 90
+    baseEnd: 0
     atq: 20
     prot: 0
     crit: 20
     prec: 100
   skillWheel:
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
 --- !u!95 &900214320
 Animator:
@@ -4485,14 +4480,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   stats:
-    baseEnd: 100
+    baseEnd: 0
     atq: 20
     prot: 0
     crit: 85
     prec: 75
   skillWheel:
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &1151473044
 Animator:
   serializedVersion: 3
@@ -4753,10 +4748,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1151473043}
-  greenBar: {fileID: 1697693934}
-  yellowBar: {fileID: 1517410376}
-  redBar: {fileID: 1761384754}
+  character: {fileID: 0}
+  greenBar: {fileID: 0}
+  yellowBar: {fileID: 0}
+  redBar: {fileID: 0}
 --- !u!114 &1173954303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6152,7 +6147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   stats:
-    baseEnd: 80
+    baseEnd: 0
     atq: 80
     prot: 0
     crit: 80
@@ -7640,10 +7635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 556507707}
-  greenBar: {fileID: 354898297}
-  yellowBar: {fileID: 652235680}
-  redBar: {fileID: 257962762}
+  character: {fileID: 0}
+  greenBar: {fileID: 0}
+  yellowBar: {fileID: 0}
+  redBar: {fileID: 0}
 --- !u!114 &2084137433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13587,6 +13582,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5006512735357151582}
   - component: {fileID: 603390534}
+  - component: {fileID: 8296172668646349647}
+  - component: {fileID: 8296172668646349646}
   m_Layer: 0
   m_Name: Elvis
   m_TagString: Untagged
@@ -13594,6 +13591,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8296172668646349646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668646349645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9409fe4188e89934594b0d79c4b7ec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspiration: {fileID: 8296172668646349647}
+  musicPlanner: {fileID: 603390534}
+  selectedMelodies: []
+--- !u!114 &8296172668646349647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668646349645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a06766f10b68e4f9325333f99baab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspirationValue: 0
+  tier2minValue: 10
+  tier3minValue: 20
 --- !u!1 &8296172668804591788
 GameObject:
   m_ObjectHideFlags: 0
