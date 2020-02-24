@@ -2,7 +2,7 @@
 using Characters;
 using UnityEngine;
 
-namespace Melody {
+namespace Melodies {
     public abstract class Melody : ScriptableObject { 
 
         [SerializeField] private string data;

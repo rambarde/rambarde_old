@@ -10,7 +10,7 @@ namespace Bard
         /**
          * Check if a melody can be played
          * */
-        public bool MelodyCanBePlayed(Melody.Melody melody)
+        public bool MelodyCanBePlayed(Melodies.Melody melody)
         {
             if (melody.Tier == 2 && inspirationValue < tier2minValue)
                 return false;
@@ -22,7 +22,7 @@ namespace Bard
         /**
          * Select a melody
          * */
-        public void SelectMelody(Melody.Melody melody)
+        public void SelectMelody(Melodies.Melody melody)
         {
             //melody adding inspiration
             if(melody.InspirationValue > 0)
@@ -39,7 +39,7 @@ namespace Bard
         /**
          * Unselect a melody
          * */
-        public void UnselectMelody(Melody.Melody melody)
+        public void UnselectMelody(Melodies.Melody melody)
         {
             //melody adding inspiration
             if (melody.InspirationValue > 0)

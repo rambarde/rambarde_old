@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-using Melody;
+using Melodies;
 
 public class MusicPlanner : MonoBehaviour {
     
@@ -19,7 +19,7 @@ public class MusicPlanner : MonoBehaviour {
         _energy = energy;
     }
 
-    public void PlaceMelody(Melody.Melody melody) {
+    public void PlaceMelody(Melodies.Melody melody) {
         var s = melody.Data;
         var newEnergy = s.Length / musicSheet.nbrBeat + usedEnergy.Value;
         if (newEnergy > _energy) {
