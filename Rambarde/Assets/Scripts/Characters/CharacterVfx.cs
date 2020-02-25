@@ -20,10 +20,10 @@ namespace Characters {
             _characterHealth = GetComponentInChildren<TextMeshProUGUI>();
             if (_characterHealth == null) return;
 
-            character.stats.end.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
+            character.stats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
 
             if (greenBar && yellowBar) {
-                character.stats.end.AsObservable().Pairwise().Subscribe(x =>
+                character.stats.hp.AsObservable().Pairwise().Subscribe(x =>
                     Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
                         pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
                     ).AddTo(this)

@@ -18,7 +18,7 @@ namespace Characters {
         public Stats stats;
         public Skill[] skillWheel;
         public ReactiveCollection<StatusEffect> statusEffects;
-        
+
         protected Animator Animator;
         protected CombatManager CombatManager;
 
@@ -43,7 +43,7 @@ namespace Characters {
             _skillIndexChanged = false;
 
             var target = CombatManager.GetRandomChar((int) team, skill.ShouldCastOnAllies);
-            
+
             // Play and wait for skillAnimation to finish
             await SkillPreHitAnimation(skill.skillName);
             // Execute the skill
@@ -70,8 +70,17 @@ namespace Characters {
             );
         }
 
+
+        public async Task Heal(float pts) {
+            var newHealth = stats.hp.Value + pts;
+            if (newHealth < stats.maxHp)
+                stats.hp.Value = newHealth;
+            
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
+        }
+
         private float CalculateDamage(float dmg) {
-            var curEnd = stats.end.Value;
+            var curEnd = stats.hp.Value;
             curEnd -= dmg * (1 - stats.prot / 100f);
             if (curEnd < 0) {
                 curEnd = 0;
@@ -81,9 +90,9 @@ namespace Characters {
         }
 
         public async Task TakeDamage(float dmg) {
-            stats.end.Value = CalculateDamage(dmg);
-            if (stats.end.Value > 0) return;
-            
+            stats.hp.Value = CalculateDamage(dmg);
+            if (stats.hp.Value > 0) return;
+
             // TODO: spawn floating text for damage taken
             // TODO: Change this to wait for animation take damage finish
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));

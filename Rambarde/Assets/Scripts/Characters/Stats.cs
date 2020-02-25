@@ -5,8 +5,8 @@ namespace Characters {
     [Serializable]
     public struct Stats {
         // Endurance
-        public float baseEnd;
-        public ReactiveProperty<float> end;
+        public float maxHp;
+        public ReactiveProperty<float> hp;
 
         // Attack 
         public float atq;
@@ -21,7 +21,7 @@ namespace Characters {
         public float prec;
 
         public void Init() {
-            end = new ReactiveProperty<float>(baseEnd);
+            hp = new ReactiveProperty<float>(maxHp);
         }
     }
 }

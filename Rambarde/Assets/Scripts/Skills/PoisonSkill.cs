@@ -8,14 +8,15 @@ using UnityEngine;
 namespace Skills {
     [CreateAssetMenu(fileName = "PoisonSkill", menuName = "Skills/PoisonSkill")]
     public class PoisonSkill : Skill {
+        [SerializeField] private int turns;
+        [SerializeField] private float atqRatio;
+        
         public override async Task Execute(Stats source, Character target) {
-            foreach (var t in target.GetTeam()) {
                 await StatusEffect.ApplyEffect(
-                    t,
-                    new Lazy<PoisonEffect>(() => new PoisonEffect(t, source.atq / 4f, 2)),
-                    2
+                    target,
+                    new Lazy<PoisonEffect>(() => new PoisonEffect(target, source.atq / atqRatio, turns)),
+                    turns
                 );
-            }
         }
     }
 }

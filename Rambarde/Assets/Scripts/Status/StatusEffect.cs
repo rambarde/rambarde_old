@@ -17,14 +17,14 @@ namespace Status {
         private bool _justApplied = true;
 
         // Abstract methods
-        protected abstract Task PreTurnStart();
+        protected virtual async Task PreTurnStart() { }
 
-        protected abstract Task PostTurnEnd();
+        protected virtual async Task PostTurnEnd() { }
 
         // Final methods
         public async Task TurnStart() {
             await PreTurnStart();
-            
+
             if (--turnsLeft.Value == 0) {
                 RemoveEffect();
             }
@@ -35,7 +35,7 @@ namespace Status {
                 _justApplied = false;
                 return;
             }
-            
+
             await PostTurnEnd();
         }
 
@@ -43,9 +43,9 @@ namespace Status {
             Target.statusEffects.Remove(this);
         }
 
-        public static async Task ApplyEffect<T>(Character target, Lazy<T> addedEffect, int addedTurns) where T : StatusEffect {
+        public static async Task ApplyEffect<T>(Character target, Lazy<T> addedEffect, int addedTurns = 0) where T : StatusEffect {
             // TODO: applying effect animation
-            
+
             var effects = target.statusEffects;
             var effect = effects.FirstOrDefault(x => x.GetType() == typeof(T));
 
