@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Melodies;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Bard {
 
         public Inspiration inspiration;
         public MusicPlanner musicPlanner;
-        //instruments
+        public List<Instrument> instruments;
         public List<Melody> selectedMelodies;
 
         void Start() {
@@ -16,8 +17,11 @@ namespace Bard {
         }
 
         public void SelectMelody(Melody melody) {
-            //check if melody is in instruments
-            
+            if (! instruments.Any(instrument => instrument.melodies.Contains(melody))) {
+                Debug.LogWarning("Melody [" + melody.name +"] is not equipped");
+                return;
+            }
+
             selectedMelodies.Add(melody);
             
             inspiration.SelectMelody(melody);
@@ -36,6 +40,12 @@ namespace Bard {
             musicPlanner.Done();
             
             CombatManager.Instance.ExecTurn();
+        }
+
+        public void ExecTurn() {
+            foreach (var melody in selectedMelodies) {
+                melody.Execute(null);
+            }
         }
 
     }
