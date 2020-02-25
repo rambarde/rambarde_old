@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
     public Character[] playerTeam, enemyTeam;
-
     public List<List<Character>> teams = new List<List<Character>>(2);
 
     public Character GetRandomChar(int srcTeam, bool ally) {
@@ -20,7 +19,9 @@ public class CombatManager : MonoBehaviour {
         return c;
     }
 
+
     public async void ExecTurn() {
+        
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {

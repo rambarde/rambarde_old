@@ -2,8 +2,10 @@
 using UniRx;
 using UnityEngine;
 
-public class Bard : MonoBehaviour {
-    [SerializeField] private string[] melodies;
+using Melodies;
+
+public class MusicPlanner : MonoBehaviour {
+    
     [SerializeField] private int maxEnergy;
 
     [SerializeField] private MusicSheet musicSheet;
@@ -13,12 +15,12 @@ public class Bard : MonoBehaviour {
     public ReactiveProperty<int> usedEnergy;
     private string _partitionToPlay;
 
-    public Bard(int energy) {
+    public MusicPlanner(int energy) {
         _energy = energy;
     }
 
-    public void PlaceMelody(int index) {
-        var s = melodies[index];
+    public void PlaceMelody(Melodies.Melody melody) {
+        var s = melody.Data;
         var newEnergy = s.Length / musicSheet.nbrBeat + usedEnergy.Value;
         if (newEnergy > _energy) {
             return;
@@ -32,14 +34,11 @@ public class Bard : MonoBehaviour {
 
         SetPartition(_partitionToPlay + s);
         usedEnergy.Value = newEnergy;
-        Debug.Log(_partitionToPlay);
     }
 
     public void Done() {
         _energy = maxEnergy + maxEnergy - usedEnergy.Value;
         musicSheet.StartPlaying(new MelodyData(_partitionToPlay));
-        CombatManager.Instance.ExecTurn();
-        // Debug.Log(CombatManager.Instance.name);
 
         Reset();
     }
