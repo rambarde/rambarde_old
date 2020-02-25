@@ -16,21 +16,13 @@ namespace Status {
             turnsLeft = new ReactiveProperty<int>(turns);
         }
 
-        public override void ApplyEffect() { }
-
-        public override void RemoveEffect() {
-            Target.statusEffects.Remove(this);
-            Target.statusEffects.Remove(this);
-        }
-
-        public override async Task TurnStart() {
+        protected override async Task PreTurnStart() {
             await Observable.Timer(TimeSpan.FromSeconds(1));
             await Target.TakeDamage(_dmg);
-            Debug.Log("Damage inflicted: " + _dmg);
         }
 
-        protected override async Task PreTurnEnd() {
-            Debug.Log(Target);
+        protected override Task PostTurnEnd() {
+            return null;
         }
     }
 }
