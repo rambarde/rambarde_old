@@ -9,7 +9,5 @@ AnimatorOverrideController:
   m_Name: Warrior
   m_Controller: {fileID: 9100000, guid: 1d4247f365d1e6b41aa8bfcc8601c468, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: -203655887218126122, guid: 7da10f32281fa63418f4d72c3184aa80,
-      type: 3}
-    m_OverrideClip: {fileID: -203655887218126122, guid: f7b96206f134f244da66520df6a9ae1f,
-      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 2f65fccd7e8601a4f8ff8ed0724f497a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e135cad7cc2299e46ab114a773ee67ff, type: 2}

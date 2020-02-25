@@ -2298,25 +2298,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597283150}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &603390534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8296172668646349645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1eb6cc57fd79b14ea735592ef59ea26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  melodies:
-  - 1-1-231-
-  - 44332211
-  - 21213-3-
-  - 1-23432-
-  maxEnergy: 16
-  musicSheet: {fileID: 920538577}
 --- !u!1 &620266939
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3c32db5ce6ffb469bdaed104d80c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bard: {fileID: 603390534}
+  bard: {fileID: 8296172668646349648}
 --- !u!1 &747605050
 GameObject:
   m_ObjectHideFlags: 0
@@ -13978,7 +13959,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5006512735357151582}
-  - component: {fileID: 603390534}
+  - component: {fileID: 8296172668646349648}
+  - component: {fileID: 8296172668646349647}
+  - component: {fileID: 8296172668646349646}
   m_Layer: 0
   m_Name: Elvis
   m_TagString: Untagged
@@ -13986,6 +13969,51 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8296172668646349646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668646349645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1eb6cc57fd79b14ea735592ef59ea26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 16
+  musicSheet: {fileID: 920538577}
+--- !u!114 &8296172668646349647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668646349645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a06766f10b68e4f9325333f99baab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspirationValue: 0
+  tier2minValue: 0
+  tier3minValue: 0
+--- !u!114 &8296172668646349648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172668646349645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9409fe4188e89934594b0d79c4b7ec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspiration: {fileID: 8296172668646349647}
+  musicPlanner: {fileID: 8296172668646349646}
+  instruments: []
+  selectedMelodies: []
 --- !u!1 &8296172668804591788
 GameObject:
   m_ObjectHideFlags: 0
