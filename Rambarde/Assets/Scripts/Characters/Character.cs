@@ -45,7 +45,7 @@ namespace Characters {
             var target = CombatManager.GetRandomChar((int) team, skill.ShouldCastOnAllies);
 
             // Play and wait for skillAnimation to finish
-            await SkillPreHitAnimation(skill.skillName);
+            await SkillPreHitAnimation(skill.animationName);
             // Execute the skill
             await skill.Execute(stats, target);
 
@@ -79,6 +79,11 @@ namespace Characters {
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
         }
 
+
+        void f() {
+            // statusEffects.ToObserv
+        }
+        
         private float CalculateDamage(float dmg) {
             var curEnd = stats.hp.Value;
             curEnd -= dmg * (1 - stats.prot / 100f);

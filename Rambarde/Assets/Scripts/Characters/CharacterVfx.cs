@@ -12,7 +12,7 @@ namespace Characters {
 
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
-        
+
         private TextMeshProUGUI _characterHealth;
 
         private void Start() {
@@ -30,7 +30,7 @@ namespace Characters {
                 ).AddTo(this);
             }
 
-            if (statusEffects)
+            if (statusEffects) {
                 character.statusEffects.ObserveAdd().Subscribe(x => {
                     // TODO: Add animation for added effect
                     var added = x.Value;
@@ -43,8 +43,12 @@ namespace Characters {
                     added.turnsLeft.AsObservable().Subscribe(turns => {
                         // TODO: Add animation for text change 
                         text.text = turns.ToString();
-                    }).AddTo(this);
+                        if (turns == 0) {
+                            Destroy(go);
+                        }
+                    }).AddTo(go);
                 }).AddTo(this);
+            }
         }
 
         private static void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {
