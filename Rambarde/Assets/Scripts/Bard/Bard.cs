@@ -39,10 +39,11 @@ namespace Bard {
         public void Done() {
             musicPlanner.Done();
             
+            ExecTurn();
             CombatManager.Instance.ExecTurn();
         }
 
-        public void ExecTurn() {
+        private void ExecTurn() {
             foreach (var melody in selectedMelodies) {
                 melody.Execute(null);
             }

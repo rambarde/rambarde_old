@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
     public Character[] playerTeam, enemyTeam;
-    public Bard.Bard bard;
     public List<List<Character>> teams = new List<List<Character>>(2);
 
     public Character GetRandomChar(int srcTeam, bool ally) {
@@ -22,9 +21,6 @@ public class CombatManager : MonoBehaviour {
 
 
     public async void ExecTurn() {
-        // Execute melodies
-        bard.ExecTurn();
-        
         
         // Apply status effects to all characters
         foreach (var team in teams) {
