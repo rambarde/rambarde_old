@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad2550f9989ed74da5f80d44c935b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeamGo: {fileID: 0}
-  enemyTeamGo: {fileID: 0}
+  playerTeamGo: {fileID: 1854248406}
+  enemyTeamGo: {fileID: 1415330599}
 --- !u!4 &543202384
 Transform:
   m_ObjectHideFlags: 0
@@ -585,6 +585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bard: {fileID: 8296172668646349648}
+  _panelRenderer: {fileID: 0}
+  _eventSystem: {fileID: 0}
 --- !u!1 &857824287
 GameObject:
   m_ObjectHideFlags: 0
