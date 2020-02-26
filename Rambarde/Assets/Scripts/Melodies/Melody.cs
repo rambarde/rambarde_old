@@ -11,7 +11,7 @@ namespace Melodies {
         public string Data => data;
         public int Size => data.Length;
 
-        public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>();
+        public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
 
         public int Tier;
         public int InspirationValue;

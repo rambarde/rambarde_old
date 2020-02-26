@@ -11,25 +11,32 @@ namespace Bard {
         public MusicPlanner musicPlanner;
         public List<Instrument> instruments;
 
-        public ReactiveProperty<int> actionPoints = new ReactiveProperty<int>(0);
+        [SerializeField] private int baseActionPoints;
+        public ReactiveProperty<int> actionPoints;
         public ReactiveProperty<int> maxActionPoints = new ReactiveProperty<int>(0);
-        public ReactiveProperty<List<Melody>> selectedMelodies = new  ReactiveProperty<List<Melody>>(new List<Melody>());
+        public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
+
+        public Hud hud = null;
 
         private int _selectedInstrumentIndex = 0;
         
         void Start() {
             inspiration = GetComponent<Inspiration>();
             musicPlanner = GetComponent<MusicPlanner>();
+            actionPoints = new ReactiveProperty<int>(baseActionPoints);
+
+            SetActionPlayableMelodies();
+            hud.Init(this);
         }
 
         public void SelectMelody(Melody melody) {
             if (! instruments.Any(instrument => instrument.melodies.Contains(melody))) {
-                Debug.LogWarning("Melody [" + melody.name +"] is not equipped");
+                Debug.Log("Warning : Melody [" + melody.name +"] is not equipped");
                 return;
             }
 
             if (! melody.isPlayable.Value) {
-                Debug.LogWarning("Melody [" + melody.name + "] is not playable");
+                Debug.Log("Warning : Melody [" + melody.name + "] is not playable");
                 return;
             }
 
@@ -51,7 +58,7 @@ namespace Bard {
                 }
             }
 
-            selectedMelodies.Value.Add(melody);
+            selectedMelodies.Add(melody);
             actionPoints.Value -= melody.Size;
             
             inspiration.SelectMelody(melody);
@@ -71,12 +78,12 @@ namespace Bard {
 
         public void Reset() {
             // reset action points
-            foreach (var melody in selectedMelodies.Value) {
+            foreach (var melody in selectedMelodies) {
                 inspiration.UnselectMelody(melody);
                 actionPoints.Value += melody.Size;
             }
             
-            selectedMelodies.Value.Clear();
+            selectedMelodies.Clear();
             
             //musicPlanner.Reset();
             _selectedInstrumentIndex = 0;
@@ -90,7 +97,8 @@ namespace Bard {
         }
 
         private void ExecTurn() {
-            foreach (var melody in selectedMelodies.Value) {
+            foreach (var melody in selectedMelodies) {
+                Debug.Log("there is a melody");
                 melody.Execute(null);
             }
         }
