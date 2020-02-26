@@ -5,13 +5,16 @@ using UnityEngine;
 namespace Skills {
     public abstract class Skill : ScriptableObject {
         [SerializeField] private bool shouldCastOnAllies;
-
         public bool ShouldCastOnAllies => shouldCastOnAllies;
 
-        public abstract Task Execute(Stats source, Character target);
+        public abstract Task Execute(Stats source, CharacterControl target);
 
-        public string skillName;
+        // String used for animation triggers and animation states
+        public string animationName;
 
+        // Sprite for UI in skill wheel and clients menu
         public Sprite sprite;
+
+        [TextArea] public string description;
     }
 }

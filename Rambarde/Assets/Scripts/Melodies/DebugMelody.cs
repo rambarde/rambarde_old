@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Melodies {
     [CreateAssetMenu(fileName = "DebugMelody", menuName = "Melody/Debug")]
     public class DebugMelody : Melody {
-        public override void Execute(Character target) {
+        public override void Execute(CharacterControl target) {
             Debug.Log("You played a melody.");
         }
     }

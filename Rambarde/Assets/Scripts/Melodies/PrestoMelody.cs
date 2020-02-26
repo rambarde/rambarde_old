@@ -5,7 +5,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Melodies {
     public class PrestoMelody : Melody {
-        public override void Execute(Character target) {
+        public override void Execute(CharacterControl target) {
             target.IncrementSkillWheel();
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Skills {
     [CreateAssetMenu(fileName = "Atq", menuName = "Skills/Atq")]
     public class AtqSkill : Skill {
-        public override async Task Execute(Stats source, Character target) {
+        public override async Task Execute(Stats source, CharacterControl target) {
             if (Random.Range(0, 100) <= source.prec) {
                 var dmg = Random.Range(0, 100) <= source.crit ? source.atq * 2 : source.atq;
                 // Debug.Log("Damage inflicted: " + dmg);

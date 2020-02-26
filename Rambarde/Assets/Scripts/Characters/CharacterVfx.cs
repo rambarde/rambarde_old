@@ -5,33 +5,32 @@ using UnityEngine.UI;
 
 namespace Characters {
     public class CharacterVfx : MonoBehaviour {
-        [SerializeField] private Character character;
+        public CharacterControl characterControl;
         [SerializeField] private GameObject greenBar;
         [SerializeField] private GameObject yellowBar;
         [SerializeField] private GameObject statusEffects;
 
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
-        
+
         private TextMeshProUGUI _characterHealth;
 
-        private void Start() {
-            Debug.Log(character.name);
+        public void Init() {
             _characterHealth = GetComponentInChildren<TextMeshProUGUI>();
             if (_characterHealth == null) return;
 
-            character.stats.end.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
+            characterControl.currentStats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
 
             if (greenBar && yellowBar) {
-                character.stats.end.AsObservable().Pairwise().Subscribe(x =>
+                characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>
                     Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
                         pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
                     ).AddTo(this)
                 ).AddTo(this);
             }
 
-            if (statusEffects)
-                character.statusEffects.ObserveAdd().Subscribe(x => {
+            if (statusEffects) {
+                characterControl.statusEffects.ObserveAdd().Subscribe(x => {
                     // TODO: Add animation for added effect
                     var added = x.Value;
 
@@ -43,8 +42,12 @@ namespace Characters {
                     added.turnsLeft.AsObservable().Subscribe(turns => {
                         // TODO: Add animation for text change 
                         text.text = turns.ToString();
-                    }).AddTo(this);
+                        if (turns == 0) {
+                            Destroy(go);
+                        }
+                    }).AddTo(go);
                 }).AddTo(this);
+            }
         }
 
         private static void LerpHealthBar(Pair<float> pair, GameObject go, ref float curLerpTime, float speed, float lerpTime, ref float t) {

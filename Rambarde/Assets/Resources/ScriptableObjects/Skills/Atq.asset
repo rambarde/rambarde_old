@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Atq
   m_EditorClassIdentifier: 
   shouldCastOnAllies: 0
-  skillName: Atq
+  animationName: Atq
   sprite: {fileID: 0}
+  description: 

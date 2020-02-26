@@ -20,7 +20,7 @@ namespace Melodies {
          *  execute melody on targets.
          *  targets can have multiple characters
          */
-        public abstract void Execute(Character target);
+        public abstract void Execute(CharacterControl target);
 
     }
 }

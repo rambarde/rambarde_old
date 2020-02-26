@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
 using Characters;
 using Status;
@@ -7,18 +7,15 @@ using UnityEngine;
 namespace Skills {
     [CreateAssetMenu(fileName = "PoisonSkill", menuName = "Skills/PoisonSkill")]
     public class PoisonSkill : Skill {
-        public override async Task Execute(Stats source, Character target) {
-            foreach (var t in target.GetTeam()) {
-                var effects = t.statusEffects;
-                var effect = effects.FirstOrDefault(x => x.GetType() == typeof(PoisonEffect));
+        [SerializeField] private int turns;
+        [SerializeField] private float atqRatio;
 
-                if (effect is null) {
-                    effects.Add(new PoisonEffect(t, source.atq / 4f, 2));
-                }
-                else {
-                    effect.AddTurns(2);
-                }
-            }
+        public override async Task Execute(Stats source, CharacterControl target) {
+            await StatusEffect.ApplyEffect(
+                target,
+                new Lazy<PoisonEffect>(() => new PoisonEffect(target, source.atq / atqRatio, turns)),
+                turns
+            );
         }
     }
 }
