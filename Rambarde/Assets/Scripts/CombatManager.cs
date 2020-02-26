@@ -7,17 +7,9 @@ public class CombatManager : MonoBehaviour {
     public GameObject playerTeamGo, enemyTeamGo;
 
     public CharacterControl GetTarget(int srcTeam, bool ally) {
-        CharacterControl c;
-        if (ally) {
-            c = teams[srcTeam][(int) Random.value % teams[srcTeam].Count];
-            return c;
-        }
-
-        var team = (srcTeam + 1) % teams.Count;
-        c = teams[team][(int) Random.value % teams[team].Count];
-        return c;
+        var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
+        return teams[team][(int) (Random.Range(0f, 100f) / 50f) % teams[team].Count];
     }
-
 
     public async void ExecTurn() {
         // Apply status effects to all characters
@@ -51,8 +43,9 @@ public class CombatManager : MonoBehaviour {
     public void Remove(CharacterControl characterControl) {
         var charTeam = (int) characterControl.team;
         teams[charTeam].Remove(characterControl);
-        if (teams[charTeam].Count == 0) Debug.Break();
         Destroy(characterControl.gameObject);
+        
+        if (teams[charTeam].Count == 0) Debug.Break();
     }
 
     #region Unity
@@ -81,6 +74,8 @@ public class CombatManager : MonoBehaviour {
         var i = 0;
         foreach (Transform t in playerTeamGo.transform) {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
+            go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, -90, 0);
+            go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, -90, 0);
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", playerTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
@@ -93,6 +88,8 @@ public class CombatManager : MonoBehaviour {
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
+            go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
+            go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, 90, 0);
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
