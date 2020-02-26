@@ -121,22 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &317895
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 5746763015279432650}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5746763015279432651}
-  m_Layer: 0
-  m_Name: Separator (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &3110859
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 1782865941}
   greenBar: {fileID: 1467231486}
   yellowBar: {fileID: 62993565}
   statusEffects: {fileID: 289212988}
@@ -563,7 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 1151473043}
   greenBar: {fileID: 621966305}
   yellowBar: {fileID: 3110859}
   statusEffects: {fileID: 1680712924}
@@ -1254,7 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 1085508936}
   greenBar: {fileID: 1734436540}
   yellowBar: {fileID: 1136064209}
   statusEffects: {fileID: 1914204504}
@@ -2416,8 +2400,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad2550f9989ed74da5f80d44c935b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTeamGo: {fileID: 1854248406}
-  enemyTeamGo: {fileID: 1415330599}
+  playerTeam:
+  - {fileID: 1709960067}
+  - {fileID: 1151473043}
+  enemyTeam:
+  - {fileID: 556507707}
+  - {fileID: 900214319}
 --- !u!4 &543202384
 Transform:
   m_ObjectHideFlags: 0
@@ -2637,6 +2625,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43c620ee14b4ad1b21ba5a3102e000e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 1
+  stats:
+    baseEnd: 90
+    atq: 20
+    prot: 0
+    crit: 20
+    prec: 100
+  skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
 --- !u!1 &587654974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,7 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 1709960067}
   greenBar: {fileID: 469754702}
   yellowBar: {fileID: 370605433}
   statusEffects: {fileID: 1074231817}
@@ -4220,6 +4218,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43c620ee14b4ad1b21ba5a3102e000e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 1
+  stats:
+    baseEnd: 90
+    atq: 20
+    prot: 0
+    crit: 20
+    prec: 100
+  skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
 --- !u!95 &900214320
 Animator:
   serializedVersion: 3
@@ -4239,36 +4247,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &916337126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1405810810}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 916337127}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &916337127
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1405810810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916337126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1405810811}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &923898712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5163,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd20099e5a4b59b7f80954e10e9c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
+  stats:
+    baseEnd: 100
+    atq: 20
+    prot: 0
+    crit: 85
+    prec: 75
+  skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
 --- !u!95 &1085508937
 Animator:
   serializedVersion: 3
@@ -5911,6 +5899,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccd20099e5a4b59b7f80954e10e9c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
+  stats:
+    baseEnd: 100
+    atq: 20
+    prot: 0
+    crit: 85
+    prec: 75
+  skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
 --- !u!95 &1151473044
 Animator:
   serializedVersion: 3
@@ -7138,21 +7136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddd8067e70f4d46b76511a851834dc, type: 3}
---- !u!4 &1405810811
+--- !u!4 &1405810811 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 1405810810}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771366479}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 916337127}
-  m_Father: {fileID: 1851076574}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1415330599
 GameObject:
   m_ObjectHideFlags: 0
@@ -8474,6 +8462,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be327af71a324425ab1a33d5643f0492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 0
+  stats:
+    baseEnd: 80
+    atq: 80
+    prot: 0
+    crit: 80
+    prec: 60
+  skillWheel:
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
+  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
 --- !u!1 &1720510286
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,22 +8812,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769026345}
   m_CullTransparentMesh: 0
---- !u!1 &1771366479
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 1405810810}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1405810811}
-  m_Layer: 0
-  m_Name: Separator (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1778896428
 GameObject:
   m_ObjectHideFlags: 0
@@ -9016,6 +8998,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43c620ee14b4ad1b21ba5a3102e000e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 1
+  stats:
+    baseEnd: 90
+    atq: 20
+    prot: 0
+    crit: 20
+    prec: 100
+  skillWheel:
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
 --- !u!95 &1782865942
 Animator:
   serializedVersion: 3
@@ -9484,7 +9476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 900214319}
   greenBar: {fileID: 1202364809}
   yellowBar: {fileID: 1944851841}
   statusEffects: {fileID: 728019197}
@@ -10322,7 +10314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
+  character: {fileID: 556507707}
   greenBar: {fileID: 555233792}
   yellowBar: {fileID: 1164380152}
   statusEffects: {fileID: 964169699}
@@ -10859,36 +10851,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123807671}
   m_CullTransparentMesh: 0
---- !u!1 &2125211490
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 5746763015279432650}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2125211491}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2125211491
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 5746763015279432650}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2125211490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5746763015279432651}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2135876125
 GameObject:
   m_ObjectHideFlags: 0
@@ -15344,21 +15306,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddd8067e70f4d46b76511a851834dc, type: 3}
---- !u!4 &5746763015279432651
+--- !u!4 &5746763015279432651 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 5746763015279432650}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317895}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2125211491}
-  m_Father: {fileID: 1851076574}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5758113459721407218
 Transform:
   m_ObjectHideFlags: 0
@@ -16963,8 +16915,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a06766f10b68e4f9325333f99baab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tier2MinValue: 0
-  tier3MinValue: 0
+  inspirationValue: 0
+  tier2minValue: 0
+  tier3minValue: 0
 --- !u!114 &8296172668646349648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16980,6 +16933,7 @@ MonoBehaviour:
   inspiration: {fileID: 8296172668646349647}
   musicPlanner: {fileID: 8296172668646349646}
   instruments: []
+  selectedMelodies: []
 --- !u!1 &8296172668804591788
 GameObject:
   m_ObjectHideFlags: 0
