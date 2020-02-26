@@ -33,7 +33,7 @@ namespace Bard
                 estimateAdd.Value += melody.inspirationValue;
             }
             //melody removing inspiration
-             else if (MelodyCanBePlayed(melody))
+             else if (melody.isPlayable.Value)
             {
                 estimateConsume.Value += melody.inspirationValue;
             }

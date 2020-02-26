@@ -12,6 +12,7 @@ using UnityEngine.UI;
 public class Hud : MonoBehaviour
 {
     public List<RectTransform> instPanels;
+    public RectTransform actionPanel;
 
     public void Init(Bard.Bard bard)
     {
@@ -43,6 +44,20 @@ public class Hud : MonoBehaviour
                     .Subscribe(_ => { })
                     .AddTo(button);
             }
+
+            bard.actionPoints.Subscribe(p =>
+            {
+                int nbrSquare = (bard.maxActionPoints.Value - p) / 8; //ATTENTION NOMBRE MAGIQUE NBR NOTE PER BEAT
+                int colored = 0;
+                List<Image> actionImages = actionPanel.GetComponentsInChildren<Image>().ToList();
+                actionImages.RemoveAt(0);
+                actionImages.Reverse();
+                foreach (Image image in actionImages)
+                {
+                    image.color = colored >= nbrSquare ? Color.white : Color.red;
+                    colored++; 
+                }
+            });
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Bard {
 
         [SerializeField] private int baseActionPoints;
         public ReactiveProperty<int> actionPoints;
-        public ReactiveProperty<int> maxActionPoints = new ReactiveProperty<int>(0);
+        public ReactiveProperty<int> maxActionPoints;
         public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
 
         public Hud hud = null;
@@ -24,8 +24,10 @@ namespace Bard {
             inspiration = GetComponent<Inspiration>();
             musicPlanner = GetComponent<MusicPlanner>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
+            maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
 
             SetActionPlayableMelodies();
+            SetInspirationPlayableMelodies();
             hud.Init(this);
         }
 
@@ -41,9 +43,8 @@ namespace Bard {
             }
 
             SetActionPlayableMelodies();
-            
-            melody.isPlayable.Value = false;
-            
+            SetInspirationPlayableMelodies();
+
             if (_selectedInstrumentIndex == 0) { //if no instrument was selected
                 //select melody's instrument
                 _selectedInstrumentIndex = instruments.FindIndex(i => i.melodies.Contains(melody));
@@ -60,8 +61,9 @@ namespace Bard {
 
             selectedMelodies.Add(melody);
             actionPoints.Value -= melody.Size;
-            
             inspiration.SelectMelody(melody);
+            
+            melody.isPlayable.Value = false;
             //musicPlanner.PlaceMelody(melody);
         }
 
@@ -76,35 +78,53 @@ namespace Bard {
             }
         }
 
-        public void Reset() {
-            // reset action points
-            foreach (var melody in selectedMelodies) {
-                inspiration.UnselectMelody(melody);
-                actionPoints.Value += melody.Size;
-            }
-            
-            selectedMelodies.Clear();
-            
-            //musicPlanner.Reset();
-            _selectedInstrumentIndex = 0;
+        private void SetInspirationPlayableMelodies() {
             foreach (Instrument instrument in instruments) {
                 foreach (Melody melody in instrument.melodies) {
-                    melody.isPlayable.Value = true;
+                    if (melody.isPlayable.Value) {
+                        switch (melody.tier) { 
+                            case 2:
+                                melody.isPlayable.Value = inspiration.current.Value >= inspiration.tier2MinValue;
+                                break;
+                            case 3:
+                                melody.isPlayable.Value = inspiration.current.Value >= inspiration.tier3MinValue;
+                                break;
+                        }
+                    }
                 }
             }
         }
 
-        public void Done() {
-            //musicPlanner.Done();
+        public void Undo() {
+            // reset action points
+            foreach (var melody in selectedMelodies) {
+                inspiration.UnselectMelody(melody);
+            }
+            
+            Debug.Log("inspi : " + inspiration.current.Value);
+            
+            Reset();
+        }
+
+        private void Reset() {
+            _selectedInstrumentIndex = 0;
+            actionPoints.Value = maxActionPoints.Value;
+            
             foreach (Instrument instrument in instruments) {
                 foreach (Melody melody in instrument.melodies) {
                     melody.isPlayable.Value = true;
                 }
             }
+            selectedMelodies.Clear();
+            
+            SetActionPlayableMelodies();
+            SetInspirationPlayableMelodies();
+        }
 
-            _selectedInstrumentIndex = 0;
-            actionPoints.Value = baseActionPoints;
+        public void Done() {
             ExecTurn();
+            inspiration.PlayMelodies();
+            Reset();
             CombatManager.Instance.ExecTurn();
         }
 
