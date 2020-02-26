@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Characters {
     public class CharacterVfx : MonoBehaviour {
-        [SerializeField] private Character character;
+        public CharacterControl characterControl;
         [SerializeField] private GameObject greenBar;
         [SerializeField] private GameObject yellowBar;
         [SerializeField] private GameObject statusEffects;
@@ -15,15 +15,14 @@ namespace Characters {
 
         private TextMeshProUGUI _characterHealth;
 
-        private void Start() {
-            Debug.Log(character.name);
+        public void Init() {
             _characterHealth = GetComponentInChildren<TextMeshProUGUI>();
             if (_characterHealth == null) return;
 
-            character.stats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
+            characterControl.currentStats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
 
             if (greenBar && yellowBar) {
-                character.stats.hp.AsObservable().Pairwise().Subscribe(x =>
+                characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>
                     Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
                         pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
                     ).AddTo(this)
@@ -31,7 +30,7 @@ namespace Characters {
             }
 
             if (statusEffects) {
-                character.statusEffects.ObserveAdd().Subscribe(x => {
+                characterControl.statusEffects.ObserveAdd().Subscribe(x => {
                     // TODO: Add animation for added effect
                     var added = x.Value;
 

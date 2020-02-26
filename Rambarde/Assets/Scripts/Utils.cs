@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Utils {
     public static T LoadResourceFromDir<T>(string dir, string filename) where T : UnityEngine.Object {
-        return Resources.Load<T>(dir + "/" + filename);
+        return dir == "" ? Resources.Load<T>(filename) : Resources.Load<T>(dir + "/" + filename);
     }
 
     public static async Task AwaitObservable<T>(IObservable<T> obs) {

@@ -37,9 +37,9 @@ namespace Bard {
         }
 
         public void Done() {
-            musicPlanner.Done();
+            // musicPlanner.Done();
             
-            ExecTurn();
+            // ExecTurn();
             CombatManager.Instance.ExecTurn();
         }
 

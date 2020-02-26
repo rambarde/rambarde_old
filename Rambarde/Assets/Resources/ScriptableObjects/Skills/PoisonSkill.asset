@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PoisonSkill
   m_EditorClassIdentifier: 
   shouldCastOnAllies: 0
-  skillName: Poison
+  animationName: Poison
   sprite: {fileID: 0}
+  description: 
   turns: 1
   atqRatio: 4

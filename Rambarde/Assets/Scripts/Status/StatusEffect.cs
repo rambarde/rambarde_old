@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using Characters;
 using UniRx;
-using UnityEngine;
 
 namespace Status {
     [Serializable]
@@ -12,7 +10,7 @@ namespace Status {
         public ReactiveProperty<int> turnsLeft;
         public string spriteName;
 
-        protected Character Target;
+        protected CharacterControl Target;
 
         private bool _justApplied = true;
 
@@ -43,7 +41,7 @@ namespace Status {
             Target.statusEffects.Remove(this);
         }
 
-        public static async Task ApplyEffect<T>(Character target, Lazy<T> addedEffect, int addedTurns = 0) where T : StatusEffect {
+        public static async Task ApplyEffect<T>(CharacterControl target, Lazy<T> addedEffect, int addedTurns = 0) where T : StatusEffect {
             // TODO: applying effect animation
 
             var effects = target.statusEffects;

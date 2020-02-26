@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: HealingSkill
   m_EditorClassIdentifier: 
   shouldCastOnAllies: 1
-  skillName: Heal
+  animationName: Heal
   sprite: {fileID: 0}
+  description: 
   turns: 2
   atqRatio: 4

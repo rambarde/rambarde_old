@@ -2,14 +2,13 @@
 using System.Threading.Tasks;
 using Characters;
 using UniRx;
-using UnityEngine;
 
 namespace Status {
     public class PoisonEffect : StatusEffect {
         private readonly float _dmg;
         private string _animationName = "PoisonEffect";
 
-        public PoisonEffect(Character target, float dmg, int turns) {
+        public PoisonEffect(CharacterControl target, float dmg, int turns) {
             _dmg = dmg;
             Target = target;
             spriteName = "vfx-poison";

@@ -5,7 +5,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Melodies {
     public class PrestoMelody : Melody {
-        public override void Execute(List<Character> targets) {
+        public override void Execute(List<CharacterControl> targets) {
             if (targets.Count != 1) {
                 Debug.LogWarning("Presto cannot be applied on " + targets.Count + " target(s).");
                 return;

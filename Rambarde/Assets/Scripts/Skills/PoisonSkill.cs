@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Characters;
 using Status;
@@ -10,13 +9,13 @@ namespace Skills {
     public class PoisonSkill : Skill {
         [SerializeField] private int turns;
         [SerializeField] private float atqRatio;
-        
-        public override async Task Execute(Stats source, Character target) {
-                await StatusEffect.ApplyEffect(
-                    target,
-                    new Lazy<PoisonEffect>(() => new PoisonEffect(target, source.atq / atqRatio, turns)),
-                    turns
-                );
+
+        public override async Task Execute(Stats source, CharacterControl target) {
+            await StatusEffect.ApplyEffect(
+                target,
+                new Lazy<PoisonEffect>(() => new PoisonEffect(target, source.atq / atqRatio, turns)),
+                turns
+            );
         }
     }
 }

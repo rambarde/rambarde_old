@@ -7,7 +7,7 @@ namespace Skills {
         [SerializeField] private bool shouldCastOnAllies;
         public bool ShouldCastOnAllies => shouldCastOnAllies;
 
-        public abstract Task Execute(Stats source, Character target);
+        public abstract Task Execute(Stats source, CharacterControl target);
 
         // String used for animation triggers and animation states
         public string animationName;
@@ -15,7 +15,6 @@ namespace Skills {
         // Sprite for UI in skill wheel and clients menu
         public Sprite sprite;
 
-        [TextArea]
-        public string description;
+        [TextArea] public string description;
     }
 }
