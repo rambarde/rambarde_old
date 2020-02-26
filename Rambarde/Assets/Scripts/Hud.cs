@@ -13,6 +13,7 @@ public class Hud : MonoBehaviour
 {
     public List<RectTransform> instPanels;
     public RectTransform actionPanel;
+    public RectTransform inspiJauge;
 
     public void Init(Bard.Bard bard)
     {
@@ -57,6 +58,11 @@ public class Hud : MonoBehaviour
                     image.color = colored >= nbrSquare ? Color.white : Color.red;
                     colored++; 
                 }
+            });
+
+            bard.inspiration.current.Subscribe(inspi =>
+            {
+                inspiJauge.localScale = new Vector3(1, inspi / (float) bard.inspiration.maximumValue, 1);
             });
         }
     }

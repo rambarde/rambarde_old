@@ -6,6 +6,7 @@ namespace Bard
 {
     public class Inspiration : MonoBehaviour {
         public ReactiveProperty<int> current = new ReactiveProperty<int>(0);
+        public int maximumValue = 10;
         public int tier2MinValue, tier3MinValue;
         public ReactiveProperty<int> estimateConsume = new ReactiveProperty<int>(0);
         public ReactiveProperty<int> estimateAdd = new ReactiveProperty<int>(0);
