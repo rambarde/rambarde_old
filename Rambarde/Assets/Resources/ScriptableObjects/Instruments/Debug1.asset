@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: 1-1-3-3-
   tier: 1
-  inspirationValue: 2
-  message: DebugMelody is melodying
+  inspirationValue: 3
+  message: Debug1 is melodying
