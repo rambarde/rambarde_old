@@ -55,7 +55,7 @@ namespace Bard {
             actionPoints.Value -= melody.Size;
             
             inspiration.SelectMelody(melody);
-            musicPlanner.PlaceMelody(melody);
+            //musicPlanner.PlaceMelody(melody);
         }
 
         /**
@@ -70,19 +70,21 @@ namespace Bard {
         }
 
         public void Reset() {
+            // reset action points
             foreach (var melody in selectedMelodies.Value) {
                 inspiration.UnselectMelody(melody);
                 actionPoints.Value += melody.Size;
             }
+            
             selectedMelodies.Value.Clear();
-            musicPlanner.Reset();
+            
+            //musicPlanner.Reset();
             _selectedInstrumentIndex = 0;
             SetActionPlayableMelodies();
         }
 
         public void Done() {
-            musicPlanner.Done();
-            
+            //musicPlanner.Done();
             ExecTurn();
             CombatManager.Instance.ExecTurn();
         }
