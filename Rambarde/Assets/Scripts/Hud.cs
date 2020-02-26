@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Bard;
 using UniRx;
 using UniRx.Triggers;
-using Unity.UIElements.Runtime;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
