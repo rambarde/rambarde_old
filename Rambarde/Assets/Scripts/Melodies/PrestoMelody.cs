@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Threading.Tasks;
 using Characters;
-using Debug = UnityEngine.Debug;
+using UnityEngine;
 
 namespace Melodies {
+    [CreateAssetMenu(fileName = "PrestoMelody", menuName = "Melody/Presto")]
     public class PrestoMelody : Melody {
-        public override void Execute(CharacterControl target) {
-            target.IncrementSkillWheel();
+        public override async Task Execute(CharacterControl target) {
+            await target.IncrementSkillWheel();
         }
     }
 }

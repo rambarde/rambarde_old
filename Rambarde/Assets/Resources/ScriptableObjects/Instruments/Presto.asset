@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Flute
+  m_Script: {fileID: 11500000, guid: 79ab9e5d16704716b2e9a60bfacd5602, type: 3}
+  m_Name: Presto
   m_EditorClassIdentifier: 
-  melodies:
-  - {fileID: 11400000, guid: 586aa37108162e241ae3be227e56be45, type: 2}
-  - {fileID: 11400000, guid: 8899dd4b5e868ea409a79e4e651e9a87, type: 2}
+  data: 2-2-4-4-
+  tier: 1
+  inspirationValue: 5

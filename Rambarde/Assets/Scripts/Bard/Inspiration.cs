@@ -15,11 +15,11 @@ namespace Bard
          * */
         public bool MelodyCanBePlayed(Melody melody)
         {
-            if (melody.Tier == 2 && current.Value < tier2MinValue)
+            if (melody.tier == 2 && current.Value < tier2MinValue)
                 return false;
-            if (melody.Tier == 3 && current.Value < tier3MinValue)
+            if (melody.tier == 3 && current.Value < tier3MinValue)
                 return false;
-            return estimateConsume.Value + melody.InspirationValue > 0;
+            return estimateConsume.Value + melody.inspirationValue > 0;
         }
 
         /**
@@ -28,14 +28,14 @@ namespace Bard
         public void SelectMelody(Melody melody)
         {
             //melody adding inspiration
-            if(melody.InspirationValue > 0)
+            if(melody.inspirationValue > 0)
             {
-                estimateAdd.Value += melody.InspirationValue;
+                estimateAdd.Value += melody.inspirationValue;
             }
             //melody removing inspiration
              else if (MelodyCanBePlayed(melody))
             {
-                estimateConsume.Value += melody.InspirationValue;
+                estimateConsume.Value += melody.inspirationValue;
             }
         }
 
@@ -45,14 +45,14 @@ namespace Bard
         public void UnselectMelody(Melody melody)
         {
             //melody adding inspiration
-            if (melody.InspirationValue > 0)
+            if (melody.inspirationValue > 0)
             {
-                estimateAdd.Value -= melody.InspirationValue;
+                estimateAdd.Value -= melody.inspirationValue;
             }
             //melody removing inspiration
             else
             {
-                estimateConsume.Value -= melody.InspirationValue;
+                estimateConsume.Value -= melody.inspirationValue;
             }
         }
 

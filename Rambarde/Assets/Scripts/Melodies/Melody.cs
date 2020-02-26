@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 using Characters;
 using UniRx;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Melodies {
     public abstract class Melody : ScriptableObject { 
@@ -13,14 +13,14 @@ namespace Melodies {
 
         public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
 
-        public int Tier;
-        public int InspirationValue;
+        public int tier;
+        public int inspirationValue;
 
         /**
          *  execute melody on targets.
          *  targets can have multiple characters
          */
-        public abstract void Execute(CharacterControl target);
+        public abstract Task Execute(CharacterControl target);
 
     }
 }

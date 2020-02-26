@@ -71,7 +71,7 @@ namespace Bard {
         private void SetActionPlayableMelodies() {
             foreach (Instrument instrument in instruments) {
                 foreach (Melody melody in instrument.melodies) {
-                    melody.isPlayable.Value = actionPoints.Value - melody.Size >= 0;
+                    melody.isPlayable.Value &= actionPoints.Value - melody.Size >= 0;
                 }
             }
         }
@@ -87,18 +87,29 @@ namespace Bard {
             
             //musicPlanner.Reset();
             _selectedInstrumentIndex = 0;
-            SetActionPlayableMelodies();
+            foreach (Instrument instrument in instruments) {
+                foreach (Melody melody in instrument.melodies) {
+                    melody.isPlayable.Value = true;
+                }
+            }
         }
 
         public void Done() {
             //musicPlanner.Done();
+            foreach (Instrument instrument in instruments) {
+                foreach (Melody melody in instrument.melodies) {
+                    melody.isPlayable.Value = true;
+                }
+            }
+
+            _selectedInstrumentIndex = 0;
+            actionPoints.Value = baseActionPoints;
             ExecTurn();
             CombatManager.Instance.ExecTurn();
         }
 
         private void ExecTurn() {
             foreach (var melody in selectedMelodies) {
-                Debug.Log("there is a melody");
                 melody.Execute(null);
             }
         }
