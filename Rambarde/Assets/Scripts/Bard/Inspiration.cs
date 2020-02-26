@@ -1,55 +1,58 @@
-﻿using UnityEngine;
+﻿using Melodies;
+using UniRx;
+using UnityEngine;
 
 namespace Bard
 {
-    public class Inspiration : MonoBehaviour
-    {
-        public int inspirationValue = 0, tier2minValue, tier3minValue;
-        int estimatedValueConsumed = 0, estimatedValueAdded = 0;
+    public class Inspiration : MonoBehaviour {
+        public ReactiveProperty<int> current = new ReactiveProperty<int>(0);
+        public int tier2MinValue, tier3MinValue;
+        public ReactiveProperty<int> estimateConsume = new ReactiveProperty<int>(0);
+        public ReactiveProperty<int> estimateAdd = new ReactiveProperty<int>(0);
 
         /**
          * Check if a melody can be played
          * */
-        public bool MelodyCanBePlayed(Melodies.Melody melody)
+        public bool MelodyCanBePlayed(Melody melody)
         {
-            if (melody.Tier == 2 && inspirationValue < tier2minValue)
+            if (melody.Tier == 2 && current.Value < tier2MinValue)
                 return false;
-            if (melody.Tier == 3 && inspirationValue < tier3minValue)
+            if (melody.Tier == 3 && current.Value < tier3MinValue)
                 return false;
-            return estimatedValueConsumed + melody.InspirationValue > 0;
+            return estimateConsume.Value + melody.InspirationValue > 0;
         }
 
         /**
          * Select a melody
          * */
-        public void SelectMelody(Melodies.Melody melody)
+        public void SelectMelody(Melody melody)
         {
             //melody adding inspiration
             if(melody.InspirationValue > 0)
             {
-                estimatedValueAdded += melody.InspirationValue;
+                estimateAdd.Value += melody.InspirationValue;
             }
             //melody removing inspiration
              else if (MelodyCanBePlayed(melody))
             {
-                estimatedValueConsumed += melody.InspirationValue;
+                estimateConsume.Value += melody.InspirationValue;
             }
         }
 
         /**
          * Unselect a melody
          * */
-        public void UnselectMelody(Melodies.Melody melody)
+        public void UnselectMelody(Melody melody)
         {
             //melody adding inspiration
             if (melody.InspirationValue > 0)
             {
-                estimatedValueAdded -= melody.InspirationValue;
+                estimateAdd.Value -= melody.InspirationValue;
             }
             //melody removing inspiration
             else
             {
-                estimatedValueConsumed -= melody.InspirationValue;
+                estimateConsume.Value -= melody.InspirationValue;
             }
         }
 
@@ -58,13 +61,13 @@ namespace Bard
          * */
         public void PlayMelodies()
         {
-            inspirationValue += estimatedValueAdded + estimatedValueConsumed;
+            current.Value += estimateAdd.Value + estimateConsume.Value;
             ResetTurnValues();
         }
 
         public void ResetTurnValues()
         {
-            estimatedValueAdded = estimatedValueConsumed = 0;
+            estimateAdd.Value = estimateConsume.Value = 0;
         }
     }
 }

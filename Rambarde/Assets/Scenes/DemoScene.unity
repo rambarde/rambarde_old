@@ -13996,8 +13996,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inspirationValue: 0
-  tier2minValue: 0
-  tier3minValue: 0
+  tier2minValue: 10
+  tier3minValue: 20
 --- !u!114 &8296172668646349648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14012,7 +14012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inspiration: {fileID: 8296172668646349647}
   musicPlanner: {fileID: 8296172668646349646}
-  instruments: []
+  instruments:
+  - {fileID: 11400000, guid: bb59be6d934de13419f2f8e3edc9edea, type: 2}
   selectedMelodies: []
 --- !u!1 &8296172668804591788
 GameObject:
