@@ -108,62 +108,64 @@ namespace Bard {
             await CombatManager.Instance.ExecTurn();
         }
 
-        private struct Pair {
-            public string data;
-            public int i;
+        private class Aggregate {
+            public readonly string data;
+            public readonly int melodyIndex;
+            public int noteIndex;
 
-            public Pair(string data, int i) {
-                this.i = i;
+            public Aggregate(string data, int i1, int i2 = 0) {
                 this.data = data;
+                melodyIndex = i1;
+                noteIndex = i2;
+            }
+
+            public Aggregate SetNoteIndex(int i2) {
+                noteIndex = i2;
+                return this;
             }
         }
 
-        private int beat = 1;
+
+        private int _beat = 1;
 
         private async Task StartRhythmGame() {
-            foreach (var melody in selectedMelodies) {
-                int n = 0;
-                int i = 0;
-                melody.Data.ToObservable()
-                    .Where(x => x != '_')
-                    .Select(x => {
-                        if (i == melody.Data.Length - 1) {
-                            n = 1;
-                            return new Pair(x.ToString(), 1);
-                        }
+            var melodyIndex = 0;
+            var charIndex = 0;
+            var melody = selectedMelodies
+                         // Transform melody list to (string, index) pairs
+                         .Select(x => new Aggregate(x.Data, melodyIndex++))
+                         // Transform every char from every melody to Aggregate with character index in array
+                         .SelectMany(x => x.data.Select(m => new Aggregate(m.ToString(), x.melodyIndex, charIndex++)));
+            var melodyStr = string.Concat(selectedMelodies.SelectMany(x => x.Data));
 
-                        n = melody.Data.Substring(i + 1).TakeWhile(c => c == '_').Count() + 1;
-                        var pair = new Pair(melody.Data.Substring(i, n), n);
-                        i += n;
-                        return pair;
-                    })
-                    .Zip(Observable.Timer(TimeSpan.FromSeconds(beat * n)).Repeat(), (x, _) => x)
-                    .Subscribe(x => Debug.Log(x));
-            }
+            var obs = melody
+                      .Select(x => {
+                          switch (x.data) {
+                              case "_":
+                                  return new Aggregate("*", x.melodyIndex);
+                              case "-":
+                                  return new Aggregate("-", x.melodyIndex);
+                              default:
+                                  if (x.noteIndex == melodyStr.Length - 1) return x;
+
+                                  var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
+                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex);
+                          }
+                      })
+                      .ToList(); // Compute list elements before starting the timer
+
+            await Utils.AwaitObservable(
+                Observable.Timer(TimeSpan.FromSeconds(_beat))
+                          .Repeat()
+                          .Zip(obs.ToObservable(), (_, y) => y),
+                SpawnMusicNote
+            );
         }
 
-        private async Task SpawnMusicNote(char note) {
-            Transform t = null;
-            switch (note) {
-                case '1':
-                    t = m1;
-                    break;
-                case '2':
-                    t = m2;
-                    break;
-                case '3':
-                    t = m3;
-                    break;
-                case '4':
-                    t = m4;
-                    break;
-            }
-
-            var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            go.transform.parent = t;
-            go.transform.localPosition = Vector3.zero;
-
-            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
+        private void SpawnMusicNote(Aggregate note) {
+            // TODO : spawn music note object with speed and compare note.data to current note,
+            // note.melodyIndex represents which melody should be played
+            Debug.Log(note.data + "  " + note.melodyIndex);
         }
     }
 }
