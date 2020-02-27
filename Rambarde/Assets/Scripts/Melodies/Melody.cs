@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Bard;
 using Characters;
+using JetBrains.Annotations;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,17 +12,16 @@ namespace Melodies {
         [SerializeField] private string data;
         public string Data => data;
         public int Size => data.Length;
-
-        public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
+        
+        public MelodyTargetMode targetMode;
+        
+        [System.NonSerialized] public CharacterControl target;
+        [System.NonSerialized] public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
 
         public int tier;
         public int inspirationValue;
 
-        /**
-         *  execute melody on targets.
-         *  targets can have multiple characters
-         */
-        public abstract Task Execute(CharacterControl target);
+        public abstract Task Execute();
 
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Melodies {
     [CreateAssetMenu(fileName = "PrestoMelody", menuName = "Melody/Presto")]
     public class PrestoMelody : Melody {
-        public override async Task Execute(CharacterControl target) {
+        public override async Task Execute() {
             await target.IncrementSkillWheel();
         }
     }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Characters;
+using JetBrains.Annotations;
 using Melodies;
 using UniRx;
 using UnityEngine;
@@ -31,7 +33,7 @@ namespace Bard {
             hud.Init(this);
         }
 
-        public void SelectMelody(Melody melody) {
+        public void SelectMelody(Melody melody, CharacterControl target = null) {
             if (! instruments.Any(instrument => instrument.melodies.Contains(melody))) {
                 Debug.Log("Warning : Melody [" + melody.name +"] is not equipped");
                 return;
@@ -64,7 +66,7 @@ namespace Bard {
             inspiration.SelectMelody(melody);
             
             melody.isPlayable.Value = false;
-            //musicPlanner.PlaceMelody(melody);
+            melody.target = target;
         }
 
         /**
@@ -130,7 +132,7 @@ namespace Bard {
 
         private void ExecTurn() {
             foreach (var melody in selectedMelodies) {
-                melody.Execute(null);
+                melody.Execute();
             }
         }
 
