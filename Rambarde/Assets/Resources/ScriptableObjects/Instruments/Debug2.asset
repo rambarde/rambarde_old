@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Debug2
   m_EditorClassIdentifier: 
   data: 1-1-2---
+  targetMode: 2
   tier: 2
   inspirationValue: -3
   message: Debug2!!!

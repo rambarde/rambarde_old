@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Bard;
 using Characters;
+using Melodies;
 using TMPro;
 using UniRx;
 using UniRx.Triggers;
@@ -13,6 +15,15 @@ public class Hud : MonoBehaviour {
     public RectTransform actionPanel;
     public RectTransform inspiJauge;
 
+    private void AddSubscription(List<IDisposable> subscriptions, Bard.Bard bard, CharacterControl character, Melody melody) {
+        subscriptions.Add(
+            character.gameObject.OnMouseDownAsObservable()
+                .Subscribe(__ => {
+                    bard.SelectMelody(melody, character);
+                    subscriptions.ForEach(s => s.Dispose());
+                }));
+    }
+    
     public void Init(Bard.Bard bard) {
         GameObject buttonPrefab = Utils.LoadResourceFromDir<GameObject>("", "Button");
         GameObject separatorPrefab = Utils.LoadResourceFromDir<GameObject>("", "Separator");
@@ -21,7 +32,7 @@ public class Hud : MonoBehaviour {
             
             RectTransform panel = instPanels[i];
             Instrument inst = bard.instruments[i];
-
+            
             int currentTier = 1;
             foreach (var melody in inst.melodies) {
                 if (melody.tier > currentTier) {
@@ -35,13 +46,39 @@ public class Hud : MonoBehaviour {
                 label.text = melody.name;
                 button.OnClickAsObservable()
                     .Subscribe(_ => {
-                        //add listener to character clicks
-                        /*foreach (CharacterControl character in CombatManager.Instance.teams[0]) {
-                            character.gameObject.OnMouseEnterAsObservable()
-                                .Subscribe(__ => Debug.Log(character.gameObject.name));
-                        }*/
-                        
-                        bard.SelectMelody(melody);
+                        List<IDisposable> subscriptions = new List<IDisposable>();
+                        switch (melody.targetMode) {
+                            case MelodyTargetMode.EveryAlly :
+                            case MelodyTargetMode.EveryEnemy :
+                            case MelodyTargetMode.Everyone :
+                                bard.SelectMelody(melody);
+                                break;
+                            
+                            case MelodyTargetMode.OneAlly :
+                                foreach (CharacterControl character in CombatManager.Instance.teams[0]) {
+                                    AddSubscription(subscriptions, bard, character, melody);
+                                }
+                                break;
+                            
+                            case MelodyTargetMode.OneEnemy :
+                                foreach (CharacterControl character in CombatManager.Instance.teams[1]) {
+                                    AddSubscription(subscriptions, bard, character, melody);
+                                }
+                                break;
+                            
+                            case MelodyTargetMode.Anyone :
+                                foreach (CharacterControl character
+                                    in CombatManager.Instance.teams.SelectMany(team => team)) {
+
+                                    AddSubscription(subscriptions, bard, character, melody);
+                                }
+                                break;
+                            
+                            default:
+                                Debug.Log("Warning : Melody ["+ melody.name+"] " +
+                                          "has no known targetMode ("+ melody.targetMode +")");
+                                break;
+                        }
                     })
                     .AddTo(button);
 
