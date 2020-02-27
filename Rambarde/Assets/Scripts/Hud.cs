@@ -8,6 +8,7 @@ using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class Hud : MonoBehaviour {
@@ -21,6 +22,12 @@ public class Hud : MonoBehaviour {
                 .Subscribe(__ => {
                     bard.SelectMelody(melody, character);
                     subscriptions.ForEach(s => s.Dispose());
+                    
+                    foreach (CharacterControl chara
+                        in CombatManager.Instance.teams.SelectMany(team => team)) {
+
+                        chara.gameObject.transform.Find("HighLight").gameObject.SetActive(false);
+                    }
                 }));
     }
     
@@ -56,12 +63,14 @@ public class Hud : MonoBehaviour {
                             
                             case MelodyTargetMode.OneAlly :
                                 foreach (CharacterControl character in CombatManager.Instance.teams[0]) {
+                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }
                                 break;
                             
                             case MelodyTargetMode.OneEnemy :
                                 foreach (CharacterControl character in CombatManager.Instance.teams[1]) {
+                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }
                                 break;
@@ -70,6 +79,7 @@ public class Hud : MonoBehaviour {
                                 foreach (CharacterControl character
                                     in CombatManager.Instance.teams.SelectMany(team => team)) {
 
+                                    character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }
                                 break;

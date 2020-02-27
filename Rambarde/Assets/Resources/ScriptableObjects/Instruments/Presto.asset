@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Presto
   m_EditorClassIdentifier: 
   data: 2-2-4-4-
+  targetMode: 0
   tier: 1
   inspirationValue: 3

@@ -103,8 +103,6 @@ namespace Bard {
                 inspiration.UnselectMelody(melody);
             }
             
-            Debug.Log("inspi : " + inspiration.current.Value);
-            
             Reset();
         }
 
