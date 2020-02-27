@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Bard;
+using Characters;
 using TMPro;
 using UniRx;
 using UniRx.Triggers;
@@ -33,7 +34,15 @@ public class Hud : MonoBehaviour {
                 TextMeshProUGUI label = buttonGo.GetComponentInChildren<TextMeshProUGUI>();
                 label.text = melody.name;
                 button.OnClickAsObservable()
-                    .Subscribe(_ => { bard.SelectMelody(melody); })
+                    .Subscribe(_ => {
+                        //add listener to character clicks
+                        /*foreach (CharacterControl character in CombatManager.Instance.teams[0]) {
+                            character.gameObject.OnMouseEnterAsObservable()
+                                .Subscribe(__ => Debug.Log(character.gameObject.name));
+                        }*/
+                        
+                        bard.SelectMelody(melody);
+                    })
                     .AddTo(button);
 
                 melody.isPlayable.Subscribe(x => { button.interactable = x; }).AddTo(button);
@@ -44,7 +53,7 @@ public class Hud : MonoBehaviour {
             }
 
             bard.actionPoints.Subscribe(p => {
-                int nbrSquare = (bard.maxActionPoints.Value - p) / 8; //ATTENTION NOMBRE MAGIQUE NBR NOTE PER BEAT
+                int nbrSquare = (bard.maxActionPoints.Value - p) / 8; //- - - - - WARNING MAGIC NUMBER NBR NOTE PER BEAT
                 int colored = 0;
                 List<Image> actionImages = actionPanel.GetComponentsInChildren<Image>().ToList();
                 actionImages.RemoveAt(0);
