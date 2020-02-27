@@ -15,7 +15,7 @@ namespace Melodies {
         
         public MelodyTargetMode targetMode;
         
-        [System.NonSerialized] public CharacterControl target;
+        [System.NonSerialized] public CharacterControl target = null;
         [System.NonSerialized] public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
 
         public int tier;
