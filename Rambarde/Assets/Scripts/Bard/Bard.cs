@@ -1,26 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Characters;
-using JetBrains.Annotations;
+using System.Threading.Tasks;
 using Melodies;
 using UniRx;
 using UnityEngine;
 
 namespace Bard {
     public class Bard : MonoBehaviour {
+        [SerializeField] private int baseActionPoints;
+        [SerializeField] private Transform m1, m2, m3, m4;
 
+        public Hud hud;
         public Inspiration inspiration;
         public List<Instrument> instruments;
-
-        [SerializeField] private int baseActionPoints;
         public ReactiveProperty<int> actionPoints;
         public ReactiveProperty<int> maxActionPoints;
         public ReactiveCollection<Melody> selectedMelodies = new  ReactiveCollection<Melody>(new List<Melody>());
 
-        public Hud hud = null;
+        private int _selectedInstrumentIndex;
 
-        private int _selectedInstrumentIndex = 0;
-        
         void Start() {
             inspiration = GetComponent<Inspiration>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
@@ -37,7 +37,7 @@ namespace Bard {
                 return;
             }
 
-            if (! melody.isPlayable.Value) {
+            if (!melody.isPlayable.Value) {
                 Debug.Log("Warning : Melody [" + melody.name + "] is not playable");
                 return;
             }
@@ -49,7 +49,7 @@ namespace Bard {
                 //select melody's instrument
                 _selectedInstrumentIndex = instruments.FindIndex(i => i.melodies.Contains(melody));
             }
-            
+
             //if an instrument is selected
             if (_selectedInstrumentIndex != 0) {
                 //make other instrument melodies unplayable
@@ -100,7 +100,7 @@ namespace Bard {
             foreach (var melody in selectedMelodies) {
                 inspiration.UnselectMelody(melody);
             }
-            
+
             Reset();
         }
 
@@ -119,18 +119,72 @@ namespace Bard {
             SetInspirationPlayableMelodies();
         }
 
-        public void Done() {
-            ExecTurn();
+        public async void Done() {
             inspiration.PlayMelodies();
             Reset();
-            CombatManager.Instance.ExecTurn();
+            await StartRhythmGame();
+            await CombatManager.Instance.ExecTurn();
         }
 
-        private void ExecTurn() {
-            foreach (var melody in selectedMelodies) {
-                melody.Execute();
+
+        private class Aggregate {
+            public readonly string data;
+            public readonly int melodyIndex;
+            public int noteIndex;
+
+            public Aggregate(string data, int i1, int i2 = 0) {
+                this.data = data;
+                melodyIndex = i1;
+                noteIndex = i2;
+            }
+
+            public Aggregate SetNoteIndex(int i2) {
+                noteIndex = i2;
+                return this;
             }
         }
 
+
+        private int _beat = 1;
+
+        private async Task StartRhythmGame() {
+            var melodyIndex = 0;
+            var charIndex = 0;
+            var melody = selectedMelodies
+                         // Transform melody list to (string, index) pairs
+                         .Select(x => new Aggregate(x.Data, melodyIndex++))
+                         // Transform every char from every melody to Aggregate with character index in array
+                         .SelectMany(x => x.data.Select(m => new Aggregate(m.ToString(), x.melodyIndex, charIndex++)));
+            var melodyStr = string.Concat(selectedMelodies.SelectMany(x => x.Data));
+
+            var obs = melody
+                      .Select(x => {
+                          switch (x.data) {
+                              case "_":
+                                  return new Aggregate("*", x.melodyIndex);
+                              case "-":
+                                  return new Aggregate("-", x.melodyIndex);
+                              default:
+                                  if (x.noteIndex == melodyStr.Length - 1) return x;
+
+                                  var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
+                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex);
+                          }
+                      })
+                      .ToList(); // Compute list elements before starting the timer
+
+            await Utils.AwaitObservable(
+                Observable.Timer(TimeSpan.FromSeconds(_beat))
+                          .Repeat()
+                          .Zip(obs.ToObservable(), (_, y) => y),
+                SpawnMusicNote
+            );
+        }
+
+        private void SpawnMusicNote(Aggregate note) {
+            // TODO : spawn music note object with speed and compare note.data to current note,
+            // note.melodyIndex represents which melody should be played
+            Debug.Log(note.data + "  " + note.melodyIndex);
+        }
     }
 }

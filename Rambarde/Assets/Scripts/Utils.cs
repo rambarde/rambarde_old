@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -8,8 +9,10 @@ public static class Utils {
         return dir == "" ? Resources.Load<T>(filename) : Resources.Load<T>(dir + "/" + filename);
     }
 
-    public static async Task AwaitObservable<T>(IObservable<T> obs) {
-        obs.Subscribe();
+    public static async Task AwaitObservable<T>(IObservable<T> obs, Action<T> f = null) {
+        if (f is null)
+            obs.Subscribe();
+        else obs.Subscribe(f);
         await obs;
     }
 

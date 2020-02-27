@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Characters;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class CombatManager : MonoBehaviour {
         return teams[team][(int) (Random.Range(0f, 100f) / 50f) % teams[team].Count];
     }
 
-    public async void ExecTurn() {
+    public async Task ExecTurn() {
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {
