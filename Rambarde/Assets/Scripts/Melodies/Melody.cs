@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Melodies {
-    public abstract class Melody : ScriptableObject { 
-
+    public abstract class Melody : ScriptableObject {
         [SerializeField] private string data;
         public string Data => data;
         public int Size => data.Length;
@@ -21,6 +20,5 @@ namespace Melodies {
          *  targets can have multiple characters
          */
         public abstract Task Execute(CharacterControl target);
-
     }
 }
