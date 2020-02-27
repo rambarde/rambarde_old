@@ -10,7 +10,6 @@ namespace Bard {
     public class Bard : MonoBehaviour {
 
         public Inspiration inspiration;
-        public MusicPlanner musicPlanner;
         public List<Instrument> instruments;
 
         [SerializeField] private int baseActionPoints;
@@ -24,7 +23,6 @@ namespace Bard {
         
         void Start() {
             inspiration = GetComponent<Inspiration>();
-            musicPlanner = GetComponent<MusicPlanner>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
             maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
 
