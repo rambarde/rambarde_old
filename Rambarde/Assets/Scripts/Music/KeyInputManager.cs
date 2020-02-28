@@ -37,7 +37,7 @@ namespace Music {
                 .Where(_ => GetInput() != 0)
                 .Select(x => GetInput())
                 .Subscribe(x => {
-                    
+
                     if (_currentNote != null && _currentNote.note == x) {
                         _currentNote.Play();
                         Destroy(_currentNote.gameObject);
