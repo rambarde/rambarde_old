@@ -9,9 +9,8 @@ namespace Music {
 
         public bool Played => _played;
 
-        public void Play()
-        {
-            Debug.Log("note" + note +" played");
+        public void Play() {
+            Debug.Log("note [" + note +"] played");
             _played = true;
         }
     }

@@ -4,13 +4,15 @@ using System.Linq;
 using Characters;
 using System.Threading.Tasks;
 using Melodies;
+using Music;
 using UniRx;
+using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 namespace Bard {
     public class Bard : MonoBehaviour {
         [SerializeField] private int baseActionPoints;
-        [SerializeField] private Transform m1, m2, m3, m4;
+        [SerializeField] private NoteSpawner spawner;
 
         public Hud hud;
         public Inspiration inspiration;
@@ -145,12 +147,11 @@ namespace Bard {
         }
         
         //                         bpm\      /beat division(croche)
-        private float _beat = 60f / (128f * 2f);
+        private float _beat = 60f / (110f * 2f);
 
         private async Task StartRhythmGame() {
             var melodyIndex = 0;
             var charIndex = 0;
-            Debug.Log(selectedMelodies.Count);
             var melody = selectedMelodies
                          // Transform melody list to (string, index) pairs
                          .Select(x => new Aggregate(x.Data, melodyIndex++))
@@ -183,13 +184,11 @@ namespace Bard {
         }
 
         private void SpawnMusicNote(Aggregate note) {
-            // TODO : spawn music note object with speed and compare note.data to current note,
             // note.melodyIndex represents which melody should be played
             if (note.noteIndex % 2 == 0) {
                 GetComponent<AudioSource>().Play();
             }
-            
-            Debug.Log(note.data + "  " + note.noteIndex);
+            spawner.SpawnNote(note.data);
         }
     }
 }

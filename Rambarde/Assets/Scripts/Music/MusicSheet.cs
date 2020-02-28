@@ -14,7 +14,7 @@ namespace Music {
         [SerializeField] private GameObject sheetObj;
         [SerializeField] private GameObject staveObj; // empty objects with lines as children
         [SerializeField] private GameObject rythmeterObj;
-
+/*
         private int _inputNote;
         private float _startTime;
         private Rythmeter _rythmeter;
@@ -131,6 +131,6 @@ namespace Music {
                 yield return new WaitUntil(
                     () => Time.time - _startTime >= (i1 + 1) * (60.0f / (NbrNoteInBeat * tempo)) - 0.5f * 60.0f / (NbrNoteInBeat * tempo));
             }
-        }
+        }*/
     }
 }
