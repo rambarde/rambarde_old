@@ -57,15 +57,6 @@ namespace Bard
             }
         }
 
-        /**
-         * Affect inspiration with melody played (end phase)
-         * */
-        public void PlayMelodies()
-        {
-            current.Value += estimateAdd.Value + estimateConsume.Value;
-            ResetTurnValues();
-        }
-
         public void ResetTurnValues()
         {
             estimateAdd.Value = estimateConsume.Value = 0;

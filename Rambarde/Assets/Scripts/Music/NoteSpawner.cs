@@ -1,4 +1,5 @@
 ﻿using System;
+using Melodies;
 using TMPro;
 using UnityEngine;
 
@@ -8,12 +9,14 @@ namespace Music {
         [SerializeField] private Transform m1, m2, m3, m4;
         [SerializeField] private GameObject notePrefab;
 
-        public void SpawnNote(string note) {
+        public void SpawnNote(string note, Melody melody) {
             Transform parent;
             switch (note) {
-                case "-" :
                 case "_":
                 case "*":
+                    return;
+                case "-" :
+                    melody.score.Value += 1;
                     return;
                 
                 case "1" :
@@ -35,6 +38,7 @@ namespace Music {
 
             GameObject noteObj = Instantiate(notePrefab, parent);
             noteObj.GetComponent<Note>().note = int.Parse(note);
+            noteObj.GetComponent<Note>().melody = melody;
             noteObj.GetComponent<NoteMove>().speed = 2f;
             noteObj.GetComponentInChildren<TextMeshProUGUI>().text = note;
         }

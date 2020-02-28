@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Characters;
+using UniRx;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
     public List<List<CharacterControl>> teams = new List<List<CharacterControl>>(2);
     public GameObject playerTeamGo, enemyTeamGo;
+
+    public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
 
     public CharacterControl GetTarget(int srcTeam, bool ally) {
         var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;

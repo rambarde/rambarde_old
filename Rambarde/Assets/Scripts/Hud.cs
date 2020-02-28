@@ -15,6 +15,9 @@ public class Hud : MonoBehaviour {
     public RectTransform actionPanel;
     public RectTransform inspiJauge;
 
+    public GameObject melodyMenu;
+    public GameObject musicMenu;
+
     private void AddSubscription(List<IDisposable> subscriptions, Bard.Bard bard, CharacterControl character, Melody melody) {
         subscriptions.Add(
             character.gameObject.OnMouseDownAsObservable()
@@ -31,6 +34,21 @@ public class Hud : MonoBehaviour {
     }
     
     public void Init(Bard.Bard bard) {
+
+        CombatManager.Instance.combatPhase.Subscribe(phase => {
+            switch (phase) {
+                case "selectMelody" :
+                case "combatTurn" :
+                    musicMenu.SetActive(false);
+                    melodyMenu.SetActive(true);
+                    break;
+                case "rhythmGame" :
+                    musicMenu.SetActive(true);
+                    melodyMenu.SetActive(false);
+                    break;
+            }
+        });
+        
         GameObject buttonPrefab = Utils.LoadResourceFromDir<GameObject>("", "Button");
         GameObject separatorPrefab = Utils.LoadResourceFromDir<GameObject>("", "Separator");
 

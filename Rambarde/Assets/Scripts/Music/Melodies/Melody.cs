@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Bard;
 using Characters;
 using JetBrains.Annotations;
@@ -13,9 +14,10 @@ namespace Melodies {
         public int Size => data.Length;
         
         public MelodyTargetMode targetMode;
+        [NonSerialized] public ReactiveProperty<int> score = new ReactiveProperty<int>(0);
         
-        [System.NonSerialized] public CharacterControl target = null;
-        [System.NonSerialized] public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
+        [NonSerialized] public CharacterControl target = null;
+        [NonSerialized] public ReactiveProperty<bool> isPlayable = new ReactiveProperty<bool>(true);
 
         public int tier;
         public int inspirationValue;

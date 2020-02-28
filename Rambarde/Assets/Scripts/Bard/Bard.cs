@@ -122,10 +122,27 @@ namespace Bard {
         }
 
         public async void Done() {
-            inspiration.PlayMelodies();
             await StartRhythmGame();
+            await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(6))); // wait actual rhythm end
+            CombatManager.Instance.combatPhase.Value = "execMelodies";
+            /*await*/ ExecMelodies();
             Reset();
+            CombatManager.Instance.combatPhase.Value = "combatTurn";
             await CombatManager.Instance.ExecTurn();
+            CombatManager.Instance.combatPhase.Value = "selectMelody";
+        }
+
+        private void ExecMelodies() {
+            foreach (var melody in selectedMelodies) {
+                //apply melodies based on their score (and reset their score)
+                if (melody.score.Value == melody.Data.Length) {
+                    melody.Execute();
+                    inspiration.current.Value += melody.inspirationValue;
+                    inspiration.ResetTurnValues();
+                } else {
+                    Debug.Log("you failed melody [" + melody.name +"]");
+                }
+            }
         }
 
 
@@ -150,6 +167,8 @@ namespace Bard {
         private float _beat = 60f / (110f * 2f);
 
         private async Task StartRhythmGame() {
+            CombatManager.Instance.combatPhase.Value = "rhythmGame";
+            selectedMelodies.Select(m => m.score.Value = 0);
             var melodyIndex = 0;
             var charIndex = 0;
             var melody = selectedMelodies
@@ -184,11 +203,10 @@ namespace Bard {
         }
 
         private void SpawnMusicNote(Aggregate note) {
-            // note.melodyIndex represents which melody should be played
-            if (note.noteIndex % 2 == 0) {
+            /*if (note.noteIndex % 2 == 0) {
                 GetComponent<AudioSource>().Play();
-            }
-            spawner.SpawnNote(note.data);
+            }*/
+            spawner.SpawnNote(note.data, selectedMelodies[note.melodyIndex]);
         }
     }
 }

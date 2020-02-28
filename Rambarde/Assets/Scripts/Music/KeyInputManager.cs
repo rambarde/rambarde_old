@@ -12,10 +12,8 @@ namespace Music {
         public List<Image> InputImages;
 
         private Note _currentNote;
-        void Start()
-        {
-            for (int i = 0; i < colliders.Count; i++)
-            {
+        void Start() {
+            for (int i = 0; i < colliders.Count; i++) {
                 colliders[i]
                     .OnTriggerEnterAsObservable()
                     .Where(c => c.gameObject.CompareTag("Note"))
@@ -24,13 +22,13 @@ namespace Music {
                 colliders[i]
                     .OnTriggerExitAsObservable()
                     .Where(c => c.gameObject.CompareTag("Note"))
-                    .Subscribe(c =>
-                    {
-                        Debug.LogError("missed");
+                    .Subscribe(c => {
+                        
+                        //Debug.Log("missed");
                         TweenSequenceWithDelay(
                             InputImages[_currentNote.note - 1].DOColor(Color.red, 0.2f),
                             InputImages[_currentNote.note - 1].DOColor(Color.white, 0.2f),
-                            0.5f);
+                            0.3f);
                         _currentNote = null;
                     }).AddTo(this);
             }
@@ -38,10 +36,9 @@ namespace Music {
             this.UpdateAsObservable()
                 .Where(_ => GetInput() != 0)
                 .Select(x => GetInput())
-                .Subscribe(x =>
-                {
-                    if (_currentNote != null && _currentNote.note == x)
-                    {
+                .Subscribe(x => {
+                    
+                    if (_currentNote != null && _currentNote.note == x) {
                         _currentNote.Play();
                         Destroy(_currentNote.gameObject);
                         _currentNote = null;
@@ -49,29 +46,27 @@ namespace Music {
                         TweenSequenceWithDelay(
                             InputImages[x-1].DOColor(Color.green, 0.2f),
                             InputImages[x-1].DOColor(Color.white, 0.2f),
-                            0.5f);
-                    }
-                    else
-                    {
-                        Debug.LogError("boooooooooh");
+                            0.3f);
+                        
+                    } else {
+                        Debug.Log("boooooooooh");
                         TweenSequenceWithDelay(
                             InputImages[x-1].DOColor(Color.red, 0.2f),
                             InputImages[x-1].DOColor(Color.white, 0.2f),
-                            0.5f);
+                            0.3f);
                     }
                 }).AddTo(this);
         }
 
-        private void TweenSequenceWithDelay(Tween a, Tween b, float delay)
-        {
+        private void TweenSequenceWithDelay(Tween a, Tween b, float delay) {
             Sequence sequence = DOTween.Sequence();
             sequence.Append(a);
             sequence.AppendInterval(delay);
             sequence.Append(b);
             sequence.Play();
         }
-    
-        public static int GetInput() {
+
+        private static int GetInput() {
             if (Input.GetKeyDown(KeyCode.Alpha1)) {
                 return 1;
             }
