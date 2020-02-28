@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug3
   m_EditorClassIdentifier: 
   data: 2-2-2-2-
-  targetMode: 4
+  targetMode: 0
   tier: 1
   inspirationValue: 3
-  message: debug3 merde
+  message: debug3 prout

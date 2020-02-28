@@ -121,8 +121,8 @@ namespace Bard {
 
         public async void Done() {
             inspiration.PlayMelodies();
-            Reset();
             await StartRhythmGame();
+            Reset();
             await CombatManager.Instance.ExecTurn();
         }
 
@@ -143,13 +143,14 @@ namespace Bard {
                 return this;
             }
         }
-
-
-        private int _beat = 1;
+        
+        //                         bpm\      /beat division(croche)
+        private float _beat = 60f / (128f * 2f);
 
         private async Task StartRhythmGame() {
             var melodyIndex = 0;
             var charIndex = 0;
+            Debug.Log(selectedMelodies.Count);
             var melody = selectedMelodies
                          // Transform melody list to (string, index) pairs
                          .Select(x => new Aggregate(x.Data, melodyIndex++))
@@ -161,14 +162,14 @@ namespace Bard {
                       .Select(x => {
                           switch (x.data) {
                               case "_":
-                                  return new Aggregate("*", x.melodyIndex);
+                                  return new Aggregate("*", x.melodyIndex, x.noteIndex);
                               case "-":
-                                  return new Aggregate("-", x.melodyIndex);
+                                  return new Aggregate("-", x.melodyIndex, x.noteIndex);
                               default:
                                   if (x.noteIndex == melodyStr.Length - 1) return x;
 
                                   var len = melodyStr.Substring(x.noteIndex + 1).TakeWhile(c => c == '_').Count() + 1;
-                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex);
+                                  return new Aggregate(melodyStr.Substring(x.noteIndex, len), x.melodyIndex, x.noteIndex);
                           }
                       })
                       .ToList(); // Compute list elements before starting the timer
@@ -184,7 +185,11 @@ namespace Bard {
         private void SpawnMusicNote(Aggregate note) {
             // TODO : spawn music note object with speed and compare note.data to current note,
             // note.melodyIndex represents which melody should be played
-            Debug.Log(note.data + "  " + note.melodyIndex);
+            if (note.noteIndex % 2 == 0) {
+                GetComponent<AudioSource>().Play();
+            }
+            
+            Debug.Log(note.data + "  " + note.noteIndex);
         }
     }
 }
