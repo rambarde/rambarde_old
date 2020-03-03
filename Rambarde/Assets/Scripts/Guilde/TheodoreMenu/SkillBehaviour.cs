@@ -44,7 +44,7 @@ public class SkillBehaviour:
         {
             if (skillTooltip != null)
             {
-                skillTooltip.skill = GetComponent<Skill>();
+                skillTooltip.skill = GetComponent<SkillUI>();
                 skillTooltip.instrument = null;
                 skillTooltip.Activated();
 
@@ -84,7 +84,7 @@ public class SkillBehaviour:
     //called before a drag is started; create the drag image and update shit
     public void OnBeginDrag(PointerEventData pointerEventData)
     {
-        if (GetComponent<Skill>().isDraggable)
+        if (GetComponent<SkillUI>().isDraggable)
         {
             drag = new GameObject();
             drag.AddComponent<CanvasRenderer>();
@@ -94,7 +94,7 @@ public class SkillBehaviour:
             drag.transform.SetAsLastSibling();
             dragImage.raycastTarget = false;
 
-            skillTier = GetComponent<Skill>().skillTier;
+            skillTier = GetComponent<SkillUI>().skillTier;
             skillSprite = GetComponent<Image>().sprite;
             skillColor = GetComponent<Image>().color;
 
@@ -114,7 +114,7 @@ public class SkillBehaviour:
     //update drag image position to mouse current position; called every time cursor is moved
     public void OnDrag(PointerEventData pointerEventData)
     {
-        if(GetComponent<Skill>().isDraggable)
+        if(GetComponent<SkillUI>().isDraggable)
         {
             Vector2 pointerPosition;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, pointerEventData.position, pointerEventData.pressEventCamera, out pointerPosition);
@@ -127,7 +127,7 @@ public class SkillBehaviour:
     //called after a drag is complete; 
     public void OnEndDrag(PointerEventData pointerEventData)
     {
-        if (GetComponent<Skill>().isDraggable)
+        if (GetComponent<SkillUI>().isDraggable)
         {
             Destroy(drag);
         }

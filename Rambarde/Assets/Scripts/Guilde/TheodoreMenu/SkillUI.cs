@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Skill : MonoBehaviour
+public class SkillUI : MonoBehaviour
 {
     public int ID;                          //skill ID
     public string skillName;                //skill name
@@ -17,9 +17,9 @@ public class Skill : MonoBehaviour
 
     [SerializeField]
 
-    public Skill() { }
+    public SkillUI() { }
 
-    public Skill(int id, string name, int tier, int inspCost, int tranCost, int inspGen, int tranceGen, string effect, bool drag)
+    public SkillUI(int id, string name, int tier, int inspCost, int tranCost, int inspGen, int tranceGen, string effect, bool drag)
     {
         ID = id;
         skillName = name;
@@ -32,12 +32,12 @@ public class Skill : MonoBehaviour
         isDraggable = drag;
     }
 
-    public Skill getCopy()
+    public SkillUI getCopy()
     {
-        return (Skill)this.MemberwiseClone();
+        return (SkillUI)this.MemberwiseClone();
     }
 
-    public void equip(Skill skill)
+    public void equip(SkillUI skill)
     {
         this.ID = skill.ID;
         this.skillName = skill.skillName;

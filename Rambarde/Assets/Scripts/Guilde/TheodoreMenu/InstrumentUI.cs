@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Instrument : MonoBehaviour
+public class InstrumentUI : MonoBehaviour
 {
     public int ID;                          //skill ID
     public string instrumentName;           //skill name
@@ -18,9 +18,9 @@ public class Instrument : MonoBehaviour
 
     [SerializeField]
 
-    public Instrument() { }
+    public InstrumentUI() { }
 
-    public Instrument(int id, string name, int type, string effect, int id1, int id2, int id3, int id4,  bool drag)
+    public InstrumentUI(int id, string name, int type, string effect, int id1, int id2, int id3, int id4,  bool drag)
     {
         ID = id;
         instrumentName = name;
@@ -33,12 +33,12 @@ public class Instrument : MonoBehaviour
         isDraggable = drag;
     }
 
-    public Instrument getCopy()
+    public InstrumentUI getCopy()
     {
-        return (Instrument)this.MemberwiseClone();
+        return (InstrumentUI)this.MemberwiseClone();
     }
 
-    public void equip(Instrument instrument)
+    public void equip(InstrumentUI instrument)
     {
         this.ID = instrument.ID;
         this.instrumentName = instrument.instrumentName;

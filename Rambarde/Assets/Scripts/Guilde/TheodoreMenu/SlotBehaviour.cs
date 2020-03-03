@@ -13,11 +13,11 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     private GameObject canvas;
     private GameObject temp;
 
-    private Skill draggedSkill;
-    private Skill slottedSkill;
+    private SkillUI draggedSkill;
+    private SkillUI slottedSkill;
 
-    private Instrument draggedInstrument;
-    private Instrument slottedInstrument;
+    private InstrumentUI draggedInstrument;
+    private InstrumentUI slottedInstrument;
 
     private Image draggedImage;
     private Image slottedImage;
@@ -30,15 +30,15 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         canvas = GameObject.FindWithTag("Canvas").gameObject;
         slotted = transform.GetChild(0).gameObject;
 
-        if (slotted.GetComponent<Skill>() != null)
+        if (slotted.GetComponent<SkillUI>() != null)
         {
-            slottedSkill = slotted.GetComponent<Skill>();
+            slottedSkill = slotted.GetComponent<SkillUI>();
             slottedInstrument = null;
         }
 
-        if (slotted.GetComponent<Instrument>() != null)
+        if (slotted.GetComponent<InstrumentUI>() != null)
         {
-            slottedInstrument = slotted.GetComponent<Instrument>();
+            slottedInstrument = slotted.GetComponent<InstrumentUI>();
             slottedSkill = null;
         }
     }
@@ -52,14 +52,14 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             slottedImage.color = spriteColor;
             slottedImage.sprite = draggedImage.sprite;
 
-            if (pointerEventData.pointerDrag.GetComponent<Skill>() != null && slottedSkill != null)
+            if (pointerEventData.pointerDrag.GetComponent<SkillUI>() != null && slottedSkill != null)
             {
                 if (draggedSkill.skillTier != skillTier)
                     return;
                 slottedSkill.equip(draggedSkill);
             }
 
-            if (pointerEventData.pointerDrag.GetComponent<Instrument>() != null && slottedInstrument != null)
+            if (pointerEventData.pointerDrag.GetComponent<InstrumentUI>() != null && slottedInstrument != null)
             {
                 slottedInstrument.equip(draggedInstrument);
             }
@@ -81,18 +81,18 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             slottedImage.color = spriteColor;
             slottedImage.sprite = draggedImage.sprite;
 
-            if (pointerEventData.pointerDrag.GetComponent<Skill>() != null && slottedSkill != null)
+            if (pointerEventData.pointerDrag.GetComponent<SkillUI>() != null && slottedSkill != null)
             {
-                draggedSkill = pointerEventData.pointerDrag.GetComponent<Skill>();
+                draggedSkill = pointerEventData.pointerDrag.GetComponent<SkillUI>();
                 if (draggedSkill.skillTier != skillTier)
                     return;
                 slottedImage.enabled = true;
                 canvas.transform.GetChild(canvas.transform.childCount - 1).GetComponent<RectTransform>().sizeDelta = slotted.GetComponent<RectTransform>().sizeDelta;
             }
 
-            if (pointerEventData.pointerDrag.GetComponent<Instrument>() != null && slottedInstrument != null)
+            if (pointerEventData.pointerDrag.GetComponent<InstrumentUI>() != null && slottedInstrument != null)
             {
-                draggedInstrument = pointerEventData.pointerDrag.GetComponent<Instrument>();  
+                draggedInstrument = pointerEventData.pointerDrag.GetComponent<InstrumentUI>();  
                 slottedImage.enabled = true;
                 canvas.transform.GetChild(canvas.transform.childCount - 1).GetComponent<RectTransform>().sizeDelta = slotted.GetComponent<RectTransform>().sizeDelta;
             }    
@@ -103,7 +103,7 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     {
         if (pointerEventData.dragging && pointerEventData.pointerDrag != null)
         {
-            if (pointerEventData.pointerDrag.GetComponent<Skill>() != null && slottedSkill != null)
+            if (pointerEventData.pointerDrag.GetComponent<SkillUI>() != null && slottedSkill != null)
             {
                 if (draggedSkill.skillTier != skillTier)
                     return;
@@ -111,7 +111,7 @@ public class SlotBehaviour : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
                 canvas.transform.GetChild(canvas.transform.childCount - 1).GetComponent<RectTransform>().sizeDelta = originalImageSize;
             }
 
-            if (pointerEventData.pointerDrag.GetComponent<Instrument>() != null && slottedInstrument != null)
+            if (pointerEventData.pointerDrag.GetComponent<InstrumentUI>() != null && slottedInstrument != null)
             {
                 slottedImage.enabled = false;
                 canvas.transform.GetChild(canvas.transform.childCount - 1).GetComponent<RectTransform>().sizeDelta = originalImageSize;

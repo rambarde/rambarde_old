@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Tooltip : MonoBehaviour
 {
     [HideInInspector]
-    public Skill skill;
+    public SkillUI skill;
     [HideInInspector]
-    public Instrument instrument;
+    public InstrumentUI instrument;
 
     //private RectTransform skillTooltipTransform;
     private GameObject Name;

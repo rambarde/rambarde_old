@@ -44,7 +44,7 @@ public class InstrumentBehaviour :
         {
             if(instrumentTooltip!=null)
             {
-                instrumentTooltip.instrument = GetComponent<Instrument>();
+                instrumentTooltip.instrument = GetComponent<InstrumentUI>();
                 instrumentTooltip.skill = null;
                 instrumentTooltip.Activated();
 
@@ -83,7 +83,7 @@ public class InstrumentBehaviour :
 
     public void OnBeginDrag(PointerEventData pointerEventData)
     {
-        if (GetComponent<Instrument>().isDraggable)
+        if (GetComponent<InstrumentUI>().isDraggable)
         {
             drag = new GameObject();
             drag.AddComponent<CanvasRenderer>();
@@ -112,7 +112,7 @@ public class InstrumentBehaviour :
 
     public void OnDrag(PointerEventData pointerEventData)
     {
-        if (GetComponent<Instrument>().isDraggable)
+        if (GetComponent<InstrumentUI>().isDraggable)
         {
             Vector2 pointerPosition;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, pointerEventData.position, pointerEventData.pressEventCamera, out pointerPosition);
@@ -123,7 +123,7 @@ public class InstrumentBehaviour :
 
     public void OnEndDrag(PointerEventData pointerEventData)
     {
-        if (GetComponent<Instrument>().isDraggable)
+        if (GetComponent<InstrumentUI>().isDraggable)
         {
             Destroy(drag);
         }
