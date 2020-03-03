@@ -24,6 +24,7 @@ namespace Characters {
         private bool _skillIndexChanged;
         private Animator _animator;
         private CombatManager _combatManager;
+        //TODO make target modifiable through CombatManager/melodies
         private CharacterControl _target;
         private IObservable<int> _animationSkillStateObservable;
 
@@ -135,8 +136,8 @@ namespace Characters {
             currentStats.hp.Value = CalculateDamage(dmg);
             if (currentStats.hp.Value > 0) return;
             
-            // TODO: spawn floating text for damage taken
-            // TODO: Change this to wait for animation take damage finish
+            //TODO: spawn floating text for damage taken
+            //TODO: Change this to wait for animation take damage finish
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
             _combatManager.Remove(this);
         }
@@ -148,14 +149,14 @@ namespace Characters {
             _skillIndex = (_skillIndex + 1) % skillWheel.Length;
             _skillIndexChanged = true;
             
-            // TODO: wait for skill wheel animation finish
+            //TODO: wait for skill wheel animation finish
         }
 
         public async Task DecrementSkillWheel() {
             _skillIndex--;
             _skillIndexChanged = true;
             
-            // TODO: wait for skill wheel animation finish
+            //TODO: wait for skill wheel animation finish
         }
 
         #region Unity

@@ -10,14 +10,21 @@ namespace Status {
         public ReactiveProperty<int> turnsLeft;
         public string spriteName;
 
-        protected CharacterControl Target;
+        protected CharacterControl target;
 
         private bool _justApplied = true;
+
+        protected StatusEffect(CharacterControl target, int turns) {
+            this.target = target;
+            turnsLeft = new ReactiveProperty<int>(turns);
+        }
 
         // Abstract methods
         protected virtual async Task PreTurnStart() { }
 
         protected virtual async Task PostTurnEnd() { }
+
+        protected virtual void Cleanup() { }
 
         // Final methods
         public async Task TurnStart() {
@@ -38,11 +45,12 @@ namespace Status {
         }
 
         public void RemoveEffect() {
-            Target.statusEffects.Remove(this);
+            Cleanup();
+            target.statusEffects.Remove(this);
         }
 
         public static async Task ApplyEffect<T>(CharacterControl target, Lazy<T> addedEffect, int addedTurns = 0) where T : StatusEffect {
-            // TODO: applying effect animation
+            //TODO: applying effect animation
 
             var effects = target.statusEffects;
             var effect = effects.FirstOrDefault(x => x.GetType() == typeof(T));
