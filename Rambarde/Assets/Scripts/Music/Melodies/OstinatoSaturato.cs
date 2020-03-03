@@ -12,8 +12,7 @@ namespace Melodies {
                 return;
             }
 
-            await StatusEffect.ApplyEffect(target, 
-                new Lazy<DeafEffect>(() => new DeafEffect(t, 2)));
+            await StatusEffect.ApplyEffect(target, EffectType.Deaf, 2);
             await t.DecrementSkillWheel();
         }
     }

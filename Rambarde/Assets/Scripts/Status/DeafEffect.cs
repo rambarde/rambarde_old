@@ -15,7 +15,6 @@ namespace Status {
             turnsLeft = new ReactiveProperty<int>(turns);
         }
         protected override Task PreTurnStart() {
-            Debug.Log(Target.effectTypes);
             return base.PreTurnStart();
         }
 

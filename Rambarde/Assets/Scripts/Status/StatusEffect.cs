@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Characters;
+using TMPro;
 using UniRx;
+using UnityEngine;
 
 namespace Status {
     [Serializable]
@@ -57,6 +59,36 @@ namespace Status {
             }
 
         }
+        
+        public static async Task ApplyEffect(CharacterControl target, EffectType effectType, int nbrTurn, float value = 0.0f) {
+            // TODO: applying effect animation
+
+            var effects = target.statusEffects;
+            StatusEffect effect = effects.FirstOrDefault(e => e.type == effectType);;
+            if (effect is null) {
+                effect = CreateEffect(target, effectType, nbrTurn, value);
+                effects.Add(effect);
+                target.effectTypes.Value |= effectType;
+            } else {
+                effect.AddTurns(nbrTurn);
+            }
+
+        }
+
+        public static StatusEffect CreateEffect(CharacterControl target, EffectType effectType, int nbrTurn, float value = 0.0f) {
+            switch (effectType) {
+                case EffectType.Poison :
+                    return new PoisonEffect(target, value, nbrTurn);
+                case EffectType.HealthRegen :
+                    return new HealthRegen(target, value, nbrTurn);
+                case EffectType.Deaf :
+                    return new DeafEffect(target, nbrTurn);
+                default:
+                    Debug.LogError("Error : tried to create an invalid status effect [" + effectType + "]");
+                    return null;
+            }
+        }
+        
 
         public void AddTurns(int n) {
             turnsLeft.Value += n;
