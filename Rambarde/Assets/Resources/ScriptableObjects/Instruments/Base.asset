@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   melodies:
   - {fileID: 11400000, guid: cae91ef811c619241b2e83425b77b552, type: 2}
+  - {fileID: 11400000, guid: 36792fe23c604f04e92a12faff14744a, type: 2}
+  - {fileID: 11400000, guid: ab50a7eb489fcb7499cb328723d022e6, type: 2}

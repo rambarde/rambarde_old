@@ -7,6 +7,7 @@ namespace Status {
         private readonly float _pts;
 
         public HealthRegen(CharacterControl target, float pts, int turns) {
+            type = EffectType.HealthRegen;
             Target = target;
             _pts = pts;
             turnsLeft = new ReactiveProperty<int>(turns);

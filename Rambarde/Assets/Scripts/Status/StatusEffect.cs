@@ -9,7 +9,7 @@ namespace Status {
     public abstract class StatusEffect {
         public ReactiveProperty<int> turnsLeft;
         public string spriteName;
-
+        public EffectType type;
         protected CharacterControl Target;
 
         private bool _justApplied = true;
@@ -39,6 +39,7 @@ namespace Status {
 
         public void RemoveEffect() {
             Target.statusEffects.Remove(this);
+            Target.effectTypes.Value &= ~type;
         }
 
         public static async Task ApplyEffect<T>(CharacterControl target, Lazy<T> addedEffect, int addedTurns = 0) where T : StatusEffect {
@@ -49,14 +50,25 @@ namespace Status {
 
             if (effect is null) {
                 effects.Add(addedEffect.Value);
+                target.effectTypes.Value |= addedEffect.Value.type;
             }
             else {
                 effect.AddTurns(addedTurns);
             }
+
         }
 
         public void AddTurns(int n) {
             turnsLeft.Value += n;
         }
+    }
+
+    [Flags]
+    public enum EffectType : int{
+        None = 0,
+        Poison = 1,
+        HealthRegen = 2,
+        Deaf = 4,
+        
     }
 }

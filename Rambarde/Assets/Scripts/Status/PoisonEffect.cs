@@ -9,6 +9,7 @@ namespace Status {
         private string _animationName = "PoisonEffect";
 
         public PoisonEffect(CharacterControl target, float dmg, int turns) {
+            type = EffectType.Poison;
             _dmg = dmg;
             Target = target;
             spriteName = "vfx-poison";
