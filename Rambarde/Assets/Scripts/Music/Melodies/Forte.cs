@@ -8,7 +8,7 @@ namespace Music.Melodies {
     [CreateAssetMenu(fileName = "Forte", menuName = "Melody/Forte")]
     class Forte : Melody {
         protected override async Task ExecuteOnTarget(CharacterControl t) {
-            await StatusEffect.ApplyBuff(t, 2, BuffType.Attack);
+            await StatusEffect.ApplyBuff(t, BuffType.Attack, 2);
         }
     }
 }

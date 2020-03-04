@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Skills {
     [CreateAssetMenu(fileName = "PoisonSkill", menuName = "Skills/PoisonSkill")]
-    public class PoisonSkill : Skill {
+    public class PoisonSkill : Skill_ {
         [SerializeField] private int turns;
         [SerializeField] private float atqRatio;
 

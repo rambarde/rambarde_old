@@ -72,7 +72,7 @@ public class Hud : MonoBehaviour {
                 button.OnClickAsObservable()
                     .Subscribe(_ => {
                         List<IDisposable> subscriptions = new List<IDisposable>();
-                        switch (melody.targetMode) {
+                        switch (melody.melodyTargetMode) {
                             case MelodyTargetMode.EveryAlly :
                             case MelodyTargetMode.EveryEnemy :
                             case MelodyTargetMode.Everyone :
@@ -107,7 +107,7 @@ public class Hud : MonoBehaviour {
                             
                             default:
                                 Debug.Log("Warning : Melody ["+ melody.name+"] " +
-                                          "has no known targetMode ("+ melody.targetMode +")");
+                                          "has no known targetMode ("+ melody.melodyTargetMode +")");
                                 break;
                         }
                     })
