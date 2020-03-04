@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Script: {fileID: 11500000, guid: 68929d3c41f54f540b3318f1bb6f2945, type: 3}
+  m_Name: ConBravura
   m_EditorClassIdentifier: 
-  melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  data: 1-1-1-1-
+  targetMode: 2
+  tier: 0
+  inspirationValue: 0

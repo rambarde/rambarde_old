@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Name: Luth
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  - {fileID: 11400000, guid: 3ccc000e0a69df34790d17cc59678a9e, type: 2}
+  - {fileID: 11400000, guid: d0aa4b2783be0bb4e9e4646818dc31f1, type: 2}
+  - {fileID: 11400000, guid: bb41dac8d1b48e1418534cbd9d47a2d1, type: 2}
+  - {fileID: 11400000, guid: a53922cf47d299840b44edadbc890230, type: 2}

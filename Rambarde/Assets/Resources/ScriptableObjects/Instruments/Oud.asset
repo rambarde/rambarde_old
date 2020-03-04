@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Name: Oud
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  - {fileID: 11400000, guid: 144369a144fca5b4490a9eff05e3cc4a, type: 2}
+  - {fileID: 11400000, guid: 136964976997a7b408492d4323f09d39, type: 2}
+  - {fileID: 11400000, guid: 2c9305a3a3fc5434282699fe7dda44b3, type: 2}
+  - {fileID: 11400000, guid: 65b8805f0efff184e9bff587e5378d6a, type: 2}

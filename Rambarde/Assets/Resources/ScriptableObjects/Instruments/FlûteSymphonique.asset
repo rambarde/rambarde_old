@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Name: "Fl\xFBteSymphonique"
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  - {fileID: 11400000, guid: b9516850460e0eb408b5c446bd95e853, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: a60df1dfc31f0744ebb0f5e37e325961, type: 2}
+  - {fileID: 0}

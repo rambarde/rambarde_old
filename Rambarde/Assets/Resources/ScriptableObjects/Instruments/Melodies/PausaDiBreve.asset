@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84343e7255164765ae639d18f976f7c5, type: 3}
-  m_Name: Forte
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: PausaDiBreve
+  m_EditorClassIdentifier: Assembly-CSharp:Music.Melodies:PausaDiBreve
   data: 1-1-1-1-
   targetMode: 0
-  tier: 1
-  inspirationValue: 2
+  tier: 3
+  inspirationValue: -3

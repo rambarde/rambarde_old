@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Name: TambourDeFoire
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  - {fileID: 11400000, guid: 0ade690935bf72f4bb763ae49b42ac23, type: 2}
+  - {fileID: 11400000, guid: c41046357639ce440948020945e55eed, type: 2}
+  - {fileID: 11400000, guid: 40ee9c0829af1d747b43081612053983, type: 2}
+  - {fileID: 11400000, guid: 6e686b970c7e902469aaeaf714a197ee, type: 2}

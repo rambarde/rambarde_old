@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Script: {fileID: 11500000, guid: 94110e2909bf87f4ea2c6a80a3d0c140, type: 3}
+  m_Name: Accelerando
   m_EditorClassIdentifier: 
-  melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  data: 1-1-1-1-
+  targetMode: 5
+  tier: 2
+  inspirationValue: -2

@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
-  m_Name: Guitar
+  m_Name: "Fl\xFBteChamp\xEAtre"
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 62c3872fad44ab742aa4a6ed8aa9ebdb, type: 2}
-  - {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7, type: 2}
+  - {fileID: 11400000, guid: 8637d8041eba07844868594f12d6d475, type: 2}
+  - {fileID: 11400000, guid: ae39e83596036a247a6d66ed7779d2bc, type: 2}
+  - {fileID: 11400000, guid: b54e1b003449eda499118059d4c3fee4, type: 2}
+  - {fileID: 11400000, guid: f41dba797ff2f0a48bf5e04c0c45a4fc, type: 2}
