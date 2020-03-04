@@ -85,7 +85,7 @@ namespace Status {
             }
         }
         
-        public static async Task ApplyBuff(CharacterControl target, int nbrTurn, BuffType buffType, int modifier) {
+        public static async Task ApplyBuff(CharacterControl target, int nbrTurn, BuffType buffType) {
             // TODO: applying effect animation
 
             var effects = target.statusEffects;
@@ -94,7 +94,7 @@ namespace Status {
                 && ((Buff) e)._buffType == buffType);
             
             if (effect is null) {
-                effect = new Buff(target, nbrTurn, buffType, modifier);
+                effect = new Buff(target, nbrTurn, buffType, nbrTurn);
                 effects.Add(effect);
                 target.effectTypes.Value |= EffectType.Buff;
             } else {
