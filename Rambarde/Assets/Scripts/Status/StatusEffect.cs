@@ -85,7 +85,7 @@ namespace Status {
             }
         }
         
-        public static async Task ApplyBuff(CharacterControl target, int nbrTurn, BuffType buffType) {
+        public static async Task ApplyBuff(CharacterControl target, BuffType buffType, int nbrTurn) {
             // TODO: applying effect animation
 
             var effects = target.statusEffects;

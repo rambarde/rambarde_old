@@ -15,7 +15,7 @@ namespace Characters {
 
     public class CharacterControl : MonoBehaviour {
         public Team team;
-        public Skill[] skillWheel;
+        public Skill_[] skillWheel;
         public Stats currentStats;
         public CharacterData characterData;
         public ReactiveCollection<StatusEffect> statusEffects;

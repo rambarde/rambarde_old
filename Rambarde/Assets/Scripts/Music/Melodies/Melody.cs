@@ -15,7 +15,7 @@ namespace Melodies {
         public string Data => data;
         public int Size => data.Length;
         
-        public MelodyTargetMode targetMode;
+        public MelodyTargetMode melodyTargetMode;
         [NonSerialized] public ReactiveProperty<int> score = new ReactiveProperty<int>(0);
         
         [NonSerialized] public CharacterControl target = null;
@@ -25,7 +25,7 @@ namespace Melodies {
         public int inspirationValue;
 
         public async Task Execute() {
-            switch (targetMode) {
+            switch (melodyTargetMode) {
                 case MelodyTargetMode.Anyone :
                 case MelodyTargetMode.OneAlly :
                 case MelodyTargetMode.OneEnemy :
