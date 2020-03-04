@@ -20,6 +20,9 @@ namespace Status {
         protected virtual async Task PreTurnStart() { }
 
         protected virtual async Task PostTurnEnd() { }
+        
+        protected virtual async Task Apply() { }
+        protected virtual async Task Remove() { }
 
         // Final methods
         public async Task TurnStart() {
