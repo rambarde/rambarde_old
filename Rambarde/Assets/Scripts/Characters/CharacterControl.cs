@@ -19,6 +19,7 @@ namespace Characters {
         public Stats currentStats;
         public CharacterData characterData;
         public ReactiveCollection<StatusEffect> statusEffects;
+        public ReactiveProperty<EffectType> effectTypes;
         
         private int _skillIndex;
         private bool _skillIndexChanged;
@@ -154,15 +155,21 @@ namespace Characters {
 
         public async Task DecrementSkillWheel() {
             _skillIndex--;
+            if (_skillIndex == -1) {
+                _skillIndex = skillWheel.Length - 1;
+            }
             _skillIndexChanged = true;
             
             //TODO: wait for skill wheel animation finish
         }
 
+        public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
+
         #region Unity
 
         private void Awake() {
             statusEffects = new ReactiveCollection<StatusEffect>();
+            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
         }
 
         protected void Start() {
