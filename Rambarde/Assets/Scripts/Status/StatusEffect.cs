@@ -85,20 +85,21 @@ namespace Status {
             }
         }
         
-        public static async Task ApplyBuff(CharacterControl target, BuffType buffType, int nbrTurn) {
+        public static async Task ApplyBuff(CharacterControl target, BuffType buffType, int level) {
             // TODO: applying effect animation
 
             var effects = target.statusEffects;
             Buff effect = (Buff) effects.FirstOrDefault(e => 
                 e.type == EffectType.Buff
-                && ((Buff) e)._buffType == buffType);
+                && ((Buff) e).buffType == buffType);
             
             if (effect is null) {
-                effect = new Buff(target, nbrTurn, buffType, nbrTurn);
+                effect = new Buff(target, level, buffType);
                 effects.Add(effect);
                 target.effectTypes.Value |= EffectType.Buff;
             } else {
-                effect.turnsLeft.Value = Math.Max(nbrTurn, effect.turnsLeft.Value);
+                // Atq2 + Atq-1 = Atq1
+                effect.turnsLeft.Value = Math.Max(level, effect.turnsLeft.Value);
             }
         }
 
