@@ -13,13 +13,13 @@ public class SkillUI : MonoBehaviour
     public int inspirationGeneration;       //only for T1 skills
     public int tranceGeneration;            //except for trance skills
     public string skillEffect;              //quick description of skill effect
-    public bool isDraggable = true;
+    public bool isClickable = false;
 
     [SerializeField]
 
     public SkillUI() { }
 
-    public SkillUI(int id, string name, int tier, int inspCost, int tranCost, int inspGen, int tranceGen, string effect, bool drag)
+    public SkillUI(int id, string name, int tier, int inspCost, int tranCost, int inspGen, int tranceGen, string effect, bool click)
     {
         ID = id;
         skillName = name;
@@ -29,7 +29,7 @@ public class SkillUI : MonoBehaviour
         inspirationGeneration = inspGen;
         tranceGeneration = tranceGen;
         skillEffect = effect;
-        isDraggable = drag;
+        isClickable = click;
     }
 
     public SkillUI getCopy()
@@ -46,6 +46,20 @@ public class SkillUI : MonoBehaviour
         this.tranceCost = skill.tranceCost;
         this.inspirationGeneration = skill.inspirationGeneration;
         this.skillEffect = skill.skillEffect;
-        this.isDraggable = skill.isDraggable;
+        //this.isClickable = skill.isClickable;
     }
+
+    public void unEquip(int tier)
+    {
+        this.ID = 0;
+        this.skillName = "";
+        this.skillTier = tier;
+        this.inspirationCost = 0;
+        this.tranceCost = 0;
+        this.inspirationGeneration = 0;
+        this.skillEffect = "";
+        this.isClickable = false;
+    }
+
+    public void setClickable(bool clickable) { this.isClickable = clickable; }
 }

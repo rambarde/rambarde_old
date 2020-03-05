@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillTier: 0
+  innateSkillSlot: 1
+  instrumentSkillSlot: 0
+  instrumentSlot: 0
+  skillSlotted: 0
 --- !u!114 &1526614414894840943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InnateSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: isClickable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}

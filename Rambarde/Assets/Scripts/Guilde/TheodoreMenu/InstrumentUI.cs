@@ -9,28 +9,28 @@ public class InstrumentUI : MonoBehaviour
     public string instrumentName;           //skill name
     [Tooltip("0=ATK; 1=DEF; 2=HEAL")]
     public int instrumentType;              //could be 0=innate, 1=instrument, 2=trance skill
-    public string instrumentPassif;              //quick description of skill effect
-    public int skillID1; 
-    public int skillID2; 
-    public int skillID3; 
-    public int skillID4; 
-    public bool isDraggable = true;
+    public string instrumentPassif;         //quick description of skill effect
+    public SkillUI skill1;
+    public SkillUI skill2;
+    public SkillUI skill3;
+    public SkillUI skill4;
+    public bool isClickable = true;
 
     [SerializeField]
 
     public InstrumentUI() { }
 
-    public InstrumentUI(int id, string name, int type, string effect, int id1, int id2, int id3, int id4,  bool drag)
+    public InstrumentUI(int id, string name, int type, string effect, SkillUI s1, SkillUI s2, SkillUI s3, SkillUI s4,  bool click)
     {
         ID = id;
         instrumentName = name;
         instrumentType = type;
         instrumentPassif = effect;
-        skillID1 = id1;
-        skillID2 = id2;
-        skillID3 = id3;
-        skillID4 = id4;
-        isDraggable = drag;
+        skill1 = s1;
+        skill2 = s2;
+        skill3 = s3;
+        skill4 = s4;
+        isClickable = click;
     }
 
     public InstrumentUI getCopy()
@@ -44,10 +44,25 @@ public class InstrumentUI : MonoBehaviour
         this.instrumentName = instrument.instrumentName;
         this.instrumentType = instrument.instrumentType;
         this.instrumentPassif = instrument.instrumentPassif;
-        this.skillID1 = instrument.skillID1;
-        this.skillID2 = instrument.skillID2;
-        this.skillID3 = instrument.skillID3;
-        this.skillID4 = instrument.skillID4;
-        this.isDraggable = instrument.isDraggable;
+        this.skill1 = instrument.skill1;
+        this.skill2 = instrument.skill2;
+        this.skill3 = instrument.skill3;
+        this.skill4 = instrument.skill4;
+        //this.isClickable = instrument.isClickable;
     }
+
+    public void unEquip()
+    {
+        this.ID = 0;
+        this.instrumentName = "";
+        this.instrumentType = 0;
+        this.instrumentPassif = "";
+        this.skill1 = null;
+        this.skill2 = null;
+        this.skill3 = null;
+        this.skill4 = null;
+        this.isClickable = false;
+    }
+
+    public void setClickable(bool clickable) { this.isClickable = clickable; }
 }

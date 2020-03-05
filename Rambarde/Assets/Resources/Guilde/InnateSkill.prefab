@@ -107,4 +107,4 @@ MonoBehaviour:
   inspirationGeneration: 0
   tranceGeneration: 0
   skillEffect: 
-  isDragable: 1
+  isClickable: 1

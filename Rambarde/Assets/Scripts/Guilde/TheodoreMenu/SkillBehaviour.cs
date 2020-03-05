@@ -9,23 +9,24 @@ public class SkillBehaviour:
     /*AbstractSkill<Skill>,*/
     IPointerEnterHandler, 
     IPointerExitHandler,
-    IDragHandler, 
-    IBeginDragHandler, 
-    IEndDragHandler
-{ 
+    IPointerClickHandler
+    //IDragHandler, 
+    //IBeginDragHandler, 
+    //IEndDragHandler
+{
+    //public Skill skill;
+
     private GameObject canvas;
     private GameObject tooltip;
     private RectTransform canvasRectTransform;
     private RectTransform tooltipRectTransform;
     private Tooltip skillTooltip;
 
-    private GameObject drag;
-    private RectTransform dragTransform;
-    private Image dragImage;
-    private int skillTier;
-    private Sprite skillSprite;
-    private Color skillColor;
-    
+    private GameObject[] slottedSkills;
+    GameObject slot;
+    GameObject counter;
+    Button resetTier;
+
     void Start()
     {
         if(GameObject.FindWithTag("Tooltip")!=null)
@@ -36,6 +37,20 @@ public class SkillBehaviour:
         }
         canvas = GameObject.FindWithTag("Canvas");
         canvasRectTransform = GameObject.FindWithTag("Canvas").GetComponent<RectTransform>() as RectTransform;
+
+        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+        slottedSkills = new GameObject[4];
+        int j = 0;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            GameObject slot = slots[i];
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().innateSkillSlot)
+            {
+                slottedSkills[j] = slot;
+                j += 1;
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
@@ -81,55 +96,58 @@ public class SkillBehaviour:
             skillTooltip.DeActivated();
     }
 
-    //called before a drag is started; create the drag image and update shit
-    public void OnBeginDrag(PointerEventData pointerEventData)
+    public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (GetComponent<SkillUI>().isDraggable)
+        if (!GetComponent<SkillUI>().isClickable)
+            return;
+        int tier = GetComponent<SkillUI>().skillTier;
+        switch (tier)
         {
-            drag = new GameObject();
-            drag.AddComponent<CanvasRenderer>();
-            dragTransform = drag.AddComponent<RectTransform>();
-            dragImage = drag.AddComponent<Image>();
-            drag.transform.SetParent(canvas.transform);
-            drag.transform.SetAsLastSibling();
-            dragImage.raycastTarget = false;
+            case 1:
+                counter = GameObject.Find("Tier 1 counter");
+                resetTier = GameObject.Find("Reset Tier 1").GetComponent<Button>();
+                if (!slottedSkills[0].GetComponent<SlotBehaviour>().isSlotted())
+                    slot = slottedSkills[0];
+                else if (!slottedSkills[1].GetComponent<SlotBehaviour>().isSlotted())
+                    slot = slottedSkills[1];
+                else
+                    return;
+            break;
 
-            skillTier = GetComponent<SkillUI>().skillTier;
-            skillSprite = GetComponent<Image>().sprite;
-            skillColor = GetComponent<Image>().color;
+            case 2:
+                counter = GameObject.Find("Tier 2 counter");
+                resetTier = GameObject.Find("Reset Tier 2").GetComponent<Button>();
+                if (!slottedSkills[2].GetComponent<SlotBehaviour>().isSlotted())
+                    slot = slottedSkills[2];
+                else
+                    return;
+            break;
 
-            dragTransform.pivot = new Vector2(0.5f, 0.5f);
-            dragTransform.localScale = new Vector3(1, 1, 1);
-            dragTransform.sizeDelta = new Vector2(150, 150);
-            dragImage.sprite = skillSprite;
-            dragImage.color = skillColor;
-
-            if (transform.parent.CompareTag("Slot"))
-            {
-                GetComponent<Image>().enabled = false;
-            }
-        }
-    }
-
-    //update drag image position to mouse current position; called every time cursor is moved
-    public void OnDrag(PointerEventData pointerEventData)
-    {
-        if(GetComponent<SkillUI>().isDraggable)
-        {
-            Vector2 pointerPosition;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, pointerEventData.position, pointerEventData.pressEventCamera, out pointerPosition);
-
-            dragTransform.localPosition = pointerPosition;
+            case 3:
+                counter = GameObject.Find("Tier 3 counter");
+                resetTier = GameObject.Find("Reset Tier 2").GetComponent<Button>();
+                if (!slottedSkills[3].GetComponent<SlotBehaviour>().isSlotted())
+                    slot = slottedSkills[3];
+                else
+                    return;
+            break;
         }
         
+        GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
+        slottedSkill.GetComponent<SkillUI>().equip(GetComponent<SkillUI>());
+        slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
+        slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
+        slottedSkill.GetComponent<Image>().enabled = true;
+
+        slot.GetComponent<SlotBehaviour>().setSlotted(true);
+
+        counter.GetComponent<Counter>().increment();
+
+        GetComponent<SkillUI>().setClickable(false);
+        resetTier.onClick.AddListener(buttonReset);
     }
 
-    //called after a drag is complete; 
-    public void OnEndDrag(PointerEventData pointerEventData)
-    {
-        if (GetComponent<SkillUI>().isDraggable)
-        {
-            Destroy(drag);
-        }
-    }
+    void buttonReset() { GetComponent<SkillUI>().setClickable(true); }
+
+    //void 
 }

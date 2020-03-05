@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8590492382604525903}
   - component: {fileID: 7084490610555841357}
   - component: {fileID: 6005546212064305844}
+  - component: {fileID: 6209737222888339514}
   m_Layer: 5
   m_Name: Instrument Skill Slot
   m_TagString: Slot
@@ -37,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 7.232788, y: 209.64911}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8590492382604525903
 CanvasRenderer:
@@ -99,6 +100,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &6209737222888339514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851658629813066190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b5480fd13233246a49d3b4e49e6ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTier: 0
+  innateSkillSlot: 0
+  instrumentSkillSlot: 1
+  instrumentSlot: 0
 --- !u!1001 &8189468010921396852
 PrefabInstance:
   m_ObjectHideFlags: 0
