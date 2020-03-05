@@ -6,14 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InstrumentBehaviour : 
-    MonoBehaviour, 
-    IPointerEnterHandler, 
+public class InstrumentBehaviour :
+    MonoBehaviour,
+    IPointerEnterHandler,
     IPointerExitHandler,
     IPointerClickHandler
-    //IBeginDragHandler, 
-    //IDragHandler, 
-    //IEndDragHandler
 {
     private Tooltip instrumentTooltip;
     private GameObject canvas;
@@ -67,9 +64,9 @@ public class InstrumentBehaviour :
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if(!pointerEventData.dragging)
+        if (!pointerEventData.dragging)
         {
-            if(instrumentTooltip!=null)
+            if (instrumentTooltip != null)
             {
                 instrumentTooltip.instrument = GetComponent<InstrumentUI>();
                 instrumentTooltip.skill = null;
@@ -143,12 +140,12 @@ public class InstrumentBehaviour :
 
         GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(buttonReset);
     }
-       
+
     void buttonReset() { GetComponent<InstrumentUI>().setClickable(true); }
 
     int findSlot(GameObject[] slotList)
     {
-        for(int i = 0; i < slotList.Length; i++)
+        for (int i = 0; i < slotList.Length; i++)
             if (!slotList[i].GetComponent<SlotBehaviour>().isSlotted())
                 return i;
         return -1;
@@ -166,52 +163,4 @@ public class InstrumentBehaviour :
 
         slot.GetComponent<SlotBehaviour>().setSlotted(true);
     }
-
-    //public void OnBeginDrag(PointerEventData pointerEventData)
-    //{
-    //    if (GetComponent<InstrumentUI>().isDraggable)
-    //    {
-    //        drag = new GameObject();
-    //        drag.AddComponent<CanvasRenderer>();
-    //        dragTransform = drag.AddComponent<RectTransform>();
-    //        dragImage = drag.AddComponent<Image>();
-    //        drag.transform.SetParent(canvas.transform);
-    //        drag.transform.SetAsLastSibling();
-    //        dragImage.raycastTarget = false;
-
-    //        /*skillTier = GetComponent<Skill>().skillTier;*/
-    //        instrumentSprite = GetComponent<Image>().sprite;
-    //        instrumentColor = GetComponent<Image>().color;
-
-    //        dragTransform.pivot = new Vector2(0.5f, 0.5f);
-    //        dragTransform.localScale = new Vector3(1, 1, 1);
-    //        dragTransform.sizeDelta = new Vector2(150, 150);
-    //        dragImage.sprite = instrumentSprite;
-    //        dragImage.color = instrumentColor;
-
-    //        if (transform.parent.CompareTag("Slot"))
-    //        {
-    //            GetComponent<Image>().enabled = false;
-    //        }
-    //    }
-    //}
-
-    //public void OnDrag(PointerEventData pointerEventData)
-    //{
-    //    if (GetComponent<InstrumentUI>().isDraggable)
-    //    {
-    //        Vector2 pointerPosition;
-    //        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, pointerEventData.position, pointerEventData.pressEventCamera, out pointerPosition);
-
-    //        dragTransform.localPosition = pointerPosition;
-    //    }
-    //}
-
-    //public void OnEndDrag(PointerEventData pointerEventData)
-    //{
-    //    if (GetComponent<InstrumentUI>().isDraggable)
-    //    {
-    //        Destroy(drag);
-    //    }
-    //}
 }

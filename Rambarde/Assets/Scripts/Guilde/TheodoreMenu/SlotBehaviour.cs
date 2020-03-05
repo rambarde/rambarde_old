@@ -18,7 +18,6 @@ public class SlotBehaviour :
 
     public bool skillSlotted;
 
-    // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.FindWithTag("Canvas").gameObject;

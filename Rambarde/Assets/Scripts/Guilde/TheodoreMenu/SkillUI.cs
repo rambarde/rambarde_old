@@ -46,7 +46,6 @@ public class SkillUI : MonoBehaviour
         this.tranceCost = skill.tranceCost;
         this.inspirationGeneration = skill.inspirationGeneration;
         this.skillEffect = skill.skillEffect;
-        //this.isClickable = skill.isClickable;
     }
 
     public void unEquip(int tier)

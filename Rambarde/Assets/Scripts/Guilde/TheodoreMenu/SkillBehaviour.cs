@@ -6,16 +6,10 @@ using UnityEngine.EventSystems;
 
 public class SkillBehaviour: 
     MonoBehaviour,
-    /*AbstractSkill<Skill>,*/
     IPointerEnterHandler, 
     IPointerExitHandler,
     IPointerClickHandler
-    //IDragHandler, 
-    //IBeginDragHandler, 
-    //IEndDragHandler
 {
-    //public Skill skill;
-
     private GameObject canvas;
     private GameObject tooltip;
     private RectTransform canvasRectTransform;
@@ -148,6 +142,4 @@ public class SkillBehaviour:
     }
 
     void buttonReset() { GetComponent<SkillUI>().setClickable(true); }
-
-    //void 
 }

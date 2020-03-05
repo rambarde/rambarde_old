@@ -11,7 +11,6 @@ public class Tooltip : MonoBehaviour
     [HideInInspector]
     public InstrumentUI instrument;
 
-    //private RectTransform skillTooltipTransform;
     private GameObject Name;
     private GameObject effect;
     private GameObject skillCosts;
@@ -20,7 +19,6 @@ public class Tooltip : MonoBehaviour
     private string baseCosts;
     private string baseGeneration;
 
-    // Start is called before the first frame update
     void Start()
     {
         Name = this.transform.GetChild(1).gameObject;

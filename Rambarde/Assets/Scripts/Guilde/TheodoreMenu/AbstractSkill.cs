@@ -7,9 +7,6 @@ using UnityEngine.EventSystems;
 public abstract class AbstractSkill<T> : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler
-    /*IDragHandler,
-    IBeginDragHandler,
-    IEndDragHandler*/
 {
     private Tooltip abstractTooltip;
     private GameObject canvas;
@@ -43,7 +40,6 @@ public abstract class AbstractSkill<T> : MonoBehaviour,
             if (abstractTooltip != null)
             {
                 T test = GetComponent<T>();
-                //abstractTooltip.skill = test;// GetComponent<T>();
                 abstractTooltip.instrument = null;
                 abstractTooltip.Activated();
 
@@ -79,19 +75,4 @@ public abstract class AbstractSkill<T> : MonoBehaviour,
         if (abstractTooltip != null)
             abstractTooltip.DeActivated();
     }
-    /*
-    public void OnDrag(PointerEventData pointerEventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnBeginDrag(PointerEventData pointerEventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnEndDrag(PointerEventData pointerEventData)
-    {
-        throw new System.NotImplementedException();
-    }*/
 }

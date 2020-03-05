@@ -48,7 +48,6 @@ public class InstrumentUI : MonoBehaviour
         this.skill2 = instrument.skill2;
         this.skill3 = instrument.skill3;
         this.skill4 = instrument.skill4;
-        //this.isClickable = instrument.isClickable;
     }
 
     public void unEquip()
