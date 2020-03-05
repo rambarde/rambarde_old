@@ -16,15 +16,21 @@ namespace Skills {
         public Sprite sprite;
         [TextArea] public string description;
 
+        private CharacterControl _randEnemy;
+        private CharacterControl _randAlly;
+
         public async Task Execute(CharacterControl s) {
+            _randAlly = RandomTargetInTeam(s.team);
+            _randEnemy = RandomTargetInTeam(s.team + 1);
+            
             foreach (SkillAction action in actions) {
                 List<CharacterControl> targets = new List<CharacterControl>();
                 switch (action.targetMode) {
                     case SkillTargetMode.OneAlly:
-                        targets.Add(RandomTargetInTeam(s.team));
+                        targets.Add(_randAlly);
                         break;
                     case SkillTargetMode.OneEnemy:
-                        targets.Add(RandomTargetInTeam(s.team + 1));
+                        targets.Add(_randEnemy);
                         break;
                     case SkillTargetMode.Self:
                         targets.Add(s);
@@ -64,7 +70,8 @@ namespace Skills {
 
         private CharacterControl RandomTargetInTeam(Team team) {
             team = (Team) ((int) team % 2);
-            return CombatManager.Instance.teams[(int)team][Mathf.FloorToInt(Random.Range(0f, 2f))];
+            float nMemb = CombatManager.Instance.teams[(int) team].Count;
+            return CombatManager.Instance.teams[(int)team][Mathf.FloorToInt(Random.Range(0f, nMemb))];
         }
     }
 }

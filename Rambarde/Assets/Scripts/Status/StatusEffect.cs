@@ -71,13 +71,13 @@ namespace Status {
 
         }
         
-        public static async Task ApplyEffect(CharacterControl target, EffectType effectType, int nbrTurn, float value = 0.0f) {
+        public static async Task ApplyEffect(CharacterControl target, EffectType effectType, int nbrTurn) {
             // TODO: applying effect animation
 
             var effects = target.statusEffects;
             StatusEffect effect = effects.FirstOrDefault(e => e.type == effectType);
             if (effect is null) {
-                effect = CreateEffect(target, effectType, nbrTurn, value);
+                effect = CreateEffect(target, effectType, nbrTurn);
                 effects.Add(effect);
                 target.effectTypes.Value |= effectType;
             } else {
@@ -102,12 +102,12 @@ namespace Status {
             }
         }
 
-        public static StatusEffect CreateEffect(CharacterControl target, EffectType effectType, int nbrTurn, float value = 0.0f) {
+        public static StatusEffect CreateEffect(CharacterControl target, EffectType effectType, int nbrTurn) {
             switch (effectType) {
                 case EffectType.Poison :
-                    return new PoisonEffect(target, value, nbrTurn);
+                    return new PoisonEffect(target, 15, nbrTurn);
                 case EffectType.HealthRegen :
-                    return new HealthRegen(target, value, nbrTurn);
+                    return new HealthRegen(target, 15, nbrTurn);
                 case EffectType.Deaf :
                     return new DeafEffect(target, nbrTurn);
                 default:
@@ -123,7 +123,7 @@ namespace Status {
     }
 
     [Flags]
-    public enum EffectType : int{
+    public enum EffectType {
         None = 0,
         Buff = 1 << 1,
         HealthRegen = 1 << 2,

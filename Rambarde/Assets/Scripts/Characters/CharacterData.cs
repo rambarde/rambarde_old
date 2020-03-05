@@ -15,7 +15,7 @@ namespace Characters {
         public ReactiveCollection<Weapon> weapons;
         public ReactiveCollection<Armor> armors;
 
-        public Skill_[] skills;
+        public Skill[] skills;
 
         public void Init() {
             weapons = new ReactiveCollection<Weapon>(baseWeapons);
