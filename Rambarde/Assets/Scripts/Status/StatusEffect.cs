@@ -72,7 +72,7 @@ namespace Status {
         }
         
         public static async Task ApplyEffect(CharacterControl target, EffectType effectType, int nbrTurn) {
-            // TODO: applying effect animation
+            // TODO: apply effect animation
 
             var effects = target.statusEffects;
             StatusEffect effect = effects.FirstOrDefault(e => e.type == effectType);
@@ -86,7 +86,7 @@ namespace Status {
         }
         
         public static async Task ApplyBuff(CharacterControl target, BuffType buffType, int level) {
-            // TODO: applying effect animation
+            // TODO: apply effect animation
 
             var effects = target.statusEffects;
             Buff effect = (Buff) effects.FirstOrDefault(e => 
@@ -98,8 +98,16 @@ namespace Status {
                 effects.Add(effect);
                 target.effectTypes.Value |= EffectType.Buff;
             } else {
-                // Atq2 + Atq-1 = Atq1
-                effect.turnsLeft.Value = Math.Max(level, effect.turnsLeft.Value);
+                
+                // Buff3 + Buff1 = Buff3
+                if (Math.Sign(level) == Math.Sign(effect.level.Value)) {
+                    effect.level.Value = Math.Sign(level) * Math.Max(Math.Abs(level), Math.Abs(effect.turnsLeft.Value));
+                } else { // Atq2 + Atq-1 = Atq1
+                    effect.level.Value += effect.level.Value;
+                }
+                
+                effect.UpdateModifier();
+
             }
         }
 

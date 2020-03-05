@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Characters;
+using UniRx;
 using UnityEngine;
 
 namespace Status {
@@ -15,17 +16,17 @@ namespace Status {
     public class Buff : StatusEffect {
         private float _modifier;
         public readonly BuffType buffType;
-        public int level;
+        public ReactiveProperty<int> level;
 
         public Buff(CharacterControl target, int level, BuffType buffType) : base(target, Math.Abs(level)) {
             this.buffType = buffType;
-            this.level = level;
+            this.level = new ReactiveProperty<int>(level);
             
             ComputeModifier();
         }
 
         private void ComputeModifier() {
-            switch (level) {
+            switch (level.Value) {
                 case 1:
                     _modifier = 1.3f;
                     break;
@@ -45,18 +46,22 @@ namespace Status {
                     _modifier = 0.6f;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException($"{level} is not a valid buff modifier.");
+                    throw new InvalidEnumArgumentException($"{level.Value} is not a valid buff modifier.");
             }
         }
 
         protected override Task PostTurnEnd() {
             // fade out level
-            Remove();
-            level -= Math.Sign(level);
-            ComputeModifier();
-            Apply();
+            level.Value -= Math.Sign(level.Value);
+            UpdateModifier();
             
             return base.PostTurnEnd();
+        }
+
+        public void UpdateModifier() {
+            Remove();
+            ComputeModifier();
+            Apply();
         }
 
         protected override Task Apply() {
