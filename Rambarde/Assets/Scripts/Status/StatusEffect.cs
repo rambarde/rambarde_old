@@ -113,10 +113,12 @@ namespace Status {
 
         public static StatusEffect CreateEffect(CharacterControl target, EffectType effectType, int nbrTurn) {
             switch (effectType) {
-                case EffectType.Poison :
-                    return new PoisonEffect(target, 15, nbrTurn);
                 case EffectType.HealthRegen :
                     return new HealthRegen(target, 15, nbrTurn);
+                case EffectType.Poison :
+                    return new PoisonEffect(target, 15, nbrTurn);
+                case EffectType.Destabilized :
+                    return new Destabilized(target, nbrTurn);
                 case EffectType.Deaf :
                     return new DeafEffect(target, nbrTurn);
                 default:
