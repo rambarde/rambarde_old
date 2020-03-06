@@ -49,7 +49,7 @@ public class ChooseQuest : MonoBehaviour
         selectedQuestID = quest_id;
 
         // display button to select quest
-        GameObject.Find("Menu_Canvas").GetComponent<MenuBehaviour>().AllowQuestSelect(questPool[quest_id]);
+        GameObject.Find("ExpeditionMenu").GetComponent<ExpeditionMenuBehaviour>().AllowQuestSelect(questPool[quest_id]);
     }
 
     public void UpgradeParcours()

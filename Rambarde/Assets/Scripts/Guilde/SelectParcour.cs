@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SelectParcour : MonoBehaviour
 {
-
     List<GameObject> questMenus = new List<GameObject>();
 
     // Start is called before the first frame update
@@ -35,7 +34,7 @@ public class SelectParcour : MonoBehaviour
             if (menu.tag == tag)
             {
                 menu.SetActive(true);
-                menu.transform.position = GameObject.FindGameObjectWithTag(tag+"_Button").transform.position + new Vector3Int(-250,0,0);
+                menu.transform.position = GameObject.FindGameObjectWithTag(tag + "_Button").transform.position + new Vector3Int(-190,0,0);
             }
             else
             {
@@ -44,7 +43,7 @@ public class SelectParcour : MonoBehaviour
         }
 
         // Prevent from selecting a quest
-        GameObject.Find("Menu_Canvas").GetComponent<MenuBehaviour>().DeactivateQuestSelect();
+        GameObject.Find("ExpeditionMenu").GetComponent<ExpeditionMenuBehaviour>().DeactivateQuestSelect();
     }
 
     public void ScrollParcours()
@@ -55,7 +54,7 @@ public class SelectParcour : MonoBehaviour
         }
 
         // Prevent from selecting a quest
-        GameObject.Find("Menu_Canvas").GetComponent<MenuBehaviour>().DeactivateQuestSelect();
+        GameObject.Find("ExpeditionMenu").GetComponent<ExpeditionMenuBehaviour>().DeactivateQuestSelect();
     }
 
 }
