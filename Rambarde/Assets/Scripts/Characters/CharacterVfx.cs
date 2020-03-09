@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace Characters {
     public class CharacterVfx : MonoBehaviour {
-        public CharacterControl characterControl;
-        [SerializeField] private GameObject greenBar;
-        [SerializeField] private GameObject yellowBar;
-        [SerializeField] private GameObject statusEffects;
+        private CharacterControl _characterControl;
+        public GameObject greenBar;
+        public GameObject yellowBar;
+        public GameObject statusEffects;
 
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
@@ -19,10 +19,11 @@ namespace Characters {
             _characterHealth = GetComponentInChildren<TextMeshProUGUI>();
             if (_characterHealth == null) return;
 
-            characterControl.currentStats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
+            _characterControl = GetComponent<CharacterControl>();
+            _characterControl.currentStats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
 
             if (greenBar && yellowBar) {
-                characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>
+                _characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>
                     Utils.UpdateGameObjectLerp(x, greenBar, 2, LerpTime, LerpHealthBar,
                         pair => Utils.UpdateGameObjectLerp(x, yellowBar, 1, LerpTime, LerpHealthBar, _ => { }).AddTo(this)
                     ).AddTo(this)
@@ -30,7 +31,7 @@ namespace Characters {
             }
 
             if (statusEffects) {
-                characterControl.statusEffects.ObserveAdd().Subscribe(x => {
+                _characterControl.statusEffects.ObserveAdd().Subscribe(x => {
                     //TODO: Add animation for added effect
                     var added = x.Value;
 

@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Characters;
 using UniRx;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CombatManager : MonoBehaviour {
     public List<List<CharacterControl>> teams = new List<List<CharacterControl>>(2);
     public GameObject playerTeamGo, enemyTeamGo;
-
+    public RectTransform playersUiContainer;
     public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
 
+    private Canvas _canvas;
+    
     public CharacterControl GetTarget(int srcTeam, bool ally) {
         var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
         return teams[team][(int) (Random.Range(0f, 100f) / 50f) % teams[team].Count];
@@ -61,7 +65,10 @@ public class CombatManager : MonoBehaviour {
         _instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
+        _canvas = playersUiContainer.parent.gameObject.GetComponent<Canvas>();
+        
         const string dir = "ScriptableObjects/Characters";
         var mage = Utils.LoadResourceFromDir<CharacterData>(dir, "Mage");
         var warrior = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
@@ -78,8 +85,17 @@ public class CombatManager : MonoBehaviour {
         var i = 0;
         foreach (Transform t in playerTeamGo.transform) {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
-            go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, -90, 0);
-            go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, -90, 0);
+            var hBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
+            hBarUi.name = "HealthBar" + t.gameObject.name;
+            var position = t.position;
+            hBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
+            var sSlotUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
+            sSlotUi.name = "SkillSlot" + t.gameObject.name;
+            sSlotUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
+            var vfx = go.GetComponent<CharacterVfx>();
+            vfx.greenBar = hBarUi.transform.Find("GreenBar").gameObject;
+            vfx.yellowBar = hBarUi.transform.Find("YellowBar").gameObject;
+            vfx.statusEffects = hBarUi.transform.Find("StatusEffects").gameObject;
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", playerTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
@@ -92,8 +108,19 @@ public class CombatManager : MonoBehaviour {
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
-            go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
-            go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, 90, 0);
+            //go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
+            //go.transform.Find("SkillSlotCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
+            var hBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
+            hBarUi.name = "HealthBar" + t.gameObject.name;
+            var position = t.position;
+            hBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
+            var sSlotUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
+            sSlotUi.name = "SkillSlot" + t.gameObject.name;
+            sSlotUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
+            var vfx = go.GetComponent<CharacterVfx>();
+            vfx.greenBar = hBarUi.transform.Find("GreenBar").gameObject;
+            vfx.yellowBar = hBarUi.transform.Find("YellowBar").gameObject;
+            vfx.statusEffects = hBarUi.transform.Find("StatusEffects").gameObject;
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
