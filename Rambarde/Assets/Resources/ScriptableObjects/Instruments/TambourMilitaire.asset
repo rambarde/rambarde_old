@@ -20,3 +20,5 @@ MonoBehaviour:
   passif: La jauge de Transe se remplit 25% plus vite
   type: Attaque
   ID: 1
+  sprite: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
+  color: {r: 0.047058824, g: 0.64705884, b: 0.6784314, a: 1}

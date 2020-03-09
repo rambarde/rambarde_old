@@ -15,13 +15,22 @@ public class SkillBehaviour:
     private RectTransform canvasRectTransform;
     private RectTransform tooltipRectTransform;
     private Tooltip skillTooltip;
-    public bool isClickable;
     public Melodies.Melody melody;
+    public bool isClickable;
 
     private GameObject[] slottedSkills;
     GameObject slot;
     GameObject counter;
     Button resetTier;
+    
+    void Awake()
+    {
+        if (isClickable)
+        {
+            GetComponent<Image>().color = melody.color;
+            GetComponent<Image>().sprite = melody.sprite;
+        }
+    }
 
     void Start()
     {

@@ -19,3 +19,5 @@ MonoBehaviour:
   inspirationValue: -2
   tranceValue: 0
   ID: 6
+  sprite: {fileID: 21300000, guid: 2c04f4986ebc72e48a8b0c3eb2e42db2, type: 3}
+  color: {r: 0, g: 0.9843137, b: 0.14509805, a: 1}
