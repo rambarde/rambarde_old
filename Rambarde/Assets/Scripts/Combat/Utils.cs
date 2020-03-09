@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using UniRx;
 using UnityEngine;
 
@@ -24,5 +25,11 @@ public static class Utils {
             .TakeWhile(_ => currentLerpTime < lerpTime + speed * Time.deltaTime)
             .DoOnCompleted(() => doOnComplete(values))
             .Subscribe(_ => { subscribe(values, go, ref currentLerpTime, speed, lerpTime, ref t); });
+    }
+
+    public static string SplitCamelCase(string s)
+    {
+        var r = new Regex(@"(?<!^)(?=[A-Z](?![A-Z]|$))", RegexOptions.IgnorePatternWhitespace);
+        return r.Replace(s, " ");
     }
 }

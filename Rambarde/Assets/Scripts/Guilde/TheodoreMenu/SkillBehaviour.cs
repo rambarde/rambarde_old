@@ -15,6 +15,8 @@ public class SkillBehaviour:
     private RectTransform canvasRectTransform;
     private RectTransform tooltipRectTransform;
     private Tooltip skillTooltip;
+    public bool isClickable;
+    public Melodies.Melody melody;
 
     private GameObject[] slottedSkills;
     GameObject slot;
@@ -29,8 +31,8 @@ public class SkillBehaviour:
             skillTooltip = tooltip.GetComponent<Tooltip>();
             tooltipRectTransform = tooltip.GetComponent<RectTransform>() as RectTransform;
         }
-        canvas = GameObject.FindWithTag("Canvas");
-        canvasRectTransform = GameObject.FindWithTag("Canvas").GetComponent<RectTransform>() as RectTransform;
+        canvas = GameObject.FindWithTag("TheodoreMenu");
+        canvasRectTransform = canvas.GetComponent<RectTransform>() as RectTransform;
 
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
         slottedSkills = new GameObject[4];
@@ -53,9 +55,9 @@ public class SkillBehaviour:
         {
             if (skillTooltip != null)
             {
-                skillTooltip.skill = GetComponent<SkillUI>();
-                skillTooltip.instrument = null;
-                skillTooltip.Activated();
+                //skillTooltip.instrument = null; //change that later
+                skillTooltip.setMelody(melody);
+                skillTooltip.Activate(true);
 
                 if (canvasRectTransform == null)
                     return;
@@ -87,14 +89,14 @@ public class SkillBehaviour:
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if (skillTooltip != null)
-            skillTooltip.DeActivated();
+            skillTooltip.Activate(false);
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (!GetComponent<SkillUI>().isClickable)
+        if (!isClickable)
             return;
-        int tier = GetComponent<SkillUI>().skillTier;
+        int tier = melody.tier;
         switch (tier)
         {
             case 1:
@@ -128,7 +130,8 @@ public class SkillBehaviour:
         }
         
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
-        slottedSkill.GetComponent<SkillUI>().equip(GetComponent<SkillUI>());
+        slottedSkill.GetComponent<SkillBehaviour>().melody = melody;
+        slottedSkill.GetComponent<SkillBehaviour>().setClickable(false);
         slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;
@@ -137,9 +140,10 @@ public class SkillBehaviour:
 
         counter.GetComponent<Counter>().increment();
 
-        GetComponent<SkillUI>().setClickable(false);
+        isClickable = false;
         resetTier.onClick.AddListener(buttonReset);
     }
 
-    void buttonReset() { GetComponent<SkillUI>().setClickable(true); }
+    void buttonReset() { this.isClickable = true; }
+    public void setClickable(bool m_bool) { this.isClickable = m_bool; }
 }

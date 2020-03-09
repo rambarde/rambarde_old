@@ -7,7 +7,7 @@ namespace Melodies {
     public class DebugMelody : Melody
     {
         public string message;
-        public override async Task Execute() {
+        protected override async Task ExecuteOnTarget(CharacterControl t) {
             Debug.Log(message);
         }
     }

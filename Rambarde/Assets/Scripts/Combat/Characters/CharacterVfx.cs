@@ -31,7 +31,7 @@ namespace Characters {
 
             if (statusEffects) {
                 characterControl.statusEffects.ObserveAdd().Subscribe(x => {
-                    // TODO: Add animation for added effect
+                    //TODO: Add animation for added effect
                     var added = x.Value;
 
                     var go = Instantiate(Utils.LoadResourceFromDir<GameObject>(ResourcesDir, "StatusEffectIcon"), statusEffects.transform);
@@ -40,7 +40,7 @@ namespace Characters {
 
                     image.sprite = Utils.LoadResourceFromDir<Sprite>(ResourcesDir, added.spriteName);
                     added.turnsLeft.AsObservable().Subscribe(turns => {
-                        // TODO: Add animation for text change 
+                        //TODO: Add animation for text change 
                         text.text = turns.ToString();
                         if (turns == 0) {
                             Destroy(go);

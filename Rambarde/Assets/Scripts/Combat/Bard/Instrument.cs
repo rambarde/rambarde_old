@@ -8,5 +8,8 @@ namespace Bard
     public class Instrument : ScriptableObject {
         
         public Melody[] melodies;
+        public string passif;
+        public string type;
+        public int ID;
     }
 }

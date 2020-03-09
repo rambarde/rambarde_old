@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Note
+  - Counter
+  - Tooltip
+  - Canvas
+  - Slot
+  - Skill
+  - TheodoreMenu
   layers:
   - Default
   - TransparentFX

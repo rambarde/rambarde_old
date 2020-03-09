@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &244874 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7228900813116446754, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 4628460571202709680}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1644386
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +367,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1001241462}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Ostinato Armonioso
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Recule d\u2019un cran la roue ; une cible"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -419,6 +423,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a7d97d8d49164c44866ce9532fac7f9,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -443,32 +453,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Ostinato Armonioso
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Ostinato Armonioso
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Recule d\u2019un cran la roue ; une cible"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -1529,6 +1519,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: a60df1dfc31f0744ebb0f5e37e325961,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Color.r
@@ -1545,6 +1541,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: fc857ed836b90334f84e1b205cafe6ed,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -1828,11 +1830,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5d2ab8663a3653b43a68add74a525717,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: b9516850460e0eb408b5c446bd95e853,
+        type: 2}
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
       value: Leggiero
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 45df56dc2233d114db0ad36abb7a256c,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -1913,6 +1927,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Staccato
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: f09f13618a032fe4b9a04c00338690c1,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -2359,6 +2379,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c9305a3a3fc5434282699fe7dda44b3,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Color.g
@@ -2375,6 +2401,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: 37d2947ab87ede945a8357c58c8e5eda,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -2658,11 +2690,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 676104ad271b0c241bee12c8409a1304,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 144369a144fca5b4490a9eff05e3cc4a,
+        type: 2}
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
       value: Adagietto
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 65b8805f0efff184e9bff587e5378d6a,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -2743,6 +2787,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dolce
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 136964976997a7b408492d4323f09d39,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -3537,6 +3587,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345881488}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Contrattempo
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Change la cible parmi celles valides pour la prochaine comp\xE9tence
+        ; une cible"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -3563,6 +3630,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 4baa7185b82fa4e46b629cc018e3ab3a,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -3587,33 +3660,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Contrattempo
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Contrattempo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Change la cible parmi celles valides pour la prochaine comp\xE9tence
-        ; une cible"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -3897,6 +3949,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1001241462}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Accelerando
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Avance d\u2019un cran la roue ; tout le monde"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -3927,6 +3995,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 34c4839093592154f843670db1d39088,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -3951,32 +4025,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Accelerando
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Accelerando
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Avance d\u2019un cran la roue ; tout le monde"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -4291,6 +4345,7 @@ RectTransform:
   - {fileID: 1700023586}
   - {fileID: 1489585365}
   - {fileID: 922120451}
+  - {fileID: 1290994125}
   m_Father: {fileID: 1269460546}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4319,7 +4374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2af022a292deb4e9af664b7b4684b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 0}
   instrument: {fileID: 0}
 --- !u!1001 &721889423
 PrefabInstance:
@@ -4850,18 +4904,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 745424968}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &753926984 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7228900813116446754, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823361369}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &780363995
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,8 +5302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 30}
-  m_SizeDelta: {x: 130, y: 52}
+  m_AnchoredPosition: {x: -70, y: 30}
+  m_SizeDelta: {x: 110, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922120452
 MonoBehaviour:
@@ -5303,18 +5345,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922120450}
   m_CullTransparentMesh: 0
---- !u!114 &929463824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5100980437998646279, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 4628460571202709680}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5595,18 +5625,6 @@ MonoBehaviour:
   m_Spacing: {x: 250, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1009560559 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3004634699155725053, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823361369}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1016747989
 GameObject:
   m_ObjectHideFlags: 0
@@ -6099,18 +6117,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCount: 2
   button: {fileID: 1316334771}
---- !u!114 &1053307578 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5100980437998646279, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823361369}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1054591713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7161,7 +7167,7 @@ GameObject:
   - component: {fileID: 1269460543}
   m_Layer: 5
   m_Name: Theodore Menu
-  m_TagString: Canvas
+  m_TagString: TheodoreMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7250,6 +7256,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1290994124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290994125}
+  - component: {fileID: 1290994127}
+  - component: {fileID: 1290994126}
+  m_Layer: 5
+  m_Name: Tier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1290994125
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290994124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 719332310}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 70, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1290994126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290994124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Tier X
+--- !u!222 &1290994127
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290994124}
+  m_CullTransparentMesh: 0
 --- !u!1 &1316334769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7803,8 +7886,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 30}
-  m_SizeDelta: {x: 130, y: 52}
+  m_AnchoredPosition: {x: 70, y: 30}
+  m_SizeDelta: {x: 110, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489585366
 MonoBehaviour:
@@ -8315,6 +8398,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345881488}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Ostinato Saturato
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Recule d\u2019un cran la roue, Assourdi 2 ; une cible"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.ID
@@ -8355,6 +8454,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 36792fe23c604f04e92a12faff14744a,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -8364,32 +8469,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Ostinato Saturato
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Ostinato Saturato
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Recule d\u2019un cran la roue, Assourdi 2 ; une cible"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -8572,6 +8657,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: bb41dac8d1b48e1418534cbd9d47a2d1,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Color.r
@@ -8588,6 +8679,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: f1c57ca7b96293d4190f65a2fe520a8a,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -8870,11 +8967,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e3d72b1724a89604fad7dc2c671426ae,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ccc000e0a69df34790d17cc59678a9e,
+        type: 2}
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
       value: Moderato
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: a53922cf47d299840b44edadbc890230,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -8955,6 +9064,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Risoluto
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: d0aa4b2783be0bb4e9e4646818dc31f1,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -8969,6 +9084,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 342336207}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Scherzo
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Se cible soi-m\xEAme pour la prochaine comp\xE9tence ; une cible"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -8999,6 +9130,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: ca0dd4f2d83f72e4cb4c71ea7ba894aa,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -9014,26 +9151,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Scherzo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Se cible soi-m\xEAme pour la prochaine comp\xE9tence ; une cible"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -9157,18 +9274,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50810fb2b72917c4c9d99b6873fdc7be, type: 3}
---- !u!114 &1699717370 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3004634699155725053, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 4628460571202709680}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1700023585
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,6 +9358,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345881488}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Presto
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: Avance d'un cran la roue ; une cible
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillName
@@ -9278,6 +9399,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 5c76d16b9ac09254f8eb68926a19621f,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -9302,32 +9429,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Presto
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Presto
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: Avance d'un cran la roue ; une cible
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -9505,6 +9612,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1001241462}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Rondellus
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire
+        ; tout le monde"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -9536,6 +9660,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 996d9cc6878737f42aa32288b2e3e1e5,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -9560,33 +9690,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Rondellus
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Rondellus
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire
-        ; tout le monde"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -9933,12 +10042,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: b54e1b003449eda499118059d4c3fee4,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: 781c9ea8d21145a4fb6d479d7633fc22,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -10222,11 +10343,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4867db53aa592a64a851c36645423699,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 8637d8041eba07844868594f12d6d475,
+        type: 2}
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
       value: Fuocoso
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: aec932519f0573b428ed464ceea9b375,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -10307,6 +10440,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pausa di Croma
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: ae39e83596036a247a6d66ed7779d2bc,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -10388,6 +10527,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: e1ff496990d3cbc4480231e2e435dad5,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Color.r
@@ -10409,6 +10554,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: 08ec64a7366690548bf9c4d5f3c298a7,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -10504,22 +10655,22 @@ PrefabInstance:
         type: 3}
       propertyPath: skill1
       value: 
-      objectReference: {fileID: 753926984}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill2
       value: 
-      objectReference: {fileID: 1053307578}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill3
       value: 
-      objectReference: {fileID: 1009560559}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill4
       value: 
-      objectReference: {fileID: 2037917791}
+      objectReference: {fileID: 0}
     - target: {fileID: 3050468629939546553, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -10701,11 +10852,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fb75a98aad5d42149bf398e0bed37729,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 40144d0731fd4754e8389f80bb346ae7,
+        type: 2}
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
       value: Crescendo
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c89885ae18571847a2200ad51333898,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -10786,6 +10949,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Allegro
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: a9ed4848897e9774db64ec47fa3c16f1,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -10887,6 +11056,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 342336207}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ID
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Kyrielle
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "Les roues n\u2019avancent pas \xE0 la fin du tour ; tout le monde"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -10917,6 +11102,12 @@ PrefabInstance:
       propertyPath: skill.skillTier
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: d0f001331e0c1794daebb34c28e001c6,
+        type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Sprite
@@ -10941,32 +11132,12 @@ PrefabInstance:
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_Name
-      value: Kyrielle
+      value: InnateSkill
       objectReference: {fileID: 0}
     - target: {fileID: 6879237387177422650, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: ID
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Kyrielle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "Les roues n\u2019avancent pas \xE0 la fin du tour ; tout le monde"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -11636,30 +11807,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 662070517}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2037917791 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7598077911001473095, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 1823361369}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2082979390 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7598077911001473095, guid: d5149fe43e80aa74a9d2ecea240092af,
-    type: 3}
-  m_PrefabInstance: {fileID: 4628460571202709680}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2091489253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
@@ -12124,6 +12271,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345881488}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillName
+      value: Jam
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillTier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: skillEffect
+      value: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire
+        ; une cible"
+      objectReference: {fileID: 0}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: skill.skillEffect
@@ -12170,6 +12330,12 @@ PrefabInstance:
       propertyPath: skill
       value: 
       objectReference: {fileID: 11400000, guid: 675f101747ca9d740b5c0bcfbc34f64f,
+        type: 2}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 5500b29ce634ae44b936b18154662301,
         type: 2}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -12248,22 +12414,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Skill
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillName
-      value: Jam
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillTier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8671071269263486711, guid: 50810fb2b72917c4c9d99b6873fdc7be,
-        type: 3}
-      propertyPath: skillEffect
-      value: "R\xE9arrange les comp\xE9tence de la roue dans un ordre al\xE9atoire
-        ; une cible"
       objectReference: {fileID: 0}
     - target: {fileID: 8955787562870034442, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -12453,12 +12603,24 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
+    - target: {fileID: 2085485540845353608, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 40ee9c0829af1d747b43081612053983,
+        type: 2}
     - target: {fileID: 2207959908282409386, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9,
         type: 3}
+    - target: {fileID: 2380453393956837333, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: instrument
+      value: 
+      objectReference: {fileID: 11400000, guid: e055ee3c3b6911342bd746ab7253ff1e,
+        type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Sprite
@@ -12554,27 +12716,27 @@ PrefabInstance:
         type: 3}
       propertyPath: test
       value: 
-      objectReference: {fileID: 244874}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill1
       value: 
-      objectReference: {fileID: 244874}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill2
       value: 
-      objectReference: {fileID: 929463824}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill3
       value: 
-      objectReference: {fileID: 1699717370}
+      objectReference: {fileID: 0}
     - target: {fileID: 3023311927222451617, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: skill4
       value: 
-      objectReference: {fileID: 2082979390}
+      objectReference: {fileID: 0}
     - target: {fileID: 3050468629939546553, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -12776,6 +12938,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 137adc4b5a4bdb84587af37f8855a33b,
         type: 3}
+    - target: {fileID: 5841608139214370903, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 0ade690935bf72f4bb763ae49b42ac23,
+        type: 2}
     - target: {fileID: 5881195797084600159, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -12801,6 +12969,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diminuendo
       objectReference: {fileID: 0}
+    - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e686b970c7e902469aaeaf714a197ee,
+        type: 2}
     - target: {fileID: 6958941917257848982, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
@@ -12881,6 +13055,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forte
       objectReference: {fileID: 0}
+    - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
+        type: 3}
+      propertyPath: melody
+      value: 
+      objectReference: {fileID: 11400000, guid: c41046357639ce440948020945e55eed,
+        type: 2}
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name

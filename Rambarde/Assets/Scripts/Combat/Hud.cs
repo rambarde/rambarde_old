@@ -4,6 +4,7 @@ using System.Linq;
 using Bard;
 using Characters;
 using Melodies;
+using Status;
 using TMPro;
 using UniRx;
 using UniRx.Triggers;
@@ -79,14 +80,16 @@ public class Hud : MonoBehaviour {
                                 break;
                             
                             case MelodyTargetMode.OneAlly :
-                                foreach (CharacterControl character in CombatManager.Instance.teams[0]) {
+                                foreach (CharacterControl character
+                                    in CombatManager.Instance.teams[0].Where(c => ! c.HasEffect(EffectType.Deaf))) {
                                     character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }
                                 break;
                             
                             case MelodyTargetMode.OneEnemy :
-                                foreach (CharacterControl character in CombatManager.Instance.teams[1]) {
+                                foreach (CharacterControl character
+                                    in CombatManager.Instance.teams[1].Where(c => ! c.HasEffect(EffectType.Deaf))) {
                                     character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }
@@ -94,8 +97,9 @@ public class Hud : MonoBehaviour {
                             
                             case MelodyTargetMode.Anyone :
                                 foreach (CharacterControl character
-                                    in CombatManager.Instance.teams.SelectMany(team => team)) {
-
+                                    in CombatManager.Instance.teams.SelectMany(team => team)
+                                        .Where(c => ! c.HasEffect(EffectType.Deaf))) {
+                                    
                                     character.gameObject.transform.Find("HighLight").gameObject.SetActive(true);
                                     AddSubscription(subscriptions, bard, character, melody);
                                 }

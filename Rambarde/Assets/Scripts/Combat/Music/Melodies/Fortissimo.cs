@@ -1,0 +1,18 @@
+﻿using System.Threading.Tasks;
+using Characters;
+using Melodies;
+using Status;
+using UnityEngine;
+
+namespace Music.Melodies
+{
+    [CreateAssetMenu(fileName = "Fortissimo", menuName = "Melody/Fortissimo")]
+    class Fortissimo : Melody
+    {
+        protected override async Task ExecuteOnTarget(CharacterControl t)
+        {
+            await StatusEffect.ApplyBuff(t, 2, BuffType.Attack);
+            await StatusEffect.ApplyBuff(t, 2, BuffType.Critical);
+        }
+    }
+}

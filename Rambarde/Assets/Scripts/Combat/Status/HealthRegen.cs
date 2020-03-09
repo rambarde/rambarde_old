@@ -6,15 +6,14 @@ namespace Status {
     public class HealthRegen : StatusEffect {
         private readonly float _pts;
 
-        public HealthRegen(CharacterControl target, float pts, int turns) {
-            Target = target;
+        public HealthRegen(CharacterControl target, float pts, int turns) : base(target, turns) {
+            type = EffectType.HealthRegen;
             _pts = pts;
-            turnsLeft = new ReactiveProperty<int>(turns);
             spriteName = "vfx-heal";
         }
 
         protected override async Task PreTurnStart() {
-            await Target.Heal(_pts);
+            await target.Heal(_pts);
         }
     }
 }

@@ -40,8 +40,8 @@ public abstract class AbstractSkill<T> : MonoBehaviour,
             if (abstractTooltip != null)
             {
                 T test = GetComponent<T>();
-                abstractTooltip.instrument = null;
-                abstractTooltip.Activated();
+                //abstractTooltip.instrument = null;
+                abstractTooltip.Activate(true);
 
                 if (canvasRectTransform == null)
                     return;
@@ -73,6 +73,6 @@ public abstract class AbstractSkill<T> : MonoBehaviour,
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if (abstractTooltip != null)
-            abstractTooltip.DeActivated();
+            abstractTooltip.Activate(false);
     }
 }
