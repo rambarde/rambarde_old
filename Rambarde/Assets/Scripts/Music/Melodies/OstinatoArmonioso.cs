@@ -9,7 +9,7 @@ namespace Melodies {
             if (target == null) {
                 Debug.Log("Tried to execute a " + melodyTargetMode + " melody with no target");
             }
-            await target.DecrementSkillWheel();
+            await target.DecrementSkillsSlot();
         }
     }
 }

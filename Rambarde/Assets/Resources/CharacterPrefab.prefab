@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5243529882346777496}
   - component: {fileID: 3539259797235772338}
   - component: {fileID: 3326105704599261602}
+  - component: {fileID: 2391607414628581377}
   - component: {fileID: 9130248816315088009}
   m_Layer: 0
   m_Name: CharacterPrefab
@@ -46,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f67fe1aab5413184cf54681fd16df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterControl: {fileID: 0}
   greenBar: {fileID: 0}
   yellowBar: {fileID: 0}
   statusEffects: {fileID: 0}
@@ -63,7 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  skillWheel: []
   currentStats:
     maxHp: 0
     atq: 0
@@ -71,6 +70,23 @@ MonoBehaviour:
     crit: 0
     prec: 0
   characterData: {fileID: 0}
+  skillSlot: []
+--- !u!114 &2391607414628581377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804872141585677144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa56bda1422600449fe87cc99dc941e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  offset: 55
+  slotIconPositions: []
+  indicator: {fileID: 0}
 --- !u!65 &9130248816315088009
 BoxCollider:
   m_ObjectHideFlags: 0

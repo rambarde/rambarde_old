@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Characters;
+using UI;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -84,49 +85,75 @@ public class CombatManager : MonoBehaviour {
 
         var i = 0;
         foreach (Transform t in playerTeamGo.transform) {
+            // instantiate the character prefab
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
-            var hBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
-            hBarUi.name = "HealthBar" + t.gameObject.name;
-            var position = t.position;
-            hBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
-            var sSlotUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
-            sSlotUi.name = "SkillSlot" + t.gameObject.name;
-            sSlotUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
-            var vfx = go.GetComponent<CharacterVfx>();
-            vfx.greenBar = hBarUi.transform.Find("GreenBar").gameObject;
-            vfx.yellowBar = hBarUi.transform.Find("YellowBar").gameObject;
-            vfx.statusEffects = hBarUi.transform.Find("StatusEffects").gameObject;
+            
+            // Load the character 3d model
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", playerTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
+            
+            // Init the character control
             var character = go.GetComponent<CharacterControl>();
             character.Init(playerTeam[i]);
             character.team = Team.PlayerTeam;
             teams[0].Add(character);
+            
+            // instantiate the health bar on the canvas relatively to player position
+            var healthBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
+            healthBarUi.name = "HealthBar" + t.gameObject.name;
+            var position = t.position;
+            healthBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
+            var vfx = go.GetComponent<CharacterVfx>();
+            vfx.greenBar = healthBarUi.transform.Find("GreenBar").gameObject;
+            vfx.yellowBar = healthBarUi.transform.Find("YellowBar").gameObject;
+            vfx.statusEffects = healthBarUi.transform.Find("StatusEffects").gameObject;
+            
+            // instantiate the skills slot on the canvas relatively to player position
+            var slotUiGo = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
+            slotUiGo.name = "SkillSlot" + t.gameObject.name;
+            slotUiGo.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
+            SlotUi slotUi = go.GetComponent<SlotUi>();
+            foreach (RectTransform rectTransform in slotUiGo.transform.Find("Mask").transform)
+                slotUi.slotIconPositions.Add(rectTransform);
+            slotUi.Init();
+            slotUi.indicator = slotUiGo.transform.Find("Indicator").transform as RectTransform;
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
+            // instantiate the character prefab
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
-            //go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
-            //go.transform.Find("SkillSlotCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
-            var hBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
-            hBarUi.name = "HealthBar" + t.gameObject.name;
-            var position = t.position;
-            hBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
-            var sSlotUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
-            sSlotUi.name = "SkillSlot" + t.gameObject.name;
-            sSlotUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
-            var vfx = go.GetComponent<CharacterVfx>();
-            vfx.greenBar = hBarUi.transform.Find("GreenBar").gameObject;
-            vfx.yellowBar = hBarUi.transform.Find("YellowBar").gameObject;
-            vfx.statusEffects = hBarUi.transform.Find("StatusEffects").gameObject;
+            
+            // Load the character 3d model
             var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
+            
+            // Init the character control
             var character = go.GetComponent<CharacterControl>();
             character.team = Team.EmemyTeam;
             character.Init(enemyTeam[i]);
             teams[1].Add(character);
+            
+            // instantiate the health bar on the canvas relatively to player position
+            var healthBarUi = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "HealthBar"), playersUiContainer);
+            healthBarUi.name = "HealthBar" + t.gameObject.name;
+            var position = t.position;
+            healthBarUi.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
+            var vfx = go.GetComponent<CharacterVfx>();
+            vfx.greenBar = healthBarUi.transform.Find("GreenBar").gameObject;
+            vfx.yellowBar = healthBarUi.transform.Find("YellowBar").gameObject;
+            vfx.statusEffects = healthBarUi.transform.Find("StatusEffects").gameObject;
+            
+            // instantiate the skills slot on the canvas relatively to player position
+            var slotUiGo = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "SkillSlot"), playersUiContainer);
+            slotUiGo.name = "SkillSlot" + t.gameObject.name;
+            slotUiGo.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
+            SlotUi slotUi = go.GetComponent<SlotUi>();
+            foreach (RectTransform rectTransform in slotUiGo.transform.Find("Mask").transform)
+                slotUi.slotIconPositions.Add(rectTransform);
+            slotUi.Init();
+            slotUi.indicator = slotUiGo.transform.Find("Indicator").transform as RectTransform;
             ++i;
         }
     }

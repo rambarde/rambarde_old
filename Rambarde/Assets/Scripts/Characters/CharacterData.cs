@@ -1,4 +1,5 @@
-﻿using Skills;
+﻿using System.Collections.Generic;
+using Skills;
 using UniRx;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Characters {
         public ReactiveCollection<Weapon> weapons;
         public ReactiveCollection<Armor> armors;
 
-        public Skill[] skills;
+        public List<Skill> skills;
 
         public void Init() {
             weapons = new ReactiveCollection<Weapon>(baseWeapons);

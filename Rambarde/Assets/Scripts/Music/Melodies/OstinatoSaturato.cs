@@ -13,7 +13,7 @@ namespace Melodies {
             }
 
             await StatusEffect.ApplyEffect(target, EffectType.Deaf, 2);
-            await t.DecrementSkillWheel();
+            await t.DecrementSkillsSlot();
         }
     }
 }
