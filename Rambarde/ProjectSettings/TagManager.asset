@@ -11,6 +11,7 @@ TagManager:
   - Slot
   - Skill
   - TheodoreMenu
+  - ClientsMenu
   layers:
   - Default
   - TransparentFX
