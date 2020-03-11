@@ -7,6 +7,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
 {
     public GameObject[] subMenus;
 
+    GameObject switchMenuPanel;
+
     bool menuAlreadyActive = false;
 
     /** out **/
@@ -15,6 +17,9 @@ public class GuildeManagerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switchMenuPanel = GameObject.Find("SwitchMenuPanel");
+        switchMenuPanel.SetActive(false);
+
         foreach (GameObject menu in subMenus)
         {
             menu.SetActive(false);
@@ -27,6 +32,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         {
             subMenus[menuID].SetActive(true);
             menuAlreadyActive = true;
+            switchMenuPanel.SetActive(true);
         }
     }
 
@@ -38,6 +44,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         }
 
         menuAlreadyActive = false;
+        switchMenuPanel.SetActive(false);
     }
 
     public void SetQuest(Quest quest)
