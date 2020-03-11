@@ -113,6 +113,7 @@ public class CombatManager : MonoBehaviour {
             slotUiGo.name = "SkillSlot" + t.gameObject.name;
             slotUiGo.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
             SlotUi slotUi = go.GetComponent<SlotUi>();
+            slotUi.tooltip = slotUiGo.transform.Find("Tooltip").gameObject;
             foreach (RectTransform rectTransform in slotUiGo.transform.Find("Mask").transform)
                 slotUi.slotIconPositions.Add(rectTransform);
             slotUi.Init();
@@ -150,6 +151,7 @@ public class CombatManager : MonoBehaviour {
             slotUiGo.name = "SkillSlot" + t.gameObject.name;
             slotUiGo.transform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
             SlotUi slotUi = go.GetComponent<SlotUi>();
+            slotUi.tooltip = slotUiGo.transform.Find("Tooltip").gameObject;
             foreach (RectTransform rectTransform in slotUiGo.transform.Find("Mask").transform)
                 slotUi.slotIconPositions.Add(rectTransform);
             slotUi.Init();

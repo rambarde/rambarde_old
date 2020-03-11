@@ -2,6 +2,7 @@
 using Characters;
 using Skills;
 using DG.Tweening;
+using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -15,12 +16,16 @@ namespace UI
         [SerializeField] private float offset;
         [HideInInspector] public List<RectTransform> slotIconPositions = new List<RectTransform>();
         [HideInInspector] public RectTransform indicator;
+        [HideInInspector] public GameObject tooltip;
         private List<Skill> _skills;
 
         private CharacterControl _characterControl; 
         
         public void Init()
         {
+            TextMeshProUGUI descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
+            Image imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
             _characterControl = GetComponent<CharacterControl>();
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
@@ -29,14 +34,17 @@ namespace UI
                 slotIconPositions[i].GetComponent<Image>().OnPointerEnterAsObservable()
                     .Subscribe(_ =>
                     {
+                        //update tooltip ui
+                        
                         // show tooltip ui
                         
+                        tooltip.SetActive(true);
                     });
                 slotIconPositions[i].GetComponent<Image>().OnPointerExitAsObservable()
                     .Subscribe(_ =>
                     {
                         // hide tooltip ui 
-                        
+                        tooltip.SetActive(false);
                     });
             }
             
