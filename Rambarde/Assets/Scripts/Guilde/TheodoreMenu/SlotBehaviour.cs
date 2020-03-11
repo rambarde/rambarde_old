@@ -20,7 +20,7 @@ public class SlotBehaviour :
 
     void Start()
     {
-        canvas = GameObject.FindWithTag("Canvas").gameObject;
+        canvas = GameObject.FindWithTag("TheodoreMenu").gameObject;
         slotted = transform.GetChild(0).gameObject;
         skillSlotted = false;
     }

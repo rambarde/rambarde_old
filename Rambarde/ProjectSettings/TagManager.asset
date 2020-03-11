@@ -16,6 +16,12 @@ TagManager:
   - GuildMenuButton
   - SubMenu
   - ExpSubMenu
+  - Skill
+  - Slot
+  - Counter
+  - Tooltip
+  - Canvas
+  - TheodoreMenu
   layers:
   - Default
   - TransparentFX

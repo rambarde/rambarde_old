@@ -29,8 +29,8 @@ public class SkillBehaviour:
             skillTooltip = tooltip.GetComponent<Tooltip>();
             tooltipRectTransform = tooltip.GetComponent<RectTransform>() as RectTransform;
         }
-        canvas = GameObject.FindWithTag("Canvas");
-        canvasRectTransform = GameObject.FindWithTag("Canvas").GetComponent<RectTransform>() as RectTransform;
+        canvas = GameObject.FindWithTag("TheodoreMenu");
+        canvasRectTransform = GameObject.FindWithTag("TheodoreMenu").GetComponent<RectTransform>() as RectTransform;
 
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
         slottedSkills = new GameObject[4];
