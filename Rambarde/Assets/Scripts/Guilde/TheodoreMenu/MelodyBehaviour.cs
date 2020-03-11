@@ -4,20 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SkillBehaviour: 
+public class MelodyBehaviour: 
     MonoBehaviour,
     IPointerEnterHandler, 
     IPointerExitHandler,
     IPointerClickHandler
 {
-    private GameObject canvas;
-    private GameObject tooltip;
-    private RectTransform canvasRectTransform;
-    private RectTransform tooltipRectTransform;
-    private Tooltip skillTooltip;
     public Melodies.Melody melody;
     public bool isClickable;
 
+    private RectTransform canvasRectTransform;
+    private RectTransform tooltipRectTransform;
+    private Tooltip tooltip;
     private GameObject[] slottedSkills;
     GameObject slot;
     GameObject counter;
@@ -36,12 +34,10 @@ public class SkillBehaviour:
     {
         if(GameObject.FindWithTag("Tooltip")!=null)
         {
-            tooltip = GameObject.FindWithTag("Tooltip");
-            skillTooltip = tooltip.GetComponent<Tooltip>();
-            tooltipRectTransform = tooltip.GetComponent<RectTransform>() as RectTransform;
+            tooltip = GameObject.FindWithTag("Tooltip").GetComponent<Tooltip>();
+            tooltipRectTransform = GameObject.FindWithTag("Tooltip").GetComponent<RectTransform>() as RectTransform;
         }
-        canvas = GameObject.FindWithTag("TheodoreMenu");
-        canvasRectTransform = canvas.GetComponent<RectTransform>() as RectTransform;
+        canvasRectTransform = GameObject.FindWithTag("TheodoreMenu").GetComponent<RectTransform>() as RectTransform;
 
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
         slottedSkills = new GameObject[4];
@@ -60,45 +56,41 @@ public class SkillBehaviour:
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if (!pointerEventData.dragging)
+        if (tooltip != null)
         {
-            if (skillTooltip != null)
-            {
-                //skillTooltip.instrument = null; //change that later
-                skillTooltip.setMelody(melody);
-                skillTooltip.Activate(true);
+            tooltip.setObject(gameObject);
+            tooltip.Activate(true);
 
-                if (canvasRectTransform == null)
-                    return;
+            if (canvasRectTransform == null)
+                return;
 
-                Vector3[] worldCorners = new Vector3[4];
-                GetComponent<RectTransform>().GetWorldCorners(worldCorners);
+            Vector3[] worldCorners = new Vector3[4];
+            GetComponent<RectTransform>().GetWorldCorners(worldCorners);
 
-                Vector2 localRectTransform;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform,
-                                                                        new Vector2((worldCorners[3].x + worldCorners[0].x) / 2.0f, worldCorners[0].y),
-                                                                        pointerEventData.enterEventCamera,
-                                                                        out localRectTransform);
+            Vector2 localRectTransform;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform,
+                                                                    new Vector2((worldCorners[3].x + worldCorners[0].x) / 2.0f, worldCorners[0].y),
+                                                                    pointerEventData.enterEventCamera,
+                                                                    out localRectTransform);
 
-                Vector2 newTooltipPos = new Vector2(localRectTransform.x, localRectTransform.y);
-                if (localRectTransform.y - tooltipRectTransform.sizeDelta.y < -canvasRectTransform.sizeDelta.y / 2)
-                    newTooltipPos.y += tooltipRectTransform.sizeDelta.y + GetComponent<RectTransform>().sizeDelta.y;
+            Vector2 newTooltipPos = new Vector2(localRectTransform.x, localRectTransform.y);
+            if (localRectTransform.y - tooltipRectTransform.sizeDelta.y < -canvasRectTransform.sizeDelta.y / 2)
+                newTooltipPos.y += tooltipRectTransform.sizeDelta.y + GetComponent<RectTransform>().sizeDelta.y;
 
-                if (localRectTransform.x - tooltipRectTransform.sizeDelta.x / 2 < -canvasRectTransform.sizeDelta.x / 2)
-                    newTooltipPos.x = tooltipRectTransform.sizeDelta.x / 2 - canvasRectTransform.sizeDelta.x / 2;
+            if (localRectTransform.x - tooltipRectTransform.sizeDelta.x / 2 < -canvasRectTransform.sizeDelta.x / 2)
+                newTooltipPos.x = tooltipRectTransform.sizeDelta.x / 2 - canvasRectTransform.sizeDelta.x / 2;
 
-                if (localRectTransform.x + tooltipRectTransform.sizeDelta.x / 2 > canvasRectTransform.sizeDelta.x / 2)
-                    newTooltipPos.x = canvasRectTransform.sizeDelta.x / 2 - tooltipRectTransform.sizeDelta.x / 2;
+            if (localRectTransform.x + tooltipRectTransform.sizeDelta.x / 2 > canvasRectTransform.sizeDelta.x / 2)
+                newTooltipPos.x = canvasRectTransform.sizeDelta.x / 2 - tooltipRectTransform.sizeDelta.x / 2;
 
-                tooltipRectTransform.localPosition = newTooltipPos;
-            }
+            tooltipRectTransform.localPosition = newTooltipPos;
         }
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        if (skillTooltip != null)
-            skillTooltip.Activate(false);
+        if (tooltip != null)
+            tooltip.Activate(false);
     }
 
     public void OnPointerClick(PointerEventData pointerEventData)
@@ -139,8 +131,8 @@ public class SkillBehaviour:
         }
         
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
-        slottedSkill.GetComponent<SkillBehaviour>().melody = melody;
-        slottedSkill.GetComponent<SkillBehaviour>().setClickable(false);
+        slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
+        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
         slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;

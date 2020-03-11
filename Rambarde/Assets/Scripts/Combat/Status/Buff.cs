@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Status {
     public enum BuffType {
+        None,
         Attack,
         Critical,
         Protection,

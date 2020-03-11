@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
+  m_Name: Paladin
+  m_EditorClassIdentifier: 
+  clientName: Gertrude
+  modelName: 
+  animatorController: 
+  baseStats:
+    maxHp: 65
+    atq: 15
+    prot: 20
+    prec: 90
+    crit: 5
+  baseWeapons: []
+  baseArmors: []
+  skills:
+  - {fileID: 11400000, guid: 298acfe2e21d860429269c5874932f8b, type: 2}
+  - {fileID: 11400000, guid: 59ec35716e014024ba9b768fcedd62cf, type: 2}
+  - {fileID: 11400000, guid: 686c039fee949524fbeb66ec347032bf, type: 2}
+  - {fileID: 11400000, guid: 39a31c0867d103f418d1ac10dd44fc06, type: 2}
+  clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}

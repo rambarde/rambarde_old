@@ -46,12 +46,10 @@ namespace Characters {
             var skill = skillWheel[_skillIndex];
             _skillIndexChanged = false;
 
-            var target = _combatManager.GetTarget((int) team, skill.ShouldCastOnAllies);
-
             // Play and wait for skillAnimation to finish
             await SkillPreHitAnimation(skill.animationName);
             // Execute the skill
-            await skill.Execute(currentStats, target);
+            await skill.Execute(this);
 
             // Apply effects at the end of the turn
             for (var i = statusEffects.Count - 1; i >= 0; --i) {

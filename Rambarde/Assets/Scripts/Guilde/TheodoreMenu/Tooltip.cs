@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,8 +7,7 @@ using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
-    private Melodies.Melody melody;
-    private Bard.Instrument instrument;
+    private GameObject obj;
 
     private GameObject Name;
     private GameObject effect;
@@ -40,27 +40,42 @@ public class Tooltip : MonoBehaviour
         {
             Name.SetActive(true);
             effect.SetActive(true);
-            type.SetActive(true);
             transform.GetChild(0).gameObject.SetActive(true);
 
-            if (melody != null)
+            if (obj.GetComponent<MelodyBehaviour>() != null)
             {
+                Melodies.Melody melody = obj.GetComponent<MelodyBehaviour>().melody;
                 inspiration.SetActive(true);
                 trance.SetActive(true);
                 target.SetActive(true);
+                type.SetActive(true);
 
-                Name.GetComponent<Text>().text = Utils.SplitCamelCase(melody.name);
+                Name.GetComponent<Text>().text = Utils.SplitPascalCase(melody.name);
                 effect.GetComponent<Text>().text = melody.effect;
-                inspiration.GetComponent<Text>().text = stringInspiration();
-                trance.GetComponent<Text>().text = stringTrance();
-                type.GetComponent<Text>().text = "Tier " + melody.tier;         //ajouter trance melody possibility
-                target.GetComponent<Text>().text = targetModeToString(melody.targetMode);
+                inspiration.GetComponent<Text>().text = stringInspiration(melody);
+                trance.GetComponent<Text>().text = stringTrance(melody);
+                type.GetComponent<Text>().text = "Tier " + melody.tier;         //add trance melody possibility
+                target.GetComponent<Text>().text = melodyTargetToString(melody.targetMode);
             }
-            if (instrument != null)
+
+            if (obj.GetComponent<InstrumentBehaviour>() != null)
             {
-                Name.GetComponent<Text>().text = Utils.SplitCamelCase(instrument.name);
+                Bard.Instrument instrument = obj.GetComponent<InstrumentBehaviour>().instrument;
+                type.SetActive(true);
+
+                Name.GetComponent<Text>().text = Utils.SplitPascalCase(instrument.name);
                 effect.GetComponent<Text>().text = instrument.passif;
                 type.GetComponent<Text>().text = instrument.type;
+            }
+
+            if (obj.GetComponent<SkillBehaviour>() != null)
+            {
+                Skills.Skill skill = obj.GetComponent<SkillBehaviour>().skill;
+                target.SetActive(true);
+
+                Name.GetComponent<Text>().text = Utils.SplitPascalCase(skill.name);
+                effect.GetComponent<Text>().text = skill.description;
+                target.GetComponent<Text>().text = skillTargetToString(skill.actions);
             }
 
         }
@@ -76,7 +91,7 @@ public class Tooltip : MonoBehaviour
         }
     }
 
-    string targetModeToString(Bard.MelodyTargetMode targetMode)
+    string melodyTargetToString(Bard.MelodyTargetMode targetMode)
     {
         string target = "";
         switch (targetMode)
@@ -103,7 +118,38 @@ public class Tooltip : MonoBehaviour
         return target;
     }
 
-    string stringInspiration()
+    string skillTargetToString(Skills.SkillAction[] actions)
+    {
+        if (actions.Length == 0)
+            return "";
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach(Skills.SkillAction action in actions)
+        {
+            switch (action.targetMode)
+            {
+                case Skills.SkillTargetMode.OneAlly:
+                    appendTarget(stringBuilder, "Un allié");
+                    break;
+                case Skills.SkillTargetMode.OneEnemy:
+                    appendTarget(stringBuilder, "Un ennemi");
+                    break;
+                case Skills.SkillTargetMode.Self:
+                    appendTarget(stringBuilder, "Soi-même");
+                    break;
+                case Skills.SkillTargetMode.EveryAlly:
+                    appendTarget(stringBuilder, "Tous les alliés");
+                    break;
+                case Skills.SkillTargetMode.EveryEnemy:
+                    appendTarget(stringBuilder, "Tous les ennemis");
+                    break;
+            }
+        }
+        return stringBuilder.ToString();
+    }
+
+    string stringInspiration(Melodies.Melody melody)
     {
         int inspi = melody.inspirationValue;
         string s_inspi;
@@ -115,7 +161,7 @@ public class Tooltip : MonoBehaviour
         return s_inspi;
     }
 
-    string stringTrance()
+    string stringTrance(Melodies.Melody melody)
     {
         int trance = melody.tranceValue;
         string s_trance;
@@ -127,13 +173,14 @@ public class Tooltip : MonoBehaviour
         return s_trance;
     }
 
-    public void setMelody(Melodies.Melody melody) {
-        this.melody = melody;
-        this.instrument = null;
-    }
+    public void setObject(GameObject _object) { this.obj = _object; }
 
-    public void setInstrument(Bard.Instrument instrument) {
-        this.instrument = instrument;
-        this.melody = null;
+    void appendTarget(StringBuilder sb, string target)
+    {
+        if (!sb.ToString().Contains(target))
+        {
+            sb.Append(target);
+            sb.AppendLine();
+        }
     }
 }

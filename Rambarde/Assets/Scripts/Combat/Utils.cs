@@ -27,7 +27,7 @@ public static class Utils {
             .Subscribe(_ => { subscribe(values, go, ref currentLerpTime, speed, lerpTime, ref t); });
     }
 
-    public static string SplitCamelCase(string s)
+    public static string SplitPascalCase(string s)
     {
         var r = new Regex(@"(?<!^)(?=[A-Z](?![A-Z]|$))", RegexOptions.IgnorePatternWhitespace);
         return r.Replace(s, " ");

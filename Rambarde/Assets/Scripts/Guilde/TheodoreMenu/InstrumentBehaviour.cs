@@ -71,7 +71,7 @@ public class InstrumentBehaviour :
             for (int i= 0;i < melodiesInstrument.Length; i++)
             {
                 Melodies.Melody melody = instrument.melodies[i];
-                melodiesInstrument[i].GetComponent<SkillBehaviour>().melody = melody;
+                melodiesInstrument[i].GetComponent<MelodyBehaviour>().melody = melody;
                 Color melodyColor = melody.color;
                 melodyColor.r = 1;
                 melodyColor.g = 1;
@@ -87,37 +87,34 @@ public class InstrumentBehaviour :
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if (!pointerEventData.dragging)
+        if (instrumentTooltip != null)
         {
-            if (instrumentTooltip != null)
-            {
-                instrumentTooltip.setInstrument(instrument);
-                instrumentTooltip.Activate(true);
+            instrumentTooltip.setObject(gameObject);
+            instrumentTooltip.Activate(true);
 
-                if (canvasRectTransform == null)
-                    return;
+            if (canvasRectTransform == null)
+                return;
 
-                Vector3[] worldCorners = new Vector3[4];
-                GetComponent<RectTransform>().GetWorldCorners(worldCorners);
+            Vector3[] worldCorners = new Vector3[4];
+            GetComponent<RectTransform>().GetWorldCorners(worldCorners);
 
-                Vector2 localRectTransform;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform,
-                                                                        new Vector2((worldCorners[3].x + worldCorners[0].x) / 2.0f, worldCorners[0].y),
-                                                                        pointerEventData.enterEventCamera,
-                                                                        out localRectTransform);
+            Vector2 localRectTransform;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform,
+                                                                    new Vector2((worldCorners[3].x + worldCorners[0].x) / 2.0f, worldCorners[0].y),
+                                                                    pointerEventData.enterEventCamera,
+                                                                    out localRectTransform);
 
-                Vector2 newTooltipPos = new Vector2(localRectTransform.x, localRectTransform.y);
-                if (localRectTransform.y - tooltipRectTransform.sizeDelta.y < -canvasRectTransform.sizeDelta.y / 2)
-                    newTooltipPos.y += tooltipRectTransform.sizeDelta.y + GetComponent<RectTransform>().sizeDelta.y;
+            Vector2 newTooltipPos = new Vector2(localRectTransform.x, localRectTransform.y);
+            if (localRectTransform.y - tooltipRectTransform.sizeDelta.y < -canvasRectTransform.sizeDelta.y / 2)
+                newTooltipPos.y += tooltipRectTransform.sizeDelta.y + GetComponent<RectTransform>().sizeDelta.y;
 
-                if (localRectTransform.x - tooltipRectTransform.sizeDelta.x / 2 < -canvasRectTransform.sizeDelta.x / 2)
-                    newTooltipPos.x = tooltipRectTransform.sizeDelta.x / 2 - canvasRectTransform.sizeDelta.x / 2;
+            if (localRectTransform.x - tooltipRectTransform.sizeDelta.x / 2 < -canvasRectTransform.sizeDelta.x / 2)
+                newTooltipPos.x = tooltipRectTransform.sizeDelta.x / 2 - canvasRectTransform.sizeDelta.x / 2;
 
-                if (localRectTransform.x + tooltipRectTransform.sizeDelta.x / 2 > canvasRectTransform.sizeDelta.x / 2)
-                    newTooltipPos.x = canvasRectTransform.sizeDelta.x / 2 - tooltipRectTransform.sizeDelta.x / 2;
+            if (localRectTransform.x + tooltipRectTransform.sizeDelta.x / 2 > canvasRectTransform.sizeDelta.x / 2)
+                newTooltipPos.x = canvasRectTransform.sizeDelta.x / 2 - tooltipRectTransform.sizeDelta.x / 2;
 
-                tooltipRectTransform.localPosition = newTooltipPos;
-            }
+            tooltipRectTransform.localPosition = newTooltipPos;
         }
     }
 
@@ -177,8 +174,8 @@ public class InstrumentBehaviour :
         melodyColor.a = 1;
 
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
-        slottedSkill.GetComponent<SkillBehaviour>().melody = melody;
-        slottedSkill.GetComponent<SkillBehaviour>().setClickable(false);
+        slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
+        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
         slottedSkill.GetComponent<Image>().sprite = melody.sprite;
         slottedSkill.GetComponent<Image>().color = melodyColor;
         slottedSkill.GetComponent<Image>().enabled = true;
