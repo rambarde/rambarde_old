@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6e458cbea65414c9ab2fe0510203ba, type: 3}
+  m_Name: Decrescendo
+  m_EditorClassIdentifier: 
+  data: 1-1-1-1-
+  targetMode: 3
+  tier: 2
+  effect: "Protection \u2B9F-"
+  inspirationValue: -2
+  tranceValue: 0
+  ID: 15
+  sprite: {fileID: 21300000, guid: fb75a98aad5d42149bf398e0bed37729, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}

@@ -19,11 +19,13 @@ namespace Characters {
         public Stats currentStats;
         public CharacterData characterData;
         public ReactiveCollection<StatusEffect> statusEffects;
+        public ReactiveProperty<EffectType> effectTypes;
         
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Animator _animator;
         private CombatManager _combatManager;
+        //TODO make target modifiable through CombatManager/melodies
         private CharacterControl _target;
         private IObservable<int> _animationSkillStateObservable;
 
@@ -135,8 +137,8 @@ namespace Characters {
             currentStats.hp.Value = CalculateDamage(dmg);
             if (currentStats.hp.Value > 0) return;
             
-            // TODO: spawn floating text for damage taken
-            // TODO: Change this to wait for animation take damage finish
+            //TODO: spawn floating text for damage taken
+            //TODO: Change this to wait for animation take damage finish
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(1)));
             _combatManager.Remove(this);
         }
@@ -148,20 +150,26 @@ namespace Characters {
             _skillIndex = (_skillIndex + 1) % skillWheel.Length;
             _skillIndexChanged = true;
             
-            // TODO: wait for skill wheel animation finish
+            //TODO: wait for skill wheel animation finish
         }
 
         public async Task DecrementSkillWheel() {
             _skillIndex--;
+            if (_skillIndex == -1) {
+                _skillIndex = skillWheel.Length - 1;
+            }
             _skillIndexChanged = true;
             
-            // TODO: wait for skill wheel animation finish
+            //TODO: wait for skill wheel animation finish
         }
+
+        public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
 
         #region Unity
 
         private void Awake() {
             statusEffects = new ReactiveCollection<StatusEffect>();
+            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
         }
 
         protected void Start() {

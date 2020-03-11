@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b47e621780391945a3776c0999e93ae, type: 3}
+  m_Name: Moderato
+  m_EditorClassIdentifier: 
+  data: 1-1-1-1-
+  targetMode: 4
+  tier: 1
+  effect: "Attaque \u2B9F\u2B9F--, Protection \u2B9D\u2B9D\u2B9D+++"
+  inspirationValue: 2
+  tranceValue: 0
+  ID: 19
+  sprite: {fileID: 21300000, guid: aa0f991c64b8fcd4f9b052e24775c686, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}

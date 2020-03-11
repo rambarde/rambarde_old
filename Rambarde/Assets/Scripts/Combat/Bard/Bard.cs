@@ -113,6 +113,7 @@ namespace Bard {
             foreach (Instrument instrument in instruments) {
                 foreach (Melody melody in instrument.melodies) {
                     melody.isPlayable.Value = true;
+                    melody.score.Value = 0;
                 }
             }
             selectedMelodies.Clear();

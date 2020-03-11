@@ -6,15 +6,15 @@ using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
 {
-    [HideInInspector]
-    public SkillUI skill;
-    [HideInInspector]
-    public InstrumentUI instrument;
+    private Melodies.Melody melody;
+    private Bard.Instrument instrument;
 
     private GameObject Name;
     private GameObject effect;
-    private GameObject skillCosts;
-    private GameObject skillGeneration;
+    private GameObject target;
+    private GameObject inspiration;
+    private GameObject trance;
+    private GameObject type;
 
     private string baseCosts;
     private string baseGeneration;
@@ -23,72 +23,117 @@ public class Tooltip : MonoBehaviour
     {
         Name = this.transform.GetChild(1).gameObject;
         effect = this.transform.GetChild(2).gameObject;
-        skillCosts = this.transform.GetChild(3).gameObject;
-        skillGeneration = this.transform.GetChild(4).gameObject;
+        target = this.transform.GetChild(3).gameObject;
+        inspiration = this.transform.GetChild(4).gameObject;
+        trance = this.transform.GetChild(5).gameObject;
+        type = this.transform.GetChild(6).gameObject;
 
-        baseCosts = "Coûte\n";
-        baseGeneration = "Génère\n";
+        baseCosts = "Coûte: \n";
+        baseGeneration = "Génère:\n";
 
-        DeActivated();
+        Activate(false);
     }
 
-    public void Activated()
+    public void Activate(bool m_bool)
     {
-        Name.SetActive(true);
-        effect.SetActive(true);
-        transform.GetChild(0).gameObject.SetActive(true);
-
-        if (skill != null)
+        if (m_bool)
         {
-            skillCosts.SetActive(true);
-            skillGeneration.SetActive(true);
+            Name.SetActive(true);
+            effect.SetActive(true);
+            type.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(true);
 
-            Name.GetComponent<Text>().text = skill.skillName;
-            effect.GetComponent<Text>().text = skill.skillEffect;
-            skillCosts.GetComponent<Text>().text = costs();
-            skillGeneration.GetComponent<Text>().text = generations();
+            if (melody != null)
+            {
+                inspiration.SetActive(true);
+                trance.SetActive(true);
+                target.SetActive(true);
+
+                Name.GetComponent<Text>().text = Utils.SplitCamelCase(melody.name);
+                effect.GetComponent<Text>().text = melody.effect;
+                inspiration.GetComponent<Text>().text = stringInspiration();
+                trance.GetComponent<Text>().text = stringTrance();
+                type.GetComponent<Text>().text = "Tier " + melody.tier;         //ajouter trance melody possibility
+                target.GetComponent<Text>().text = targetModeToString(melody.targetMode);
+            }
+            if (instrument != null)
+            {
+                Name.GetComponent<Text>().text = Utils.SplitCamelCase(instrument.name);
+                effect.GetComponent<Text>().text = instrument.passif;
+                type.GetComponent<Text>().text = instrument.type;
+            }
+
         }
-        if (instrument != null) 
+        else
         {
-            Name.GetComponent<Text>().text = instrument.instrumentName;
-            effect.GetComponent<Text>().text = instrument.instrumentPassif;
+            Name.SetActive(false);
+            effect.SetActive(false);
+            target.SetActive(false);
+            inspiration.SetActive(false);
+            trance.SetActive(false);
+            type.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
-    public void DeActivated()
+    string targetModeToString(Bard.MelodyTargetMode targetMode)
     {
-        Name.SetActive(false);
-        effect.SetActive(false);
-        skillCosts.SetActive(false);
-        skillGeneration.SetActive(false);
-        transform.GetChild(0).gameObject.SetActive(false);
+        string target = "";
+        switch (targetMode)
+        {
+            case Bard.MelodyTargetMode.OneAlly:
+                target = "Un Client";
+                break;
+            case Bard.MelodyTargetMode.OneEnemy:
+                target = "Un Monstre";
+                break;
+            case Bard.MelodyTargetMode.EveryAlly:
+                target = "Tous les clients";
+                break;
+            case Bard.MelodyTargetMode.EveryEnemy:
+                target = "Tous les ennemis";
+                break;
+            case Bard.MelodyTargetMode.Anyone:
+                target = "N'importe qui"; //?????????????
+                break;
+            case Bard.MelodyTargetMode.Everyone:
+                target = "Tout le monde";
+                break;
+        }
+        return target;
     }
 
-    string costs()
+    string stringInspiration()
     {
-        if (skill.inspirationCost == 0 && skill.tranceCost == 0)
-            return "Pas de coût";
+        int inspi = melody.inspirationValue;
+        string s_inspi;
+        if (inspi > 0)
+            s_inspi = baseGeneration + inspi + " d'inspiration";
+        else
+            s_inspi = baseCosts + -inspi + " d'inspiration";
 
-        string cost = baseCosts;
-        if (skill.inspirationCost != 0)
-            cost += "Inspiration: " + skill.inspirationCost + "\n";
-
-        if (skill.tranceCost != 0)
-            cost += "Trance: " + skill.tranceCost + "\n";
-        return cost;
+        return s_inspi;
     }
 
-    string generations()
+    string stringTrance()
     {
-        if (skill.inspirationGeneration == 0 && skill.tranceGeneration == 0)
-            return "Ne génère rien";
+        int trance = melody.tranceValue;
+        string s_trance;
+        if (trance > 0)
+            s_trance = baseGeneration + trance + " de transe";
+        else
+            s_trance = baseCosts + -trance + " de transe";
 
-        string generation = baseGeneration;
-        if (skill.inspirationGeneration != 0)
-            generation += skill.inspirationGeneration + " :Inspiration\n";
+        return s_trance;
+    }
 
-        if (skill.tranceGeneration != 0)
-            generation += skill.tranceGeneration + " :Trance\n";
-        return generation;
+    public void setMelody(Melodies.Melody melody) {
+        this.melody = melody;
+        this.instrument = null;
+    }
+
+    public void setInstrument(Bard.Instrument instrument) {
+        this.instrument = instrument;
+        this.melody = null;
     }
 }

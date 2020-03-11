@@ -5,10 +5,12 @@ using UnityEngine;
 namespace Melodies {
      [CreateAssetMenu(fileName = "PrestoMelody", menuName = "Melody/Presto")]
      public class PrestoMelody : Melody {
-         public override async Task Execute() {
+         protected override async Task ExecuteOnTarget(CharacterControl t) {
              if (target == null) {
                  Debug.Log("Tried to execute a " + targetMode + " melody with no target");
+                 return;
              }
+
              await target.IncrementSkillWheel();
          }
      }

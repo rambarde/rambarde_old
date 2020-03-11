@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5911429727472197436}
   - component: {fileID: 133121320777851031}
   - component: {fileID: 8357453203842232603}
-  - component: {fileID: 1237685675073132226}
   - component: {fileID: 2625209125371606711}
   m_Layer: 5
   m_Name: InstrumentSkill
@@ -75,27 +74,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1237685675073132226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315289793932871408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 0
-  skillName: 
-  skillTier: 0
-  inspirationCost: 0
-  tranceCost: 0
-  inspirationGeneration: 0
-  tranceGeneration: 0
-  skillEffect: 
-  isDraggable: 0
 --- !u!114 &2625209125371606711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +86,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e491da366a920541a40075522be5149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  melody: {fileID: 0}

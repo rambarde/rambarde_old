@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5765253744817822905}
   - component: {fileID: 967765384670382682}
   - component: {fileID: 954649181250434263}
-  - component: {fileID: 8671071269263486711}
   m_Layer: 5
   m_Name: InnateSkill
   m_TagString: Skill
@@ -87,24 +86,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e491da366a920541a40075522be5149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8671071269263486711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6879237387177422650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1fa8230cb90241a88965ffacf94fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 0
-  skillName: 
-  skillTier: 0
-  inspirationCost: 0
-  tranceCost: 0
-  inspirationGeneration: 0
-  tranceGeneration: 0
-  skillEffect: 
   isClickable: 1
+  melody: {fileID: 0}

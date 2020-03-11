@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ab9e5d16704716b2e9a60bfacd5602, type: 3}
+  m_Name: Presto
+  m_EditorClassIdentifier: 
+  data: 1-1-2-2-
+  targetMode: 4
+  tier: 1
+  effect: Avance d'un cran la roue
+  inspirationValue: 3
+  tranceValue: 0
+  ID: 2
+  sprite: {fileID: 21300000, guid: 7092324b93851a14c858530cca4a6b26, type: 3}
+  color: {r: 0.9490196, g: 0.49803922, b: 0.10980392, a: 1}

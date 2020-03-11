@@ -1,0 +1,16 @@
+﻿using System.Threading.Tasks;
+using Characters;
+using Melodies;
+using Status;
+using UnityEngine;
+
+namespace Music.Melodies {
+    [CreateAssetMenu(fileName = "MELODYNAME", menuName = "Melody/MELODYNAME")]
+    class MELODYNAME : Melody {
+        protected override async Task ExecuteOnTarget(CharacterControl t) {
+            await StatusEffect.ApplyBuff(t, 2, BuffType.Attack);
+            await StatusEffect.ApplyEffect(target, EffectType.Deaf, 2);
+            await t.DecrementSkillWheel();
+        }
+    }
+}
