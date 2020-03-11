@@ -11,7 +11,7 @@ namespace Melodies {
                  return;
              }
 
-             await target.IncrementSkillWheel();
+             await target.IncrementSkillsSlot();
          }
      }
  }

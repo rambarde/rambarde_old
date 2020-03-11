@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Skills;
 using Status;
+using UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Characters {
     public enum Team {
@@ -15,12 +17,15 @@ namespace Characters {
 
     public class CharacterControl : MonoBehaviour {
         public Team team;
-        public Skill[] skillWheel;
         public Stats currentStats;
         public CharacterData characterData;
         public ReactiveCollection<StatusEffect> statusEffects;
         public ReactiveProperty<EffectType> effectTypes;
         
+        public List<Skill> skillSlot;
+        public Subject<SlotAction> slotAction;
+        
+        private static Random rng = new Random();
         private int _skillIndex;
         private bool _skillIndexChanged;
         private Animator _animator;
@@ -43,7 +48,7 @@ namespace Characters {
         }
 
         public async Task ExecTurn() {
-            var skill = skillWheel[_skillIndex];
+            var skill = skillSlot[_skillIndex];
             _skillIndexChanged = false;
 
             // Play and wait for skillAnimation to finish
@@ -60,7 +65,7 @@ namespace Characters {
 
             // Increment skillIndex ONLY if effects did not affect the wheel
             if (!_skillIndexChanged)
-                await IncrementSkillWheel();
+                await IncrementSkillsSlot();
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
@@ -86,10 +91,18 @@ namespace Characters {
             data.Init();
             data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
             data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
-            skillWheel = data.skills;
+            skillSlot = data.skills;
 
             UpdateStats(0);
             GetComponentInChildren<CharacterVfx>().Init();
+            
+            statusEffects = new ReactiveCollection<StatusEffect>();
+            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
+            _combatManager = CombatManager.Instance;
+            _animator = GetComponentInChildren<Animator>();
+            AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>(characterData.animatorController);
+            _animator.runtimeAnimatorController = myOverrideController;
+            slotAction = new Subject<SlotAction>();
         }
 
         private void UpdateStats(int accessory) {
@@ -149,21 +162,57 @@ namespace Characters {
         #endregion
 
 
-        public async Task IncrementSkillWheel() {
-            _skillIndex = (_skillIndex + 1) % skillWheel.Length;
+        public async Task IncrementSkillsSlot() {
+            _skillIndex = (_skillIndex + 1) % skillSlot.Count;
             _skillIndexChanged = true;
             
-            //TODO: wait for skill wheel animation finish
+            //wait for skill wheel animation finish
+            slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Increment});
+            await Utils.AwaitObservable(slotAction
+                .SkipWhile(action => action.Action != SlotAction.ActionType.Sync)
+                .Take(1));
         }
 
-        public async Task DecrementSkillWheel() {
-            _skillIndex--;
-            if (_skillIndex == -1) {
-                _skillIndex = skillWheel.Length - 1;
-            }
+        public async Task DecrementSkillsSlot()
+        {
+            _skillIndex = --_skillIndex % skillSlot.Count;
+            if (_skillIndex < 0) _skillIndex = skillSlot.Count;
             _skillIndexChanged = true;
             
-            //TODO: wait for skill wheel animation finish
+            //wait for skill wheel animation finish
+            slotAction.OnNext(new SlotAction { Action = SlotAction.ActionType.Decrement});
+            await Utils.AwaitObservable(slotAction
+                .SkipWhile(action => action.Action != SlotAction.ActionType.Sync)
+                .Take(1));
+        }
+
+        public void ShuffleList<T>(IList<T> list)
+        {  
+            int n = list.Count;  
+            while (n > 1) {  
+                n--;  
+                int k = rng.Next(n + 1);  
+                T value = list[k];  
+                list[k] = list[n];  
+                list[n] = value;  
+            }  
+        }
+
+        public async Task ShuffleSkillsSlot()
+        {
+            ShuffleList(skillSlot);
+            _skillIndexChanged = true;
+            
+            //wait for skill wheel animation finish
+            slotAction.OnNext(
+                new SlotAction
+                {
+                    Action = SlotAction.ActionType.Shuffle,
+                    Skills = skillSlot
+                });
+            await Utils.AwaitObservable(slotAction
+                .SkipWhile(action => action.Action != SlotAction.ActionType.Sync)
+                .Take(1));
         }
 
         public bool HasEffect(EffectType effect) => effectTypes.Value.HasFlag(effect);
@@ -171,16 +220,11 @@ namespace Characters {
         #region Unity
 
         private void Awake() {
-            statusEffects = new ReactiveCollection<StatusEffect>();
-            effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
+            
         }
 
         protected void Start() {
-            _combatManager = CombatManager.Instance;
-
-            _animator = GetComponentInChildren<Animator>();
-            AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>(characterData.animatorController);
-            _animator.runtimeAnimatorController = myOverrideController;
+            
         }
 
         #endregion
