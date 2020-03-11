@@ -2,6 +2,7 @@
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI {
@@ -10,18 +11,16 @@ namespace UI {
         public GameObject greenBar;
         public GameObject yellowBar;
         public GameObject statusEffects;
+        public TextMeshProUGUI characterHealth;
 
         private const float LerpTime = 1f;
         private const string ResourcesDir = "CharacterVfx";
 
-        private TextMeshProUGUI _characterHealth;
 
-        public void Init() {
-            _characterHealth = GetComponentInChildren<TextMeshProUGUI>();
-            if (_characterHealth == null) return;
-
-            _characterControl = GetComponent<CharacterControl>();
-            _characterControl.currentStats.hp.AsObservable().Subscribe(x => _characterHealth.text = x.ToString());
+        public void Init(CharacterControl characterControl)
+        {
+            _characterControl = characterControl;
+            _characterControl.currentStats.hp.AsObservable().Subscribe(x => characterHealth.text = x.ToString());
 
             if (greenBar && yellowBar) {
                 _characterControl.currentStats.hp.AsObservable().Pairwise().Subscribe(x =>

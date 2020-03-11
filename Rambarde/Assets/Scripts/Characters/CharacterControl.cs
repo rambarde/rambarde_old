@@ -94,14 +94,16 @@ namespace Characters {
             skillSlot = data.skills;
 
             UpdateStats(0);
-            GetComponentInChildren<CharacterVfx>().Init();
-            
+
             statusEffects = new ReactiveCollection<StatusEffect>();
             effectTypes = new ReactiveProperty<EffectType>(EffectType.None);
+            
             _combatManager = CombatManager.Instance;
+            
             _animator = GetComponentInChildren<Animator>();
             AnimatorOverrideController myOverrideController = Resources.Load<AnimatorOverrideController>(characterData.animatorController);
             _animator.runtimeAnimatorController = myOverrideController;
+            
             slotAction = new Subject<SlotAction>();
         }
 
@@ -175,8 +177,8 @@ namespace Characters {
 
         public async Task DecrementSkillsSlot()
         {
-            _skillIndex = --_skillIndex % skillSlot.Count;
-            if (_skillIndex < 0) _skillIndex = skillSlot.Count;
+            _skillIndex = (_skillIndex - 1) % skillSlot.Count;
+            if (_skillIndex < 0) _skillIndex = skillSlot.Count - 1;
             _skillIndexChanged = true;
             
             //wait for skill wheel animation finish

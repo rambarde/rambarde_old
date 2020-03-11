@@ -14,19 +14,21 @@ namespace UI
     {
         [SerializeField] private float speed = 0.5f;
         [SerializeField] private float offset;
-        [HideInInspector] public List<RectTransform> slotIconPositions = new List<RectTransform>();
-        [HideInInspector] public RectTransform indicator;
-        [HideInInspector] public GameObject tooltip;
+        [SerializeField] private List<RectTransform> slotIconPositions = new List<RectTransform>();
+        [SerializeField] private RectTransform indicator;
+        [SerializeField] private GameObject tooltip;
         private List<Skill> _skills;
 
         private CharacterControl _characterControl; 
         
-        public void Init()
+        public void Init(CharacterControl characterControl)
         {
+            _characterControl = characterControl;
+            
             TextMeshProUGUI descText = tooltip.transform.Find("Desc").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI propsText = tooltip.transform.Find("Props").GetComponent<TextMeshProUGUI>();
             Image imageIcon = tooltip.transform.Find("Icon").GetComponent<Image>();
-            _characterControl = GetComponent<CharacterControl>();
+
             _skills = _characterControl.skillSlot;
             for (int i = 0; i < _skills.Count; i++)
             {
