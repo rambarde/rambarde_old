@@ -48,7 +48,6 @@ namespace Characters {
 
             // Play and wait for skillAnimation to finish
             await SkillPreHitAnimation(skill.animationName);
-            Debug.Log("    execute");
             // Execute the skill
             await skill.Execute(this);
             
