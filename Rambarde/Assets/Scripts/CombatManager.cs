@@ -29,6 +29,7 @@ public class CombatManager : MonoBehaviour {
                 l.SetActive(false);
             }
         }
+        
 
         // Execute all character skills
         foreach (var team in teams) {

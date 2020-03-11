@@ -48,8 +48,11 @@ namespace Characters {
 
             // Play and wait for skillAnimation to finish
             await SkillPreHitAnimation(skill.animationName);
+            Debug.Log("    execute");
             // Execute the skill
             await skill.Execute(this);
+            
+            
 
             // Apply effects at the end of the turn
             for (var i = statusEffects.Count - 1; i >= 0; --i) {
@@ -62,6 +65,9 @@ namespace Characters {
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
+            if (animationName is null || animationName == "") {
+                return;
+            }
             _animator.SetTrigger(animationName);
             var stateHash = Animator.StringToHash(animationName);
 
