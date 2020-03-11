@@ -37,7 +37,7 @@ public class MelodyBehaviour:
             tooltip = GameObject.FindWithTag("Tooltip").GetComponent<Tooltip>();
             tooltipRectTransform = GameObject.FindWithTag("Tooltip").GetComponent<RectTransform>() as RectTransform;
         }
-        canvasRectTransform = GameObject.FindWithTag("TheodoreMenu").GetComponent<RectTransform>() as RectTransform;
+        canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
 
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
         slottedSkills = new GameObject[4];

@@ -47,8 +47,6 @@ public class ClientBehaviour : MonoBehaviour
             skill.GetComponent<SkillBehaviour>().skill = character.skills[i];
             skill.GetComponent<Image>().sprite = character.skills[i].sprite;
         }
-
-
     }
 
     void Start()

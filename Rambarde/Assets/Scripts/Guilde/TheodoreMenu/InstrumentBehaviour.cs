@@ -67,7 +67,7 @@ public class InstrumentBehaviour :
             instrumentTooltip = GameObject.FindWithTag("Tooltip").GetComponent<Tooltip>();
             tooltipRectTransform = GameObject.FindWithTag("Tooltip").GetComponent<RectTransform>() as RectTransform;
         }
-        canvasRectTransform = GameObject.FindWithTag("TheodoreMenu").GetComponent<RectTransform>() as RectTransform;
+        canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
 
         if (isClickable)
             for (int i= 0;i < melodiesInstrument.Length; i++)
