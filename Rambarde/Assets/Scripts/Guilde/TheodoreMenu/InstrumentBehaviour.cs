@@ -28,34 +28,36 @@ public class InstrumentBehaviour :
     {
         if (isClickable)
         {
-            GetComponent<Image>().color = instrument.color;
-            GetComponent<Image>().sprite = instrument.sprite;
 
-            GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
-            instrumentSlots = new GameObject[2];
-            instrumentSkillSlots = new GameObject[8];
-            int j = 0;
-            int k = 0;
+        GetComponent<Image>().color = instrument.color;
+        GetComponent<Image>().sprite = instrument.sprite;
 
-            for (int i = 0; i < slots.Length; i++)
+
+        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
+        instrumentSlots = new GameObject[2];
+        instrumentSkillSlots = new GameObject[8];
+        int j = 0;
+        int k = 0;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            GameObject slot = slots[i];
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSlot)
             {
-                GameObject slot = slots[i];
-                if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSlot)
-                {
-                    instrumentSlots[j] = slot;
-                    j += 1;
-                }
-                if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSkillSlot)
-                {
-                    instrumentSkillSlots[k] = slot;
-                    k += 1;
-                }
+                instrumentSlots[j] = slot;
+                j += 1;
             }
-            melodiesInstrument = new GameObject[4];
-
-            for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
-                melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSkillSlot)
+            {
+                instrumentSkillSlots[k] = slot;
+                k += 1;
+            }
         }
+        melodiesInstrument = new GameObject[4];
+
+        for (int i = 0; i < transform.parent.GetChild(1).childCount; i++)
+            melodiesInstrument[i] = transform.parent.GetChild(1).GetChild(i).gameObject;
+         }
     }
 
     void Start()

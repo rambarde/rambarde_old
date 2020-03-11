@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuBehaviour : MonoBehaviour
+public class ExpeditionMenuBehaviour : MonoBehaviour
 {
     public Quest selectedQuest;
     GameObject selectButton;
@@ -18,6 +18,7 @@ public class MenuBehaviour : MonoBehaviour
     public void SelectQuest()
     {
         Debug.Log("Selected Quest: " + selectedQuest.name);
+        GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>().SetQuest(selectedQuest);
     }
 
     public void AllowQuestSelect(Quest quest)
