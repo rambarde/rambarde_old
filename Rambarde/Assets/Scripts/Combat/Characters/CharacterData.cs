@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Characters {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/CharacterData")]
     public class CharacterData : ScriptableObject {
+        public string clientName;
         public string modelName;
         public string animatorController;
 
@@ -16,6 +17,8 @@ namespace Characters {
         public ReactiveCollection<Armor> armors;
 
         public Skill[] skills;
+
+        public Sprite clientImage;
 
         public void Init() {
             weapons = new ReactiveCollection<Weapon>(baseWeapons);

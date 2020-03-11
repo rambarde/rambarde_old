@@ -30,8 +30,8 @@ public class SlotBehaviour :
     {
         setSlotted(false);
         GameObject slottedSkill = transform.GetChild(0).gameObject;
-        slottedSkill.GetComponent<SkillBehaviour>().melody = null;
-        slottedSkill.GetComponent<SkillBehaviour>().setClickable(false);
+        slottedSkill.GetComponent<MelodyBehaviour>().melody = null;
+        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
         slottedSkill.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         slottedSkill.GetComponent<Image>().sprite = null;
         slottedSkill.GetComponent<Image>().enabled = false;
