@@ -11,19 +11,21 @@ public class MelodyBehaviour:
     IPointerClickHandler
 {
     public Melodies.Melody melody;
-    public bool isClickable;
+    [SerializeField]
+    private bool _isClickable;
+    public bool IsClickable { get { return _isClickable; } set { _isClickable = value; } }
 
-    private RectTransform canvasRectTransform;
-    private RectTransform tooltipRectTransform;
-    private Tooltip tooltip;
-    private GameObject[] slottedSkills;
+    RectTransform canvasRectTransform;
+    RectTransform tooltipRectTransform;
+    Tooltip tooltip;
+    GameObject[] slottedSkills;
     GameObject slot;
     GameObject counter;
     Button resetTier;
     
     void Awake()
     {
-        if (isClickable)
+        if (IsClickable)
         {
             GetComponent<Image>().color = melody.color;
             GetComponent<Image>().sprite = melody.sprite;
@@ -46,7 +48,7 @@ public class MelodyBehaviour:
         for (int i = 0; i < slots.Length; i++)
         {
             GameObject slot = slots[i];
-            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().innateSkillSlot)
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InnateSkillSlot)
             {
                 slottedSkills[j] = slot;
                 j += 1;
@@ -95,7 +97,7 @@ public class MelodyBehaviour:
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (!isClickable)
+        if (!IsClickable)
             return;
         int tier = melody.tier;
         switch (tier)
@@ -103,9 +105,9 @@ public class MelodyBehaviour:
             case 1:
                 counter = GameObject.Find("Tier 1 counter");
                 resetTier = GameObject.Find("Reset Tier 1").GetComponent<Button>();
-                if (!slottedSkills[0].GetComponent<SlotBehaviour>().isSlotted())
+                if (!slottedSkills[0].GetComponent<SlotBehaviour>().Slotted)
                     slot = slottedSkills[0];
-                else if (!slottedSkills[1].GetComponent<SlotBehaviour>().isSlotted())
+                else if (!slottedSkills[1].GetComponent<SlotBehaviour>().Slotted)
                     slot = slottedSkills[1];
                 else
                     return;
@@ -114,7 +116,7 @@ public class MelodyBehaviour:
             case 2:
                 counter = GameObject.Find("Tier 2 counter");
                 resetTier = GameObject.Find("Reset Tier 2").GetComponent<Button>();
-                if (!slottedSkills[2].GetComponent<SlotBehaviour>().isSlotted())
+                if (!slottedSkills[2].GetComponent<SlotBehaviour>().Slotted)
                     slot = slottedSkills[2];
                 else
                     return;
@@ -122,8 +124,8 @@ public class MelodyBehaviour:
 
             case 3:
                 counter = GameObject.Find("Tier 3 counter");
-                resetTier = GameObject.Find("Reset Tier 2").GetComponent<Button>();
-                if (!slottedSkills[3].GetComponent<SlotBehaviour>().isSlotted())
+                resetTier = GameObject.Find("Reset Tier 3").GetComponent<Button>();
+                if (!slottedSkills[3].GetComponent<SlotBehaviour>().Slotted)
                     slot = slottedSkills[3];
                 else
                     return;
@@ -132,19 +134,19 @@ public class MelodyBehaviour:
         
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
-        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
+        slottedSkill.GetComponent<MelodyBehaviour>().IsClickable = false;
         slottedSkill.GetComponent<Image>().color = GetComponent<Image>().color;
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;
 
-        slot.GetComponent<SlotBehaviour>().setSlotted(true);
+        slot.GetComponent<SlotBehaviour>().Slotted = true;
 
         counter.GetComponent<Counter>().increment();
 
-        isClickable = false;
+        IsClickable = false;
         resetTier.onClick.AddListener(buttonReset);
+        transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 1;
     }
 
-    void buttonReset() { this.isClickable = true; }
-    public void setClickable(bool m_bool) { this.isClickable = m_bool; }
+    void buttonReset() { IsClickable = true; }
 }

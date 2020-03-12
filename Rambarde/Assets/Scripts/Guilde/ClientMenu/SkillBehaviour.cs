@@ -9,9 +9,9 @@ public class SkillBehaviour :
     IPointerExitHandler
 {
     public Skills.Skill skill;
-    private RectTransform canvasRectTransform;
-    private RectTransform tooltipRectTransform;
-    private Tooltip tooltip;
+    RectTransform canvasRectTransform;
+    RectTransform tooltipRectTransform;
+    Tooltip tooltip;
 
     void Start()
     {

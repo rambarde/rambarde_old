@@ -112,10 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5480fd13233246a49d3b4e49e6ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTier: 0
-  innateSkillSlot: 0
-  instrumentSkillSlot: 1
-  instrumentSlot: 0
+  _skillTier: 0
+  _innateSkillSlot: 0
+  _instrumentSkillSlot: 1
+  _instrumentSlot: 0
 --- !u!1001 &8189468010921396852
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class Counter : MonoBehaviour
     void Start()
     {
         resetCounter();
-        updateText();
     }
 
     public void resetCounter()
@@ -22,8 +21,8 @@ public class Counter : MonoBehaviour
         {
             button.interactable = false;
             currentCount = 0;
-            updateText();
         }
+        updateText();
     }
 
     public void increment()

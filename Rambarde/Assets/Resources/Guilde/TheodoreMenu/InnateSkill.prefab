@@ -86,5 +86,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e491da366a920541a40075522be5149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isClickable: 1
   melody: {fileID: 0}
+  _isClickable: 1

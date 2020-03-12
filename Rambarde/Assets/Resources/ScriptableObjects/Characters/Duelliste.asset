@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
-  m_Name: Paladin
+  m_Name: Duelliste
   m_EditorClassIdentifier: 
   clientName: 
   modelName: 
   animatorController: 
   baseStats:
-    maxHp: 65
-    atq: 15
-    prot: 20
+    maxHp: 40
+    atq: 30
+    prot: 10
     prec: 90
-    crit: 5
+    crit: 15
   baseWeapons: []
   baseArmors: []
   skills:

@@ -7,44 +7,47 @@ using UnityEngine.UI;
 public class SlotBehaviour : 
     MonoBehaviour
 {
-    public int skillTier;
-    public bool innateSkillSlot;
-    public bool instrumentSkillSlot;
-    public bool instrumentSlot;
-
-    private GameObject slotted;
-    private Vector2 originalImageSize;
-
-    public bool skillSlotted;
+    [SerializeField]
+    private int _skillTier;
+    public int SkillTier { get { return _skillTier; } set { _skillTier = value; } }
+    [SerializeField]
+    private bool _innateSkillSlot;
+    public bool InnateSkillSlot { get { return _innateSkillSlot; } set { _innateSkillSlot = value; } }
+    [SerializeField]
+    private bool _instrumentSkillSlot;
+    public bool InstrumentSkillSlot { get { return _instrumentSkillSlot; } set { _instrumentSkillSlot = value; } }
+    [SerializeField]
+    private bool _instrumentSlot;
+    public bool InstrumentSlot { get { return _instrumentSlot; } set { _instrumentSlot = value; } }
+    public bool Slotted { get; set; }
 
     void Start()
     {
-        slotted = transform.GetChild(0).gameObject;
-        skillSlotted = false;
+        Slotted = false;
     }
 
-    public bool isSlotted() { return skillSlotted; }
-    public void setSlotted(bool isSlotted) { skillSlotted = isSlotted; }
-
-    public void resetSlotSkill()
+    public void resetSlotted()
     {
-        setSlotted(false);
-        GameObject slottedSkill = transform.GetChild(0).gameObject;
-        slottedSkill.GetComponent<MelodyBehaviour>().melody = null;
-        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
-        slottedSkill.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        slottedSkill.GetComponent<Image>().sprite = null;
-        slottedSkill.GetComponent<Image>().enabled = false;
-    }
+        if (Slotted)
+        {
+            Slotted = false;
+            GameObject slotted = transform.GetChild(0).gameObject;
+            slotted.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            slotted.GetComponent<Image>().sprite = null;
+            slotted.GetComponent<Image>().enabled = false;
 
-    public void resetSlotInstrument()
-    {
-        setSlotted(false);
-        GameObject slottedInstrument = transform.GetChild(0).gameObject;
-        slottedInstrument.GetComponent<InstrumentBehaviour>().instrument = null;
-        slottedInstrument.GetComponent<InstrumentBehaviour>().setClickable(false);
-        slottedInstrument.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        slottedInstrument.GetComponent<Image>().sprite = null;
-        slottedInstrument.GetComponent<Image>().enabled = false;
+            if (slotted.GetComponent<InstrumentBehaviour>() != null)
+            {
+                slotted.GetComponent<InstrumentBehaviour>().instrument = null;
+                slotted.GetComponent<InstrumentBehaviour>().IsClickable = false;
+            }
+
+            if (slotted.GetComponent<MelodyBehaviour>() != null)
+            {
+                slotted.GetComponent<MelodyBehaviour>().melody = null;
+                slotted.GetComponent<MelodyBehaviour>().IsClickable = false;
+                transform.GetComponentInParent<TheodoreMenuManager>().resetSelectedSkill(1);
+            }
+        }
     }
 }

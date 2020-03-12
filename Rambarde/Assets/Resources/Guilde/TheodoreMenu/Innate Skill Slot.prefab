@@ -88,11 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5480fd13233246a49d3b4e49e6ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTier: 0
-  innateSkillSlot: 1
-  instrumentSkillSlot: 0
-  instrumentSlot: 0
-  skillSlotted: 0
+  _skillTier: 0
+  _innateSkillSlot: 1
+  _instrumentSkillSlot: 0
+  _instrumentSlot: 0
 --- !u!114 &1526614414894840943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +126,11 @@ PrefabInstance:
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
       propertyPath: isClickable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
+        type: 3}
+      propertyPath: _isClickable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 967765384670382682, guid: 50810fb2b72917c4c9d99b6873fdc7be,

@@ -13,19 +13,21 @@ public class ClientBehaviour :
 
 {
     public Characters.CharacterData character;
-    private GameObject ClientImage;
-    private GameObject Name;
-    private GameObject Trait;
-    private GameObject Class;
-    private GameObject statEnd;
-    private GameObject statAtq;
-    private GameObject statProt;
-    private GameObject statPrec;
-    private GameObject statCrit;
-    private GameObject Skills;
+    [SerializeField]
+    private bool _selected;
+    public bool Selected { get { return _selected; } set { _selected = value; } }
 
-    private bool selected;
-    private GameObject counter;
+    GameObject ClientImage;
+    GameObject Name;
+    GameObject Trait;
+    GameObject Class;
+    GameObject statEnd;
+    GameObject statAtq;
+    GameObject statProt;
+    GameObject statPrec;
+    GameObject statCrit;
+    GameObject Skills;
+    GameObject counter;
 
     private void Awake()
     {
@@ -81,7 +83,4 @@ public class ClientBehaviour :
     {
         GetComponent<RectTransform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
     }
-
-    public bool isSelected() { return this.selected; }
-    public void setSelected(bool m_bool) { this.selected = m_bool; }
 }

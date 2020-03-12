@@ -12,21 +12,23 @@ public class InstrumentBehaviour :
     IPointerExitHandler,
     IPointerClickHandler
 {
-    private Tooltip instrumentTooltip;
-    private RectTransform canvasRectTransform;
-    private RectTransform tooltipRectTransform;
     public Bard.Instrument instrument;
+    [SerializeField]
+    private bool _isClickable;
+    public bool IsClickable { get { return _isClickable; } set { _isClickable = value; } }
 
-    private GameObject[] instrumentSlots;
-    private GameObject[] instrumentSkillSlots;
-    private GameObject[] melodiesInstrument;
+    Tooltip instrumentTooltip;
+    RectTransform canvasRectTransform;
+    RectTransform tooltipRectTransform;
+    GameObject[] instrumentSlots;
+    GameObject[] instrumentSkillSlots;
+    GameObject[] melodiesInstrument;
     GameObject slot;
     GameObject counter;
-    public bool isClickable;
 
     void Awake()
     {
-        if (isClickable)
+        if (IsClickable)
         {
 
         GetComponent<Image>().color = instrument.color;
@@ -42,12 +44,12 @@ public class InstrumentBehaviour :
         for (int i = 0; i < slots.Length; i++)
         {
             GameObject slot = slots[i];
-            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSlot)
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSlot)
             {
                 instrumentSlots[j] = slot;
                 j += 1;
             }
-            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().instrumentSkillSlot)
+            if (slot.GetComponent<SlotBehaviour>() != null && slot.GetComponent<SlotBehaviour>().InstrumentSkillSlot)
             {
                 instrumentSkillSlots[k] = slot;
                 k += 1;
@@ -69,7 +71,7 @@ public class InstrumentBehaviour :
         }
         canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
 
-        if (isClickable)
+        if (IsClickable)
             for (int i= 0;i < melodiesInstrument.Length; i++)
             {
                 Melodies.Melody melody = instrument.melodies[i];
@@ -128,7 +130,7 @@ public class InstrumentBehaviour :
 
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        if (!isClickable)
+        if (!IsClickable)
             return;
 
         counter = GameObject.Find("Instruments counter");
@@ -144,24 +146,24 @@ public class InstrumentBehaviour :
         slottedSkill.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
         slottedSkill.GetComponent<Image>().enabled = true;
 
-        slot.GetComponent<SlotBehaviour>().setSlotted(true);
+        slot.GetComponent<SlotBehaviour>().Slotted = true;
 
         counter.GetComponent<Counter>().increment();
 
         foreach (Melodies.Melody melody in instrument.melodies)
             displayMelody(instrumentSkillSlots, melody);
 
-        isClickable = false; 
+        IsClickable = false; 
         GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(buttonReset);
+        transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 4;
     }
 
-    void buttonReset() { isClickable = true; }
-    public void setClickable(bool m_bool) { this.isClickable = m_bool; }
+    void buttonReset() { IsClickable = true; }
 
     int findSlot(GameObject[] slotList)
     {
         for (int i = 0; i < slotList.Length; i++)
-            if (!slotList[i].GetComponent<SlotBehaviour>().isSlotted())
+            if (!slotList[i].GetComponent<SlotBehaviour>().Slotted)
                 return i;
         return -1;
     }
@@ -177,12 +179,12 @@ public class InstrumentBehaviour :
 
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
-        slottedSkill.GetComponent<MelodyBehaviour>().setClickable(false);
+        slottedSkill.GetComponent<MelodyBehaviour>().IsClickable = false;
         slottedSkill.GetComponent<Image>().sprite = melody.sprite;
         slottedSkill.GetComponent<Image>().color = melodyColor;
         slottedSkill.GetComponent<Image>().enabled = true;
 
-        slot.GetComponent<SlotBehaviour>().setSlotted(true);
+        slot.GetComponent<SlotBehaviour>().Slotted = true;
     }
 
 }
