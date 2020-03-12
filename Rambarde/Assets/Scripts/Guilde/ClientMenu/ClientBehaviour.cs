@@ -24,21 +24,28 @@ public class ClientBehaviour :
     private GameObject statCrit;
     private GameObject Skills;
 
+    private bool selected;
+    private GameObject counter;
+
     private void Awake()
+    {
+        ClientImage = transform.GetChild(1).gameObject;
+        Name = transform.GetChild(2).gameObject;
+        Trait = transform.GetChild(3).gameObject;
+        Class = transform.GetChild(4).gameObject;
+        statEnd = transform.GetChild(5).GetChild(5).gameObject;
+        statAtq = transform.GetChild(5).GetChild(6).gameObject;
+        statProt = transform.GetChild(5).GetChild(7).gameObject;
+        statPrec = transform.GetChild(5).GetChild(8).gameObject;
+        statCrit = transform.GetChild(5).GetChild(9).gameObject;
+        Skills = transform.GetChild(6).gameObject;
+        counter = GameObject.Find("ClientCounter");
+    }
+
+    void Start()
     {
         if (character != null)
         {
-            ClientImage = transform.GetChild(1).gameObject;
-            Name = transform.GetChild(2).gameObject;
-            Trait = transform.GetChild(3).gameObject;
-            Class = transform.GetChild(4).gameObject;
-            statEnd = transform.GetChild(5).GetChild(5).gameObject;
-            statAtq = transform.GetChild(5).GetChild(6).gameObject;
-            statProt = transform.GetChild(5).GetChild(7).gameObject;
-            statPrec = transform.GetChild(5).GetChild(8).gameObject;
-            statCrit = transform.GetChild(5).GetChild(9).gameObject;
-            Skills = transform.GetChild(6).gameObject;
-
             ClientImage.GetComponent<Image>().sprite = character.clientImage;
             Name.GetComponent<Text>().text = character.clientName;
             //Trait                                             ///add trait/envy to characterData????????
@@ -58,14 +65,10 @@ public class ClientBehaviour :
         }
     }
 
-    void Start()
-    {
-
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("Client " + character.clientName + " choisi");
+        counter.GetComponent<Counter>().increment();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -78,4 +81,7 @@ public class ClientBehaviour :
     {
         GetComponent<RectTransform>().localScale = new Vector3(0.4f, 0.4f, 0.4f);
     }
+
+    public bool isSelected() { return this.selected; }
+    public void setSelected(bool m_bool) { this.selected = m_bool; }
 }
