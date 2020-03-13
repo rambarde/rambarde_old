@@ -99,33 +99,33 @@ public class CombatManager : MonoBehaviour {
         }
     }
 
-    private void SetupCharacterControl(Transform t, IReadOnlyList<CharacterData> team, int i, Team charTeam)
+    private void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterData> team, int i, Team charTeam)
     {
         // instantiate the character prefab
-        var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
+        var characterGameObject = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), characterTransform);
 
         // Load the character 3d model
-        var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", team[i].modelName), go.transform);
+        var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", team[i].modelName), characterGameObject.transform);
         model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
 
         // Init the character control
-        var character = go.GetComponent<CharacterControl>();
+        var character = characterGameObject.GetComponent<CharacterControl>();
         character.Init(team[i]);
         character.team = charTeam;
         teams[(int) charTeam].Add(character);
 
         // instantiate the health bar on the canvas relatively to player position
-        var healthBarUi = go.transform.Find("HealthBar");
-        var position = t.position;
+        var healthBarUi = characterGameObject.transform.Find("HealthBar");
+        var position = characterTransform.position;
         Transform hpTransform = healthBarUi.transform;
         hpTransform.parent = playersUiContainer;
         hpTransform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
         hpTransform.localScale = Vector3.one;
         hpTransform.localEulerAngles = Vector3.zero;
-        go.GetComponent<CharacterVfx>().Init(character);
+        characterGameObject.GetComponent<CharacterVfx>().Init(character);
         
         // instantiate the skills slot on the canvas relatively to player position
-        var slotUiGo = go.transform.Find("SkillSlot");
+        var slotUiGo = characterGameObject.transform.Find("SkillSlot");
         var slotsTransform = slotUiGo.transform;
         slotsTransform.parent = playersUiContainer;
         slotsTransform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);

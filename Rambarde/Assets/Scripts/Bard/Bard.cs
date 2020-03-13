@@ -165,7 +165,7 @@ namespace Bard {
         }
         
         //                         bpm\      /beat division(croche)
-        private float _beat = 60f / (120f * 3f);
+        private float _beat = 60f / (110f * 3f);
 
         private async Task StartRhythmGame() {
             CombatManager.Instance.combatPhase.Value = "rhythmGame";
