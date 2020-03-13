@@ -9,6 +9,9 @@ public class GuildeManagerBehaviour : MonoBehaviour
 
     GameObject switchMenuPanel;
 
+    GameObject signQuest;
+    public Material[] mapMaterials;
+
     bool menuAlreadyActive = false;
 
     /** out **/
@@ -19,6 +22,12 @@ public class GuildeManagerBehaviour : MonoBehaviour
     {
         switchMenuPanel = GameObject.Find("SwitchMenuPanel");
         switchMenuPanel.SetActive(false);
+
+        signQuest = GameObject.Find("exPointQuest");
+        if (!(selectedQuest.map == null))
+        {
+            signQuest.SetActive(false);
+        }
 
         foreach (GameObject menu in subMenus)
         {
@@ -50,6 +59,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public void SetQuest(Quest quest)
     {
         selectedQuest = quest;
-        GameObject.Find("ChosenQuestName").GetComponent<Text>().text = selectedQuest.name;
+        signQuest.SetActive(false);
+        Debug.Log(GameObject.Find("Map").GetComponent<MeshRenderer>().material);
+        GameObject.Find("Map").GetComponent<MeshRenderer>().material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
     }
 }
