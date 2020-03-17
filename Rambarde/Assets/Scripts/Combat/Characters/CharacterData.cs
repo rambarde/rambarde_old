@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Characters {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/CharacterData")]
     public class CharacterData : ScriptableObject {
-        public string clientName;
+        //public string clientName;
         public string modelName;
         public string animatorController;
 

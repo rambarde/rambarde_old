@@ -153,12 +153,11 @@ public class InstrumentBehaviour :
         foreach (Melodies.Melody melody in instrument.melodies)
             displayMelody(instrumentSkillSlots, melody);
 
-        IsClickable = false; 
-        GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(buttonReset);
+        IsClickable = false;
+        GameObject.Find("Reset Instruments").GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
+        GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(() => { IsClickable = true; });
         transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 4;
     }
-
-    void buttonReset() { IsClickable = true; }
 
     int findSlot(GameObject[] slotList)
     {
