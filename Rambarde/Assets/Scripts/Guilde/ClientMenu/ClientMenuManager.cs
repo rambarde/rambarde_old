@@ -22,11 +22,13 @@ public class ClientMenuManager : MonoBehaviour
     }
 
     ClientBehaviour[] clientList;
+    Counter counter;
     protected GameObject doneButton;
 
     void Awake()
     {
         clientList = transform.GetChild(2).GetComponentsInChildren<ClientBehaviour>();
+        counter = transform.GetComponentInChildren<Counter>();
         GenerateClients();
         doneButton = transform.GetChild(transform.childCount - 1).gameObject;
         doneButton.GetComponent<Button>().interactable = false;
@@ -36,10 +38,39 @@ public class ClientMenuManager : MonoBehaviour
 
     public void resetClientMenu()
     {
-        Counter counter = transform.GetComponentInChildren<Counter>();
         counter.resetCounter();
         foreach (ClientBehaviour client in clientList)
             client.ResetSelected();
+    }
+
+    public void selectClients()
+    {
+        Characters.CharacterControl[] clients = new Characters.CharacterControl[3];
+        int nClient = 0;
+        for (int i = 0; i < clientList.Length; i++)
+        {
+            if (!clientList[i].IsClickable)
+            {
+                ClientBehaviour currentClient = clientList[i];
+                Characters.CharacterControl client = new Characters.CharacterControl();
+                Skills.Skill[] temp = new Skills.Skill[4];
+
+                for (int j = 0; j < currentClient.SkillWheel.Length; j++)
+                    temp[j] = currentClient.Character.skills[currentClient.SkillWheel[j]];
+
+                client.clientName = currentClient.ClientName;
+                client.team = Characters.Team.PlayerTeam;
+                client.skillWheel = temp;
+                client.characterData = currentClient.Character;
+
+                clients[nClient] = client;
+                nClient++;
+            }
+        }
+
+        transform.GetComponentInParent<GuildeManagerBehaviour>().SetClients(clients);
+        //save the skills inside the gameManager (+ open a 'r u sure u want those skills' window ?)
+        //not sure if we need to do this function here tho, might be a good idea to do it in the gameManager itself and call it OnClick()
     }
 
     #region ClientsGeneration

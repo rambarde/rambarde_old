@@ -10,7 +10,6 @@ namespace Bard
         public Melody[] melodies;
         public string passif;
         public string type;
-        public int ID;
         public Sprite sprite;
         public Color color;
     }

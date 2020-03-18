@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Debug2
   m_EditorClassIdentifier: 
-  actions: []
+  actions:
+  - actionType: 2
+    targetMode: 0
+    effectType: -1
+    buffType: 0
+    value: 1
   animationName: 
   sprite: {fileID: 0}
-  description: 
+  description: Debug 2
