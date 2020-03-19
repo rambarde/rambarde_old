@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GoldValue : MonoBehaviour
 {
-    public int goldValue;
+    int goldValue;
     GameObject goldLabel;
 
     GameObject noGoldPanel;
@@ -15,6 +15,9 @@ public class GoldValue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set gold Value to the static value from GameManager
+        goldValue = GameManager.gold;
+
         goldLabel = GameObject.FindGameObjectWithTag("GoldLabel");
         goldLabel.GetComponent<Text>().text = goldValue.ToString();
 
@@ -32,6 +35,9 @@ public class GoldValue : MonoBehaviour
     {
         goldValue -= price;
         goldLabel.GetComponent<Text>().text = goldValue.ToString();
+
+        // Update gold in GameManager
+        GameManager.gold = goldValue;
     }
 
     public void DisplayNoGoldMessage()

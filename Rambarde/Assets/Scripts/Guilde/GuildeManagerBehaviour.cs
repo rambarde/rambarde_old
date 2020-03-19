@@ -59,8 +59,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
     public void SetQuest(Quest quest)
     {
         selectedQuest = quest;
+        GameManager.quest = quest;
         signQuest.SetActive(false);
-        Debug.Log(GameObject.Find("Map").GetComponent<MeshRenderer>().material);
-        GameObject.Find("Map").GetComponent<MeshRenderer>().material.globalIlluminationFlags = MaterialGlobalIlluminationFlags.EmissiveIsBlack;
     }
 }
