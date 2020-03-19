@@ -38,9 +38,13 @@ public class ClientMenuManager : MonoBehaviour
 
     public void resetClientMenu()
     {
+        if (transform.GetComponentInParent<GuildeManagerBehaviour>().menuValid[0] && SelectedClient >= 3)
+            return;
+
         counter.resetCounter();
         foreach (ClientBehaviour client in clientList)
             client.ResetSelected();
+        transform.GetComponentInParent<GuildeManagerBehaviour>().resetClients();
     }
 
     public void selectClients()
@@ -69,8 +73,6 @@ public class ClientMenuManager : MonoBehaviour
         }
 
         transform.GetComponentInParent<GuildeManagerBehaviour>().SetClients(clients);
-        //save the skills inside the gameManager (+ open a 'r u sure u want those skills' window ?)
-        //not sure if we need to do this function here tho, might be a good idea to do it in the gameManager itself and call it OnClick()
     }
 
     #region ClientsGeneration

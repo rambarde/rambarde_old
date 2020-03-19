@@ -13,7 +13,7 @@ public class Counter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resetCounter();
+        resetCounter(); 
     }
 
     public void resetCounter()
