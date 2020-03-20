@@ -10,7 +10,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
     GameObject switchMenuPanel;
 
     GameObject signQuest;
-    public Material[] mapMaterials;
+    GameObject signClient;
+    GameObject signTheodore;
 
     bool menuAlreadyActive = false;
 
@@ -34,6 +35,9 @@ public class GuildeManagerBehaviour : MonoBehaviour
         {
             signQuest.SetActive(false);
         }
+
+        signClient = GameObject.Find("exPointClient");
+        signTheodore = GameObject.Find("exPointTheodore");
 
         foreach (GameObject menu in subMenus)
         {
@@ -66,6 +70,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
     {
         this.clients = clients;
         menuValid[0] = true;
+        signClient.SetActive(false);
         //for(int i = 0; i < clients.Length; i++)
         //{
         //    Debug.Log("");
@@ -91,6 +96,8 @@ public class GuildeManagerBehaviour : MonoBehaviour
         this.innateMelodies = melodies;
         this.instruments = instruments;
         menuValid[2] = true;
+        signTheodore.SetActive(false);
+        //GameManager.instruments = instruments;
     }
 
     public void resetClients() 

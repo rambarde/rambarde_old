@@ -48,8 +48,12 @@ public class CombatManager : MonoBehaviour {
         var charTeam = (int) characterControl.team;
         teams[charTeam].Remove(characterControl);
         Destroy(characterControl.gameObject);
-        
-        if (teams[charTeam].Count == 0) Debug.Break();
+
+        if (teams[charTeam].Count == 0)
+        {
+            GetComponent<GameManager>().ChangeScene(0);
+            //Debug.Break();
+        }
     }
 
     #region Unity

@@ -39,6 +39,7 @@ public class GuildReady : MonoBehaviour
         {
             Debug.Log("C'est ok");
             //lance la scène combat ici
+            GetComponent<GameManager>().ChangeScene(1);
         }
     }
 }

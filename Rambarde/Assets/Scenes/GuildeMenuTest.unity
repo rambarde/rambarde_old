@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4453519, g: 0.48935807, b: 0.54361916, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6677,7 +6677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: 270}
+  m_AnchoredPosition: {x: 667, y: -27}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515259003
@@ -11270,6 +11270,7 @@ GameObject:
   - component: {fileID: 953586843}
   - component: {fileID: 953586842}
   - component: {fileID: 953586841}
+  - component: {fileID: 953586846}
   m_Layer: 0
   m_Name: Pret?
   m_TagString: Untagged
@@ -11363,6 +11364,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953586846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953586840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7690f664684b27f46b7502527a3d8c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &962009159
 GameObject:
   m_ObjectHideFlags: 0
@@ -17446,9 +17459,6 @@ MonoBehaviour:
   - {fileID: 1065372722}
   - {fileID: 125720216}
   - {fileID: 1629173785}
-  mapMaterials:
-  - {fileID: 2100000, guid: 77e0851ee2eab1240bdd2b62e8dad56d, type: 2}
-  - {fileID: 2100000, guid: 420497796488f2644909d41419b600d5, type: 2}
   selectedQuest:
     name: 
     type: 0
@@ -21017,7 +21027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 661.00006, y: -21.000061}
+  m_AnchoredPosition: {x: -396, y: 263}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1962705427
