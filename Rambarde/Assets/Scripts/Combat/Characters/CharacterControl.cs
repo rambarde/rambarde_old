@@ -14,6 +14,7 @@ namespace Characters {
     }
 
     public class CharacterControl : MonoBehaviour {
+        public String clientName;
         public Team team;
         public Skill[] skillWheel;
         public Stats currentStats;

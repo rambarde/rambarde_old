@@ -144,9 +144,8 @@ public class MelodyBehaviour:
         counter.GetComponent<Counter>().increment();
 
         IsClickable = false;
-        resetTier.onClick.AddListener(buttonReset);
+        resetTier.onClick.AddListener(() => { IsClickable = true; });
+        GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(()=> { IsClickable = true; });
         transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 1;
     }
-
-    void buttonReset() { IsClickable = true; }
 }

@@ -6,37 +6,38 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour
 {
     public int maxCount;
-    private int currentCount;
+    private int _currentCount;
+    public int CurrentCount { get { return _currentCount; } set { _currentCount = value; } }
     public Button button;
 
     // Start is called before the first frame update
     void Start()
     {
-        resetCounter();
+        resetCounter(); 
     }
 
     public void resetCounter()
     {
-        if (currentCount > 0)
+        if (_currentCount > 0)
         {
             button.interactable = false;
-            currentCount = 0;
+            _currentCount = 0;
         }
         updateText();
     }
 
     public void increment()
     {
-        if (currentCount < maxCount)
+        if (_currentCount < maxCount)
         {
             button.interactable = true;
-            currentCount += 1;
+            _currentCount += 1;
             updateText();
         }
     }
 
     private void updateText()
     {
-        GetComponent<Text>().text = currentCount.ToString() + " / " + maxCount.ToString();
+        GetComponent<Text>().text = _currentCount.ToString() + " / " + maxCount.ToString();
     }
 }
