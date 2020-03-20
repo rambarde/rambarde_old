@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static public Quest quest;
-    static public int clients = 0;
+    static public int clients = 0;  //CharacterData[] clients
     static public List<Bard.Instrument> instruments;
 
     static public int gold = 300;
