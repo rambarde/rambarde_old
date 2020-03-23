@@ -10,6 +10,8 @@ public class CombatManager : MonoBehaviour {
 
     public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
 
+    private List<Client> clientsMenu;
+
     public CharacterControl GetTarget(int srcTeam, bool ally) {
         var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
         return teams[team][(int) (Random.Range(0f, 100f) / 50f) % teams[team].Count];
@@ -74,9 +76,11 @@ public class CombatManager : MonoBehaviour {
         var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
         var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
 
+        clientsMenu = GameManager.clients;
+
         CharacterData[] playerTeam = {mage, warrior, warrior1};
         CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
-
+        
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
         var i = 0;
@@ -84,10 +88,12 @@ public class CombatManager : MonoBehaviour {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
             go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, -90, 0);
             go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, -90, 0);
-            var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", playerTeam[i].modelName), go.transform);
+            //var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", playerTeam[i].modelName), go.transform);
+            var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", clientsMenu[i].Character.modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
-            character.Init(playerTeam[i]);
+            //character.Init(playerTeam[i]);
+            character.Init(clientsMenu[i]);
             character.team = Team.PlayerTeam;
             teams[0].Add(character);
             ++i;

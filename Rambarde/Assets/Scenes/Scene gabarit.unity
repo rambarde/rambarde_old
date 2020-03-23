@@ -1191,6 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543202384}
   - component: {fileID: 543202383}
+  - component: {fileID: 543202385}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -1226,6 +1227,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543202385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543202382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7690f664684b27f46b7502527a3d8c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &602431104
 GameObject:
   m_ObjectHideFlags: 0
@@ -7695,9 +7708,9 @@ MonoBehaviour:
   hud: {fileID: 811600889}
   inspiration: {fileID: 8296172668646349647}
   instruments:
-  - {fileID: 11400000, guid: 92ced9a3ed6d03941ac5ee42f90b2028, type: 2}
-  - {fileID: 11400000, guid: bb59be6d934de13419f2f8e3edc9edea, type: 2}
-  - {fileID: 11400000, guid: 18159a614a925474e83f62d123deefba, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &8345394285019801763
 Transform:
   m_ObjectHideFlags: 0

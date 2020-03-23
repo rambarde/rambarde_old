@@ -17459,6 +17459,7 @@ MonoBehaviour:
   - {fileID: 1065372722}
   - {fileID: 125720216}
   - {fileID: 1629173785}
+  BaseInstrument: {fileID: 11400000, guid: 6b98535786a98b649883a0ed4b726834, type: 2}
   selectedQuest:
     name: 
     type: 0
@@ -17466,7 +17467,6 @@ MonoBehaviour:
     upgradedMap: {fileID: 0}
     description: 
     isUpgradable: 0
-  innateMelodies: []
   instruments: []
   clients: []
   menuValid: 

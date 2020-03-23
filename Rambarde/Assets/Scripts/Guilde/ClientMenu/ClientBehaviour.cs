@@ -14,18 +14,10 @@ public class ClientBehaviour :
 
 {
     [SerializeField]
-    private Characters.CharacterData _character;
-    public Characters.CharacterData Character { get { return _character; } set { _character = value; } }
-    [SerializeField]
     private bool _isClickable;
     public bool IsClickable { get { return _isClickable; } set { _isClickable = value; } }
-    [SerializeField]
-    private int[] _skillWheel;   
-    public int[] SkillWheel { get { return _skillWheel; } set { _skillWheel = value; } }
-    [SerializeField]
-    private string _clientName;  
-    public string ClientName { get { return _clientName; } set { _clientName = value; } }
 
+    public Client client;
 
     GameObject ClientImage;
     GameObject Name;
@@ -56,24 +48,24 @@ public class ClientBehaviour :
 
     void Start()
     {
-        if (_character != null)
+        if (client.Character != null)
         {
-            ClientImage.GetComponent<Image>().sprite = _character.clientImage;
-            Name.GetComponent<Text>().text = _clientName;
+            ClientImage.GetComponent<Image>().sprite = client.Character.clientImage;
+            Name.GetComponent<Text>().text = client.ClientName;
             //Trait                                             ///add trait/envy to characterData????????
-            Class.GetComponent<Text>().text = _character.name;
-            statEnd.GetComponent<Text>().text = _character.baseStats.maxHp.ToString();
-            statAtq.GetComponent<Text>().text = _character.baseStats.atq.ToString();
-            statProt.GetComponent<Text>().text = _character.baseStats.prot + "%";
-            statPrec.GetComponent<Text>().text = _character.baseStats.prec + "%";
-            statCrit.GetComponent<Text>().text = _character.baseStats.crit + "%";
+            Class.GetComponent<Text>().text = client.Character.name;
+            statEnd.GetComponent<Text>().text = client.Character.baseStats.maxHp.ToString();
+            statAtq.GetComponent<Text>().text = client.Character.baseStats.atq.ToString();
+            statProt.GetComponent<Text>().text = client.Character.baseStats.prot + "%";
+            statPrec.GetComponent<Text>().text = client.Character.baseStats.prec + "%";
+            statCrit.GetComponent<Text>().text = client.Character.baseStats.crit + "%";
 
-            for (int i = 0; i < _skillWheel.Length; i++)
+            for (int i = 0; i < client.SkillWheel.Length; i++)
             {
                 GameObject skill = skills.transform.GetChild(i).gameObject;
-                skill.GetComponent<SkillBehaviour>().skill = _character.skills[_skillWheel[i]];
-                skill.GetComponent<Image>().sprite = _character.skills[_skillWheel[i]].sprite!=null ? 
-                    _character.skills[_skillWheel[i]].sprite : AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+                skill.GetComponent<SkillBehaviour>().skill = client.Character.skills[client.SkillWheel[i]];
+                skill.GetComponent<Image>().sprite = client.Character.skills[client.SkillWheel[i]].sprite!=null ?
+                    client.Character.skills[client.SkillWheel[i]].sprite : AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
             }
         }
     }

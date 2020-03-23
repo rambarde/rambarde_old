@@ -77,12 +77,35 @@ namespace Characters {
 
         #region CharacterData
 
-        public void Init(CharacterData data) {
+        public void Init(CharacterData data)
+        {
             characterData = data;
             data.Init();
             data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
             data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
             skillWheel = data.skills;
+
+            UpdateStats(0);
+            GetComponentInChildren<CharacterVfx>().Init();
+        }
+
+        public void Init(Client client){//CharacterData data) {
+            //characterData = data;
+            //data.Init();
+            //data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+            //data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+            //skillWheel = data.skills;
+            
+            characterData = client.Character;
+            client.Character.Init();
+            client.Character.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+            client.Character.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+
+            Skills.Skill[] temp = new Skills.Skill[4];
+
+            for (int j = 0; j < client.SkillWheel.Length; j++)
+                temp[j] = client.Character.skills[client.SkillWheel[j]];
+            skillWheel = temp;
 
             UpdateStats(0);
             GetComponentInChildren<CharacterVfx>().Init();

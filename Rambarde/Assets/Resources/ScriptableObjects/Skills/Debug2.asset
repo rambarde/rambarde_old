@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Debug2
   m_EditorClassIdentifier: 
   actions:
-  - actionType: 2
-    targetMode: 0
+  - actionType: 0
+    targetMode: 1
     effectType: -1
     buffType: 0
-    value: 1
-  animationName: 
+    value: 20000
+  animationName: Atq
   sprite: {fileID: 0}
   description: Debug 2

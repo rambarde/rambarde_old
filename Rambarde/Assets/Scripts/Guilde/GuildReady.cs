@@ -34,11 +34,14 @@ public class GuildReady : MonoBehaviour
             if (!ready[2])
                 Debug.Log("Menu Théodore non valide");
                 //feedback visuel
+            Debug.Log(guildManager.clients[0]);
         }
         if (andReady & orReady)
         {
             Debug.Log("C'est ok");
             //lance la scène combat ici
+            GameManager.instruments = guildManager.instruments;
+            GameManager.clients = guildManager.clients;
             GetComponent<GameManager>().ChangeScene(1);
         }
     }

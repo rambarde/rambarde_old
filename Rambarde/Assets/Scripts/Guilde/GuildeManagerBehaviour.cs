@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GuildeManagerBehaviour : MonoBehaviour
 {
     public GameObject[] subMenus;
+    public Bard.Instrument BaseInstrument;
 
     GameObject switchMenuPanel;
 
@@ -17,9 +18,9 @@ public class GuildeManagerBehaviour : MonoBehaviour
 
     /** out **/
     public Quest selectedQuest;
-    public Melodies.Melody[] innateMelodies;
-    public Bard.Instrument[] instruments;
-    public Characters.CharacterControl[] clients;
+    public List<Bard.Instrument> instruments;
+    public List<Client> clients;
+    //public Characters.CharacterControl[] clients;
 
     public bool[] menuValid;
 
@@ -66,7 +67,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         switchMenuPanel.SetActive(false);
     }
 
-    public void SetClients(Characters.CharacterControl[] clients)
+    public void SetClients(List<Client> clients)//Characters.CharacterControl[] clients)
     {
         this.clients = clients;
         menuValid[0] = true;
@@ -91,13 +92,15 @@ public class GuildeManagerBehaviour : MonoBehaviour
         menuValid[1] = true;
     }
 
-    public void SetTheodore(Melodies.Melody[] melodies, Bard.Instrument[] instruments)
+    public void SetTheodore(Melodies.Melody[] melodies, List<Bard.Instrument> instruments)//Bard.Instrument[] instruments)
     {
-        this.innateMelodies = melodies;
+        for (int i = 0; i < melodies.Length; i++)
+            BaseInstrument.melodies[i] = melodies[i];
+
+        instruments.Insert(0, BaseInstrument);
         this.instruments = instruments;
         menuValid[2] = true;
         signTheodore.SetActive(false);
-        //GameManager.instruments = instruments;
     }
 
     public void resetClients() 
@@ -113,7 +116,6 @@ public class GuildeManagerBehaviour : MonoBehaviour
 
     public void resetTheodore() 
     {
-        this.innateMelodies = null;
         this.instruments = null;
         menuValid[2] = false;
     }

@@ -54,9 +54,8 @@ public class TheodoreMenuManager : MonoBehaviour
     public void selectSkills()
     {
         Melodies.Melody[] innateMelodies = new Melodies.Melody[4];
-        Bard.Instrument[] instruments = new Bard.Instrument[2];
+        List<Bard.Instrument> instruments = new List<Bard.Instrument>();
         int nMelody = 0;
-        int nInstrument = 0;
         for(int i = 0; i < slots.Length; i++) 
         {
             if (slots[i].InnateSkillSlot)
@@ -66,12 +65,8 @@ public class TheodoreMenuManager : MonoBehaviour
             }
 
             if (slots[i].InstrumentSlot)
-            {
-                instruments[nInstrument] = slots[i].transform.GetComponentInChildren<InstrumentBehaviour>().instrument;
-                nInstrument++;
-            }
+                instruments.Add(slots[i].transform.GetComponentInChildren<InstrumentBehaviour>().instrument);
         }
-
         transform.GetComponentInParent<GuildeManagerBehaviour>().SetTheodore(innateMelodies, instruments);
     }
 }

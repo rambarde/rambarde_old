@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
   m_Name: Astromancien
   m_EditorClassIdentifier: 
-  modelName: 
-  animatorController: 
+  modelName: Mage
+  animatorController: Mage
   baseStats:
     maxHp: 40
     atq: 20
