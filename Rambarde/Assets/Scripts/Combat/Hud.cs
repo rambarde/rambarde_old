@@ -18,6 +18,7 @@ public class Hud : MonoBehaviour {
 
     public GameObject melodyMenu;
     public GameObject musicMenu;
+    public GameObject pauseMenu;
 
     private void AddSubscription(List<IDisposable> subscriptions, Bard.Bard bard, CharacterControl character, Melody melody) {
         subscriptions.Add(
@@ -136,5 +137,10 @@ public class Hud : MonoBehaviour {
                 inspiJauge.localScale = new Vector3(1, inspi / (float) bard.inspiration.maximumValue, 1);
             });
         }
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 }
