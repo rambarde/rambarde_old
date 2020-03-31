@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
-  m_Name: Coup_de_Gourdin
+  m_Name: Coup_vertueux
   m_EditorClassIdentifier: 
   actions:
   - actionType: 0

@@ -9,15 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
-  m_Name: Coup_de_Gourdin
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Flute_symphonique
   m_EditorClassIdentifier: 
-  actions:
-  - actionType: 0
-    targetMode: 1
-    effectType: 0
-    buffType: 0
-    value: 100
-  animationName: 
-  sprite: {fileID: 0}
-  description: 
+  melodies:
+  - {fileID: 11400000, guid: b9516850460e0eb408b5c446bd95e853, type: 2}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: a60df1dfc31f0744ebb0f5e37e325961, type: 2}
+  - {fileID: 0}

@@ -11,7 +11,7 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
-            await StatusEffect.ApplyEffect(target, EffectType.Destabilized, 2);
+            await StatusEffect.ApplyEffect(target, EffectType.Destabilized, 3);
         }
     }
 }

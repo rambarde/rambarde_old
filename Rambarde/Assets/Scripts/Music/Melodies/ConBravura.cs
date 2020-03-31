@@ -11,6 +11,8 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
+            await StatusEffect.ApplyBuff(t, BuffType.Attack, 2);
+            await StatusEffect.ApplyBuff(t, BuffType.Protection, 2);
             await StatusEffect.ApplyEffect(target, EffectType.Counter, 2);
         }
     }

@@ -11,7 +11,7 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
-            await t.Heal(80);
+            await t.Heal(30);
         }
     }
 }

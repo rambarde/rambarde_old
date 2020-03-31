@@ -11,6 +11,7 @@ namespace Music.Melodies
     {
         protected override async Task ExecuteOnTarget(CharacterControl t)
         {
+            await t.Heal(20);
             await StatusEffect.ApplyEffect(target, EffectType.Disciplined, 1);
             await StatusEffect.ApplyEffect(target, EffectType.Exalted, 1);
         }

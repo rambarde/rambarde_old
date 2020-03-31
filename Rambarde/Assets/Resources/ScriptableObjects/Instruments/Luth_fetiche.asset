@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Luth_fetiche
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: 3ccc000e0a69df34790d17cc59678a9e, type: 2}
+  - {fileID: 11400000, guid: d0aa4b2783be0bb4e9e4646818dc31f1, type: 2}
+  - {fileID: 11400000, guid: bb41dac8d1b48e1418534cbd9d47a2d1, type: 2}
+  - {fileID: 11400000, guid: a53922cf47d299840b44edadbc890230, type: 2}

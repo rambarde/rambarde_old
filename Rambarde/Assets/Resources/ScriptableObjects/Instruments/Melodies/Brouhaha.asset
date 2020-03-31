@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
-  m_Name: Coup_de_Gourdin
+  m_Script: {fileID: 11500000, guid: 735e9b77c77f3f347946cfa656cfeb7e, type: 3}
+  m_Name: Brouhaha
   m_EditorClassIdentifier: 
-  actions:
-  - actionType: 0
-    targetMode: 1
-    effectType: 0
-    buffType: 0
-    value: 100
-  animationName: 
-  sprite: {fileID: 0}
-  description: 
+  data: 1-1-1-1-
+  melodyTargetMode: 0
+  tier: 3
+  inspirationValue: -3
