@@ -17,12 +17,12 @@ MonoBehaviour:
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 60
+    value: 120
   - actionType: 1
     targetMode: 2
     effectType: 0
     buffType: 0
-    value: 40
+    value: 10
   animationName: 
   sprite: {fileID: 0}
   description: 
