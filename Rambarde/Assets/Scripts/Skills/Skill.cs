@@ -68,6 +68,12 @@ namespace Skills {
                     case SkillActionType.Heal :
                         targets.ForEach(async t => await t.Heal(action.value));
                         break;
+                    case SkillActionType.StealHealth :
+                        targets.ForEach(async t => {
+                            await t.TakeDamage(action.value / 100f * s.currentStats.atq);
+                            await s.Heal(action.value / 100f * s.currentStats.atq);
+                        });
+                        break;
                     case SkillActionType.ApplyEffect :
                         targets.ForEach(async t => await StatusEffect.ApplyEffect(t, action.effectType, (int) action.value));
                         break;

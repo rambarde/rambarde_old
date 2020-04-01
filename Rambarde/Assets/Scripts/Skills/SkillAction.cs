@@ -13,6 +13,7 @@ namespace Skills {
     public enum SkillActionType {
         Attack,
         Heal,
+        StealHealth,
         ApplyEffect,
         ApplyBuff,
         RemoveEveryEffect,
