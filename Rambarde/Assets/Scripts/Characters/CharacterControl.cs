@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Skills;
 using Status;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters {
     public enum Team {
@@ -158,6 +160,16 @@ namespace Characters {
             }
             _skillIndexChanged = true;
             
+            //TODO: wait for skill wheel animation finish
+        }
+
+        public async Task ShuffleSkillWheel() {
+            for (int i = skillWheel.Length - 1; i <= 1; --i ) {
+                int j = Random.Range(0, i+1);
+                Skill tmp = skillWheel[i];
+                skillWheel[i] = skillWheel[j];
+                skillWheel[j] = tmp;
+            }
             //TODO: wait for skill wheel animation finish
         }
 
