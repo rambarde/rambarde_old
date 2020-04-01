@@ -77,6 +77,9 @@ namespace Skills {
                     case SkillActionType.RemoveEveryEffect :
                         targets.ForEach(t => t.statusEffects.ToList().ForEach(async e => await e.RemoveEffect()));
                         break;
+                    case SkillActionType.RemoveEffect :
+                        targets.ForEach(async t => await t.statusEffects.First(e => e.type == action.effectType).RemoveEffect());
+                        break;
 
                     default:
                         Debug.LogError("Tried to execute melody with unknown actionType [" + action.actionType + "]");
