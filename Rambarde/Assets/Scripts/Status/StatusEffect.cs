@@ -49,8 +49,8 @@ namespace Status {
             await PostTurnEnd();
         }
 
-        public void RemoveEffect() {
-            Remove();
+        public async Task RemoveEffect() {
+            await Remove();
             target.statusEffects.Remove(this);
             target.effectTypes.Value &= ~type;
         }

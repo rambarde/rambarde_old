@@ -14,7 +14,8 @@ namespace Skills {
         Attack,
         Heal,
         ApplyEffect,
-        ApplyBuff
+        ApplyBuff,
+        RemoveEffects
     }
 
     public enum SkillTargetMode {
@@ -22,6 +23,9 @@ namespace Skills {
         OneEnemy,
         Self,
         EveryAlly,
-        EveryEnemy
+        EveryEnemy,
+        OneOtherAlly,
+        EveryOtherAlly,
+        Everyone
     }
 }
