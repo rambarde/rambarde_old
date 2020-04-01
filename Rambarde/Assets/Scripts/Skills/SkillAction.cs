@@ -15,7 +15,9 @@ namespace Skills {
         Heal,
         ApplyEffect,
         ApplyBuff,
-        RemoveEffects
+        RemoveEveryEffect,
+        RemoveEffect
+        
     }
 
     public enum SkillTargetMode {

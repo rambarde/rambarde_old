@@ -74,7 +74,7 @@ namespace Skills {
                     case SkillActionType.ApplyBuff :
                         targets.ForEach(async t => await StatusEffect.ApplyBuff(t, action.buffType, (int) action.value));
                         break;
-                    case SkillActionType.RemoveEffects :
+                    case SkillActionType.RemoveEveryEffect :
                         targets.ForEach(t => t.statusEffects.ToList().ForEach(async e => await e.RemoveEffect()));
                         break;
 
