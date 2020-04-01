@@ -17,8 +17,8 @@ namespace Skills {
         ApplyEffect,
         ApplyBuff,
         RemoveEveryEffect,
-        RemoveEffect
-        
+        RemoveEffect,
+        ShuffleSkillWheel
     }
 
     public enum SkillTargetMode {

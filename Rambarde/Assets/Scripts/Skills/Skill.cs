@@ -86,6 +86,9 @@ namespace Skills {
                     case SkillActionType.RemoveEffect :
                         targets.ForEach(async t => await t.statusEffects.First(e => e.type == action.effectType).RemoveEffect());
                         break;
+                    case SkillActionType.ShuffleSkillWheel :
+                        targets.ForEach(async t => await t.ShuffleSkillWheel());
+                        break;
 
                     default:
                         Debug.LogError("Tried to execute melody with unknown actionType [" + action.actionType + "]");
