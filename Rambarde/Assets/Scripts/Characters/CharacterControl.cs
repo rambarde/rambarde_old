@@ -46,7 +46,6 @@ namespace Characters {
 
         public async Task ExecTurn() {
             var skill = skillWheel[_skillIndex];
-            _skillIndexChanged = false;
 
             // Play and wait for skillAnimation to finish
             await SkillPreHitAnimation(skill.animationName);
@@ -61,6 +60,8 @@ namespace Characters {
             // Increment skillIndex ONLY if effects did not affect the wheel
             if (!_skillIndexChanged)
                 await IncrementSkillWheel();
+
+            _skillIndexChanged = false;
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
@@ -161,6 +162,10 @@ namespace Characters {
             _skillIndexChanged = true;
             
             //TODO: wait for skill wheel animation finish
+        }
+
+        public void PreventSkillWheelIncrement() {
+            _skillIndexChanged = true;
         }
 
         public async Task ShuffleSkillWheel() {
