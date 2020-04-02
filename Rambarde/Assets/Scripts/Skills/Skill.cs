@@ -12,6 +12,7 @@ namespace Skills {
     [CreateAssetMenu(fileName = "Skill", menuName = "Skill")]
     public class Skill : ScriptableObject {
 
+        public int tier;
         public SkillAction[] actions;
         public string animationName;
         public Sprite sprite;
