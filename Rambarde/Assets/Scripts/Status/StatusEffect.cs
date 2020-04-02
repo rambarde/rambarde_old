@@ -10,6 +10,9 @@ using UnityEngine;
 namespace Status {
     [Serializable]
     public abstract class StatusEffect {
+
+        public static int INFINITE = -1;
+        
         public ReactiveProperty<int> turnsLeft;
         public string spriteName;
 
@@ -35,8 +38,12 @@ namespace Status {
         public async Task TurnStart() {
             await PreTurnStart();
 
-            if (--turnsLeft.Value == 0) {
-                RemoveEffect();
+            if (turnsLeft.Value != INFINITE) {
+                --turnsLeft.Value;
+            }
+
+            if (turnsLeft.Value  == 0) {
+                await RemoveEffect();
             }
         }
 
