@@ -8,7 +8,7 @@ public class SelectParcour : MonoBehaviour
     List<GameObject> questMenus = new List<GameObject>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         GameObject forestMenu = GameObject.FindGameObjectWithTag("FOREST");
         GameObject cryptMenu = GameObject.FindGameObjectWithTag("CRYPT");
@@ -16,7 +16,7 @@ public class SelectParcour : MonoBehaviour
         questMenus.Add(forestMenu);
         questMenus.Add(cryptMenu);
 
-        Debug.Log(questMenus.Count);
+        //Debug.Log(questMenus.Count);
 
         // Deactivate all sub-menus 
         foreach (GameObject menu in questMenus)

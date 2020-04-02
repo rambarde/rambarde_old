@@ -64,8 +64,8 @@ public class ClientBehaviour :
             {
                 GameObject skill = skills.transform.GetChild(i).gameObject;
                 skill.GetComponent<SkillBehaviour>().skill = client.Character.skills[client.SkillWheel[i]];
-                skill.GetComponent<Image>().sprite = client.Character.skills[client.SkillWheel[i]].sprite!=null ?
-                    client.Character.skills[client.SkillWheel[i]].sprite : AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+                skill.GetComponent<Image>().sprite = //client.Character.skills[client.SkillWheel[i]].sprite!=null ?
+                    client.Character.skills[client.SkillWheel[i]].sprite; //: AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
             }
         }
     }

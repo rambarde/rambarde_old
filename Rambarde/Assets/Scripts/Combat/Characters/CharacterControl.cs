@@ -89,22 +89,62 @@ namespace Characters {
             GetComponentInChildren<CharacterVfx>().Init();
         }
 
-        public void Init(Client client){//CharacterData data) {
-            //characterData = data;
-            //data.Init();
-            //data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
-            //data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
-            //skillWheel = data.skills;
-            
-            characterData = client.Character;
-            client.Character.Init();
-            client.Character.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
-            client.Character.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+        //public void Init(ExpeditionMenu.Monster monster)
+        //{//CharacterData data) {
+        //    characterData = data;
+        //    data.Init();
+        //    data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+        //    data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+        //    skillWheel = data.skills;
 
-            Skills.Skill[] temp = new Skills.Skill[4];
+        //    characterData = monster.Character;
+        //    characterData.Init();
+        //    characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+        //    characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
 
-            for (int j = 0; j < client.SkillWheel.Length; j++)
-                temp[j] = client.Character.skills[client.SkillWheel[j]];
+        //    Skills.Skill[] temp = new Skills.Skill[4];
+
+        //    for (int j = 0; j < monster.SkillWheel.Length; j++)
+        //        temp[j] = characterData.skills[monster.SkillWheel[j]];
+        //    skillWheel = temp;
+
+        //    UpdateStats(0);
+        //    GetComponentInChildren<CharacterVfx>().Init();
+        //}
+
+        //public void Init(Client client){//CharacterData data) {
+        //    characterData = data;
+        //    data.Init();
+        //    data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+        //    data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+        //    skillWheel = data.skills;
+
+        //    characterData = client.Character;
+        //    characterData.Init();
+        //    characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+        //    characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+
+        //    Skills.Skill[] temp = new Skills.Skill[4];
+
+        //    for (int j = 0; j < client.SkillWheel.Length; j++)
+        //        temp[j] = characterData.skills[client.SkillWheel[j]];
+        //    skillWheel = temp;
+
+        //    UpdateStats(0);
+        //    GetComponentInChildren<CharacterVfx>().Init();
+        //}
+
+        public void Init(CharacterData data, int[] intSkillWheel)
+        {
+            characterData = data;
+            characterData.Init();
+            characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+            characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+
+            Skill[] temp = new Skill[4];
+
+            for (int j = 0; j < intSkillWheel.Length; j++)
+                temp[j] = characterData.skills[intSkillWheel[j]];
             skillWheel = temp;
 
             UpdateStats(0);

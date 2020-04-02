@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
-  m_Name: Mage
+  m_Name: OrcClub
   m_EditorClassIdentifier: 
-  modelName: Mage
-  animatorController: Mage
+  modelName: Goblin
+  animatorController: Goblin
   baseStats:
     maxHp: 80
-    atq: 80
-    prot: 20
-    crit: 20
-    prec: 75
+    atq: 22
+    prot: 10
+    prec: 85
+    crit: 10
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 428c114d8a4aed447a8ad2999b1f3aea, type: 2}
-  - {fileID: 11400000, guid: aaef90d08bd8f7b4cacfc8023ce85dbf, type: 2}
+  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
+  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
+  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  clientImage: {fileID: 0}

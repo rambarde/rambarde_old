@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour {
     public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
 
     private List<Client> clientsMenu;
+    private List<ExpeditionMenu.Monster> currentMonsters;
 
     public CharacterControl GetTarget(int srcTeam, bool ally) {
         var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
@@ -52,8 +53,12 @@ public class CombatManager : MonoBehaviour {
         Destroy(characterControl.gameObject);
 
         if (teams[charTeam].Count == 0)
-        {
-            GetComponent<GameManager>().ChangeScene(0);
+        { 
+            GetComponent<GameManager>().ChangeCombat();
+            if (!GameManager.QuestState)
+                GetComponent<GameManager>().ChangeScene(2);
+            else
+                GetComponent<GameManager>().ChangeScene(0);
             //Debug.Break();
         }
     }
@@ -72,11 +77,12 @@ public class CombatManager : MonoBehaviour {
         var mage = Utils.LoadResourceFromDir<CharacterData>(dir, "Mage");
         var warrior = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
         var warrior1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
-        var goblin = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
-        var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
-        var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
+        var goblin = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
+        var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
+        var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
 
         clientsMenu = GameManager.clients;
+        currentMonsters = GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters;
 
         CharacterData[] playerTeam = {mage, warrior, warrior1};
         CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
@@ -93,7 +99,8 @@ public class CombatManager : MonoBehaviour {
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
             //character.Init(playerTeam[i]);
-            character.Init(clientsMenu[i]);
+            //character.Init(clientsMenu[i]);
+            character.Init(clientsMenu[i].Character, clientsMenu[i].SkillWheel);
             character.team = Team.PlayerTeam;
             teams[0].Add(character);
             ++i;
@@ -104,11 +111,14 @@ public class CombatManager : MonoBehaviour {
             var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
             go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
             go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, 90, 0);
-            var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
+            //var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
+            var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", currentMonsters[i].Character.modelName), go.transform);
             model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
             var character = go.GetComponent<CharacterControl>();
             character.team = Team.EmemyTeam;
-            character.Init(enemyTeam[i]);
+            //character.Init(enemyTeam[i]);
+            //character.Init(currentMonsters[i]);
+            character.Init(currentMonsters[i].Character, currentMonsters[i].SkillWheel);
             teams[1].Add(character);
             ++i;
         }

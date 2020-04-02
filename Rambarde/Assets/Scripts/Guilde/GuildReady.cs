@@ -42,6 +42,7 @@ public class GuildReady : MonoBehaviour
             //lance la scène combat ici
             GameManager.instruments = guildManager.instruments;
             GameManager.clients = guildManager.clients;
+            GameManager.quest = guildManager.selectedQuest;
             GetComponent<GameManager>().ChangeScene(1);
         }
     }

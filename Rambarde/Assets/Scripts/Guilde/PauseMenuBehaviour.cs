@@ -8,7 +8,7 @@ public class PauseMenuBehaviour : MonoBehaviour
     public GameObject theodorePanel;
     public List<GameObject> clientPanels;
     public GameObject questPanel;
-    public Image test;
+    //public Image test;
 
     private void Awake()
     {
@@ -121,6 +121,7 @@ public class PauseMenuBehaviour : MonoBehaviour
 
     private void InitQuest()
     {
-
+        questPanel.transform.GetChild(1).GetChild(1).GetComponent<Text>().text = GameManager.quest.Pitch;
+        questPanel.transform.GetChild(2).GetComponent<Image>().sprite = GameManager.quest.map;
     }
 }

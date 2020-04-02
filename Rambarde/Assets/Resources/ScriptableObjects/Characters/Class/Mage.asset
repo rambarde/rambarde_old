@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
-  m_Name: Warrior
+  m_Name: Mage
   m_EditorClassIdentifier: 
-  modelName: Warrior
-  animatorController: Warrior
+  modelName: Mage
+  animatorController: Mage
   baseStats:
-    maxHp: 100
-    atq: 60
+    maxHp: 80
+    atq: 80
     prot: 20
+    prec: 75
     crit: 20
-    prec: 100
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  clientImage: {fileID: 0}

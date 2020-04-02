@@ -7452,7 +7452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -213.8125}
+  m_AnchoredPosition: {x: 200, y: -209.47394}
   m_SizeDelta: {x: 700, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563520632
@@ -8361,8 +8361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 515, y: -28}
-  m_SizeDelta: {x: 400, y: 400}
+  m_AnchoredPosition: {x: 515, y: 46.995}
+  m_SizeDelta: {x: 400, y: 317.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655172036
 MonoBehaviour:
@@ -11137,8 +11137,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -103.3125}
-  m_SizeDelta: {x: 700, y: 50}
+  m_AnchoredPosition: {x: 200, y: -61.862507}
+  m_SizeDelta: {x: 700, y: 184.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &927505973
 MonoBehaviour:
@@ -11160,12 +11160,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -12028,13 +12028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8f2dc362d730e478153bcf99b136c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedQuest:
-    name: 
-    type: 0
-    map: {fileID: 0}
-    upgradedMap: {fileID: 0}
-    description: 
-    isUpgradable: 0
+  selectedQuest: {fileID: 0}
 --- !u!114 &1065372725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13958,24 +13952,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questPool:
-  - name: crypt01
-    type: 1
-    map: {fileID: 21300000, guid: 3ee10a18f8656944a96e2f6518c959c1, type: 3}
-    upgradedMap: {fileID: 21300000, guid: 4d1fef6a0b5b03f4494f2d44fb2e7e26, type: 3}
-    description: "premi\xE8re qu\xEAte dans la crypte"
-    isUpgradable: 1
-  - name: crypt02
-    type: 1
-    map: {fileID: 21300000, guid: 05ec177241014cf4f97115a7f063d88a, type: 3}
-    upgradedMap: {fileID: 21300000, guid: ff7904ba2c9ee804ea92f57e722c8ec8, type: 3}
-    description: "deuxi\xE8me qu\xEAte dans la crypte"
-    isUpgradable: 1
-  - name: crypt03
-    type: 1
-    map: {fileID: 21300000, guid: f294fa7f17c5c5e488dfa6617da25a60, type: 3}
-    upgradedMap: {fileID: 21300000, guid: c1bce33f2aa7368408962a9f1ff0662b, type: 3}
-    description: "troisi\xE8me qu\xEAte dans la crypte"
-    isUpgradable: 1
+  - {fileID: 11400000, guid: ce4c8197546254d47b2bb7dea865745a, type: 2}
+  - {fileID: 11400000, guid: 351201dd4b3f5c746ac20cf256710aa5, type: 2}
+  - {fileID: 11400000, guid: 5fd29beff8c42af4db809666ccff42a6, type: 2}
   numberOfQuests: 3
 --- !u!114 &1208946937
 MonoBehaviour:
@@ -17460,15 +17439,8 @@ MonoBehaviour:
   - {fileID: 125720216}
   - {fileID: 1629173785}
   BaseInstrument: {fileID: 11400000, guid: 6b98535786a98b649883a0ed4b726834, type: 2}
-  selectedQuest:
-    name: 
-    type: 0
-    map: {fileID: 0}
-    upgradedMap: {fileID: 0}
-    description: 
-    isUpgradable: 0
+  selectedQuest: {fileID: 0}
   instruments: []
-  clients: []
   menuValid: 
 --- !u!114 &1463217676
 MonoBehaviour:
@@ -19691,18 +19663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questPool:
-  - name: forest01
-    type: 0
-    map: {fileID: 21300000, guid: f925b32666d9ccb4b810b0a1b38218ab, type: 3}
-    upgradedMap: {fileID: 21300000, guid: 98b5d107c38b85741aa35097500f04f4, type: 3}
-    description: "premi\xE8re qu\xEAte en for\xEAt"
-    isUpgradable: 1
-  - name: forest02
-    type: 0
-    map: {fileID: 21300000, guid: 663129195c61b4243abb51e191425e06, type: 3}
-    upgradedMap: {fileID: 21300000, guid: d5ac183c5b5146a4dbc526803b96c522, type: 3}
-    description: "deuxi\xE8me qu\xEAte en for\xEAt"
-    isUpgradable: 1
+  - {fileID: 11400000, guid: aacc83166a0c1504591fc30db4bec99d, type: 2}
+  - {fileID: 11400000, guid: 83b1fd0efa109494e8842cb74171b911, type: 2}
   numberOfQuests: 3
 --- !u!114 &1668373434
 MonoBehaviour:

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ChooseQuest : MonoBehaviour
 {
-    public Quest[] questPool;
+    public List<ExpeditionMenu.Expedition> questPool;
 
     public int numberOfQuests;
 
@@ -19,7 +19,7 @@ public class ChooseQuest : MonoBehaviour
     void Start()
     {
         // Only display the unlocked quests
-        for(int i=numberOfQuests+1; i<=questPool.Length; i++)
+        for(int i=numberOfQuests+1; i<=questPool.Count; i++)
         {
             GameObject.Find("QuestButton0" + i).SetActive(false);
         }
@@ -30,12 +30,22 @@ public class ChooseQuest : MonoBehaviour
 
         // Label displaying how much gold the player has
         goldManager = GameObject.FindGameObjectWithTag("GoldLabel");
+
+        ExpeditionPitchList pitchList = new ExpeditionPitchList();
+        pitchList.Init();
+        List<int> pitchIndex = GeneratePitch(questPool[0].type, questPool.Count);
+        for(int i = 0; i < questPool.Count; i++)
+        {
+            Debug.Log("Init expe");
+            questPool[i].Init();
+            questPool[i].Pitch = pitchList.expeditionPitch(questPool[i].type, pitchIndex[i]);
+        }
     }
 
     public void DisplayQuestMap(int quest_id)
     {
         // Display either normal quest are upgraded quest
-        if (questPool[quest_id].isUpgradable)
+        if (questPool[quest_id].IsUpgradable)
         {
             questMap.GetComponent<Image>().sprite = questPool[quest_id].map;
         }
@@ -45,7 +55,7 @@ public class ChooseQuest : MonoBehaviour
         }
         
         // Display quest description
-        questDescription.GetComponent<Text>().text = questPool[quest_id].description;
+        questDescription.GetComponent<Text>().text = questPool[quest_id].Pitch;
         selectedQuestID = quest_id;
 
         // display button to select quest
@@ -63,9 +73,10 @@ public class ChooseQuest : MonoBehaviour
             GameObject.Find("UpgradeButton").SetActive(false);
 
             // Upgrade all Parcours quests
-            for (int i = 0; i < questPool.Length; i++)
+            for (int i = 0; i < questPool.Count; i++)
             {
-                questPool[i].isUpgradable = false;
+                //questPool[i].isUpgradable = false;
+                questPool[i].IsUpgradable = false;
             }
 
             // update currently displayed quest map if needed
@@ -80,6 +91,35 @@ public class ChooseQuest : MonoBehaviour
             Debug.Log("not enough gold to upgrade");
             goldManager.GetComponent<GoldValue>().DisplayNoGoldMessage();
         }
+    }
+
+    List<int> GeneratePitch(ExpeditionMenu.QuestType type, int nExpedition)
+    {
+        List<int> forestIndex = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        List<int> cryptIndex = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        List<int> pitchIndex = new List<int>();
+
+        switch (type)
+        {
+            case ExpeditionMenu.QuestType.Forest:
+                for (int i = 0; i < nExpedition; i++)
+                {
+                    int n = Random.Range(0, forestIndex.Count);
+                    pitchIndex.Add(forestIndex[n]);
+                    forestIndex.RemoveAt(n);
+                }
+                break;
+
+            case ExpeditionMenu.QuestType.Crypt:
+                for (int i = 0; i < nExpedition; i++)
+                {
+                    int n = Random.Range(0, cryptIndex.Count);
+                    pitchIndex.Add(cryptIndex[n]);
+                    cryptIndex.RemoveAt(n);
+                }
+                break;
+        }      
+        return pitchIndex;
     }
 }
 

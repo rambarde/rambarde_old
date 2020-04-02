@@ -17,10 +17,9 @@ public class GuildeManagerBehaviour : MonoBehaviour
     bool menuAlreadyActive = false;
 
     /** out **/
-    public Quest selectedQuest;
+    public ExpeditionMenu.Expedition selectedQuest;
     public List<Bard.Instrument> instruments;
     public List<Client> clients;
-    //public Characters.CharacterControl[] clients;
 
     public bool[] menuValid;
 
@@ -32,7 +31,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         menuValid = new bool[3];
 
         signQuest = GameObject.Find("exPointQuest");
-        if (!(selectedQuest.map == null))
+        if (!(selectedQuest == null))
         {
             signQuest.SetActive(false);
         }
@@ -67,7 +66,7 @@ public class GuildeManagerBehaviour : MonoBehaviour
         switchMenuPanel.SetActive(false);
     }
 
-    public void SetClients(List<Client> clients)//Characters.CharacterControl[] clients)
+    public void SetClients(List<Client> clients)
     {
         this.clients = clients;
         menuValid[0] = true;
@@ -84,15 +83,15 @@ public class GuildeManagerBehaviour : MonoBehaviour
         //}
     }
 
-    public void SetQuest(Quest quest)
+    public void SetQuest(ExpeditionMenu.Expedition quest)
     {
         selectedQuest = quest;
-        GameManager.quest = quest;
+        //GameManager.quest = quest;
         signQuest.SetActive(false);
         menuValid[1] = true;
     }
 
-    public void SetTheodore(Melodies.Melody[] melodies, List<Bard.Instrument> instruments)//Bard.Instrument[] instruments)
+    public void SetTheodore(Melodies.Melody[] melodies, List<Bard.Instrument> instruments)
     {
         for (int i = 0; i < melodies.Length; i++)
             BaseInstrument.melodies[i] = melodies[i];
