@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Encore_!
   m_EditorClassIdentifier: 
   data: 12123-3-
-  melodyTargetMode: 0
+  melodyTargetMode: 4
   tier: 2
   inspirationValue: -15

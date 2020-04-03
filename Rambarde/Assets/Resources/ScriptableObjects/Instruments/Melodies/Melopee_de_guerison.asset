@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a2d174639bce7f54db40dafb42fce06e, type: 3}
   m_Name: Melopee_de_guerison
-  m_EditorClassIdentifier: Assembly-CSharp:Music.Melodies:PausaDiBreve
+  m_EditorClassIdentifier: 
   data: 1-1-1-1-
   melodyTargetMode: 0
   tier: 3

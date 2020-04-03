@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: Assaut_prudent
   m_EditorClassIdentifier: 
+  tier: 2
   actions:
   - actionType: 0
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 80
-  - actionType: 2
+    value: 50
+  - actionType: 3
     targetMode: 2
-    effectType: 262144
+    effectType: 1048576
     buffType: 0
     value: 3
   animationName: 

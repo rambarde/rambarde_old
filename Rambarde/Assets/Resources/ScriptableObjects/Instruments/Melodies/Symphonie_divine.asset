@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Symphonie_divine
   m_EditorClassIdentifier: 
   data: 1-1-1-1-
-  melodyTargetMode: 0
+  melodyTargetMode: 2
   tier: 0
   inspirationValue: 0

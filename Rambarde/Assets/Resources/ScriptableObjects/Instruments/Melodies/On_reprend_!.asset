@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: On_reprend_!
   m_EditorClassIdentifier: 
   data: 2-2-332-
-  melodyTargetMode: 0
+  melodyTargetMode: 4
   tier: 1
   inspirationValue: 10

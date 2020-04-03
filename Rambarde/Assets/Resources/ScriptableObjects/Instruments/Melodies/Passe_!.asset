@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Passe_!
   m_EditorClassIdentifier: 
   data: 1-1-2-2-
-  melodyTargetMode: 0
+  melodyTargetMode: 4
   tier: 1
   inspirationValue: 10

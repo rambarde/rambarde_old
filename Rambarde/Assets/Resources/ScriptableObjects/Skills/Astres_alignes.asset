@@ -17,7 +17,7 @@ MonoBehaviour:
     targetMode: 3
     effectType: 0
     buffType: 0
-    value: 50
+    value: 15
   animationName: 
   sprite: {fileID: 0}
   description: 

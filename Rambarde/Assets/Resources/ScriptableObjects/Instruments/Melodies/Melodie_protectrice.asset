@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Melodie_protectrice
   m_EditorClassIdentifier: 
   data: 1-1-1-1-
-  melodyTargetMode: 0
+  melodyTargetMode: 2
   tier: 1
   inspirationValue: 10

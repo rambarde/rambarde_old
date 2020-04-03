@@ -17,12 +17,7 @@ MonoBehaviour:
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 125
-  - actionType: 2
-    targetMode: 2
-    effectType: 256
-    buffType: 0
-    value: 1
+    value: 130
   animationName: 
   sprite: {fileID: 0}
   description: 

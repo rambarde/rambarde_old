@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Gesticulation_improbable
   m_EditorClassIdentifier: 
   actions:
-  - actionType: 2
-    targetMode: 2
-    effectType: 1024
+  - actionType: 0
+    targetMode: 1
+    effectType: 0
     buffType: 0
-    value: 3
+    value: 60
   animationName: 
   sprite: {fileID: 0}
   description: 
