@@ -125,6 +125,7 @@ namespace Bard {
         public async void Done() {
             await StartRhythmGame();
             await Utils.AwaitObservable(Observable.Timer(TimeSpan.FromSeconds(6))); // wait actual rhythm end
+
             CombatManager.Instance.combatPhase.Value = "execMelodies";
             /*await*/ ExecMelodies();
             Reset();
@@ -194,6 +195,7 @@ namespace Bard {
                           }
                       })
                       .ToList(); // Compute list elements before starting the timer
+            _ = MusicManager.Instance.PlayMelodies(selectedMelodies);
 
             await Utils.AwaitObservable(
                 Observable.Timer(TimeSpan.FromSeconds(_beat))

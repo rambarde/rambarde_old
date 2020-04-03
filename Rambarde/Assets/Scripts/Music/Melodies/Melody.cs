@@ -12,6 +12,7 @@ using UnityEngine.Serialization;
 namespace Melodies {
     public abstract class Melody : ScriptableObject {
         [SerializeField] private string data;
+         public AudioClip clip;
         public string Data => data;
         public int Size => data.Length;
         
