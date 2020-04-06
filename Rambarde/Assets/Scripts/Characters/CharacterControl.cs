@@ -45,12 +45,32 @@ namespace Characters {
         }
 
         public async Task ExecTurn() {
+
+            if (HasEffect(EffectType.Confused)) {
+                int r = Random.Range(0, skillWheel.Length);
+                for (int i = 0; i <= r; ++i) {
+                    await IncrementSkillWheel();
+                }
+            }
+            
             var skill = skillWheel[_skillIndex];
 
-            // Play and wait for skillAnimation to finish
-            await SkillPreHitAnimation(skill.animationName);
-            // Execute the skill
-            await skill.Execute(this);
+            if (HasEffect(EffectType.Dizzy)) {
+                _skillIndexChanged = true;
+            } else {
+                //calculate chances of miss and critical hit, and merciless effect
+
+                // Play and wait for skillAnimation to finish
+                await SkillPreHitAnimation(skill.animationName);
+                // Execute the skill
+                await skill.Execute(this);
+
+                if (HasEffect(EffectType.Exalted)) {
+                    await IncrementSkillWheel();
+                    await SkillPreHitAnimation(skill.animationName);
+                    await skill.Execute(this);
+                }
+            }
 
             // Apply effects at the end of the turn
             for (var i = statusEffects.Count - 1; i >= 0; --i) {

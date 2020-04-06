@@ -16,6 +16,7 @@ public class CombatManager : MonoBehaviour {
     }
 
     public async Task ExecTurn() {
+        //sort Characters based on speed, influenced by Theodore, Rushing and Lagging effects
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {
