@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 0
   map: {fileID: 21300000, guid: 663129195c61b4243abb51e191425e06, type: 3}
   upgradedMap: {fileID: 21300000, guid: d5ac183c5b5146a4dbc526803b96c522, type: 3}
+  nFights: 2
   monsterData:
   - {fileID: 11400000, guid: 2c963a85431e5fe4c8aa200bddba8f65, type: 2}
   - {fileID: 11400000, guid: cda192f4341d8be45ac5ec6af38cd0b0, type: 2}

@@ -49,6 +49,9 @@ public class CombatManager : MonoBehaviour {
 
     public void Remove(CharacterControl characterControl) {
         var charTeam = (int) characterControl.team;
+        if(charTeam == 0)
+            GameManager.quest.FightMax[characterControl.clientNumber] = GameManager.CurrentFight + 1; //decreasing the number of total fight
+
         teams[charTeam].Remove(characterControl);
         Destroy(characterControl.gameObject);
 
@@ -58,7 +61,10 @@ public class CombatManager : MonoBehaviour {
             if (!GameManager.QuestState)
                 GetComponent<GameManager>().ChangeScene(2);
             else
+            {
+                var gold = GetComponent<GameManager>().CalculateGold();
                 GetComponent<GameManager>().ChangeScene(0);
+            }
             //Debug.Break();
         }
     }
@@ -102,6 +108,7 @@ public class CombatManager : MonoBehaviour {
             //character.Init(clientsMenu[i]);
             character.Init(clientsMenu[i].Character, clientsMenu[i].SkillWheel);
             character.team = Team.PlayerTeam;
+            character.clientNumber = i;
             teams[0].Add(character);
             ++i;
         }

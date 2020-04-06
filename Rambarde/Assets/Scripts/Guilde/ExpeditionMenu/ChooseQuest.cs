@@ -77,6 +77,7 @@ public class ChooseQuest : MonoBehaviour
             {
                 //questPool[i].isUpgradable = false;
                 questPool[i].IsUpgradable = false;
+                questPool[i].Gold = (int)(questPool[i].Gold * 1.5f);
             }
 
             // update currently displayed quest map if needed

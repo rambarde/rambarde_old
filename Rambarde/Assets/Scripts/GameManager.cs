@@ -43,4 +43,26 @@ public class GameManager : MonoBehaviour
         CurrentFight++;
         return;
     }
+
+    public int CalculateGold()
+    {
+        int reward = 0;
+        for(int i = 0; i < 3; i++)
+        {
+            int goldReward = quest.Gold;
+            int alterReward = 0;    //add alternatif pathway reward
+            float multiProgession = (float)quest.FightMax[i] / (float)quest.nFights;
+            int randomReawrd = 0;   //add random events reward/losses
+            int envyReward = 0;     //add envy rewards
+            reward += (int)((goldReward + alterReward) * multiProgession) + envyReward;
+            //Debug.Log("Client " + i + ": " + ((int)((goldReward + alterReward) * multiProgession) + envyReward) + " gold");
+        }
+
+        if (quest.FightMax[0] != quest.nFights & quest.FightMax[1] != quest.nFights & quest.FightMax[2] != quest.nFights)
+            reward = (int)(reward / 2.0f);
+
+        //Debug.Log("Gold total: " + reward);
+
+        return reward;
+    }
 }
