@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: lambert3
   m_Shader: {fileID: 14002, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: EFFECT_BUMP EFFECT_HUE_VARIATION _NORMALMAP _WINDQUALITY_NONE
+  m_ShaderKeywords: EFFECT_BUMP _NORMALMAP _WINDQUALITY_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -71,9 +71,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.015
+    - _Glossiness: 0.2
     - _GlossyReflections: 1
-    - _HueVariationKwToggle: 1
+    - _HueVariationKwToggle: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalMapKwToggle: 1
@@ -89,7 +89,7 @@ Material:
     - _WindQuality: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4433962, g: 0.15427677, b: 0, a: 1}
+    - _Color: {r: 0.3207547, g: 0.09920952, b: 0.049928803, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _SubsurfaceColor: {r: 1, g: 1, b: 1, a: 1}

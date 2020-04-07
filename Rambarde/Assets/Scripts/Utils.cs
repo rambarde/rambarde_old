@@ -3,10 +3,14 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public static class Utils {
-    public static T LoadResourceFromDir<T>(string dir, string filename) where T : UnityEngine.Object {
-        return dir == "" ? Resources.Load<T>(filename) : Resources.Load<T>(dir + "/" + filename);
+    public static async Task<T> LoadResourceFromDir<T>(string address) where T : UnityEngine.Object
+    {
+        var handle = Addressables.LoadAssetAsync<T>(address);
+        await handle.Task;
+        return handle.Result;
     }
 
     public static async Task AwaitObservable<T>(IObservable<T> obs, Action<T> f = null) {

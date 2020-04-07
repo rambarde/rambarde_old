@@ -17,7 +17,7 @@ namespace UI {
         private const string ResourcesDir = "CharacterVfx";
 
 
-        public void Init(CharacterControl characterControl)
+        public async void Init(CharacterControl characterControl)
         {
             _characterControl = characterControl;
             _characterControl.currentStats.hp.AsObservable().Subscribe(x => characterHealth.text = x.ToString());
@@ -31,15 +31,15 @@ namespace UI {
             }
 
             if (statusEffects) {
-                _characterControl.statusEffects.ObserveAdd().Subscribe(x => {
+                _characterControl.statusEffects.ObserveAdd().Subscribe(async x => {
                     //TODO: Add animation for added effect
                     var added = x.Value;
 
-                    var go = Instantiate(Utils.LoadResourceFromDir<GameObject>(ResourcesDir, "StatusEffectIcon"), statusEffects.transform);
+                    var go = Instantiate(await Utils.LoadResourceFromDir<GameObject>("StatusEffectIcon"), statusEffects.transform);
                     var image = go.transform.Find("Image").gameObject.GetComponent<Image>();
                     var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
 
-                    image.sprite = Utils.LoadResourceFromDir<Sprite>(ResourcesDir, added.spriteName);
+                    image.sprite = await Utils.LoadResourceFromDir<Sprite>(added.spriteName);
                     added.turnsLeft.AsObservable().Subscribe(turns => {
                         //TODO: Add animation for text change 
                         text.text = turns.ToString();

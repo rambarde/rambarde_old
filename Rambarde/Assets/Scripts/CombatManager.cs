@@ -11,10 +11,11 @@ using Random = UnityEngine.Random;
 public class CombatManager : MonoBehaviour {
     public List<List<CharacterControl>> teams = new List<List<CharacterControl>>(2);
     public GameObject playerTeamGo, enemyTeamGo;
-    public RectTransform playersUiContainer;
+    public RectTransform playerTeamUiContainer;
+    public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
 
-    private Canvas _canvas;
+    //private Canvas _canvas;
     
     public CharacterControl GetTarget(int srcTeam, bool ally) {
         var team = ally ? srcTeam : (srcTeam + 1) % teams.Count;
@@ -68,17 +69,17 @@ public class CombatManager : MonoBehaviour {
         _instance = this;
     }
 
-    private void Start()
+    private async void Start()
     {
-        _canvas = playersUiContainer.parent.gameObject.GetComponent<Canvas>();
+        //_canvas = playersUiContainer.parent.gameObject.GetComponent<Canvas>();
         
         const string dir = "ScriptableObjects/Characters";
-        var mage = Utils.LoadResourceFromDir<CharacterData>(dir, "Mage");
-        var warrior = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
-        var warrior1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
-        var goblin = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
-        var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
-        var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir, "Goblin");
+        var mage = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Mage");
+        var warrior = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Warrior");
+        var warrior1 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Warrior");
+        var goblin = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
+        var goblin1 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
+        var goblin2 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
 
         CharacterData[] playerTeam = {mage, warrior, warrior1};
         CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
@@ -99,14 +100,17 @@ public class CombatManager : MonoBehaviour {
         }
     }
 
-    private void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterData> team, int i, Team charTeam)
+    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterData> team, int i, Team charTeam)
     {
+        string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
+        string charPrefabUIName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
+
         // instantiate the character prefab
-        var characterGameObject = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), characterTransform);
+        var characterGameObject = Instantiate(await Utils.LoadResourceFromDir<GameObject>(charPrefabName), characterTransform);
 
         // Load the character 3d model
-        var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", team[i].modelName), characterGameObject.transform);
-        model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
+        var model = Instantiate(await Utils.LoadResourceFromDir<GameObject>(team[i].modelName), characterGameObject.transform);
+        model.AddComponent<Animator>().runtimeAnimatorController = await Utils.LoadResourceFromDir<RuntimeAnimatorController>("Animations/Character");
 
         // Init the character control
         var character = characterGameObject.GetComponent<CharacterControl>();
@@ -114,24 +118,13 @@ public class CombatManager : MonoBehaviour {
         character.team = charTeam;
         teams[(int) charTeam].Add(character);
 
-        // instantiate the health bar on the canvas relatively to player position
-        var healthBarUi = characterGameObject.transform.Find("HealthBar");
-        var position = characterTransform.position;
-        Transform hpTransform = healthBarUi.transform;
-        hpTransform.parent = playersUiContainer;
-        hpTransform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.up * 3.5f);
-        hpTransform.localScale = Vector3.one;
-        hpTransform.localEulerAngles = Vector3.zero;
+        // instantiate the UI on the canvas
+        var charUi = characterGameObject.transform.Find(charPrefabUIName);
+        charUi.parent = charTeam == Team.PlayerTeam ? playerTeamUiContainer : enemyTeamUiContainer;
+        charUi.localScale = Vector3.one;
+        charUi.localEulerAngles = Vector3.zero;
         characterGameObject.GetComponent<CharacterVfx>().Init(character);
-        
-        // instantiate the skills slot on the canvas relatively to player position
-        var slotUiGo = characterGameObject.transform.Find("SkillSlot");
-        var slotsTransform = slotUiGo.transform;
-        slotsTransform.parent = playersUiContainer;
-        slotsTransform.position = Utils.WorldToUiSpace(_canvas, position + Vector3.down);
-        slotsTransform.localScale = Vector3.one;
-        slotsTransform.localEulerAngles = Vector3.zero;
-        SlotUi slotUi = slotUiGo.GetComponent<SlotUi>();
+        SlotUi slotUi = charUi.GetComponentInChildren<SlotUi>();
         slotUi.Init(character);
     }
 

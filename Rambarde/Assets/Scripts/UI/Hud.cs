@@ -34,7 +34,7 @@ public class Hud : MonoBehaviour {
                 }));
     }
     
-    public void Init(Bard.Bard bard) {
+    public async void Init(Bard.Bard bard) {
 
         CombatManager.Instance.combatPhase.Subscribe(phase => {
             switch (phase) {
@@ -50,8 +50,8 @@ public class Hud : MonoBehaviour {
             }
         });
         
-        GameObject buttonPrefab = Utils.LoadResourceFromDir<GameObject>("", "Button");
-        GameObject separatorPrefab = Utils.LoadResourceFromDir<GameObject>("", "Separator");
+        GameObject buttonPrefab = await Utils.LoadResourceFromDir<GameObject>("Button");
+        GameObject separatorPrefab = await Utils.LoadResourceFromDir<GameObject>("Separator");
 
         for (int i = 0; i < bard.instruments.Count; ++i) {
             
