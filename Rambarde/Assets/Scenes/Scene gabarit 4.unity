@@ -6138,8 +6138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTeamGo: {fileID: 1854248406}
   enemyTeamGo: {fileID: 1415330599}
-  playerTeamUiContainer: {fileID: 0}
-  enemyTeamUiContainer: {fileID: 0}
+  playerTeamUiContainer: {fileID: 49732620}
+  enemyTeamUiContainer: {fileID: 166028383}
 --- !u!4 &543202384
 Transform:
   m_ObjectHideFlags: 0

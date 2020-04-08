@@ -120,7 +120,7 @@ public class CombatManager : MonoBehaviour {
 
         // instantiate the UI on the canvas
         var charUi = characterGameObject.transform.Find(charPrefabUIName);
-        charUi.parent = charTeam == Team.PlayerTeam ? playerTeamUiContainer : enemyTeamUiContainer;
+        charUi.SetParent(charTeam == Team.PlayerTeam ? playerTeamUiContainer : enemyTeamUiContainer);
         charUi.localScale = Vector3.one;
         charUi.localEulerAngles = Vector3.zero;
         characterGameObject.GetComponent<CharacterVfx>().Init(character);
