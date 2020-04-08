@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f25db1a464c6e434ca03794a446d0d87
+  m_SerializeEntries:
+  - m_GUID: 0a1e254a1f41d0747889f15a007512b6
+    m_Address: StatusEffectIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1039e69a757a64b4c931f4cff6c14ba9
+    m_Address: EnemyCharacterPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1b0d1cf3855f7f344bd626b99476e3b8
+    m_Address: Elvis
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 1d4247f365d1e6b41aa8bfcc8601c468
+    m_Address: Animations/Character
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEditor.Animations.AnimatorController, UnityEditor, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 2c963a85431e5fe4c8aa200bddba8f65
+    m_Address: ScriptableObjects/Goblin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 4274502919fd90942b0d49c9eecb283a
+    m_Address: Warrior
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 5a73eb62c7f2f5f47959e8c80fb6045f
+    m_Address: Separator
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 74e46b1ca93e8e64aae72a7145fb8d07
+    m_Address: ScriptableObjects/Warrior
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 7c78d02dd8936a7438531fc604d79b87
+    m_Address: PlayerTeamCharacterPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 950be6cf0befaf540a850b1eb0c74904
+    m_Address: ScriptableObjects/Mage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 11400000, guid: 950be6cf0befaf540a850b1eb0c74904, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 950be6cf0befaf540a850b1eb0c74904, type: 2}
+  - m_GUID: ba216e427631a3746aae7ce7dd2d7844
+    m_Address: Button
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: d89c9546b3733784fb032c3815ceecae
+    m_Address: Goblin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e56ef2f874424424bb7b98b9da35de44
+    m_Address: Mage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_MainAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
+      type: 3}
+    m_TargetAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
+      type: 3}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bce459c6cd4c5624abd220f9859e3ba8, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7bce6c6b5b9af494fa3b44e8e676b3e7, type: 2}
+    - {fileID: 11400000, guid: 5ff3457ba855cf242a0e305631705c8a, type: 2}
