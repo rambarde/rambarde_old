@@ -80,7 +80,7 @@ public class ClientBehaviour :
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!IsClickable)
+        if (!IsClickable) 
             return;
 
         if (counter.GetComponent<Counter>().CurrentCount >= 3)

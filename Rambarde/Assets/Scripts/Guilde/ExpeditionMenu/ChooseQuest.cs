@@ -54,7 +54,7 @@ public class ChooseQuest : MonoBehaviour
 
     public void UpgradeParcours()
     {
-        if (goldManager.GetComponent<GoldValue>().HasEnoughGold()) //if enough gold (more or equal to 200G)
+        if (goldManager.GetComponent<GoldValue>().HasEnoughGold(200)) //if enough gold (more or equal to 200G)
         {
             // pay the update and update gold label
             goldManager.GetComponent<GoldValue>().Pay(200); //pay 200G to upgrade Prcours

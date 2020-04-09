@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c89885ae18571847a2200ad51333898, type: 2}
   passif: La jauge de Transe se remplit 25% plus vite
   type: Attaque
-  ID: 1
   sprite: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
   color: {r: 0.047058824, g: 0.64705884, b: 0.6784314, a: 1}
+  price: 75
+  owned: 0

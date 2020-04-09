@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
   m_Name: Paladin
   m_EditorClassIdentifier: 
-  clientName: 
   modelName: 
   animatorController: 
   baseStats:
@@ -21,8 +20,10 @@ MonoBehaviour:
     prot: 20
     prec: 90
     crit: 5
-  baseWeapons: []
-  baseArmors: []
+  charType: 0
+  baseEquipment:
+  - {fileID: 11400000, guid: 0939e3f368652e64caeeef9f97dbd839, type: 2}
+  - {fileID: 11400000, guid: 41fee7973c7917a49a2ea657f7910027, type: 2}
   skills:
   - {fileID: 11400000, guid: 298acfe2e21d860429269c5874932f8b, type: 2}
   - {fileID: 11400000, guid: 59ec35716e014024ba9b768fcedd62cf, type: 2}

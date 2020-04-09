@@ -20,6 +20,7 @@ MonoBehaviour:
   passif: "Un client soign\xE9 avec un morceau de cet instrument est aussi gu\xE9ri
     du poison"
   type: Soin
-  ID: 5
   sprite: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94, type: 3}
   color: {r: 1, g: 1, b: 1, a: 1}
+  price: 50
+  owned: 0

@@ -2,6 +2,12 @@
 using UniRx;
 using UnityEngine;
 
+public enum CharacterType
+{
+    Stratege, Temeraire, Mage
+};
+
+
 namespace Characters {
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Character/CharacterData")]
     public class CharacterData : ScriptableObject {
@@ -11,18 +17,17 @@ namespace Characters {
 
         public Stats baseStats;
 
-        [SerializeField] private Weapon[] baseWeapons;
-        [SerializeField] private Armor[] baseArmors;
-        public ReactiveCollection<Weapon> weapons;
-        public ReactiveCollection<Armor> armors;
+        public CharacterType charType;
+
+        [SerializeField] public Equipment[] baseEquipment;
+        public ReactiveCollection<Equipment> equipments;
 
         public Skill[] skills;
 
         public Sprite clientImage;
 
         public void Init() {
-            weapons = new ReactiveCollection<Weapon>(baseWeapons);
-            armors = new ReactiveCollection<Armor>(baseArmors);
+            equipments = new ReactiveCollection<Equipment>(baseEquipment);
         }
     }
 }

@@ -67,6 +67,11 @@ public class ClientMenuManager : MonoBehaviour
                 client.skillWheel = temp;
                 client.characterData = currentClient.Character;
 
+                // client equipment = base equipment from class
+                client.equipment = new Characters.Equipment[2];
+                client.equipment[0] = currentClient.Character.baseEquipment[0];     //weapon
+                client.equipment[1] = currentClient.Character.baseEquipment[1];     //armor
+
                 clients[nClient] = client;
                 nClient++;
             }

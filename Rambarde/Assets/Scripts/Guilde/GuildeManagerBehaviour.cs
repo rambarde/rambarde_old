@@ -104,11 +104,13 @@ public class GuildeManagerBehaviour : MonoBehaviour
     {
         this.clients = null;
         menuValid[0] = false;
+        signClient.SetActive(true);
     }
 
     public void resetQuest()
     {
         menuValid[1] = false;
+        signQuest.SetActive(true);
     }
 
     public void resetTheodore() 
@@ -116,5 +118,6 @@ public class GuildeManagerBehaviour : MonoBehaviour
         this.innateMelodies = null;
         this.instruments = null;
         menuValid[2] = false;
+        signTheodore.SetActive(true);
     }
 }

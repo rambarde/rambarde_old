@@ -20,6 +20,7 @@ MonoBehaviour:
   passif: "Un monstre affect\xE9 par un morceau de cet instrument re\xE7oit en plus
     Tra\xEEnard 1"
   type: Protection
-  ID: 3
   sprite: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
   color: {r: 1, g: 0.77254903, b: 0, a: 1}
+  price: 100
+  owned: 0

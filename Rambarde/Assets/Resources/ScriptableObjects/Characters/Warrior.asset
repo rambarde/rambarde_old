@@ -18,10 +18,11 @@ MonoBehaviour:
     maxHp: 100
     atq: 60
     prot: 20
-    crit: 20
     prec: 100
-  baseWeapons: []
-  baseArmors: []
+    crit: 20
+  charType: 1
+  baseEquipment: []
   skills:
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
-  - {fileID: 11400000, guid: 4027280429dc3854489386bb06ff022a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  clientImage: {fileID: 0}
