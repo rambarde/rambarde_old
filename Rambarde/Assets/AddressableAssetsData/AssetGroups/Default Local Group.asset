@@ -89,14 +89,28 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 8456f3cec12d90948b1869d1ea47e20b
+    m_Address: vfx-poison
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: 950be6cf0befaf540a850b1eb0c74904
     m_Address: ScriptableObjects/Mage
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 11400000, guid: 950be6cf0befaf540a850b1eb0c74904, type: 2}
-    m_TargetAsset: {fileID: 11400000, guid: 950be6cf0befaf540a850b1eb0c74904, type: 2}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 98deba1df769be04da52a6adaa88c075
+    m_Address: vfx-heal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_mainAssetType: 
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: ba216e427631a3746aae7ce7dd2d7844
     m_Address: Button
     m_ReadOnly: 0
@@ -119,10 +133,8 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
-      type: 3}
-    m_TargetAsset: {fileID: -927199367670048503, guid: e56ef2f874424424bb7b98b9da35de44,
-      type: 3}
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bce459c6cd4c5624abd220f9859e3ba8, type: 2}
   m_SchemaSet:

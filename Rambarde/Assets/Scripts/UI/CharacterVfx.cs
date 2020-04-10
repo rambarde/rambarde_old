@@ -35,11 +35,11 @@ namespace UI {
                     //TODO: Add animation for added effect
                     var added = x.Value;
 
-                    var go = Instantiate(await Utils.LoadResourceFromDir<GameObject>("StatusEffectIcon"), statusEffects.transform);
+                    var go = Instantiate(await Utils.LoadResource<GameObject>("StatusEffectIcon"), statusEffects.transform);
                     var image = go.transform.Find("Image").gameObject.GetComponent<Image>();
                     var text = go.transform.Find("TurnsLeft").gameObject.GetComponent<TextMeshProUGUI>();
 
-                    image.sprite = await Utils.LoadResourceFromDir<Sprite>(added.spriteName);
+                    image.sprite = await Utils.LoadResource<Sprite>(added.spriteName);
                     added.turnsLeft.AsObservable().Subscribe(turns => {
                         //TODO: Add animation for text change 
                         text.text = turns.ToString();

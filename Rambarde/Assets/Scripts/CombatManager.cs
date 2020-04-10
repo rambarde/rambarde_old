@@ -71,15 +71,12 @@ public class CombatManager : MonoBehaviour {
 
     private async void Start()
     {
-        //_canvas = playersUiContainer.parent.gameObject.GetComponent<Canvas>();
-        
-        const string dir = "ScriptableObjects/Characters";
-        var mage = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Mage");
-        var warrior = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Warrior");
-        var warrior1 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Warrior");
-        var goblin = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
-        var goblin1 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
-        var goblin2 = await Utils.LoadResourceFromDir<CharacterData>("ScriptableObjects/Goblin");
+        var mage = await Utils.LoadResource<CharacterData>("ScriptableObjects/Mage");
+        var warrior = await Utils.LoadResource<CharacterData>("ScriptableObjects/Warrior");
+        var warrior1 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Warrior");
+        var goblin = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
+        var goblin1 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
+        var goblin2 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
 
         CharacterData[] playerTeam = {mage, warrior, warrior1};
         CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
@@ -106,11 +103,11 @@ public class CombatManager : MonoBehaviour {
         string charPrefabUIName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
 
         // instantiate the character prefab
-        var characterGameObject = Instantiate(await Utils.LoadResourceFromDir<GameObject>(charPrefabName), characterTransform);
+        var characterGameObject = Instantiate(await Utils.LoadResource<GameObject>(charPrefabName), characterTransform);
 
         // Load the character 3d model
-        var model = Instantiate(await Utils.LoadResourceFromDir<GameObject>(team[i].modelName), characterGameObject.transform);
-        model.AddComponent<Animator>().runtimeAnimatorController = await Utils.LoadResourceFromDir<RuntimeAnimatorController>("Animations/Character");
+        var model = Instantiate(await Utils.LoadResource<GameObject>(team[i].modelName), characterGameObject.transform);
+        model.AddComponent<Animator>().runtimeAnimatorController = await Utils.LoadResource<RuntimeAnimatorController>("Animations/Character");
 
         // Init the character control
         var character = characterGameObject.GetComponent<CharacterControl>();

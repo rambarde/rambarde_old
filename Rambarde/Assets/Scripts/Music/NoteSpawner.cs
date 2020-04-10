@@ -39,7 +39,7 @@ namespace Music {
             GameObject noteObj = Instantiate(notePrefab, parent);
             noteObj.GetComponent<Note>().note = int.Parse(note);
             noteObj.GetComponent<Note>().melody = melody;
-            noteObj.GetComponent<NoteMove>().speed = 2f;
+            noteObj.GetComponent<NoteMove>().speed = 200f;
             noteObj.GetComponentInChildren<TextMeshProUGUI>().text = note;
         }
     }
