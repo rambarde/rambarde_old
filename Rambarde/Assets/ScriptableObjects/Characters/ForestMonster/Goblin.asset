@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: 
+  modelName: Goblin
+  animatorController: Goblin
+  baseStats:
+    maxHp: 50
+    atq: 15
+    prot: 5
+    prec: 90
+    crit: 5
+  baseWeapons: []
+  baseArmors: []
+  skills:
+  - {fileID: 11400000, guid: 40868fd92174fbb0f9856ad28abec864, type: 2}
+  - {fileID: 11400000, guid: 21a0ca1cadcd261438e8b7997377720b, type: 2}
+  - {fileID: 11400000, guid: 984e12259138c5045b6932036e695f9b, type: 2}
+  - {fileID: 11400000, guid: 9e025ab4af0981145b9e7dc009dc5fe3, type: 2}
+  clientImage: {fileID: 0}

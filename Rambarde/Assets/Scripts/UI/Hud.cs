@@ -18,6 +18,7 @@ public class Hud : MonoBehaviour {
 
     public GameObject melodyMenu;
     public GameObject musicMenu;
+    public GameObject pauseMenu;
 
     private void AddSubscription(List<IDisposable> subscriptions, Bard.Bard bard, CharacterControl character, Melody melody) {
         subscriptions.Add(
@@ -68,11 +69,12 @@ public class Hud : MonoBehaviour {
                 GameObject buttonGo = Instantiate(buttonPrefab, panel);
                 Button button = buttonGo.GetComponent<Button>();
                 TextMeshProUGUI label = buttonGo.GetComponentInChildren<TextMeshProUGUI>();
-                label.text = melody.name;
+                label.text = Utils.SplitPascalCase(melody.name);
+                buttonGo.GetComponent<Image>().sprite = melody.sprite;
                 button.OnClickAsObservable()
                     .Subscribe(_ => {
                         List<IDisposable> subscriptions = new List<IDisposable>();
-                        switch (melody.melodyTargetMode) {
+                        switch (melody.targetMode) {
                             case MelodyTargetMode.EveryAlly :
                             case MelodyTargetMode.EveryEnemy :
                             case MelodyTargetMode.Everyone :
@@ -107,7 +109,7 @@ public class Hud : MonoBehaviour {
                             
                             default:
                                 Debug.Log("Warning : Melody ["+ melody.name+"] " +
-                                          "has no known targetMode ("+ melody.melodyTargetMode +")");
+                                          "has no known targetMode ("+ melody.targetMode +")");
                                 break;
                         }
                     })
@@ -136,5 +138,10 @@ public class Hud : MonoBehaviour {
                 inspiJauge.localScale = new Vector3(1, inspi / (float) bard.inspiration.maximumValue, 1);
             });
         }
+    }
+    
+    public void Pause()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 }

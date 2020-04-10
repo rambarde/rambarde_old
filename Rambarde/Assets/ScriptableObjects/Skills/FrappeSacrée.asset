@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
+  m_Name: "FrappeSacr\xE9e"
+  m_EditorClassIdentifier: 
+  tier: 0
+  actions:
+  - actionType: 0
+    targetMode: 1
+    effectType: 0
+    buffType: 0
+    value: 60
+  - actionType: 1
+    targetMode: 2
+    effectType: 0
+    buffType: 0
+    value: 40
+  animationName: Atq
+  sprite: {fileID: 21300000, guid: 33470548a8c102c45bec7658b3637d33, type: 3}
+  description: "Attaque de 60% \nSoigne de 40%"

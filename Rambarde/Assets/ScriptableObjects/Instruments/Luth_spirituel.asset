@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Luth_spirituel
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: 4e6dd57c580d48241b3437c57da95108, type: 2}
+  - {fileID: 11400000, guid: 4350dcc8d96e9324680fb581091d8bd1, type: 2}
+  - {fileID: 11400000, guid: f4515fb7f7b3e964d8337a493b43fcd8, type: 2}
+  - {fileID: 11400000, guid: 58a3507bd39794244b0ce8797c062a55, type: 2}
+  passif: "Tant que le Luth Spirituel est l'instrument actif, un monstre affect\xE9
+    par un de vous morceaux re\xE7oit en plus D\xE9stabilis\xE9 1"
+  type: Protection
+  sprite: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}

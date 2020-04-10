@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Luth_fetiche
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: 17a71bf5f7d33fb48853fc5fdeae13eb, type: 2}
+  - {fileID: 11400000, guid: e610733fe28f304429343c7a21d33b2a, type: 2}
+  - {fileID: 11400000, guid: d89c81ef87d997c41811a6eaafc9a2b5, type: 2}
+  - {fileID: 11400000, guid: 813db6d785212244db8e503a0c4963c0, type: 2}
+  passif: "Tant que le Luth F\xE9tiche est l'instrument actif, tous les gains d'Inspiration
+    sont augment\xE9s de 25%"
+  type: Protection
+  sprite: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}

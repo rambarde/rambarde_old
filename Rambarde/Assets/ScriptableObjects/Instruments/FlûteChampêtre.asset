@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: "Fl\xFBteChamp\xEAtre"
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: 8637d8041eba07844868594f12d6d475, type: 2}
-  - {fileID: 11400000, guid: ae39e83596036a247a6d66ed7779d2bc, type: 2}
-  - {fileID: 11400000, guid: b54e1b003449eda499118059d4c3fee4, type: 2}
+  - {fileID: 11400000, guid: 5a56c58f1c2b77b4c8ecf4563c48fecc, type: 2}
+  - {fileID: 11400000, guid: 31c1f0a0fe4842d438d609f143a1ee51, type: 2}
+  - {fileID: 11400000, guid: 644efc5ab04eca14da60940ca8cc8bb4, type: 2}
   - {fileID: 11400000, guid: f41dba797ff2f0a48bf5e04c0c45a4fc, type: 2}
+  passif: 
+  type: Soin
+  sprite: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  price: 50
+  owned: 0

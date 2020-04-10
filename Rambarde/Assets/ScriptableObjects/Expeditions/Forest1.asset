@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc079aa65a7e3a41af51533bf87a268, type: 3}
+  m_Name: Forest1
+  m_EditorClassIdentifier: 
+  expeName: Haut-bois 1
+  type: 0
+  map: {fileID: 21300000, guid: f925b32666d9ccb4b810b0a1b38218ab, type: 3}
+  upgradedMap: {fileID: 21300000, guid: 98b5d107c38b85741aa35097500f04f4, type: 3}
+  nFights: 2
+  monsterData:
+  - {fileID: 11400000, guid: 2c963a85431e5fe4c8aa200bddba8f65, type: 2}
+  - {fileID: 11400000, guid: cda192f4341d8be45ac5ec6af38cd0b0, type: 2}
+  - {fileID: 11400000, guid: 9aabc7ecccdec7e4c86a871e42b59d13, type: 2}
+  - {fileID: 11400000, guid: bee31dd783bfeec4f91939a08e6ecbfc, type: 2}
+  - {fileID: 11400000, guid: 69e95b56f729c6043b5db54b10125a9b, type: 2}
+  - {fileID: 11400000, guid: 45997c4a3e4ffed4f977a0bac0d8096b, type: 2}
+  - {fileID: 11400000, guid: 0dedada56c039c04ca689502a5d9223d, type: 2}

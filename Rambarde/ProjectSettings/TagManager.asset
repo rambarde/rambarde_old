@@ -5,6 +5,28 @@ TagManager:
   serializedVersion: 2
   tags:
   - Note
+  - CRYPT
+  - QuestButton
+  - GoldLabel
+  - FOREST
+  - NoGoldPanel
+  - PNotUnlocked
+  - CRYPT_Button
+  - FOREST_Button
+  - GuildMenuButton
+  - SubMenu
+  - ExpSubMenu
+  - Counter
+  - Tooltip
+  - Canvas
+  - Slot
+  - Skill
+  - TheodoreMenu
+  - ClientsMenu
+  - ClientMenu
+  - SelectButton
+  - WEAPON
+  - ARMOR
   layers:
   - Default
   - TransparentFX

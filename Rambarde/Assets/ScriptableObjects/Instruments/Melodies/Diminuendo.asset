@@ -15,4 +15,9 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 1
   tier: 1
+  effect: "Protection \u2B9F--"
   inspirationValue: 2
+  tranceValue: 0
+  ID: 13
+  sprite: {fileID: 21300000, guid: a19cebe0599724c469f757f6e0b2d9a4, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}

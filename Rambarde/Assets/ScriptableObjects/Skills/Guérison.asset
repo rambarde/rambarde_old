@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
+  m_Name: "Gu\xE9rison"
+  m_EditorClassIdentifier: 
+  tier: 0
+  actions:
+  - actionType: 1
+    targetMode: 0
+    effectType: 0
+    buffType: 0
+    value: 20
+  - actionType: 2
+    targetMode: 0
+    effectType: 8
+    buffType: 0
+    value: -1
+  - actionType: 2
+    targetMode: 0
+    effectType: 512
+    buffType: 0
+    value: -1
+  - actionType: 2
+    targetMode: 0
+    effectType: 16384
+    buffType: 0
+    value: -1
+  - actionType: 2
+    targetMode: 0
+    effectType: 24
+    buffType: 0
+    value: -1
+  animationName: Atq
+  sprite: {fileID: 0}
+  description: "Soin 20%\nSoigne Empoisonn\xE9, Confus, Maudit, Destabilis\xE9"

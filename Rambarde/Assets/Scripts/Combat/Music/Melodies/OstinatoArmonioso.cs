@@ -7,7 +7,7 @@ namespace Melodies {
     public class OstinatoArmonioso : Melody {
         protected override async Task ExecuteOnTarget(CharacterControl t) {
             if (target == null) {
-                Debug.Log("Tried to execute a " + melodyTargetMode + " melody with no target");
+                Debug.Log("Tried to execute a " + targetMode + " melody with no target");
             }
             await target.DecrementSkillsSlot();
         }

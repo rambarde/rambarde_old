@@ -1,0 +1,7 @@
+using Characters;
+
+namespace Status {
+    class template : StatusEffect {
+        public template(CharacterControl target, int turns) : base(target, turns) { }
+    }
+}

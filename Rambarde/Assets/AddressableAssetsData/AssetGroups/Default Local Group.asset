@@ -51,14 +51,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 2c963a85431e5fe4c8aa200bddba8f65
-    m_Address: ScriptableObjects/Goblin
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 4274502919fd90942b0d49c9eecb283a
     m_Address: Warrior
     m_ReadOnly: 0
@@ -75,14 +67,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: 74e46b1ca93e8e64aae72a7145fb8d07
-    m_Address: ScriptableObjects/Warrior
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 7c78d02dd8936a7438531fc604d79b87
     m_Address: PlayerTeamCharacterPrefab
     m_ReadOnly: 0
@@ -96,14 +80,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: 950be6cf0befaf540a850b1eb0c74904
-    m_Address: ScriptableObjects/Mage
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_mainAssetType: Characters.CharacterData, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}

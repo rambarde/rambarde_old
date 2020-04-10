@@ -1,7 +1,9 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Characters;
+using Combat.Characters;
 using TMPro;
 using UI;
 using UniRx;
@@ -14,7 +16,9 @@ public class CombatManager : MonoBehaviour {
     public RectTransform playerTeamUiContainer;
     public RectTransform enemyTeamUiContainer;
     public ReactiveProperty<string> combatPhase = new ReactiveProperty<string>("selectMelody");
-
+    
+    private List<CharacterBase> clientsMenu;
+    private List<CharacterBase> currentMonsters;
     //private Canvas _canvas;
     
     public CharacterControl GetTarget(int srcTeam, bool ally) {
@@ -54,10 +58,23 @@ public class CombatManager : MonoBehaviour {
 
     public void Remove(CharacterControl characterControl) {
         var charTeam = (int) characterControl.team;
-        teams[charTeam].Remove(characterControl);
+        if(charTeam == 0)
+            GameManager.quest.FightMax[characterControl.clientNumber] = GameManager.CurrentFight + 1; //decreasing the number of total fight
+
         Destroy(characterControl.gameObject);
-        
-        if (teams[charTeam].Count == 0) Debug.Break();
+        teams[charTeam].Remove(characterControl);
+
+        if (teams[charTeam].Count == 0)
+        { 
+            GetComponent<GameManager>().ChangeCombat();
+            if (!GameManager.QuestState)
+                GetComponent<GameManager>().ChangeScene(2);
+            else
+            {
+                var gold = GetComponent<GameManager>().CalculateGold();
+                GetComponent<GameManager>().ChangeScene(0);
+            }
+        }
     }
 
     #region Unity
@@ -71,33 +88,32 @@ public class CombatManager : MonoBehaviour {
 
     private async void Start()
     {
-        var mage = await Utils.LoadResource<CharacterData>("ScriptableObjects/Mage");
-        var warrior = await Utils.LoadResource<CharacterData>("ScriptableObjects/Warrior");
-        var warrior1 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Warrior");
-        var goblin = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
-        var goblin1 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
-        var goblin2 = await Utils.LoadResource<CharacterData>("ScriptableObjects/Goblin");
+        clientsMenu = new List<CharacterBase>();
+        foreach (var client in GameManager.clients)
+            clientsMenu.Add(client);
 
-        CharacterData[] playerTeam = {mage, warrior, warrior1};
-        CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
-
+        currentMonsters = new List<CharacterBase>();
+        foreach (var monster in GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters)
+            clientsMenu.Add(monster);
+            ;
+     
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
         var i = 0;
         foreach (Transform t in playerTeamGo.transform)
         {
-            SetupCharacterControl(t, playerTeam, i, Team.PlayerTeam);
+            SetupCharacterControl(t, clientsMenu, i, Team.PlayerTeam);
             ++i;
         }
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            SetupCharacterControl(t, enemyTeam, i, Team.EmemyTeam);
+            SetupCharacterControl(t, currentMonsters, i, Team.EmemyTeam);
             ++i;
         }
     }
 
-    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterData> team, int i, Team charTeam)
+    private async void SetupCharacterControl(Transform characterTransform, IReadOnlyList<CharacterBase> team, int i, Team charTeam)
     {
         string charPrefabName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterPrefab" : "EnemyCharacterPrefab";
         string charPrefabUIName = charTeam == Team.PlayerTeam ? "PlayerTeamCharacterUI" : "EnemyCharacterUI";
@@ -106,12 +122,12 @@ public class CombatManager : MonoBehaviour {
         var characterGameObject = Instantiate(await Utils.LoadResource<GameObject>(charPrefabName), characterTransform);
 
         // Load the character 3d model
-        var model = Instantiate(await Utils.LoadResource<GameObject>(team[i].modelName), characterGameObject.transform);
+        var model = Instantiate(await Utils.LoadResource<GameObject>(team[i].Character.modelName), characterGameObject.transform);
         model.AddComponent<Animator>().runtimeAnimatorController = await Utils.LoadResource<RuntimeAnimatorController>("Animations/Character");
 
         // Init the character control
         var character = characterGameObject.GetComponent<CharacterControl>();
-        character.Init(team[i]);
+        character.Init(team[i].Character, team[i].SkillWheel);
         character.team = charTeam;
         teams[(int) charTeam].Add(character);
 

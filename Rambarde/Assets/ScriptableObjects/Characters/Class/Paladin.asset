@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
+  m_Name: Paladin
+  m_EditorClassIdentifier: 
+  modelName: Warrior
+  animatorController: Warrior
+  baseStats:
+    maxHp: 90
+    atq: 18
+    prot: 20
+    prec: 90
+    crit: 5
+  baseWeapons: []
+  baseArmors: []
+  skills:
+  - {fileID: 11400000, guid: 5331a681df04c19e1af9166fe2bf197d, type: 2}
+  - {fileID: 11400000, guid: 489b6daaa7913824fa0f47365ce335ac, type: 2}
+  - {fileID: 11400000, guid: 67c50f7ee09dc864987433dd85d702d6, type: 2}
+  - {fileID: 11400000, guid: 152a7a2d449389148bea03d84684e515, type: 2}
+  - {fileID: 11400000, guid: 25c35311c2ac9764e84fd789603a6562, type: 2}
+  - {fileID: 11400000, guid: 02bbb1fa84bc339428e1bfce675075db, type: 2}
+  - {fileID: 11400000, guid: 21aec4b85ddc55b4abfe615ec411c415, type: 2}
+  - {fileID: 11400000, guid: e6a8b6fe3e7c7a94ca5c3000dab66500, type: 2}
+  clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}

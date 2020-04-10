@@ -15,4 +15,9 @@ MonoBehaviour:
   data: 1-1-2-2-
   targetMode: 4
   tier: 1
+  effect: Avance d'un cran la roue
   inspirationValue: 3
+  tranceValue: 0
+  ID: 2
+  sprite: {fileID: 21300000, guid: 7092324b93851a14c858530cca4a6b26, type: 3}
+  color: {r: 0.9490196, g: 0.49803922, b: 0.10980392, a: 1}

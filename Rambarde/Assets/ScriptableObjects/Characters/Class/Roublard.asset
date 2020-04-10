@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
+  m_Name: Roublard
+  m_EditorClassIdentifier: 
+  modelName: Warrior
+  animatorController: Warrior
+  baseStats:
+    maxHp: 60
+    atq: 23
+    prot: 0
+    prec: 90
+    crit: 15
+  charType: 1
+  baseEquipment:
+  - {fileID: 11400000, guid: 9afaf8a61a406254b923f5a2a1e146b7, type: 2}
+  - {fileID: 11400000, guid: 1d23d3dd0f525ca46977ae525677e44f, type: 2}
+  skills:
+  - {fileID: 11400000, guid: e404c10e45a9fda4e82687e2d4ba680b, type: 2}
+  - {fileID: 11400000, guid: c4fb6bab220ef434380263a6ac369746, type: 2}
+  - {fileID: 11400000, guid: dda73d8ae12f2e44681e2c5a5595715c, type: 2}
+  - {fileID: 11400000, guid: 94114002f5f791445b906ec624cd8e62, type: 2}
+  - {fileID: 11400000, guid: 61ee5d8912d0ab64e8aa80dc45b91c80, type: 2}
+  - {fileID: 11400000, guid: 29831028df0f5d741b2f007a4f6df6d2, type: 2}
+  - {fileID: 11400000, guid: 414f7c68b6a03ff4e82fb39b4da46812, type: 2}
+  - {fileID: 11400000, guid: 55392e154060e474e848d3798256701e, type: 2}
+  clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}

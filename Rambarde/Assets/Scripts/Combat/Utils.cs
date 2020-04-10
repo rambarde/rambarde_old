@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -38,5 +39,11 @@ public static class Utils {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, screenPos, parentCanvas.worldCamera, out Vector2 movePos);
         //Convert the local point to world point
         return parentCanvas.transform.TransformPoint(movePos);
+    }
+    
+    public static string SplitPascalCase(string s)
+    {
+        var r = new Regex(@"(?<!^)(?=[A-Z](?![A-Z]|$))", RegexOptions.IgnorePatternWhitespace);
+        return (r.Replace(s, " ")).Replace("_", " ");
     }
 }

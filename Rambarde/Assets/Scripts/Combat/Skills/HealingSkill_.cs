@@ -5,7 +5,7 @@ using Status;
 using UnityEngine;
 
 namespace Skills {
-    [CreateAssetMenu(fileName = "HealingSkill_", menuName = "Skills_/HealingSkill_")]
+    [CreateAssetMenu(fileName = "HealingSkill", menuName = "Skills/HealingSkill")]
     public class HealingSkill_ : Skill_ {
         [SerializeField] private int turns;
         [SerializeField] private float atqRatio;

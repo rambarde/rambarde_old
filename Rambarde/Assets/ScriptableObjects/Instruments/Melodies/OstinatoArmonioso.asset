@@ -15,4 +15,9 @@ MonoBehaviour:
   data: 12123-3-
   targetMode: 4
   tier: 2
+  effect: "Recule d\u2019un cran la roue"
   inspirationValue: -2
+  tranceValue: 0
+  ID: 4
+  sprite: {fileID: 21300000, guid: 7092324b93851a14c858530cca4a6b26, type: 3}
+  color: {r: 0, g: 0.9843137, b: 0.14509805, a: 1}

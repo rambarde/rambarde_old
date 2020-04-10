@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Characters;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Melodies;
 using Music;
 using UniRx;
-using UnityEditor.Profiling.Memory.Experimental;
+//using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
 
 namespace Bard {
@@ -27,6 +27,7 @@ namespace Bard {
             inspiration = GetComponent<Inspiration>();
             actionPoints = new ReactiveProperty<int>(baseActionPoints);
             maxActionPoints = new ReactiveProperty<int>(baseActionPoints);
+            instruments = GameManager.instruments;
 
             SetActionPlayableMelodies();
             SetInspirationPlayableMelodies();

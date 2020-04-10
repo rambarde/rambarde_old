@@ -17,3 +17,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0aa4b2783be0bb4e9e4646818dc31f1, type: 2}
   - {fileID: 11400000, guid: bb41dac8d1b48e1418534cbd9d47a2d1, type: 2}
   - {fileID: 11400000, guid: a53922cf47d299840b44edadbc890230, type: 2}
+  passif: "Les gains d\u2019inspiration sont augment\xE9s de 20%"
+  type: Protection
+  sprite: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
+  color: {r: 0, g: 0.64705884, b: 1, a: 1}
+  price: 0
+  owned: 1

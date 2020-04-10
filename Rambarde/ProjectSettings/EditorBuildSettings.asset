@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GuildeMenuTest.unity
+    guid: c0e06ec8b602d7c439b90e3b9ff5f97b
+  - enabled: 1
+    path: Assets/Scenes/Scene gabarit.unity
+    guid: 2140e3e49c7bd874fb802323b62ea89a
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 090165f031c02d0409f6feb22a9d8fae
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 6b83318676f22ac44a4ac4bac0b3b782,
       type: 2}

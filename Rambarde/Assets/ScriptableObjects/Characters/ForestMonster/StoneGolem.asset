@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
+  m_Name: StoneGolem
+  m_EditorClassIdentifier: 
+  modelName: Goblin
+  animatorController: Goblin
+  baseStats:
+    maxHp: 15
+    atq: 20
+    prot: 80
+    prec: 90
+    crit: 15
+  baseWeapons: []
+  baseArmors: []
+  skills:
+  - {fileID: 11400000, guid: bf8514fd01c3a80438fbe1d8bad3940b, type: 2}
+  - {fileID: 11400000, guid: 403cf4b20bc61e54796470603c89c491, type: 2}
+  - {fileID: 11400000, guid: 70838d252697dc34abc61372d5cf62ed, type: 2}
+  - {fileID: 11400000, guid: d33985c85487d814d9144f874d7b6483, type: 2}
+  clientImage: {fileID: 0}

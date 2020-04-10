@@ -14,12 +14,12 @@ namespace Characters {
         // Protection (percentage)
         public float prot;
 
-        // Critical (percentage)
-        public float crit;
-    
         // Precision (percentage)
         public float prec;
 
+        // Critical (percentage)
+        public float crit;
+    
         public void Init() {
             hp = new ReactiveProperty<float>(maxHp);
         }

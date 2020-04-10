@@ -15,4 +15,9 @@ MonoBehaviour:
   data: 1-1-1-1-
   targetMode: 2
   tier: 3
+  effect: "Attaque \u2B9D\u2B9D++"
   inspirationValue: -3
+  tranceValue: 0
+  ID: 16
+  sprite: {fileID: 21300000, guid: db24189abde247144b83fb23e63c9464, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}

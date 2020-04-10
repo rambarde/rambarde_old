@@ -17,3 +17,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c41046357639ce440948020945e55eed, type: 2}
   - {fileID: 11400000, guid: 40ee9c0829af1d747b43081612053983, type: 2}
   - {fileID: 11400000, guid: 6e686b970c7e902469aaeaf714a197ee, type: 2}
+  passif: "Soin 10% sur chaque cible (client) d\u2019un morceau de cet instrument"
+  type: Attaque
+  sprite: {fileID: 21300000, guid: 719c2201c2f5f6c4aafffaeb5abdf5f9, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  price: 0
+  owned: 1

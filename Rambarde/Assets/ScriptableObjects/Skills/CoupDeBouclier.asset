@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
+  m_Name: CoupDeBouclier
+  m_EditorClassIdentifier: 
+  actions:
+  - actionType: 0
+    targetMode: 1
+    effectType: 0
+    buffType: 0
+    value: 80
+  - actionType: 2
+    targetMode: 1
+    effectType: 512
+    buffType: 0
+    value: 1
+  animationName: 
+  sprite: {fileID: 21300000, guid: 8cc7ca0e29ced7b4f84e8c4ef7deb28b, type: 3}
+  description: "Attaque de 80% et applique \xC9tourdi 1"

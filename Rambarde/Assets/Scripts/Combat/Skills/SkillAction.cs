@@ -3,19 +3,22 @@
 namespace Skills {
 
     [System.Serializable]
-    public struct SkillAction {
+    public class SkillAction {
         public SkillActionType actionType;
         public SkillTargetMode targetMode;
         public EffectType effectType;
         public BuffType buffType;
         public float value;
     }
-    
     public enum SkillActionType {
         Attack,
         Heal,
+        StealHealth,
         ApplyEffect,
-        ApplyBuff
+        ApplyBuff,
+        RemoveEveryEffect,
+        RemoveEffect,
+        ShuffleSkillWheel
     }
 
     public enum SkillTargetMode {
@@ -23,6 +26,9 @@ namespace Skills {
         OneEnemy,
         Self,
         EveryAlly,
-        EveryEnemy
+        EveryEnemy,
+        OneOtherAlly,
+        EveryOtherAlly,
+        Everyone
     }
 }
