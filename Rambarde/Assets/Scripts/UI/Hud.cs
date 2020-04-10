@@ -50,8 +50,8 @@ public class Hud : MonoBehaviour {
             }
         });
         
-        GameObject buttonPrefab = await Utils.LoadResourceFromDir<GameObject>("Button");
-        GameObject separatorPrefab = await Utils.LoadResourceFromDir<GameObject>("Separator");
+        GameObject buttonPrefab = await Utils.LoadResource<GameObject>("Button");
+        GameObject separatorPrefab = await Utils.LoadResource<GameObject>("Separator");
 
         for (int i = 0; i < bard.instruments.Count; ++i) {
             

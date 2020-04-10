@@ -11,7 +11,7 @@ Shader "Hidden/TerrainEngine/Details/WavingDoublePass"
         Tags 
         {
             "Queue" = "Geometry+200"
-            "IgnoreProjector"="True"
+            //"IgnoreProjector"="True"
             "RenderType"="Grass"
         }
         Cull Off

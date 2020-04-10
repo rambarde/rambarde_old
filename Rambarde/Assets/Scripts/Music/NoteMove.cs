@@ -6,7 +6,7 @@ namespace Music {
         public float speed = 2f;
         
         void FixedUpdate() {
-            transform.position += Vector3.right * (Time.fixedDeltaTime * speed);
+            transform.position += Vector3.left * (Time.fixedDeltaTime * speed);
         }
     }
 }

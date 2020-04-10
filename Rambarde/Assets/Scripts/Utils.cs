@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 public static class Utils {
-    public static async Task<T> LoadResourceFromDir<T>(string address) where T : UnityEngine.Object
+    public static async Task<T> LoadResource<T>(string address) where T : UnityEngine.Object
     {
         var handle = Addressables.LoadAssetAsync<T>(address);
         await handle.Task;
