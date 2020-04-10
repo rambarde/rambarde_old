@@ -18,7 +18,16 @@ public class MusicManager : MonoBehaviour
 
     public void Awake()
     {
-        _instance = this;
+        if (_instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+            _instance = this;
+        }
+        
     }
 
 
