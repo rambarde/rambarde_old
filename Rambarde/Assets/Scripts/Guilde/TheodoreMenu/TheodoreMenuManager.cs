@@ -28,6 +28,36 @@ public class TheodoreMenuManager : MonoBehaviour
         doneButton.GetComponent<Button>().interactable = false;
         slots = transform.GetComponentsInChildren<SlotBehaviour>();
         counters = transform.GetComponentsInChildren<Counter>();
+
+        //TO DO//
+        //if (GameManager.instruments != null)
+        //{
+        //    int nInnate = 0;
+        //    int nInstruments = 1; //instrument 0 = base instrument
+        //    for (int i = 0; i < slots.Length; i++)
+        //    {
+        //        if (slots[i].InnateSkillSlot)
+        //        {
+        //            slots[i].transform.GetChild(0).GetComponent<MelodyBehaviour>().melody = GameManager.instruments[0].melodies[nInnate];
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().sprite = GameManager.instruments[0].melodies[nInnate].sprite;
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().color = GameManager.instruments[0].melodies[nInnate].color;
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+        //            slots[i].Slotted = true;
+        //            nInnate++;
+        //        }
+
+        //        if (slots[i].InstrumentSlot)
+        //        {
+        //            slots[i].transform.GetChild(0).GetComponent<InstrumentBehaviour>().instrument = GameManager.instruments[nInstruments];
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().sprite = GameManager.instruments[nInstruments].sprite;
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().color = GameManager.instruments[nInstruments].color;
+        //            slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+        //            slots[i].Slotted = true;
+        //            nInstruments++;
+        //        }
+        //    }
+        //}
+        //TO DO//
     }
 
     void Start()
@@ -54,9 +84,8 @@ public class TheodoreMenuManager : MonoBehaviour
     public void selectSkills()
     {
         Melodies.Melody[] innateMelodies = new Melodies.Melody[4];
-        Bard.Instrument[] instruments = new Bard.Instrument[2];
+        List<Bard.Instrument> instruments = new List<Bard.Instrument>();
         int nMelody = 0;
-        int nInstrument = 0;
         for(int i = 0; i < slots.Length; i++) 
         {
             if (slots[i].InnateSkillSlot)
@@ -66,12 +95,8 @@ public class TheodoreMenuManager : MonoBehaviour
             }
 
             if (slots[i].InstrumentSlot)
-            {
-                instruments[nInstrument] = slots[i].transform.GetComponentInChildren<InstrumentBehaviour>().instrument;
-                nInstrument++;
-            }
+                instruments.Add(slots[i].transform.GetComponentInChildren<InstrumentBehaviour>().instrument);
         }
-
         transform.GetComponentInParent<GuildeManagerBehaviour>().SetTheodore(innateMelodies, instruments);
     }
 }

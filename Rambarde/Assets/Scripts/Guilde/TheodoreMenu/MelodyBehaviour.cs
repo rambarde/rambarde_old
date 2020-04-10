@@ -11,6 +11,7 @@ public class MelodyBehaviour:
     IPointerClickHandler
 {
     public Melodies.Melody melody;
+    public int maxSelected;
     [SerializeField]
     private bool _isClickable;
     public bool IsClickable { get { return _isClickable; } set { _isClickable = value; } }
@@ -22,6 +23,7 @@ public class MelodyBehaviour:
     GameObject slot;
     GameObject counter;
     Button resetTier;
+    int currentSelected;
     
     void Awake()
     {
@@ -29,6 +31,7 @@ public class MelodyBehaviour:
         {
             GetComponent<Image>().color = melody.color;
             GetComponent<Image>().sprite = melody.sprite;
+            currentSelected = 0;
         }
     }
 
@@ -38,8 +41,8 @@ public class MelodyBehaviour:
         {
             tooltip = GameObject.FindWithTag("Tooltip").GetComponent<Tooltip>();
             tooltipRectTransform = GameObject.FindWithTag("Tooltip").GetComponent<RectTransform>() as RectTransform;
+            canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
         }
-        canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
 
         GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
         slottedSkills = new GameObject[4];
@@ -99,39 +102,14 @@ public class MelodyBehaviour:
     {
         if (!IsClickable)
             return;
-        int tier = melody.tier;
-        switch (tier)
-        {
-            case 1:
-                counter = GameObject.Find("Tier 1 counter");
-                resetTier = GameObject.Find("Reset Tier 1").GetComponent<Button>();
-                if (!slottedSkills[0].GetComponent<SlotBehaviour>().Slotted)
-                    slot = slottedSkills[0];
-                else if (!slottedSkills[1].GetComponent<SlotBehaviour>().Slotted)
-                    slot = slottedSkills[1];
-                else
-                    return;
-            break;
 
-            case 2:
-                counter = GameObject.Find("Tier 2 counter");
-                resetTier = GameObject.Find("Reset Tier 2").GetComponent<Button>();
-                if (!slottedSkills[2].GetComponent<SlotBehaviour>().Slotted)
-                    slot = slottedSkills[2];
-                else
-                    return;
-            break;
+        counter = GameObject.Find("Innates counter");
+        resetTier = GameObject.Find("Reset Innates").GetComponent<Button>();
 
-            case 3:
-                counter = GameObject.Find("Tier 3 counter");
-                resetTier = GameObject.Find("Reset Tier 3").GetComponent<Button>();
-                if (!slottedSkills[3].GetComponent<SlotBehaviour>().Slotted)
-                    slot = slottedSkills[3];
-                else
-                    return;
-            break;
-        }
-        
+        if (findSlot(slottedSkills) == -1)
+            return;
+
+        slot = slottedSkills[findSlot(slottedSkills)];
         GameObject slottedSkill = slot.transform.GetChild(0).gameObject;
         slottedSkill.GetComponent<MelodyBehaviour>().melody = melody;
         slottedSkill.GetComponent<MelodyBehaviour>().IsClickable = false;
@@ -142,10 +120,21 @@ public class MelodyBehaviour:
         slot.GetComponent<SlotBehaviour>().Slotted = true;
 
         counter.GetComponent<Counter>().increment();
+        currentSelected++;
 
-        IsClickable = false;
-        resetTier.onClick.AddListener(() => { IsClickable = true; });
-        GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(()=> { IsClickable = true; });
+        if(currentSelected==maxSelected)
+            IsClickable = false;
+
+        resetTier.onClick.AddListener(() => { IsClickable = true; currentSelected = 0; });
+        GameObject.Find("QuitButton").GetComponent<Button>().onClick.AddListener(()=> { IsClickable = true; currentSelected = 0; });
         transform.parent.GetComponentInParent<TheodoreMenuManager>().SelectedSkill += 1;
+    }
+
+    int findSlot(GameObject[] slotList)
+    {
+        for (int i = 0; i < slotList.Length; i++)
+            if (!slotList[i].GetComponent<SlotBehaviour>().Slotted)
+                return i;
+        return -1;
     }
 }

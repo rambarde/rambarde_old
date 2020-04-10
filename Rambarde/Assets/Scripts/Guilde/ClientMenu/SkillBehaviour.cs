@@ -19,8 +19,8 @@ public class SkillBehaviour :
         {
             tooltip = GameObject.FindWithTag("Tooltip").GetComponent<Tooltip>();
             tooltipRectTransform = GameObject.FindWithTag("Tooltip").GetComponent<RectTransform>() as RectTransform;
+            canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
         }
-        canvasRectTransform = tooltipRectTransform.parent.GetComponent<RectTransform>() as RectTransform;
     }
 
     public void OnPointerEnter(PointerEventData pointerEventData)

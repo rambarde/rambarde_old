@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene gabarit.unity
     guid: 2140e3e49c7bd874fb802323b62ea89a
+  - enabled: 1
+    path: Assets/Scenes/Map.unity
+    guid: 090165f031c02d0409f6feb22a9d8fae
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: e0531ae23d70eeb449f24ca56d1dae13,
       type: 2}

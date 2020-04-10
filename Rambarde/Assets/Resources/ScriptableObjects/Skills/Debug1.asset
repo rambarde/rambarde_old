@@ -17,12 +17,12 @@ MonoBehaviour:
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 20
+    value: 20000
   - actionType: 1
     targetMode: 0
     effectType: 0
     buffType: 0
     value: 50
-  animationName: 
-  sprite: {fileID: 0}
+  animationName: Atq
+  sprite: {fileID: 21300000, guid: 723327e577e99d142b4968b02c0fbd4f, type: 3}
   description: Debug 1

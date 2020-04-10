@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1dc2a383c6d41cb9fc5cf070f562fc4, type: 3}
-  m_Name: Elemantaliste
+  m_Name: Astromancien
   m_EditorClassIdentifier: 
-  modelName: 
-  animatorController: 
+  modelName: Mage
+  animatorController: Mage
   baseStats:
-    maxHp: 50
-    atq: 30
+    maxHp: 40
+    atq: 20
     prot: 5
     prec: 90
-    crit: 10
+    crit: 5
   charType: 2
   baseEquipment:
   - {fileID: 11400000, guid: 7d33a3608dddfff48b2b3626a172d25c, type: 2}

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ExpeditionMenuBehaviour : MonoBehaviour
 {
-    public Quest selectedQuest;
+    //public Quest selectedQuest;
+    public ExpeditionMenu.Expedition selectedQuest;
     GameObject selectButton;
 
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class ExpeditionMenuBehaviour : MonoBehaviour
         GameObject.Find("GuildeMenu").GetComponent<GuildeManagerBehaviour>().SetQuest(selectedQuest);
     }
 
-    public void AllowQuestSelect(Quest quest)
+    public void AllowQuestSelect(ExpeditionMenu.Expedition quest)
     {
         selectButton.GetComponent<Button>().interactable = true;
         selectedQuest = quest;

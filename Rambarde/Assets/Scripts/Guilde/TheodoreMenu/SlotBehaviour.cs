@@ -8,9 +8,6 @@ public class SlotBehaviour :
     MonoBehaviour
 {
     [SerializeField]
-    private int _skillTier; 
-    public int SkillTier { get { return _skillTier; } set { _skillTier = value; } }
-    [SerializeField]
     private bool _innateSkillSlot;
     public bool InnateSkillSlot { get { return _innateSkillSlot; } set { _innateSkillSlot = value; } }
     [SerializeField]
