@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: "Gu\xE9rison"
   m_EditorClassIdentifier: 
+  tier: 0
   actions:
   - actionType: 1
     targetMode: 0
@@ -38,6 +39,6 @@ MonoBehaviour:
     effectType: 24
     buffType: 0
     value: -1
-  animationName: 
+  animationName: Atq
   sprite: {fileID: 0}
   description: "Soin 20%\nSoigne Empoisonn\xE9, Confus, Maudit, Destabilis\xE9"

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Flute_symphonique
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: 87df32d4bf614df4aa48e457eab6178f, type: 2}
+  - {fileID: 11400000, guid: f09f13618a032fe4b9a04c00338690c1, type: 2}
+  - {fileID: 11400000, guid: 7f7e7596b305fd14b96c6ddeb7579ff7, type: 2}
+  - {fileID: 11400000, guid: 45df56dc2233d114db0ad36abb7a256c, type: 2}
+  passif: "Un client qui voit son END maximale affect\xE9 par un morceau de soin
+    de la Fl\xFBte Symphonique re\xE7oit aussi ATQ + et PROT +"
+  type: Soin
+  sprite: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}

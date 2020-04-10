@@ -15,6 +15,7 @@ public class ChooseQuest : MonoBehaviour
     int selectedQuestID = -1;
 
     GameObject goldManager;
+    private List<List<int>> maps;
 
     void Start()
     {
@@ -31,12 +32,15 @@ public class ChooseQuest : MonoBehaviour
         // Label displaying how much gold the player has
         goldManager = GameObject.FindGameObjectWithTag("GoldLabel");
 
+        maps = GenerateMaps();
         ExpeditionPitchList pitchList = new ExpeditionPitchList();
         pitchList.Init();
         List<int> pitchIndex = GeneratePitch(questPool[0].type, questPool.Count);
         for(int i = 0; i < questPool.Count; i++)
         {
-            Debug.Log("Init expe");
+            //Debug.Log("Init expe");
+            //questPool[i].map = LoadMap(false, maps[i][0]);
+            //questPool[i].upgradedMap = LoadMap(true, maps[i][1]);
             questPool[i].Init();
             questPool[i].Pitch = pitchList.expeditionPitch(questPool[i].type, pitchIndex[i]);
         }
@@ -122,6 +126,39 @@ public class ChooseQuest : MonoBehaviour
         }      
         return pitchIndex;
     }
+
+    List<List<int>> GenerateMaps()
+    {
+        List<List<int>> generatedMaps = new List<List<int>>();
+        List<int> level1 = new List<int>() { 0, 1, 2, 3 };
+        List<int> level2 = new List<int>() { 0, 1, 2, 3, 4, 5 };
+
+        for(int i = 0; i < questPool.Count; i++)
+        {
+            List<int> temp = new List<int>();
+            int n1 = Random.Range(0, level1.Count);
+            temp.Add(level1[n1]);
+            level1.RemoveAt(n1);
+
+            int n2 = Random.Range(0, level2.Count);
+            temp.Add(level2[n2]);
+            level2.RemoveAt(n2);
+
+            generatedMaps.Add(temp);
+        }
+
+        return generatedMaps;
+    }
+
+    //TO DO after merging//
+    //Sprite LoadMap(bool upgraded, int i)
+    //{
+    //    Sprite map;
+    //    if (upgraded) { }
+    //    else { }
+
+    //    return map;
+    //}
 }
 
 

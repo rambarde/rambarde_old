@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Skills;
 using Status;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Characters {
     public enum Team {
@@ -44,23 +46,46 @@ namespace Characters {
             }
         }
 
-        public async Task ExecTurn() {
-            var skill = skillWheel[_skillIndex];
-            _skillIndexChanged = false;
+        public async Task ExecTurn()
+        {
 
-            // Play and wait for skillAnimation to finish
-            await SkillPreHitAnimation(skill.animationName);
-            // Execute the skill
-            await skill.Execute(this);
+            if (HasEffect(EffectType.Confused))
+            {
+                int r = Random.Range(0, skillWheel.Length);
+                for (int i = 0; i <= r; ++i)
+                    await IncrementSkillWheel();
+            }
+
+            var skill = skillWheel[_skillIndex];
+
+            if (HasEffect(EffectType.Dizzy))
+                _skillIndexChanged = true;
+            else
+            {
+                //calculate chances of miss and critical hit, and merciless effect
+
+                // Play and wait for skillAnimation to finish
+                await SkillPreHitAnimation(skill.animationName);
+                // Execute the skill
+                await skill.Execute(this);
+
+                if (HasEffect(EffectType.Exalted))
+                {
+                    await IncrementSkillWheel();
+                    await SkillPreHitAnimation(skill.animationName);
+                    await skill.Execute(this);
+                }
+            }
 
             // Apply effects at the end of the turn
-            for (var i = statusEffects.Count - 1; i >= 0; --i) {
+            for (var i = statusEffects.Count - 1; i >= 0; --i)
                 await statusEffects[i].TurnEnd();
-            }
 
             // Increment skillIndex ONLY if effects did not affect the wheel
             if (!_skillIndexChanged)
                 await IncrementSkillWheel();
+
+            _skillIndexChanged = false;
         }
 
         private async Task SkillPreHitAnimation(string animationName) {
@@ -223,6 +248,23 @@ namespace Characters {
             }
             _skillIndexChanged = true;
             
+            //TODO: wait for skill wheel animation finish
+        }
+
+        public void PreventSkillWheelIncrement()
+        {
+            _skillIndexChanged = true;
+        }
+
+        public async Task ShuffleSkillWheel()
+        {
+            for (int i = skillWheel.Length - 1; i <= 1; --i)
+            {
+                int j = Random.Range(0, i + 1);
+                Skill tmp = skillWheel[i];
+                skillWheel[i] = skillWheel[j];
+                skillWheel[j] = tmp;
+            }
             //TODO: wait for skill wheel animation finish
         }
 

@@ -23,11 +23,11 @@ MonoBehaviour:
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  - {fileID: 11400000, guid: 317243ff4e0bf2c47ac54badbb7de467, type: 2}
+  - {fileID: 11400000, guid: 0d83bdfc140b7054ea5dae88aee04222, type: 2}
+  - {fileID: 11400000, guid: 89065c76e5376884db2d8003ecea9513, type: 2}
+  - {fileID: 11400000, guid: 92865cd1447e30f499cae737cf152859, type: 2}
+  - {fileID: 11400000, guid: 9543b8ce15e18334493fcc8d20aa3b45, type: 2}
+  - {fileID: 11400000, guid: 4496b8251d696e846aa7adaef78b4291, type: 2}
   - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
   clientImage: {fileID: 0}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb731a32b11f47a4f3a4c32746eb1, type: 3}
+  m_Name: Flute_sylvestre
+  m_EditorClassIdentifier: 
+  melodies:
+  - {fileID: 11400000, guid: 5a56c58f1c2b77b4c8ecf4563c48fecc, type: 2}
+  - {fileID: 11400000, guid: 31c1f0a0fe4842d438d609f143a1ee51, type: 2}
+  - {fileID: 11400000, guid: 644efc5ab04eca14da60940ca8cc8bb4, type: 2}
+  - {fileID: 11400000, guid: f41dba797ff2f0a48bf5e04c0c45a4fc, type: 2}
+  passif: "Un client affect\xE9 par un morceau de soin de la Fl\xFBte Sylvestre est
+    aussi gu\xE9ri du Poison"
+  type: Soin
+  sprite: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}

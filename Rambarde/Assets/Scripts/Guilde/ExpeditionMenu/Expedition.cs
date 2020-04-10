@@ -19,10 +19,21 @@ namespace ExpeditionMenu
         public QuestType type;
         public Sprite map;
         public Sprite upgradedMap;
-        public int nFights;
         public List<Characters.CharacterData> monsterData; 
         public FightManager fightManager;
-
+        
+        private int _numberOfFights;
+        public int NumberOfFights
+        {
+            get { return _numberOfFights; }
+            set
+            {
+                if (IsUpgradable)
+                    _numberOfFights = 4;
+                else
+                    _numberOfFights = 6;
+            }
+        }
         private string _pitch;
         public string Pitch { get { return _pitch; } set { _pitch = value; } }
         private bool _isUpgradable;
@@ -37,6 +48,10 @@ namespace ExpeditionMenu
         public void Init()
         {
             _isUpgradable = true;
+            Gold = 0;
+            if (FightMax is null)
+                FightMax = new List<int>();
+
             switch (type)
             {
                 case QuestType.Forest:
@@ -50,16 +65,16 @@ namespace ExpeditionMenu
             if (FightMax.Count == 0)
             {
                 for (int i = 0; i < 3; i++)
-                    FightMax.Add(nFights);
+                    FightMax.Add(NumberOfFights);
             }
             else
             {
                 for (int i = 0; i < 3; i++)
-                    FightMax[i] = nFights;
+                    FightMax[i] = NumberOfFights;
             }
 
             //Fights init
-            fightManager = new FightManager(type, !IsUpgradable, nFights); //remplacer par nFights plus tard
+            fightManager = new FightManager(type, !IsUpgradable, NumberOfFights); //remplacer par nFights plus tard
             fightManager.Init();
             fightManager.GenerateFights();
             fightManager.InitMonsters(monsterData);

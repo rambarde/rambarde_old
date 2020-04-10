@@ -15,20 +15,20 @@ MonoBehaviour:
   modelName: Warrior
   animatorController: Warrior
   baseStats:
-    maxHp: 40
-    atq: 30
-    prot: 10
+    maxHp: 70
+    atq: 22
+    prot: 5
     prec: 90
-    crit: 15
+    crit: 10
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
+  - {fileID: 11400000, guid: 72791a38ebdcfc141ad05fe5a3a2b49e, type: 2}
+  - {fileID: 11400000, guid: 928dabd2b5cf38a4791a439361e65615, type: 2}
+  - {fileID: 11400000, guid: 3398bc75a4452c54eaf59ef329c122ec, type: 2}
+  - {fileID: 11400000, guid: 750450281e49175458df440ecf27e671, type: 2}
+  - {fileID: 11400000, guid: b191ec74c1a28b84793a95af05a18deb, type: 2}
+  - {fileID: 11400000, guid: ee279eb4a3b37d243ba40a37ce7465f6, type: 2}
+  - {fileID: 11400000, guid: 3d63f873afbec0344a66360f3c2c496c, type: 2}
   - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
   clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}

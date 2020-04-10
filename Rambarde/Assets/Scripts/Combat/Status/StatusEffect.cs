@@ -10,6 +10,9 @@ using UnityEngine;
 namespace Status {
     [Serializable]
     public abstract class StatusEffect {
+
+        public static int INFINITE = -1;
+        
         public ReactiveProperty<int> turnsLeft;
         public string spriteName;
 
@@ -35,8 +38,12 @@ namespace Status {
         public async Task TurnStart() {
             await PreTurnStart();
 
-            if (--turnsLeft.Value == 0) {
-                RemoveEffect();
+            if (turnsLeft.Value != INFINITE) {
+                --turnsLeft.Value;
+            }
+
+            if (turnsLeft.Value  == 0) {
+                await RemoveEffect();
             }
         }
 
@@ -49,8 +56,8 @@ namespace Status {
             await PostTurnEnd();
         }
 
-        public void RemoveEffect() {
-            Remove();
+        public async Task RemoveEffect() {
+            await Remove();
             target.statusEffects.Remove(this);
             target.effectTypes.Value &= ~type;
         }
@@ -110,6 +117,39 @@ namespace Status {
                     return new HealthRegen(target, 15, nbrTurn);
                 case EffectType.Deaf :
                     return new DeafEffect(target, nbrTurn);
+                case EffectType.Destabilized :
+                    return new Destabilized(target, nbrTurn);
+                case EffectType.Merciless :
+                    return new Merciless(target, nbrTurn);
+                case EffectType.Dizzy :
+                    return new Dizzy(target, nbrTurn);
+                case EffectType.Rushing :
+                    return new Rushing(target, nbrTurn);
+                case EffectType.Lagging :
+                    return new Lagging(target, nbrTurn);
+                case EffectType.Confused :
+                    return new Confused(target, nbrTurn);
+                case EffectType.Unpredictable :
+                    return new Unpredictable(target, nbrTurn);
+                case EffectType.Inapt :
+                    return new Inapt(target, nbrTurn);
+                case EffectType.Exalted :
+                    return new Exalted(target, nbrTurn);
+                case EffectType.Disciplined :
+                    return new Disciplined(target, nbrTurn);
+                case EffectType.Cursed :
+                    return new Cursed(target, nbrTurn);
+                case EffectType.Condemned :
+                    return new Condemned(target, nbrTurn);
+                case EffectType.Invisible :
+                    return new Invisible(target, nbrTurn);
+                case EffectType.Marked :
+                    Debug.Log("Oh hi Mark!");
+                    return new Marked(target, nbrTurn);
+                case EffectType.Grace :
+                    return new Grace(target, nbrTurn);
+                case EffectType.Counter :
+                    return new Counter(target, nbrTurn);
                 default:
                     Debug.LogError("Error : tried to create an invalid status effect [" + effectType + "]");
                     return null;
@@ -125,29 +165,25 @@ namespace Status {
     [Flags]
     public enum EffectType {
         None = 0,
-        Buff = 1 << 1,
-        HealthRegen = 1 << 2,
-        Poison = 1 << 3,
-        Destabilized = 1 << 4,
-        Merciless = 1 << 5,
-        Dizzy = 1 << 6,
-        Rushing = 1 << 7,
-        Lagging = 1 << 8,
-        Confused = 1 << 9,
-        Unpredictable  = 1 << 10,
-        Inapt = 1 << 11,
-        Exalted = 1 << 12,
-        Disciplined = 1 << 13,
-        Cursed = 1 << 14,
-        Condemned = 1 << 15,
-        Deaf = 1 << 16,
-        Invisible = 1 << 17,
-        Marked = 1 << 18,
-        Grace = 1 << 19,
-        Counter = 1 << 20,
-        
-
-
-
+        Buff = 1 << 1,//-
+        HealthRegen = 1 << 2,//-
+        Poison = 1 << 3,//-
+        Destabilized = 1 << 4,//-
+        Merciless = 1 << 5,//
+        Dizzy = 1 << 6,//-
+        Rushing = 1 << 7,//
+        Lagging = 1 << 8,//
+        Confused = 1 << 9,//-
+        Unpredictable  = 1 << 10,//
+        Inapt = 1 << 11,//
+        Exalted = 1 << 12,//~
+        Disciplined = 1 << 13,//
+        Cursed = 1 << 14,//
+        Condemned = 1 << 15,//-
+        Deaf = 1 << 16,//-
+        Invisible = 1 << 17,//
+        Marked = 1 << 18,//
+        Grace = 1 << 19,//
+        Counter = 1 << 20,//
     }
 }

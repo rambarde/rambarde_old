@@ -109,7 +109,7 @@ public class Tooltip : MonoBehaviour
                 target = "Tous les ennemis";
                 break;
             case Bard.MelodyTargetMode.Anyone:
-                target = "N'importe qui"; //?????????????
+                target = "Une cible"; //?????????????
                 break;
             case Bard.MelodyTargetMode.Everyone:
                 target = "Tout le monde";
@@ -143,6 +143,15 @@ public class Tooltip : MonoBehaviour
                     break;
                 case Skills.SkillTargetMode.EveryEnemy:
                     appendTarget(stringBuilder, "Tous les ennemis");
+                    break;
+                case Skills.SkillTargetMode.Everyone:
+                    appendTarget(stringBuilder, "Tous le monde");
+                    break;
+                case Skills.SkillTargetMode.EveryOtherAlly:
+                    appendTarget(stringBuilder, "Tous les alliés (lui-même exclu)");
+                    break;
+                case Skills.SkillTargetMode.OneOtherAlly:
+                    appendTarget(stringBuilder, "Un allié (différent de lui-même)");
                     break;
             }
         }

@@ -30,6 +30,6 @@ public static class Utils {
     public static string SplitPascalCase(string s)
     {
         var r = new Regex(@"(?<!^)(?=[A-Z](?![A-Z]|$))", RegexOptions.IgnorePatternWhitespace);
-        return r.Replace(s, " ");
+        return (r.Replace(s, " ")).Replace("_", " ");
     }
 }

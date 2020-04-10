@@ -8,7 +8,7 @@ namespace Bard
     public class Instrument : ScriptableObject {
         
         public Melody[] melodies;
-        public string passif;
+        [TextArea] public string passif;
         public string type;
         public Sprite sprite;
         public Color color;

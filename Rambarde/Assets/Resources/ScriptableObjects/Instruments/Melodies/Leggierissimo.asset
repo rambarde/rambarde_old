@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Leggierissimo
   m_EditorClassIdentifier: 
   data: 
-  targetMode: 0
+  targetMode: 2
   tier: 3
-  effect: Annule tous les changements de stats
+  effect: "Soin 10, Soigne Poison, Confus, D\xE9stabilis\xE9"
   inspirationValue: -3
   tranceValue: 0
-  ID: 32
   sprite: {fileID: 21300000, guid: caccc09442e90904d94b08c1ae00b653, type: 3}
   color: {r: 0, g: 0, b: 0, a: 0}

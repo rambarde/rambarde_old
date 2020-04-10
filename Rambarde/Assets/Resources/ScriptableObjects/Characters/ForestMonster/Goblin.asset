@@ -23,8 +23,8 @@ MonoBehaviour:
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  - {fileID: 11400000, guid: 40868fd92174fbb0f9856ad28abec864, type: 2}
+  - {fileID: 11400000, guid: 21a0ca1cadcd261438e8b7997377720b, type: 2}
+  - {fileID: 11400000, guid: 984e12259138c5045b6932036e695f9b, type: 2}
+  - {fileID: 11400000, guid: 9e025ab4af0981145b9e7dc009dc5fe3, type: 2}
   clientImage: {fileID: 0}

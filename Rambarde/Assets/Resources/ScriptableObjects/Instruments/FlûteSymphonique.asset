@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: "Fl\xFBteSymphonique"
   m_EditorClassIdentifier: 
   melodies:
-  - {fileID: 11400000, guid: b9516850460e0eb408b5c446bd95e853, type: 2}
+  - {fileID: 11400000, guid: 87df32d4bf614df4aa48e457eab6178f, type: 2}
   - {fileID: 11400000, guid: f09f13618a032fe4b9a04c00338690c1, type: 2}
-  - {fileID: 11400000, guid: a60df1dfc31f0744ebb0f5e37e325961, type: 2}
+  - {fileID: 11400000, guid: 7f7e7596b305fd14b96c6ddeb7579ff7, type: 2}
   - {fileID: 11400000, guid: 45df56dc2233d114db0ad36abb7a256c, type: 2}
-  passif: "Lorsqu'un malus (tout niveau) est r\xE9duit \xE0 0 sur un client, celui-ci
-    obtient un bonus (+)\u2B9D pour la m\xEAme caract\xE9ristique"
+  passif: 
   type: Soin
-  ID: 4
   sprite: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94, type: 3}
   color: {r: 0.039215688, g: 1, b: 0, a: 1}

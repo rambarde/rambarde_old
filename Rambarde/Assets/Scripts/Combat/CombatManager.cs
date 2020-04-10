@@ -19,6 +19,7 @@ public class CombatManager : MonoBehaviour {
     }
 
     public async Task ExecTurn() {
+        //sort Characters based on speed, influenced by Theodore, Rushing and Lagging effects
         // Apply status effects to all characters
         foreach (var team in teams) {
             for (var index = team.Count - 1; index >= 0; --index) {
@@ -79,19 +80,19 @@ public class CombatManager : MonoBehaviour {
     }
 
     private void Start() {
-        const string dir = "ScriptableObjects/Characters";
-        var mage = Utils.LoadResourceFromDir<CharacterData>(dir, "Mage");
-        var warrior = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
-        var warrior1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
-        var goblin = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
-        var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
-        var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
+        //const string dir = "ScriptableObjects/Characters";
+        //var mage = Utils.LoadResourceFromDir<CharacterData>(dir, "Mage");
+        //var warrior = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
+        //var warrior1 = Utils.LoadResourceFromDir<CharacterData>(dir, "Warrior");
+        //var goblin = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
+        //var goblin1 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
+        //var goblin2 = Utils.LoadResourceFromDir<CharacterData>(dir + "/ForestMonster", "Goblin");
 
         clientsMenu = GameManager.clients;
         currentMonsters = GameManager.quest.fightManager.fights[GameManager.CurrentFight].monsters;
 
-        CharacterData[] playerTeam = {mage, warrior, warrior1};
-        CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
+        //CharacterData[] playerTeam = {mage, warrior, warrior1};
+        //CharacterData[] enemyTeam = {goblin, goblin1, goblin2};
         
         teams = new List<List<CharacterControl>> {new List<CharacterControl>(), new List<CharacterControl>()};
 
@@ -115,19 +116,22 @@ public class CombatManager : MonoBehaviour {
 
         i = 0;
         foreach (Transform t in enemyTeamGo.transform) {
-            var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
-            go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
-            go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, 90, 0);
-            //var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
-            var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", currentMonsters[i].Character.modelName), go.transform);
-            model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
-            var character = go.GetComponent<CharacterControl>();
-            character.team = Team.EmemyTeam;
-            //character.Init(enemyTeam[i]);
-            //character.Init(currentMonsters[i]);
-            character.Init(currentMonsters[i].Character, currentMonsters[i].SkillWheel);
-            teams[1].Add(character);
-            ++i;
+            if (i < currentMonsters.Count)
+            {
+                var go = Instantiate(Utils.LoadResourceFromDir<GameObject>("", "CharacterPrefab"), t);
+                go.transform.Find("CharacterCanvas").transform.localEulerAngles = new Vector3(0, 90, 0);
+                go.transform.Find("SkillWheel").transform.localEulerAngles = new Vector3(0, 90, 0);
+                //var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", enemyTeam[i].modelName), go.transform);
+                var model = Instantiate(Utils.LoadResourceFromDir<GameObject>("Models", currentMonsters[i].Character.modelName), go.transform);
+                model.AddComponent<Animator>().runtimeAnimatorController = Utils.LoadResourceFromDir<RuntimeAnimatorController>("", "Character");
+                var character = go.GetComponent<CharacterControl>();
+                character.team = Team.EmemyTeam;
+                //character.Init(enemyTeam[i]);
+                //character.Init(currentMonsters[i]);
+                character.Init(currentMonsters[i].Character, currentMonsters[i].SkillWheel);
+                teams[1].Add(character);
+                ++i;
+            }
         }
     }
 

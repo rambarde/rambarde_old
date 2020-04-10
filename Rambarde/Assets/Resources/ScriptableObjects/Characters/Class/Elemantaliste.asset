@@ -15,20 +15,20 @@ MonoBehaviour:
   modelName: Mage
   animatorController: Mage
   baseStats:
-    maxHp: 50
-    atq: 30
-    prot: 5
+    maxHp: 55
+    atq: 25
+    prot: 0
     prec: 90
     crit: 10
   baseWeapons: []
   baseArmors: []
   skills:
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
-  - {fileID: 11400000, guid: 8e0c0c863a39f84438209acc24387362, type: 2}
-  - {fileID: 11400000, guid: cd09d6fcf8339b843a54a6b6b4c7111b, type: 2}
+  - {fileID: 11400000, guid: b9ec2334c4b312248a518f2ee800dfca, type: 2}
+  - {fileID: 11400000, guid: 402b42e889ad3bc4a9210617811456c0, type: 2}
+  - {fileID: 11400000, guid: 04f633ea90ef23242a5eb43a86fed330, type: 2}
+  - {fileID: 11400000, guid: d5aee0aeb9c5bd4409c02a1119c93d1f, type: 2}
+  - {fileID: 11400000, guid: 05d5a9f689323b44b8e733d47914be5f, type: 2}
+  - {fileID: 11400000, guid: 9ece815a140b1984a9d65056e0708f63, type: 2}
+  - {fileID: 11400000, guid: f7ae8008bd967cc43b499f747b9f5a67, type: 2}
+  - {fileID: 11400000, guid: da46f2f884d18ee44be6e36c134b43e4, type: 2}
   clientImage: {fileID: 21300000, guid: f53f88203f6c3eb469f9440c7fe04d0d, type: 3}

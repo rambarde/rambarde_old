@@ -12,19 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: FrappeFortifiante
   m_EditorClassIdentifier: 
+  tier: 1
   actions:
   - actionType: 0
     targetMode: 1
     effectType: 0
     buffType: 0
-    value: 90
-  - actionType: 3
-    targetMode: 0
+    value: 60
+  - actionType: 1
+    targetMode: 2
     effectType: 0
-    buffType: 3
-    value: 1
-  animationName: 
+    buffType: 0
+    value: 40
+  animationName: Atq
   sprite: {fileID: 21300000, guid: 4c08ab37f63684943b7512f974ef85d6, type: 3}
-  description: 'Attaque de 80%
-
-    Applique Protection +'
+  description: 

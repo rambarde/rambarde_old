@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9903e453fdf94c32bb59c87073111ea5, type: 3}
   m_Name: "RempartSacr\xE9"
   m_EditorClassIdentifier: 
+  tier: 0
   actions:
   - actionType: 3
     targetMode: 0
     effectType: 0
     buffType: 3
     value: 3
-  animationName: 
+  animationName: Atq
   sprite: {fileID: 0}
   description: PROT +++

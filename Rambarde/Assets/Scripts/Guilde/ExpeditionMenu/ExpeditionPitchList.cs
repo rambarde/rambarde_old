@@ -10,15 +10,22 @@ public class ExpeditionPitchList
 
     public void Init()
     {
-        string forestPath = "Assets/Resources/Guilde/ExpeditionMenu/pitchForest.txt";
-        string cryptPath = "Assets/Resources/Guilde/ExpeditionMenu/pitchCrypt.txt";
+        //string forestPath = Application.dataPath + "/Resources/Guilde/ExpeditionMenu/pitchForest";//.txt";
+        //string cryptPath = Application.dataPath + "/Resources/Guilde/ExpeditionMenu/pitchCrypt";//.txt";        
+        
+        string forestPath = "Guilde/ExpeditionMenu/pitchForest";
+        string cryptPath = "Guilde/ExpeditionMenu/pitchCrypt";
 
-        StreamReader reader = new StreamReader(forestPath);
+        StringReader reader = new StringReader(Resources.Load<TextAsset>(forestPath).text);
+        //Resources.Load<TextAsset>(cryptPath);
+
+        //StreamReader reader = new StreamReader(forestPath+".txt");
         while (reader.Peek() >= 0)
             pitchForest.Add(reader.ReadLine());
         reader.Close();
 
-        reader = new StreamReader(cryptPath);
+        //reader = new StreamReader(cryptPath + ".txt");
+        reader = new StringReader(Resources.Load<TextAsset>(cryptPath).text);
         while (reader.Peek() >= 0)
             pitchCrypt.Add(reader.ReadLine());
         reader.Close();

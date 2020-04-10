@@ -13,8 +13,12 @@ namespace Skills {
     public enum SkillActionType {
         Attack,
         Heal,
+        StealHealth,
         ApplyEffect,
-        ApplyBuff
+        ApplyBuff,
+        RemoveEveryEffect,
+        RemoveEffect,
+        ShuffleSkillWheel
     }
 
     public enum SkillTargetMode {
@@ -22,6 +26,9 @@ namespace Skills {
         OneEnemy,
         Self,
         EveryAlly,
-        EveryEnemy
+        EveryEnemy,
+        OneOtherAlly,
+        EveryOtherAlly,
+        Everyone
     }
 }

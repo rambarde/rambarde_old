@@ -69,7 +69,8 @@ public class Hud : MonoBehaviour {
                 GameObject buttonGo = Instantiate(buttonPrefab, panel);
                 Button button = buttonGo.GetComponent<Button>();
                 TextMeshProUGUI label = buttonGo.GetComponentInChildren<TextMeshProUGUI>();
-                label.text = melody.name;
+                label.text = Utils.SplitPascalCase(melody.name);
+                buttonGo.GetComponent<Image>().sprite = melody.sprite;
                 button.OnClickAsObservable()
                     .Subscribe(_ => {
                         List<IDisposable> subscriptions = new List<IDisposable>();

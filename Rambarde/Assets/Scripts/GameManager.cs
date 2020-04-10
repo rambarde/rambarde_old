@@ -51,14 +51,14 @@ public class GameManager : MonoBehaviour
         {
             int goldReward = quest.Gold;
             int alterReward = 0;    //add alternatif pathway reward
-            float multiProgession = (float)quest.FightMax[i] / (float)quest.nFights;
+            float multiProgession = (float)quest.FightMax[i] / (float)quest.NumberOfFights;
             int randomReawrd = 0;   //add random events reward/losses
             int envyReward = 0;     //add envy rewards
             reward += (int)((goldReward + alterReward) * multiProgession) + envyReward;
             //Debug.Log("Client " + i + ": " + ((int)((goldReward + alterReward) * multiProgession) + envyReward) + " gold");
         }
 
-        if (quest.FightMax[0] != quest.nFights & quest.FightMax[1] != quest.nFights & quest.FightMax[2] != quest.nFights)
+        if (quest.FightMax[0] != quest.NumberOfFights & quest.FightMax[1] != quest.NumberOfFights & quest.FightMax[2] != quest.NumberOfFights)
             reward = (int)(reward / 2.0f);
 
         //Debug.Log("Gold total: " + reward);

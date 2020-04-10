@@ -756,7 +756,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 8a7d97d8d49164c44866ce9532fac7f9,
+      objectReference: {fileID: 11400000, guid: bc3e9e8fcd8ed8b4b8f0720c7b4d5c3a,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -1882,7 +1882,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: "Fl\xFBte champ\xEAtre"
+      value: "Fl\xFBte symphonique"
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -1929,7 +1929,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: 781c9ea8d21145a4fb6d479d7633fc22,
+      objectReference: {fileID: 11400000, guid: 10fdb95a9e628b34fb9cf3034d4877d6,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -2060,7 +2060,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Staccatissimo
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -2221,7 +2221,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Fuocoso
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -2307,7 +2307,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Pausa di Croma
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -2318,7 +2318,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Pausa di Breve
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -5209,7 +5209,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Oud
+      value: LuthSpirituel
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -5266,7 +5266,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: 37d2947ab87ede945a8357c58c8e5eda,
+      objectReference: {fileID: 11400000, guid: 925a82397ba314a41930939af1af295e,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -5397,7 +5397,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Da Capo
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -5558,7 +5558,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Adagietto
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -5644,7 +5644,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Dolce
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -5655,7 +5655,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Sforzando
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -5864,7 +5864,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 996d9cc6878737f42aa32288b2e3e1e5,
+      objectReference: {fileID: 11400000, guid: 93714d5250574fd48bbc67e43d79e491,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -6982,7 +6982,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: "Fl\xFBte symphonique"
+      value: "Fl\xFBte champetre"
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -7039,7 +7039,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: fc857ed836b90334f84e1b205cafe6ed,
+      objectReference: {fileID: 11400000, guid: 60ae94033cef7a5448ba56605b3299fd,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -7170,7 +7170,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Pausa di Minima
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -7331,7 +7331,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Leggiero
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -7417,7 +7417,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Staccato
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -7428,7 +7428,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Leggierissimo
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -11989,6 +11989,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050808517}
   m_CullTransparentMesh: 0
+--- !u!1 &1054739863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054739864}
+  - component: {fileID: 1054739866}
+  - component: {fileID: 1054739865}
+  m_Layer: 5
+  m_Name: QuestName02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1054739864
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054739863}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2130164777}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1054739865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054739863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Forest_Quest#02
+--- !u!222 &1054739866
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054739863}
+  m_CullTransparentMesh: 0
 --- !u!1 &1065372722
 GameObject:
   m_ObjectHideFlags: 0
@@ -13227,7 +13304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: 08ec64a7366690548bf9c4d5f3c298a7,
+      objectReference: {fileID: 11400000, guid: d832eebb617825c4d975b72ea13a63fb,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -13372,7 +13449,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Decrescendo
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -13528,7 +13605,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Crescendo
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -13614,7 +13691,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Allegro
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -13625,7 +13702,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Fortississimo
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -14109,7 +14186,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 36792fe23c604f04e92a12faff14744a,
+      objectReference: {fileID: 11400000, guid: 117447fc3b6f0a24a93358b4274aaedc,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -14663,7 +14740,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 5500b29ce634ae44b936b18154662301,
+      objectReference: {fileID: 11400000, guid: 74e4761ac1519d0f0a799f23226a4058,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -17202,7 +17279,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 5c76d16b9ac09254f8eb68926a19621f,
+      objectReference: {fileID: 11400000, guid: 9126cef06efe40a42bb11017b149e5f4,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -18891,7 +18968,7 @@ PrefabInstance:
         type: 3}
       propertyPath: melody
       value: 
-      objectReference: {fileID: 11400000, guid: 34c4839093592154f843670db1d39088,
+      objectReference: {fileID: 11400000, guid: edcae12cf55b7e942adeb72381240bb4,
         type: 2}
     - target: {fileID: 954649181250434263, guid: 50810fb2b72917c4c9d99b6873fdc7be,
         type: 3}
@@ -19319,10 +19396,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -19436,7 +19513,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: e055ee3c3b6911342bd746ab7253ff1e,
+      objectReference: {fileID: 11400000, guid: adb667f70704b384c8a4594973d5ac29,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -19606,7 +19683,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Fortissimo
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -19792,7 +19869,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Diminuendo
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -19878,7 +19955,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Forte
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -19889,7 +19966,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Dissonanza
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -19955,6 +20032,7 @@ MonoBehaviour:
   questPool:
   - {fileID: 11400000, guid: aacc83166a0c1504591fc30db4bec99d, type: 2}
   - {fileID: 11400000, guid: 83b1fd0efa109494e8842cb74171b911, type: 2}
+  - {fileID: 11400000, guid: 60cfb5e0532a4534aade9d62d9408587, type: 2}
   numberOfQuests: 3
 --- !u!114 &1668373434
 MonoBehaviour:
@@ -20285,6 +20363,7 @@ RectTransform:
   m_Children:
   - {fileID: 1203074335}
   - {fileID: 596458747}
+  - {fileID: 2130164777}
   m_Father: {fileID: 685241265}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22892,7 +22971,7 @@ PrefabInstance:
     - target: {fileID: 453461829732271986, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Luth
+      value: LuthFetiche
       objectReference: {fileID: 0}
     - target: {fileID: 469694898970509307, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -22949,7 +23028,7 @@ PrefabInstance:
         type: 3}
       propertyPath: instrument
       value: 
-      objectReference: {fileID: 11400000, guid: f1c57ca7b96293d4190f65a2fe520a8a,
+      objectReference: {fileID: 11400000, guid: a2ead07567af4a94e955a85999148d6a,
         type: 2}
     - target: {fileID: 2602189251039040478, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -23079,7 +23158,7 @@ PrefabInstance:
     - target: {fileID: 4395405084809448143, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Dolcissimo
+      value: Melody3
       objectReference: {fileID: 0}
     - target: {fileID: 4777521632048091160, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -23240,7 +23319,7 @@ PrefabInstance:
     - target: {fileID: 6018872178229781557, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Moderato
+      value: Melody2
       objectReference: {fileID: 0}
     - target: {fileID: 6643498572242059314, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -23326,7 +23405,7 @@ PrefabInstance:
     - target: {fileID: 8151286664915355664, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Risoluto
+      value: Melody1
       objectReference: {fileID: 0}
     - target: {fileID: 8325444821952074866, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
@@ -23337,7 +23416,7 @@ PrefabInstance:
     - target: {fileID: 8952256037977731189, guid: d5149fe43e80aa74a9d2ecea240092af,
         type: 3}
       propertyPath: m_Name
-      value: Adagio
+      value: Melody4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5149fe43e80aa74a9d2ecea240092af, type: 3}
@@ -24442,6 +24521,135 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723b058ba49c0114f8599a18ff348401, type: 3}
+--- !u!1 &2130164776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130164777}
+  - component: {fileID: 2130164780}
+  - component: {fileID: 2130164779}
+  - component: {fileID: 2130164778}
+  m_Layer: 5
+  m_Name: QuestButton03
+  m_TagString: QuestButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2130164777
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130164776}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1054739864}
+  m_Father: {fileID: 1711594872}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2130164778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130164776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2130164779}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1668373433}
+        m_MethodName: DisplayQuestMap
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2130164779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130164776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 57b0a35261e8d844dbfa9624b55deb69, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2130164780
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130164776}
+  m_CullTransparentMesh: 0
 --- !u!1 &2134353069
 GameObject:
   m_ObjectHideFlags: 0
