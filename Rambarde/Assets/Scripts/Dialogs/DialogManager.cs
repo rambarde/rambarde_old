@@ -51,29 +51,23 @@ public class DialogManager : MonoBehaviour
         return Random.Range(0, 1) <= dialogAppearRate;
     }
     
-    public Quote GetDialogQuote(DialogFilter filter, CharacterType playerTeamCharacter, CharacterType enemyTeamCharacter, SkillAction skillAction)
+    public Quote GetDialogQuote(DialogFilter filter, CharacterType actionCharacter1, CharacterType actionCharacter2)
     {
         Quote quote = new Quote() {character = CharacterType.None, phrase = ""};
         if (!IsDialogAvailable()) return quote;
 
         List<Quote> quotes = new List<Quote>();
         
-        foreach (var dialogPhrase in dialogs[CharacterType.Bard])
-            if ((dialogPhrase.filter & filter) == filter)
-                if(!closedList.Contains(dialogPhrase.phrase))
-                    quotes.Add(new Quote() {character = CharacterType.Bard, phrase = dialogPhrase.phrase});
+        foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,CharacterType.Bard))
+            quotes.Add(filteredQuote);
 
-        if(playerTeamCharacter != CharacterType.None)
-            foreach (var dialogPhrase in dialogs[playerTeamCharacter])
-                if ((dialogPhrase.filter & filter) == filter)
-                    if(!closedList.Contains(dialogPhrase.phrase))
-                        quotes.Add(new Quote() {character = playerTeamCharacter, phrase = dialogPhrase.phrase});
+        if(actionCharacter1 != CharacterType.None)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionCharacter1))
+                quotes.Add(filteredQuote);
         
-        if(enemyTeamCharacter != CharacterType.None)
-            foreach (var dialogPhrase in dialogs[playerTeamCharacter])
-                if ((dialogPhrase.filter & filter) == filter)
-                    if(!closedList.Contains(dialogPhrase.phrase))
-                        quotes.Add(new Quote() {character = enemyTeamCharacter, phrase = dialogPhrase.phrase});
+        if(actionCharacter2 != CharacterType.None)
+            foreach (var filteredQuote in GetFilteredCharacterQuotes(filter,actionCharacter2))
+                quotes.Add(filteredQuote);
 
         if (quotes.Count != 0)
         {
@@ -84,5 +78,47 @@ public class DialogManager : MonoBehaviour
         }
 
         return quote;
+    }
+
+    private IEnumerable<Quote> GetFilteredCharacterQuotes(DialogFilter filter, CharacterType character)
+    {
+        foreach (var dialogPhrase in dialogs[character])
+        {
+            if ((filter & DialogFilter.Buff) == DialogFilter.Buff) // if filter contains a buff
+            {
+                if ((dialogPhrase.filter | DialogFilter.Buff) == DialogFilter.Buff) // only buff
+                {
+                    if (!closedList.Contains(dialogPhrase.phrase))
+                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+                }
+                else if ((dialogPhrase.filter & filter) == filter) // buff with type
+                {
+                    if (!closedList.Contains(dialogPhrase.phrase))
+                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+                }
+            }
+            else if ((filter & DialogFilter.Unbuff) == DialogFilter.Unbuff) // if filter contains a unbuff
+            {
+                if ((dialogPhrase.filter | DialogFilter.Unbuff) == DialogFilter.Unbuff) // only unbuff
+                {
+                    if (!closedList.Contains(dialogPhrase.phrase))
+                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+                }
+                else if ((dialogPhrase.filter & filter) == filter) // unbuff with type
+                {
+                    if (!closedList.Contains(dialogPhrase.phrase))
+                        yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+                }
+                
+                //to do handle client -> monster unbuff and fakemonster -> client cases
+            }
+            else if ((dialogPhrase.filter & filter) == filter)
+            {
+                if (!closedList.Contains(dialogPhrase.phrase))
+                    yield return new Quote() {character = character, phrase = dialogPhrase.phrase};
+            }
+        }
+            
+                
     }
 }

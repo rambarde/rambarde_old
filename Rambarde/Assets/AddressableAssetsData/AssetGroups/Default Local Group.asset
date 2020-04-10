@@ -23,8 +23,10 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_mainAssetType: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    m_MainAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
+      type: 3}
+    m_TargetAsset: {fileID: 6789997390863644055, guid: 0a1e254a1f41d0747889f15a007512b6,
+      type: 3}
   - m_GUID: 1039e69a757a64b4c931f4cff6c14ba9
     m_Address: EnemyCharacterPrefab
     m_ReadOnly: 0
@@ -93,7 +95,8 @@ MonoBehaviour:
     m_Address: vfx-poison
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: 950be6cf0befaf540a850b1eb0c74904
@@ -108,7 +111,8 @@ MonoBehaviour:
     m_Address: vfx-heal
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+    m_mainAssetType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   - m_GUID: ba216e427631a3746aae7ce7dd2d7844
