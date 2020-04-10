@@ -28,6 +28,17 @@ public class InstrumentBehaviour :
 
     void Awake()
     {
+        // do not display instruments the Bard doesnt own
+        Debug.Log(instrument.name);
+        if (!instrument.owned)
+        {
+            IsClickable = false;
+        }
+        else
+        {
+            IsClickable = true;
+        }
+
         if (IsClickable)
         {
 
@@ -186,4 +197,10 @@ public class InstrumentBehaviour :
         slot.GetComponent<SlotBehaviour>().Slotted = true;
     }
 
+
+    void OnEnable()
+    {
+        Awake();
+        Start();
+    }
 }

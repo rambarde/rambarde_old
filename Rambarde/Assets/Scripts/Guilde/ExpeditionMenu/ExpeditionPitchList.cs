@@ -26,6 +26,7 @@ public class ExpeditionPitchList
 
         //reader = new StreamReader(cryptPath + ".txt");
         reader = new StringReader(Resources.Load<TextAsset>(cryptPath).text);
+
         while (reader.Peek() >= 0)
             pitchCrypt.Add(reader.ReadLine());
         reader.Close();

@@ -12,5 +12,8 @@ namespace Bard
         public string type;
         public Sprite sprite;
         public Color color;
+
+        public int price;
+        public bool owned;
     }
 }

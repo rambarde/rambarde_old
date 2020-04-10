@@ -10,8 +10,6 @@ public class GoldValue : MonoBehaviour
 
     GameObject noGoldPanel;
 
-    //GameObject[] questButtons;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +17,22 @@ public class GoldValue : MonoBehaviour
         goldValue = GameManager.gold;
 
         goldLabel = GameObject.FindGameObjectWithTag("GoldLabel");
-        goldLabel.GetComponent<Text>().text = goldValue.ToString();
+        goldLabel.GetComponent<Text>().text = goldValue.ToString() + "G";
 
         // Deactivate NoGoldPanel
         noGoldPanel = GameObject.FindGameObjectWithTag("NoGoldPanel");
         noGoldPanel.SetActive(false);
     }
 
-    public bool HasEnoughGold()
+    public bool HasEnoughGold(int price)
     {
-        return goldValue >= 200;
+        return goldValue >= price;
     }
 
     public void Pay(int price)
     {
         goldValue -= price;
-        goldLabel.GetComponent<Text>().text = goldValue.ToString();
+        goldLabel.GetComponent<Text>().text = goldValue.ToString() + "G";
 
         // Update gold in GameManager
         GameManager.gold = goldValue;
@@ -43,9 +41,14 @@ public class GoldValue : MonoBehaviour
     public void DisplayNoGoldMessage()
     {
         noGoldPanel.SetActive(true);
-        GameObject.FindGameObjectWithTag("FOREST_Button").GetComponent<Button>().interactable = false;
-        GameObject.FindGameObjectWithTag("CRYPT_Button").GetComponent<Button>().interactable = false;
-        GameObject.Find("Scroll Parcours").GetComponent<ScrollRect>().enabled = false;
+        if (GameObject.Find("Scroll Parcours") != null)
+            GameObject.Find("Scroll Parcours").GetComponent<ScrollRect>().enabled = false;
+
+        GameObject[] buttons = GameObject.FindGameObjectsWithTag("SelectButton");
+        foreach(GameObject button in buttons)
+        {
+            button.GetComponent<Button>().interactable = false;
+        }
 
         foreach (GameObject pLocked in GameObject.FindGameObjectsWithTag("PNotUnlocked"))
         {
@@ -63,9 +66,14 @@ public class GoldValue : MonoBehaviour
     public void ShutDownMessage()
     {
         noGoldPanel.SetActive(false);
-        GameObject.FindGameObjectWithTag("FOREST_Button").GetComponent<Button>().interactable = true;
-        GameObject.FindGameObjectWithTag("CRYPT_Button").GetComponent<Button>().interactable = true;
-        GameObject.Find("Scroll Parcours").GetComponent<ScrollRect>().enabled = true;
+        if (GameObject.Find("Scroll Parcours") != null)
+            GameObject.Find("Scroll Parcours").GetComponent<ScrollRect>().enabled = true;
+
+        GameObject[] buttons = GameObject.FindGameObjectsWithTag("SelectButton");
+        foreach (GameObject button in buttons)
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
 
         foreach (GameObject pLocked in GameObject.FindGameObjectsWithTag("PNotUnlocked"))
         {

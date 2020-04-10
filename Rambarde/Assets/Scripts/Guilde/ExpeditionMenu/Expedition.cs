@@ -34,6 +34,7 @@ namespace ExpeditionMenu
                     _numberOfFights = 6;
             }
         }
+
         private string _pitch;
         public string Pitch { get { return _pitch; } set { _pitch = value; } }
         private bool _isUpgradable;
@@ -75,6 +76,7 @@ namespace ExpeditionMenu
 
             //Fights init
             fightManager = new FightManager(type, !IsUpgradable, NumberOfFights); //remplacer par nFights plus tard
+
             fightManager.Init();
             fightManager.GenerateFights();
             fightManager.InitMonsters(monsterData);

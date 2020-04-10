@@ -54,7 +54,29 @@ public class ClientMenuManager : MonoBehaviour
         {
             if (!clientList[i].IsClickable)
             {
+/////// HEAD
                 clients.Add(clientList[i].client);
+///////
+                //ClientBehaviour currentClient = clientList[i];
+                //Characters.CharacterControl client = new Characters.CharacterControl();
+                //Skills.Skill[] temp = new Skills.Skill[4];
+
+                //for (int j = 0; j < currentClient.SkillWheel.Length; j++)
+                //    temp[j] = currentClient.Character.skills[currentClient.SkillWheel[j]];
+
+                //client.clientName = currentClient.ClientName;
+                //client.team = Characters.Team.PlayerTeam;
+                //client.skillWheel = temp;
+                //client.characterData = currentClient.Character;
+
+                //// client equipment = base equipment from class
+                //client.equipment = new Characters.Equipment[2];
+                //client.equipment[0] = currentClient.Character.baseEquipment[0];     //weapon
+                //client.equipment[1] = currentClient.Character.baseEquipment[1];     //armor
+
+                //clients[nClient] = client;
+                //nClient++;
+////// origin/develop-guilde
             }
         }
 

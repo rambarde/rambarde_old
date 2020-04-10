@@ -14,6 +14,8 @@ public class Client
     private string _clientName;
     public string ClientName { get { return _clientName; } set { _clientName = value; } }
 
+    public Characters.Equipment[] equipment;
+
     public Client() { }
 
     public Client(Characters.CharacterData data, int[] skillIndex, string clientName)

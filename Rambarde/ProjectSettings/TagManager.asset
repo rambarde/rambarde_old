@@ -23,6 +23,10 @@ TagManager:
   - Skill
   - TheodoreMenu
   - ClientsMenu
+  - ClientMenu
+  - SelectButton
+  - WEAPON
+  - ARMOR
   layers:
   - Default
   - TransparentFX

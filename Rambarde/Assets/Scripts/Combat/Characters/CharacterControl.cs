@@ -21,6 +21,7 @@ namespace Characters {
         public int clientNumber;
         public Skill[] skillWheel;
         public Stats currentStats;
+        public Equipment[] equipment;
         public CharacterData characterData;
         public ReactiveCollection<StatusEffect> statusEffects;
         public ReactiveProperty<EffectType> effectTypes;
@@ -107,11 +108,11 @@ namespace Characters {
         {
             characterData = data;
             data.Init();
-            data.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
-            data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+            //data.equipments.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+            //data.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
             skillWheel = data.skills;
 
-            UpdateStats(0);
+            UpdateStats();
             GetComponentInChildren<CharacterVfx>().Init();
         }
 
@@ -164,8 +165,8 @@ namespace Characters {
         {
             characterData = data;
             characterData.Init();
-            characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
-            characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
+            //characterData.armors.ObserveCountChanged().Subscribe(_ => UpdateStats(0)).AddTo(this);
+            //characterData.weapons.ObserveCountChanged().Subscribe(_ => UpdateStats(1)).AddTo(this);
 
             Skill[] temp = new Skill[4];
 
@@ -173,11 +174,13 @@ namespace Characters {
                 temp[j] = characterData.skills[intSkillWheel[j]];
             skillWheel = temp;
 
-            UpdateStats(0);
+            //UpdateStats(0);
+            UpdateStats();
             GetComponentInChildren<CharacterVfx>().Init();
         }
 
-        private void UpdateStats(int accessory) {
+        //private void UpdateStats(int accessory) {
+        public void UpdateStats() {
             // var stats = characterData.baseStats;
             // switch (accessory) {
             //     case 0:
@@ -199,8 +202,14 @@ namespace Characters {
             // }
             //
             // currentStats = stats;
-            currentStats = characterData.baseStats;
-            currentStats.Init();
+            //currentStats = characterData.baseStats;
+            //currentStats.Init();
+
+            currentStats.atq = characterData.baseStats.atq + equipment[0].atqMod + equipment[1].atqMod;
+            currentStats.prec = characterData.baseStats.prec * (equipment[0].precMod + equipment[1].precMod + 1);
+            currentStats.crit = characterData.baseStats.crit * (equipment[0].critMod + equipment[1].critMod + 1);
+            currentStats.maxHp = characterData.baseStats.maxHp + equipment[0].endMod + equipment[1].endMod;
+            currentStats.prot = characterData.baseStats.prot * (equipment[0].protMod + equipment[1].protMod + 1);
         }
 
         public async Task Heal(float pts) {

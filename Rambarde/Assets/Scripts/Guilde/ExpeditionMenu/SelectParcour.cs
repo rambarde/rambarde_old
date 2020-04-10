@@ -34,7 +34,7 @@ public class SelectParcour : MonoBehaviour
             if (menu.tag == tag)
             {
                 menu.SetActive(true);
-                menu.transform.position = GameObject.FindGameObjectWithTag(tag + "_Button").transform.position + new Vector3Int(-190,0,0);
+                menu.transform.position = GameObject.Find(tag + "_Button").transform.position + new Vector3Int(-190,0,0);
             }
             else
             {
