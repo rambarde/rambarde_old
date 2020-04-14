@@ -22,3 +22,5 @@ MonoBehaviour:
   type: Attaque
   sprite: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  price: 0
+  owned: 1

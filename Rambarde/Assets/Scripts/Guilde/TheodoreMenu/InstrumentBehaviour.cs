@@ -29,15 +29,12 @@ public class InstrumentBehaviour :
     void Awake()
     {
         // do not display instruments the Bard doesnt own
-        Debug.Log(instrument.name);
-        if (!instrument.owned)
-        {
-            IsClickable = false;
-        }
-        else
-        {
-            IsClickable = true;
-        }
+        //Debug.Log(instrument.name);
+        if(instrument != null)
+            if (!instrument.owned)
+                IsClickable = false;
+            else
+                IsClickable = true;
 
         if (IsClickable)
         {
